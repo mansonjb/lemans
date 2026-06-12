@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #faf8f3;
+  --color-card: #ffffff;
+  --color-ink: #161a22;
+  --color-muted: #5b6372;
+  --color-line: #e8e3d9;
+  --color-bleu: #2049d6;
+  --color-bleu-deep: #16317f;
+  --color-amber: #ffb400;
+  --color-amber-soft: #fff3d6;
+  --color-grass: #0e8a4d;
+  --color-signal: #d7282f;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-barlow), "Arial Narrow", ui-sans-serif, sans-serif;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-bleu);
+  color: white;
+}
+
+/* Thin "speed line" used under display headings */
+.speedline {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-bleu) 0%,
+    var(--color-bleu) 55%,
+    transparent 100%
+  );
+  border-radius: 9999px;
+}
+
+/* Pit-board style tip box left border */
+.pitboard {
+  border-left: 6px solid var(--color-bleu);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0px,
+    transparent 9px,
+    rgba(32, 73, 214, 0.05) 9px,
+    rgba(32, 73, 214, 0.05) 18px
+  );
+}

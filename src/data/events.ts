@@ -1,0 +1,111 @@
+import type { RaceEvent } from "@/lib/types";
+
+/**
+ * Next editions (2027 season). Dates flagged datesConfirmed:false are
+ * estimates based on the traditional calendar slot and are displayed
+ * with a "to be confirmed" note until officially announced.
+ */
+export const EVENTS: RaceEvent[] = [
+  {
+    key: "lm24",
+    id: "lm24",
+    slugs: {
+      en: "le-mans-24-hours",
+      fr: "24-heures-du-mans",
+      nl: "24-uur-van-le-mans",
+      de: "24-stunden-von-le-mans",
+      it: "24-ore-di-le-mans",
+      es: "24-horas-de-le-mans",
+    },
+    start: "2027-06-12",
+    end: "2027-06-13",
+    checkin: "2027-06-09",
+    checkout: "2027-06-14",
+    datesConfirmed: false,
+    crowd: "329 000+",
+    bookAheadMonths: 10,
+    accent: "blue",
+  },
+  {
+    key: "motos",
+    id: "motos",
+    slugs: {
+      en: "le-mans-24h-motos",
+      fr: "24-heures-motos",
+      nl: "24-uur-motoren",
+      de: "24-stunden-motorrad",
+      it: "24-ore-moto",
+      es: "24-horas-motos",
+    },
+    start: "2027-04-17",
+    end: "2027-04-18",
+    checkin: "2027-04-15",
+    checkout: "2027-04-19",
+    datesConfirmed: false,
+    crowd: "76 000+",
+    bookAheadMonths: 6,
+    accent: "red",
+  },
+  {
+    key: "motogp",
+    id: "motogp",
+    slugs: {
+      en: "le-mans-motogp",
+      fr: "grand-prix-de-france-moto",
+      nl: "le-mans-motogp",
+      de: "le-mans-motogp",
+      it: "le-mans-motogp",
+      es: "le-mans-motogp",
+    },
+    start: "2027-05-14",
+    end: "2027-05-16",
+    checkin: "2027-05-13",
+    checkout: "2027-05-17",
+    datesConfirmed: false,
+    crowd: "290 000+",
+    bookAheadMonths: 8,
+    accent: "blue",
+  },
+  {
+    key: "classic",
+    id: "classic",
+    slugs: {
+      en: "le-mans-classic",
+      fr: "le-mans-classic",
+      nl: "le-mans-classic",
+      de: "le-mans-classic",
+      it: "le-mans-classic",
+      es: "le-mans-classic",
+    },
+    start: "2027-07-01",
+    end: "2027-07-04",
+    checkin: "2027-06-30",
+    checkout: "2027-07-05",
+    datesConfirmed: false,
+    crowd: "200 000+",
+    bookAheadMonths: 6,
+    accent: "amber",
+  },
+  {
+    key: "trucks",
+    id: "trucks",
+    slugs: {
+      en: "le-mans-24h-trucks",
+      fr: "24-heures-camions",
+      nl: "24-uur-trucks",
+      de: "24-stunden-lkw",
+      it: "24-ore-camion",
+      es: "24-horas-camiones",
+    },
+    start: "2027-10-02",
+    end: "2027-10-03",
+    checkin: "2027-10-01",
+    checkout: "2027-10-04",
+    datesConfirmed: false,
+    crowd: "60 000+",
+    bookAheadMonths: 3,
+    accent: "green",
+  },
+];
+
+export const eventByKey = (key: string) => EVENTS.find((e) => e.key === key);
