@@ -10,7 +10,7 @@ import type {
 import { EVENTS, eventByKey } from "@/data/events";
 import { PLACES, placeByKey, ringOf } from "@/data/places";
 import { CROSS_PAGES } from "@/data/catalog";
-import { HOTELS, hotelsForZonePadded } from "@/data/hotels";
+import { HOTELS, hotelsByZone, hotelsForZonePadded } from "@/data/hotels";
 import { routeFor } from "@/data/routes";
 import { hrefFor } from "@/lib/registry";
 import { bookingAreaUrl, bookingUrl } from "@/lib/booking";
@@ -20,6 +20,7 @@ import { Countdown } from "@/components/Countdown";
 import { FaqBlock } from "@/components/FaqBlock";
 import { FlightWidget } from "@/components/FlightWidget";
 import { RouteMap } from "@/components/RouteMap";
+import { KeyFacts, type Fact } from "@/components/KeyFacts";
 import { Quiz, type QuizEvent, type QuizHotel, type QuizZone } from "@/components/Quiz";
 import {
   AmberNote,
@@ -299,6 +300,26 @@ export function EventZoneTemplate({
       </section>
 
       <Container className="py-14">
+        <KeyFacts
+          title={xt.seo.keyFactsTitle}
+          facts={
+            [
+              { label: names.short, value: formatDateRange(locale, event.start, event.end) },
+              { label: xt.seo.factDistance, value: `${place.km} km` },
+              {
+                label: xt.route.raceWeekDrive,
+                value: place.ring === 1 ? xt.seo.walk : `${place.raceWeekMin} min`,
+                accent: true,
+              },
+              {
+                label: xt.seo.factListedStays,
+                value: `${hotelsByZone(place.key).length || hotels.length}`,
+              },
+            ] as Fact[]
+          }
+        />
+
+        <div className="mt-14" />
         {route && place.ring > 1 && (
           <div>
             <SpeedHeading>{xt.eventZone.routeHeading(displayName)}</SpeedHeading>

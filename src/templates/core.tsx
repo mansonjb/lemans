@@ -5,7 +5,7 @@ import type { Locale, Place, RaceEvent } from "@/lib/types";
 import { EVENTS } from "@/data/events";
 import { PLACES, ringOf } from "@/data/places";
 import { CROSS_PAGES } from "@/data/catalog";
-import { hotelsForZonePadded, topPicks } from "@/data/hotels";
+import { HOTELS, hotelsByZone, hotelsForZonePadded, topPicks } from "@/data/hotels";
 import { routeFor } from "@/data/routes";
 import { hrefFor } from "@/lib/registry";
 import { bookingAreaUrl } from "@/lib/booking";
@@ -15,8 +15,11 @@ import { Countdown } from "@/components/Countdown";
 import { EventCard, GuideCard, PlaceCard } from "@/components/cards";
 import { FaqBlock } from "@/components/FaqBlock";
 import { JsonLd } from "@/components/JsonLd";
-import { AccommodationList } from "@/components/AccommodationList";
+import { AccommodationList, TrustStrip } from "@/components/AccommodationList";
 import { RouteMap } from "@/components/RouteMap";
+import { KeyFacts, type Fact } from "@/components/KeyFacts";
+import { ZoneCompare } from "@/components/ZoneCompare";
+import { LodgingListSchema, ZoneSchema } from "@/components/schema";
 import {
   AmberNote,
   Container,
@@ -90,6 +93,13 @@ export function AccommodationSection({
       <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted">
         {xt.accommodation.sub}
       </p>
+      <TrustStrip
+        items={[
+          { icon: "●", label: xt.seo.trust.livePrices },
+          { icon: "✓", label: xt.seo.trust.freeCancel },
+          { icon: "✓", label: xt.seo.trust.noFees },
+        ]}
+      />
       <div className="mt-6">
         <AccommodationList
           hotels={hotels}
@@ -102,6 +112,8 @@ export function AccommodationSection({
             category: { 1: "€", 2: "€€", 3: "€€€" },
             kind: xt.accommodation.kind,
             disclaimer: xt.accommodation.disclaimer,
+            walk: dict.common.walkToCircuit,
+            minToCircuit: dict.common.minToCircuit,
           }}
         />
       </div>
@@ -115,6 +127,11 @@ export function AccommodationSection({
           {xt.accommodation.seeAllArea} →
         </a>
       )}
+      <LodgingListSchema
+        hotels={hotels}
+        event={event}
+        name={xt.accommodation.heading}
+      />
     </div>
   );
 }
@@ -222,6 +239,10 @@ export function HomeTemplate({ dict, locale }: { dict: Dict; locale: Locale }) {
         </div>
 
         <div className="mt-20">
+          <ZoneCompare places={PLACES} dict={dict} locale={locale} />
+        </div>
+
+        <div className="mt-20">
           <SpeedHeading>{dict.common.exploreTypes}</SpeedHeading>
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {(["camping", "hotels", "rentals"] as const).map((t) => (
@@ -316,21 +337,40 @@ export function EventTemplate({
       </section>
 
       <Container className="py-14">
-        <SpeedHeading>{dict.eventPage.mapHeading(names.name)}</SpeedHeading>
-        <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted">
-          {dict.eventPage.mapSub}
-        </p>
-        <div className="mt-6">
-          <Stay22Map
-            title={dict.eventPage.mapHeading(names.name)}
-            note={dict.common.mapNote}
-            lat={CIRCUIT.lat}
-            lng={CIRCUIT.lng}
-            checkin={event.checkin}
-            checkout={event.checkout}
-            zoom={11}
-            locale={locale}
-          />
+        <KeyFacts
+          title={xt.seo.keyFactsTitle}
+          facts={[
+            {
+              label: names.short,
+              value: formatDateRange(locale, event.start, event.end),
+            },
+            { label: xt.seo.factCrowd, value: event.crowd },
+            {
+              label: xt.seo.factBookAhead,
+              value: `${event.bookAheadMonths}+ mo`,
+              accent: true,
+            },
+            { label: xt.seo.factListedStays, value: `${HOTELS.length}+` },
+          ]}
+        />
+
+        <div className="mt-14">
+          <SpeedHeading>{dict.eventPage.mapHeading(names.name)}</SpeedHeading>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted">
+            {dict.eventPage.mapSub}
+          </p>
+          <div className="mt-6">
+            <Stay22Map
+              title={dict.eventPage.mapHeading(names.name)}
+              note={dict.common.mapNote}
+              lat={CIRCUIT.lat}
+              lng={CIRCUIT.lng}
+              checkin={event.checkin}
+              checkout={event.checkout}
+              zoom={11}
+              locale={locale}
+            />
+          </div>
         </div>
 
         <div className="mt-20">
@@ -340,6 +380,10 @@ export function EventTemplate({
             hotels={topPicks(15)}
             event={event}
           />
+        </div>
+
+        <div className="mt-20">
+          <ZoneCompare places={PLACES} dict={dict} locale={locale} />
         </div>
 
         <div className="mt-20">
@@ -426,20 +470,22 @@ export function PlaceTemplate({
   const route = routeFor(place.key);
   const hotels = hotelsForZonePadded(place.key, ringOf, 10);
 
-  const stats: { label: string; value: string }[] = [
+  const facts: Fact[] = [
     { label: dict.placePage.statDistance, value: `${place.km} km` },
-    place.ring === 1
-      ? { label: dict.placePage.statWalk, value: "✓" }
-      : { label: dict.placePage.statNormal, value: `${place.driveMin} min` },
     {
-      label: dict.placePage.statRaceWeek,
-      value: place.ring === 1 ? "✓" : `${place.raceWeekMin} min`,
+      label: xt.route.normalDrive,
+      value: place.ring === 1 ? xt.seo.walk : `${place.driveMin} min`,
     },
     {
-      label: dict.common.parking[place.parking].split(",")[0],
-      value: place.parking === "easy" ? "✓✓" : place.parking === "medium" ? "✓" : "!",
+      label: xt.route.raceWeekDrive,
+      value: place.ring === 1 ? xt.seo.walk : `${place.raceWeekMin} min`,
+      accent: true,
     },
+    { label: xt.seo.factListedStays, value: `${hotelsByZone(place.key).length}` },
   ];
+  const sameRing = PLACES.filter(
+    (p) => p.ring === place.ring && p.key !== place.key
+  );
 
   return (
     <>
@@ -463,20 +509,7 @@ export function PlaceTemplate({
       </section>
 
       <Container className="py-14">
-        <SpeedHeading>{dict.placePage.statsHeading}</SpeedHeading>
-        <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="rounded-2xl border border-line bg-card p-5 shadow-sm"
-            >
-              <p className="font-display text-3xl font-bold italic tabular-nums text-bleu">
-                {s.value}
-              </p>
-              <p className="mt-1 text-sm text-muted">{s.label}</p>
-            </div>
-          ))}
-        </div>
+        <KeyFacts title={xt.seo.keyFactsTitle} facts={facts} />
 
         <div className="mt-10 max-w-3xl space-y-5 text-[15px] leading-relaxed">
           <p>{dict.placePage.introByRing[place.ring](place)}</p>
@@ -549,6 +582,17 @@ export function PlaceTemplate({
           </div>
         </div>
 
+        {sameRing.length > 0 && (
+          <div className="mt-20">
+            <ZoneCompare
+              places={[place, ...sameRing]}
+              dict={dict}
+              locale={locale}
+              title={xt.seo.nearbyHeading}
+            />
+          </div>
+        )}
+
         <div className="mt-20">
           <FaqBlock
             heading={dict.common.faqHeading}
@@ -562,6 +606,13 @@ export function PlaceTemplate({
           />
         </div>
       </Container>
+
+      <ZoneSchema
+        name={displayName}
+        lat={place.lat}
+        lng={place.lng}
+        description={dict.placePage.metaDescription(displayName, place.driveMin)}
+      />
     </>
   );
 }

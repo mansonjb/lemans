@@ -72,6 +72,22 @@ export interface ExtraDict {
     hotelsHeading: (zone: string) => string;
     mapHeading: (zone: string) => string;
   };
+  seo: {
+    keyFactsTitle: string;
+    factBookAhead: string;
+    factListedStays: string;
+    factDistance: string;
+    factCrowd: string;
+    compareTitle: string;
+    compareSub: string;
+    colZone: string;
+    colTransport: string;
+    colStays: string;
+    walk: string;
+    yes: string;
+    nearbyHeading: string;
+    trust: { livePrices: string; freeCancel: string; noFees: string };
+  };
 }
 
 /* ----------------------------- ENGLISH ----------------------------- */
@@ -282,6 +298,27 @@ const enX: ExtraDict = {
     routeHeading: (zone) => `From ${zone} to the circuit`,
     hotelsHeading: (zone) => `Top stays in ${zone}`,
     mapHeading: (zone) => `Live availability in ${zone}`,
+  },
+  seo: {
+    keyFactsTitle: "Key facts",
+    factBookAhead: "Book ahead",
+    factListedStays: "Listed stays",
+    factDistance: "To circuit",
+    factCrowd: "Crowd",
+    compareTitle: "Compare every zone at a glance",
+    compareSub:
+      "Real drive times to the circuit, race-week traffic, parking and transport for each base, so you can weigh distance against availability.",
+    colZone: "Zone",
+    colTransport: "Train / tram",
+    colStays: "Stays",
+    walk: "Walk",
+    yes: "Yes",
+    nearbyHeading: "Compare nearby zones",
+    trust: {
+      livePrices: "Live prices from booking partners",
+      freeCancel: "Free cancellation often available",
+      noFees: "No booking fee from us",
+    },
   },
 };
 
@@ -494,6 +531,27 @@ const frX: ExtraDict = {
     hotelsHeading: (zone) => `Les meilleurs hébergements à ${zone}`,
     mapHeading: (zone) => `Disponibilités en direct à ${zone}`,
   },
+  seo: {
+    keyFactsTitle: "L'essentiel",
+    factBookAhead: "Réserver",
+    factListedStays: "Hébergements listés",
+    factDistance: "Du circuit",
+    factCrowd: "Affluence",
+    compareTitle: "Comparez toutes les zones d'un coup d'œil",
+    compareSub:
+      "Temps de trajet réels vers le circuit, trafic de semaine de course, stationnement et transports pour chaque base, pour arbitrer entre distance et disponibilité.",
+    colZone: "Zone",
+    colTransport: "Train / tram",
+    colStays: "Hébergements",
+    walk: "À pied",
+    yes: "Oui",
+    nearbyHeading: "Comparer les zones voisines",
+    trust: {
+      livePrices: "Prix en direct chez nos partenaires",
+      freeCancel: "Annulation gratuite souvent disponible",
+      noFees: "Aucun frais de réservation de notre part",
+    },
+  },
 };
 
 /* ----------------------------- DUTCH ----------------------------- */
@@ -694,6 +752,27 @@ const nlX: ExtraDict = {
     routeHeading: (zone) => `Van ${zone} naar het circuit`,
     hotelsHeading: (zone) => `Topverblijven in ${zone}`,
     mapHeading: (zone) => `Live beschikbaarheid in ${zone}`,
+  },
+  seo: {
+    keyFactsTitle: "Kort samengevat",
+    factBookAhead: "Vooraf boeken",
+    factListedStays: "Vermelde verblijven",
+    factDistance: "Tot circuit",
+    factCrowd: "Drukte",
+    compareTitle: "Vergelijk elke zone in één oogopslag",
+    compareSub:
+      "Echte rijtijden naar het circuit, raceweekverkeer, parkeren en vervoer per basis, zodat je afstand tegen beschikbaarheid afweegt.",
+    colZone: "Zone",
+    colTransport: "Trein / tram",
+    colStays: "Verblijven",
+    walk: "Te voet",
+    yes: "Ja",
+    nearbyHeading: "Vergelijk nabije zones",
+    trust: {
+      livePrices: "Live prijzen van boekingspartners",
+      freeCancel: "Gratis annulering vaak mogelijk",
+      noFees: "Geen boekingskosten van ons",
+    },
   },
 };
 
@@ -896,6 +975,27 @@ const deX: ExtraDict = {
     hotelsHeading: (zone) => `Top-Unterkünfte in ${zone}`,
     mapHeading: (zone) => `Live-Verfügbarkeit in ${zone}`,
   },
+  seo: {
+    keyFactsTitle: "Auf einen Blick",
+    factBookAhead: "Vorausbuchen",
+    factListedStays: "Gelistete Unterkünfte",
+    factDistance: "Zur Strecke",
+    factCrowd: "Besucher",
+    compareTitle: "Alle Zonen auf einen Blick vergleichen",
+    compareSub:
+      "Echte Fahrzeiten zur Strecke, Rennwochenverkehr, Parken und Verkehrsanbindung je Basis, um Entfernung gegen Verfügbarkeit abzuwägen.",
+    colZone: "Zone",
+    colTransport: "Zug / Tram",
+    colStays: "Unterkünfte",
+    walk: "Zu Fuß",
+    yes: "Ja",
+    nearbyHeading: "Nahe Zonen vergleichen",
+    trust: {
+      livePrices: "Live-Preise von Buchungspartnern",
+      freeCancel: "Kostenlose Stornierung oft möglich",
+      noFees: "Keine Buchungsgebühr von uns",
+    },
+  },
 };
 
 /* ----------------------------- ITALIAN ----------------------------- */
@@ -1097,6 +1197,27 @@ const itX: ExtraDict = {
     hotelsHeading: (zone) => `I migliori alloggi a ${zone}`,
     mapHeading: (zone) => `Disponibilità in tempo reale a ${zone}`,
   },
+  seo: {
+    keyFactsTitle: "In breve",
+    factBookAhead: "Prenotare",
+    factListedStays: "Alloggi elencati",
+    factDistance: "Dal circuito",
+    factCrowd: "Affluenza",
+    compareTitle: "Confronta tutte le zone a colpo d'occhio",
+    compareSub:
+      "Tempi di guida reali verso il circuito, traffico della settimana di gara, parcheggio e trasporti per ogni base, per bilanciare distanza e disponibilità.",
+    colZone: "Zona",
+    colTransport: "Treno / tram",
+    colStays: "Alloggi",
+    walk: "A piedi",
+    yes: "Sì",
+    nearbyHeading: "Confronta le zone vicine",
+    trust: {
+      livePrices: "Prezzi in tempo reale dai partner",
+      freeCancel: "Cancellazione gratuita spesso disponibile",
+      noFees: "Nessuna commissione di prenotazione da parte nostra",
+    },
+  },
 };
 
 /* ----------------------------- SPANISH ----------------------------- */
@@ -1297,6 +1418,27 @@ const esX: ExtraDict = {
     routeHeading: (zone) => `De ${zone} al circuito`,
     hotelsHeading: (zone) => `Mejores alojamientos en ${zone}`,
     mapHeading: (zone) => `Disponibilidad en directo en ${zone}`,
+  },
+  seo: {
+    keyFactsTitle: "En breve",
+    factBookAhead: "Reservar",
+    factListedStays: "Alojamientos listados",
+    factDistance: "Al circuito",
+    factCrowd: "Afluencia",
+    compareTitle: "Compara todas las zonas de un vistazo",
+    compareSub:
+      "Tiempos de trayecto reales al circuito, tráfico de semana de carrera, aparcamiento y transporte por base, para sopesar distancia y disponibilidad.",
+    colZone: "Zona",
+    colTransport: "Tren / tranvía",
+    colStays: "Alojamientos",
+    walk: "A pie",
+    yes: "Sí",
+    nearbyHeading: "Comparar zonas cercanas",
+    trust: {
+      livePrices: "Precios en directo de los socios",
+      freeCancel: "Cancelación gratuita a menudo disponible",
+      noFees: "Sin gastos de reserva por nuestra parte",
+    },
   },
 };
 

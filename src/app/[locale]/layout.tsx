@@ -4,6 +4,7 @@ import { Barlow_Condensed, Inter } from "next/font/google";
 import Script from "next/script";
 import { SITE_URL } from "@/lib/seo";
 import { STAY22_LMA_ID } from "@/lib/stay22";
+import { SiteSchema } from "@/components/schema";
 import "../globals.css";
 
 const inter = Inter({
@@ -33,6 +34,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${barlow.variable}`}>
       <body>
+        <SiteSchema siteName="Le Mans Stays" />
         {children}
         <Script
           id="stay22-letmeallez"

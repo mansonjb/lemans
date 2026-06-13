@@ -17,6 +17,9 @@ import { GUIDE_CONTENT } from "@/data/guides";
 import { eventYear } from "@/lib/seo";
 import { x } from "@/i18n/extra";
 import { PageShell } from "@/components/PageShell";
+import type { Crumb } from "@/components/Breadcrumbs";
+import type { PageDef } from "@/lib/types";
+import { hrefFor } from "@/lib/registry";
 import { EventTemplate, HomeTemplate, PlaceTemplate } from "@/templates/core";
 import {
   CrossTemplate,
@@ -119,6 +122,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
+  const headline = title.split(" | ")[0];
+  const ogImage = `/api/og?title=${encodeURIComponent(headline)}&kicker=${encodeURIComponent(dict.tagline)}`;
+
   return {
     title,
     description,
@@ -133,8 +139,89 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: dict.siteName,
       locale,
       type: "website",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: headline }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
     },
   };
+}
+
+function buildCrumbs(
+  page: PageDef,
+  locale: Locale,
+  dict: ReturnType<typeof t>
+): Crumb[] {
+  const crumbs: Crumb[] = [
+    { name: dict.common.backHome, href: `/${locale}` },
+  ];
+  const here = pathFor(page, locale);
+  switch (page.template) {
+    case "event":
+      crumbs.push({
+        name: dict.eventNames[eventByKey(page.ref!)!.id].name,
+        href: here,
+      });
+      break;
+    case "place": {
+      const p = placeByKey(page.ref!)!;
+      crumbs.push({
+        name: p.key === "le-mans-city-centre" ? "Le Mans" : p.name,
+        href: here,
+      });
+      break;
+    }
+    case "type":
+      crumbs.push({
+        name: dict.typePage[page.ref as "camping" | "hotels" | "rentals"]
+          .heroTitle,
+        href: here,
+      });
+      break;
+    case "cross": {
+      const cr = crossByKey(page.ref!)!;
+      const e = eventByKey(cr.eventId)!;
+      crumbs.push({
+        name: dict.eventNames[e.id].name,
+        href: hrefFor(`event:${e.key}`, locale),
+      });
+      crumbs.push({ name: dict.typePage[cr.typeKey].heroTitle, href: here });
+      break;
+    }
+    case "eventzone": {
+      const ez = eventZoneByKey(page.ref!)!;
+      const e = eventByKey(ez.eventId)!;
+      const p = placeByKey(ez.placeKey)!;
+      crumbs.push({
+        name: dict.eventNames[e.id].name,
+        href: hrefFor(`event:${e.key}`, locale),
+      });
+      crumbs.push({
+        name: p.key === "le-mans-city-centre" ? "Le Mans" : p.name,
+        href: here,
+      });
+      break;
+    }
+    case "guide":
+      crumbs.push({ name: GUIDE_CONTENT[page.ref!][locale].title, href: here });
+      break;
+    case "quiz":
+      crumbs.push({ name: x(locale).quiz.title, href: here });
+      break;
+    case "travel":
+      crumbs.push({ name: x(locale).travel.title, href: here });
+      break;
+    case "about":
+    case "contact":
+    case "legal":
+    case "privacy":
+      crumbs.push({ name: dict[page.template].title, href: here });
+      break;
+  }
+  return crumbs;
 }
 
 export default async function Page({ params }: Props) {
@@ -143,6 +230,7 @@ export default async function Page({ params }: Props) {
   if (!hit) notFound();
   const { page, locale } = hit;
   const dict = t(locale);
+  const crumbs = buildCrumbs(page, locale, dict);
 
   let body: ReactNode = null;
   switch (page.template) {
@@ -205,7 +293,7 @@ export default async function Page({ params }: Props) {
   }
 
   return (
-    <PageShell locale={locale} dict={dict} page={page}>
+    <PageShell locale={locale} dict={dict} page={page} breadcrumbs={crumbs}>
       {body}
     </PageShell>
   );

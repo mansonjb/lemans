@@ -5,6 +5,7 @@ import { x } from "@/i18n/extra";
 import { LOCALES, type Locale, type PageDef } from "@/lib/types";
 import { hrefFor, pathFor, PAGES } from "@/lib/registry";
 import { placeByKey } from "@/data/places";
+import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 
 function LangSwitcher({ page, locale }: { page: PageDef; locale: Locale }) {
   return (
@@ -51,11 +52,13 @@ export function PageShell({
   dict,
   page,
   children,
+  breadcrumbs,
 }: {
   locale: Locale;
   dict: Dict;
   page: PageDef;
   children: ReactNode;
+  breadcrumbs?: Crumb[];
 }) {
   const navLinks = [
     { href: hrefFor("event:lm24", locale), label: dict.eventNames.lm24.short },
@@ -108,6 +111,8 @@ export function PageShell({
           </div>
         </div>
       </header>
+
+      {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
 
       <main className="flex-1">{children}</main>
 
