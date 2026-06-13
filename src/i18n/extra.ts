@@ -86,6 +86,7 @@ export interface ExtraDict {
     walk: string;
     yes: string;
     nearbyHeading: string;
+    popularSearches: string;
     trust: { livePrices: string; freeCancel: string; noFees: string };
   };
 }
@@ -314,6 +315,7 @@ const enX: ExtraDict = {
     walk: "Walk",
     yes: "Yes",
     nearbyHeading: "Compare nearby zones",
+    popularSearches: "Popular searches",
     trust: {
       livePrices: "Live prices from booking partners",
       freeCancel: "Free cancellation often available",
@@ -546,6 +548,7 @@ const frX: ExtraDict = {
     walk: "À pied",
     yes: "Oui",
     nearbyHeading: "Comparer les zones voisines",
+    popularSearches: "Recherches populaires",
     trust: {
       livePrices: "Prix en direct chez nos partenaires",
       freeCancel: "Annulation gratuite souvent disponible",
@@ -768,6 +771,7 @@ const nlX: ExtraDict = {
     walk: "Te voet",
     yes: "Ja",
     nearbyHeading: "Vergelijk nabije zones",
+    popularSearches: "Populaire zoekopdrachten",
     trust: {
       livePrices: "Live prijzen van boekingspartners",
       freeCancel: "Gratis annulering vaak mogelijk",
@@ -990,6 +994,7 @@ const deX: ExtraDict = {
     walk: "Zu Fuß",
     yes: "Ja",
     nearbyHeading: "Nahe Zonen vergleichen",
+    popularSearches: "Beliebte Suchen",
     trust: {
       livePrices: "Live-Preise von Buchungspartnern",
       freeCancel: "Kostenlose Stornierung oft möglich",
@@ -1212,6 +1217,7 @@ const itX: ExtraDict = {
     walk: "A piedi",
     yes: "Sì",
     nearbyHeading: "Confronta le zone vicine",
+    popularSearches: "Ricerche popolari",
     trust: {
       livePrices: "Prezzi in tempo reale dai partner",
       freeCancel: "Cancellazione gratuita spesso disponibile",
@@ -1434,6 +1440,7 @@ const esX: ExtraDict = {
     walk: "A pie",
     yes: "Sí",
     nearbyHeading: "Comparar zonas cercanas",
+    popularSearches: "Búsquedas populares",
     trust: {
       livePrices: "Precios en directo de los socios",
       freeCancel: "Cancelación gratuita a menudo disponible",

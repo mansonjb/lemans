@@ -6,6 +6,7 @@ import {
   GUIDES,
   STAY_TYPES,
 } from "@/data/catalog";
+import { LEAD_PAGES } from "@/data/leadpages";
 import {
   LOCALES,
   type Locale,
@@ -60,6 +61,12 @@ export const PAGES: PageDef[] = [
   ...EVENT_ZONE_PAGES.map((p) => ({
     key: `ez:${p.key}`,
     template: "eventzone" as const,
+    slugs: p.slugs,
+    ref: p.key,
+  })),
+  ...LEAD_PAGES.map((p) => ({
+    key: `money:${p.key}`,
+    template: "money" as const,
     slugs: p.slugs,
     ref: p.key,
   })),

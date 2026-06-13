@@ -1,4 +1,5 @@
 import type { Hotel } from "@/lib/types";
+import { placeByKey } from "./places";
 
 /**
  * Curated, real establishments verified via web research (chain sites, tourism
@@ -101,6 +102,30 @@ export const HOTELS: Hotel[] = [
 
 export const hotelsByZone = (zone: string): Hotel[] =>
   HOTELS.filter((h) => h.zone === zone);
+
+const noteHas = (h: Hotel, re: RegExp) => re.test(h.note);
+
+/** First room count mentioned in the note, e.g. "55-room" / "66 rooms". */
+const roomsFromNote = (h: Hotel): number => {
+  const m = h.note.match(/(\d+)[\s-]room/i);
+  return m ? Number(m[1]) : 0;
+};
+
+/** Attribute predicates for filter / money pages, derived from real data. */
+export const HOTEL_FILTERS = {
+  budget: (h: Hotel) => h.kind === "hotel" && h.category === 1,
+  upscale: (h: Hotel) => h.category === 3,
+  pool: (h: Hotel) => noteHas(h, /pool|spa/i),
+  // Note signal blended with the zone's parking rating for a credible set.
+  parking: (h: Hotel) =>
+    noteHas(h, /parking/i) || placeByKey(h.zone)?.parking === "easy",
+  byStation: (h: Hotel) => noteHas(h, /station/i),
+  restaurant: (h: Hotel) => noteHas(h, /restaurant/i),
+  camping: (h: Hotel) => h.kind === "camping",
+  rental: (h: Hotel) => h.kind === "rental",
+  // Big hotels (50+ rooms) plus group-friendly rentals and campsites.
+  groups: (h: Hotel) => roomsFromNote(h) >= 50 || h.kind !== "hotel",
+} satisfies Record<string, (h: Hotel) => boolean>;
 
 /** Hotels for a zone, padded with nearby same-or-adjacent ring zones to reach
  *  a minimum count for a richer list. Keeps the zone's own first. */

@@ -7,6 +7,8 @@ import { PLACES, ringOf } from "@/data/places";
 import { CROSS_PAGES } from "@/data/catalog";
 import { HOTELS, hotelsByZone, hotelsForZonePadded, topPicks } from "@/data/hotels";
 import { routeFor } from "@/data/routes";
+import { LEAD_PAGES } from "@/data/leadpages";
+import { leadContent } from "@/i18n/leadpages";
 import { hrefFor } from "@/lib/registry";
 import { bookingAreaUrl } from "@/lib/booking";
 import { CIRCUIT, eventYear, formatDateRange, SITE_URL } from "@/lib/seo";
@@ -432,6 +434,27 @@ export function EventTemplate({
             })}
           </div>
         </div>
+
+        {(() => {
+          const money = LEAD_PAGES.filter((lp) => lp.eventKey === event.key);
+          if (!money.length) return null;
+          return (
+            <div className="mt-20">
+              <SpeedHeading>{xt.seo.popularSearches}</SpeedHeading>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {money.map((lp) => (
+                  <Link
+                    key={lp.key}
+                    href={hrefFor(`money:${lp.key}`, locale)}
+                    className="rounded-lg border border-line bg-card px-3 py-1.5 text-sm font-medium transition hover:border-bleu hover:text-bleu"
+                  >
+                    {leadContent(lp.key, locale)?.h1 ?? lp.key}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         <div className="mt-20">
           <FaqBlock

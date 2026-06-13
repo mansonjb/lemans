@@ -93,6 +93,7 @@ export type TemplateKind =
   | "type"
   | "cross"
   | "eventzone"
+  | "money"
   | "guide"
   | "travel"
   | "quiz"

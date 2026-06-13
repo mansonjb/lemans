@@ -14,6 +14,8 @@ import { eventByKey } from "@/data/events";
 import { placeByKey } from "@/data/places";
 import { CROSS_PAGES, crossByKey, eventZoneByKey } from "@/data/catalog";
 import { GUIDE_CONTENT } from "@/data/guides";
+import { leadContent } from "@/i18n/leadpages";
+import { leadByKey } from "@/data/leadpages";
 import { eventYear } from "@/lib/seo";
 import { x } from "@/i18n/extra";
 import { PageShell } from "@/components/PageShell";
@@ -21,6 +23,7 @@ import type { Crumb } from "@/components/Breadcrumbs";
 import type { PageDef } from "@/lib/types";
 import { hrefFor } from "@/lib/registry";
 import { EventTemplate, HomeTemplate, PlaceTemplate } from "@/templates/core";
+import { MoneyTemplate } from "@/templates/money";
 import {
   CrossTemplate,
   EventZoneTemplate,
@@ -94,6 +97,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const zone = p.key === "le-mans-city-centre" ? "Le Mans" : p.name;
       title = `${x(locale).eventZone.title(name, zone, eventYear(e.start))} | ${dict.siteName}`;
       description = x(locale).eventZone.metaDescription(name, zone, p.driveMin);
+      break;
+    }
+    case "money": {
+      const c = leadContent(page.ref!, locale)!;
+      title = `${c.title} | ${dict.siteName}`;
+      description = c.metaDescription;
       break;
     }
     case "guide": {
@@ -205,6 +214,19 @@ function buildCrumbs(
       });
       break;
     }
+    case "money": {
+      const lp = leadByKey(page.ref!)!;
+      const e = eventByKey(lp.eventKey)!;
+      crumbs.push({
+        name: dict.eventNames[e.id].name,
+        href: hrefFor(`event:${e.key}`, locale),
+      });
+      crumbs.push({
+        name: leadContent(page.ref!, locale)?.h1 ?? page.ref!,
+        href: here,
+      });
+      break;
+    }
     case "guide":
       crumbs.push({ name: GUIDE_CONTENT[page.ref!][locale].title, href: here });
       break;
@@ -272,6 +294,11 @@ export default async function Page({ params }: Props) {
           locale={locale}
           page={eventZoneByKey(page.ref!)!}
         />
+      );
+      break;
+    case "money":
+      body = (
+        <MoneyTemplate dict={dict} locale={locale} page={leadByKey(page.ref!)!} />
       );
       break;
     case "guide":
