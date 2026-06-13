@@ -1,6 +1,7 @@
 import type { Hotel, RaceEvent } from "@/lib/types";
 import { bookingUrl } from "@/lib/booking";
 import { placeByKey } from "@/data/places";
+import { HotelThumb } from "./HotelThumb";
 
 interface Labels {
   seePrice: string;
@@ -49,37 +50,40 @@ export function AccommodationList({
               href={bookingUrl(h, event, adults)}
               target="_blank"
               rel="nofollow sponsored noopener"
-              className="group flex flex-col justify-between rounded-xl border border-line bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
+              className="group flex flex-col overflow-hidden rounded-xl border border-line bg-card shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
             >
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span
-                    className={`rounded-sm px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${KIND_TONE[h.kind]}`}
-                  >
-                    {labels.kind[h.kind]}
+              <div className="relative h-24 w-full">
+                <HotelThumb hotel={h} className="h-full w-full object-cover" />
+                <span
+                  className={`absolute left-2 top-2 rounded-sm bg-white/90 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${KIND_TONE[h.kind]}`}
+                >
+                  {labels.kind[h.kind]}
+                </span>
+                {drive && (
+                  <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-ink/85 px-2 py-0.5 text-[11px] font-semibold text-white">
+                    <span className="text-amber">▸</span>
+                    {drive}
                   </span>
+                )}
+              </div>
+              <div className="flex flex-1 flex-col justify-between p-4">
+                <div>
                   <span className="font-display text-sm font-semibold tabular-nums text-amber">
                     {"€".repeat(h.category)}
                     <span className="text-line">{"€".repeat(3 - h.category)}</span>
                   </span>
-                  {drive && (
-                    <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-paper px-2 py-0.5 text-[11px] font-semibold text-muted">
-                      <span className="text-bleu">▸</span>
-                      {drive}
-                    </span>
-                  )}
+                  <h3 className="mt-1 font-semibold leading-tight">{h.name}</h3>
+                  <p className="mt-0.5 text-[13px] leading-snug text-muted">
+                    {h.note}
+                  </p>
                 </div>
-                <h3 className="mt-2 font-semibold leading-tight">{h.name}</h3>
-                <p className="mt-0.5 text-[13px] leading-snug text-muted">
-                  {h.note}
-                </p>
-              </div>
-              <span className="mt-3 inline-flex items-center justify-center gap-1 rounded-lg bg-ink px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-white transition group-hover:bg-bleu">
-                {labels.seePrice}
-                <span className="transition-transform group-hover:translate-x-0.5">
-                  →
+                <span className="mt-3 inline-flex items-center justify-center gap-1 rounded-lg bg-ink px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-white transition group-hover:bg-bleu">
+                  {labels.seePrice}
+                  <span className="transition-transform group-hover:translate-x-0.5">
+                    →
+                  </span>
                 </span>
-              </span>
+              </div>
             </a>
           );
         })}

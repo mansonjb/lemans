@@ -62,14 +62,6 @@ export function PageShell({
   children: ReactNode;
   breadcrumbs?: Crumb[];
 }) {
-  const navLinks = [
-    { href: hrefFor("event:lm24", locale), label: dict.eventNames.lm24.short },
-    {
-      href: hrefFor("event:motogp", locale),
-      label: dict.eventNames.motogp.short,
-    },
-  ];
-
   const eventPages = PAGES.filter((p) => p.template === "event");
   const placePages = PAGES.filter((p) => p.template === "place");
   const typePages = PAGES.filter((p) => p.template === "type");
@@ -86,12 +78,34 @@ export function PageShell({
             <Wordmark />
           </Link>
           <nav className="hidden items-center gap-5 text-sm font-medium md:flex">
-            <Link href={navLinks[0].href} className="hover:text-bleu">
-              {navLinks[0].label}
-            </Link>
-            <Link href={navLinks[1].href} className="hover:text-bleu">
-              {navLinks[1].label}
-            </Link>
+            <div className="group relative">
+              <button
+                type="button"
+                className="inline-flex items-center gap-1 hover:text-bleu"
+              >
+                {dict.nav.events}
+                <span className="text-[10px] text-muted">▾</span>
+              </button>
+              <div className="invisible absolute left-0 top-full z-50 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div className="min-w-[280px] overflow-hidden rounded-xl border border-line bg-card shadow-lg">
+                  <div className="h-1 bg-gradient-to-r from-bleu via-amber to-ink" />
+                  <div className="p-2">
+                    {eventPages.map((p) => (
+                      <Link
+                        key={p.key}
+                        href={pathFor(p, locale)}
+                        className="flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-paper hover:text-bleu"
+                      >
+                        <span className="font-display text-base italic text-bleu">
+                          ›
+                        </span>
+                        {eventLabel(p)}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
             <Link href={hrefFor("travel", locale)} className="hover:text-bleu">
               {x(locale).navTravel}
             </Link>
@@ -110,6 +124,20 @@ export function PageShell({
               {x(locale).ctaFindStay}
             </Link>
             <LangSwitcher page={page} locale={locale} />
+          </div>
+        </div>
+        <div className="border-t border-line md:hidden">
+          <div className="flex gap-2 overflow-x-auto px-4 py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {eventPages.map((p) => (
+              <Link
+                key={p.key}
+                href={pathFor(p, locale)}
+                className="whitespace-nowrap rounded-full border border-line bg-card px-3 py-1 text-xs font-semibold text-ink"
+              >
+                {dict.eventNames[p.ref as keyof typeof dict.eventNames]?.short ??
+                  p.ref}
+              </Link>
+            ))}
           </div>
         </div>
       </header>

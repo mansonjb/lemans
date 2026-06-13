@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { stay22MapUrl } from "@/lib/stay22";
+import { HotelThumb } from "./HotelThumb";
 
 export interface QuizEvent {
   key: string;
@@ -268,9 +269,13 @@ export function Quiz({
                   href={h.url}
                   target="_blank"
                   rel="nofollow sponsored noopener"
-                  className="group flex items-center justify-between gap-4 rounded-xl border border-line bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
+                  className="group flex items-center gap-3 rounded-xl border border-line bg-card p-3 shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
                 >
-                  <div className="min-w-0">
+                  <HotelThumb
+                    hotel={h}
+                    className="h-14 w-14 shrink-0 rounded-lg"
+                  />
+                  <div className="min-w-0 flex-1">
                     <span className="text-[11px] font-semibold uppercase tracking-wide text-muted">
                       {labels.result.kind[h.kind]} · {"€".repeat(h.category)}
                     </span>
