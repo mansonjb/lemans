@@ -10,7 +10,8 @@ import type {
 import { EVENTS, eventByKey } from "@/data/events";
 import { PLACES, placeByKey, ringOf } from "@/data/places";
 import { CROSS_PAGES } from "@/data/catalog";
-import { HOTELS, hotelsByZone, hotelsForZonePadded } from "@/data/hotels";
+import { HOTELS, hotelsByZone, hotelsForZonePadded, hotelSlug } from "@/data/hotels";
+import { hasHotelImage, hotelImageSrc } from "@/data/hotel-images";
 import { routeFor } from "@/data/routes";
 import { hrefFor } from "@/lib/registry";
 import { bookingAreaUrl, bookingBaseUrl } from "@/lib/booking";
@@ -541,14 +542,18 @@ export function QuizTemplate({ dict, locale }: { dict: Dict; locale: Locale }) {
     href: hrefFor(`place:${p.key}`, locale),
   }));
 
-  const hotels: QuizHotel[] = HOTELS.map((h) => ({
-    name: h.name,
-    zone: h.zone,
-    category: h.category,
-    kind: h.kind,
-    note: h.note,
-    url: bookingBaseUrl(h),
-  }));
+  const hotels: QuizHotel[] = HOTELS.map((h) => {
+    const slug = hotelSlug(h.name);
+    return {
+      name: h.name,
+      zone: h.zone,
+      category: h.category,
+      kind: h.kind,
+      note: h.note,
+      url: bookingBaseUrl(h),
+      img: hasHotelImage(slug) ? hotelImageSrc(slug) : undefined,
+    };
+  });
 
   return (
     <>

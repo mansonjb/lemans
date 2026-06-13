@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Camping Maison Blanche",
+    "slug": "camping-maison-blanche",
+    "error": "no photos"
+  },
+  {
+    "name": "Best Western Auberge de la Foresterie",
+    "slug": "best-western-auberge-de-la-foresterie",
+    "error": "no photos"
+  },
+  {
+    "name": "Au pied du Circuit des 24H",
+    "slug": "au-pied-du-circuit-des-24h",
+    "error": "no photos"
+  },
+  {
+    "name": "Château du Domaine de la Coudraie",
+    "slug": "chateau-du-domaine-de-la-coudraie",
+    "error": "no place"
+  },
+  {
+    "name": "Gîte du Moulin du Breil",
+    "slug": "gite-du-moulin-du-breil",
+    "error": "no place"
+  },
+  {
+    "name": "Chambres d'hôtes Equihome",
+    "slug": "chambres-d-hotes-equihome",
+    "error": "no photos"
+  },
+  {
+    "name": "Le Caravane Vintage",
+    "slug": "le-caravane-vintage",
+    "error": "no place"
+  }
+]

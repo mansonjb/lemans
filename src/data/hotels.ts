@@ -100,6 +100,15 @@ export const HOTELS: Hotel[] = [
   { name: "Kyriad Angers", zone: "angers", category: 2, kind: "hotel", note: "3-star chain hotel in Angers" },
 ];
 
+/** Stable id/slug for a hotel, used for its photo filename. Names are unique. */
+export const hotelSlug = (name: string): string =>
+  name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 export const hotelsByZone = (zone: string): Hotel[] =>
   HOTELS.filter((h) => h.zone === zone);
 

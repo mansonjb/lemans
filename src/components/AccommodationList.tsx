@@ -1,6 +1,8 @@
 import type { Hotel, RaceEvent } from "@/lib/types";
 import { bookingUrl } from "@/lib/booking";
 import { placeByKey } from "@/data/places";
+import { hotelSlug } from "@/data/hotels";
+import { hasHotelImage, hotelImageSrc } from "@/data/hotel-images";
 import { HotelThumb } from "./HotelThumb";
 
 interface Labels {
@@ -44,6 +46,7 @@ export function AccommodationList({
               : place
                 ? labels.minToCircuit(place.driveMin)
                 : null;
+          const slug = hotelSlug(h.name);
           return (
             <a
               key={`${h.zone}-${h.name}`}
@@ -52,8 +55,18 @@ export function AccommodationList({
               rel="nofollow sponsored noopener"
               className="group flex flex-col overflow-hidden rounded-xl border border-line bg-card shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
             >
-              <div className="relative h-24 w-full">
-                <HotelThumb hotel={h} className="h-full w-full object-cover" />
+              <div className="relative h-24 w-full overflow-hidden bg-paper">
+                {hasHotelImage(slug) ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={hotelImageSrc(slug)}
+                    alt={h.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <HotelThumb hotel={h} className="h-full w-full object-cover" />
+                )}
                 <span
                   className={`absolute left-2 top-2 rounded-sm bg-white/90 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${KIND_TONE[h.kind]}`}
                 >

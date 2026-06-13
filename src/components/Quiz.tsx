@@ -30,6 +30,7 @@ export interface QuizHotel {
   kind: "hotel" | "camping" | "rental";
   note: string;
   url: string;
+  img?: string;
 }
 
 export interface QuizLabels {
@@ -271,10 +272,20 @@ export function Quiz({
                   rel="nofollow sponsored noopener"
                   className="group flex items-center gap-3 rounded-xl border border-line bg-card p-3 shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
                 >
-                  <HotelThumb
-                    hotel={h}
-                    className="h-14 w-14 shrink-0 rounded-lg"
-                  />
+                  {h.img ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={h.img}
+                      alt={h.name}
+                      loading="lazy"
+                      className="h-14 w-14 shrink-0 rounded-lg object-cover"
+                    />
+                  ) : (
+                    <HotelThumb
+                      hotel={h}
+                      className="h-14 w-14 shrink-0 rounded-lg"
+                    />
+                  )}
                   <div className="min-w-0 flex-1">
                     <span className="text-[11px] font-semibold uppercase tracking-wide text-muted">
                       {labels.result.kind[h.kind]} · {"€".repeat(h.category)}
