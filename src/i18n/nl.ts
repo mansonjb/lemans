@@ -282,9 +282,11 @@ export const nl: Dict = {
   legal: {
     title: "Juridische informatie",
     paragraphs: [
-      "Deze website is een onafhankelijke publicatie. De uitgeversgegevens worden vóór de publieke lancering aangevuld.",
-      "Alle namen van evenementen, merken en handelsnamen op deze site behoren toe aan hun respectieve eigenaren en worden uitsluitend beschrijvend gebruikt. Deze site is niet verbonden aan de Automobile Club de l'Ouest (ACO) of Dorna Sports. Deze site verkoopt geen tickets.",
-      "Boekingen via de kaarten op deze site worden verwerkt door onze boekingspartners onder hun eigen voorwaarden.",
+      "Deze website is een onafhankelijke publicatie, uitgegeven door het Le Mans Stays-team. Contact: hello@lemansstays.com. Volledige uitgeversgegevens zijn op aanvraag beschikbaar.",
+      "Hosting: deze site wordt gehost door Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, VS.",
+      "Affiliate-melding: deze site bevat affiliate-links. We kunnen een commissie verdienen wanneer u boekt via onze partners (waaronder Stay22 en Booking.com), zonder extra kosten voor u. Zo wordt de site gefinancierd; het beïnvloedt de gepubliceerde informatie niet.",
+      "Alle namen van evenementen, merken en handelsnamen op deze site behoren toe aan hun respectieve eigenaren en worden uitsluitend beschrijvend gebruikt, om aan te geven wanneer de vraag naar accommodatie piekt. Deze site is onafhankelijk en is niet verbonden aan, goedgekeurd of gesponsord door de Automobile Club de l'Ouest (ACO), Dorna Sports of enige organisator. Deze site verkoopt geen tickets.",
+      "Boekingen via de kaarten en links op deze site worden verwerkt door onze partners onder hun eigen voorwaarden. Wij zijn niet de verkoper en geen partij bij uw boekingsovereenkomst.",
     ],
   },
 
@@ -307,5 +309,8 @@ export const nl: Dict = {
       "Le Mans Stays is een onafhankelijke accommodatiegids. Wij zijn niet verbonden aan of goedgekeurd door de Automobile Club de l'Ouest (ACO), Dorna Sports of de organisatoren van de genoemde evenementen. Namen van evenementen worden uitsluitend beschrijvend gebruikt. Wij verkopen geen tickets.",
     affiliate:
       "Boekingen via deze site kunnen ons een commissie opleveren, zonder extra kosten voor u.",
+    rights: "Alle rechten voorbehouden.",
+    trademarks:
+      "Alle evenementnamen en handelsmerken behoren toe aan hun respectieve eigenaren.",
   },
 };

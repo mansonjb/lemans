@@ -282,9 +282,11 @@ export const es: Dict = {
   legal: {
     title: "Aviso legal",
     paragraphs: [
-      "Esta web es una publicación independiente. Los datos del editor se completarán antes del lanzamiento público.",
-      "Los nombres de eventos, marcas y enseñas citados en esta web pertenecen a sus respectivos propietarios y se usan solo con fines descriptivos. Esta web no está afiliada al Automobile Club de l'Ouest (ACO) ni a Dorna Sports. Esta web no vende entradas.",
-      "Las reservas de alojamiento realizadas a través de los mapas de esta web las procesan nuestros socios de reserva bajo sus propias condiciones.",
+      "Esta web es una publicación independiente, editada por el equipo de Le Mans Stays. Contacto: hello@lemansstays.com. Los datos completos del editor están disponibles a petición.",
+      "Alojamiento web: este sitio está alojado por Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, EE. UU.",
+      "Divulgación de afiliación: esta web contiene enlaces de afiliación. Podemos ganar una comisión cuando reservas a través de nuestros socios (incluidos Stay22 y Booking.com), sin coste extra para ti. Así se financia la web; no influye en la información que publicamos.",
+      "Los nombres de eventos, marcas y enseñas citados en esta web pertenecen a sus respectivos propietarios y se usan solo con fines descriptivos, para indicar cuándo la demanda de alojamiento alcanza su punto máximo. Esta web es independiente y no está afiliada, respaldada ni patrocinada por el Automobile Club de l'Ouest (ACO), Dorna Sports ni ningún organizador. Esta web no vende entradas.",
+      "Las reservas realizadas a través de los mapas y enlaces de esta web las procesan nuestros socios bajo sus propias condiciones. No somos el vendedor ni parte de tu contrato de reserva.",
     ],
   },
 
@@ -307,5 +309,8 @@ export const es: Dict = {
       "Le Mans Stays es una guía independiente de alojamiento. No estamos afiliados, asociados ni respaldados por el Automobile Club de l'Ouest (ACO), Dorna Sports ni los organizadores de los eventos mencionados. Los nombres de los eventos se usan solo con fines descriptivos. No vendemos entradas.",
     affiliate:
       "Las reservas realizadas a través de esta web pueden generarnos una comisión, sin coste extra para ti.",
+    rights: "Todos los derechos reservados.",
+    trademarks:
+      "Todos los nombres de eventos y marcas pertenecen a sus respectivos propietarios.",
   },
 };

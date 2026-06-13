@@ -4,7 +4,9 @@ import type { Dict } from "@/i18n";
 import { x } from "@/i18n/extra";
 import { LOCALES, type Locale, type PageDef } from "@/lib/types";
 import { hrefFor, pathFor, PAGES } from "@/lib/registry";
+import { SITE } from "@/lib/seo";
 import { placeByKey } from "@/data/places";
+import { GUIDE_CONTENT } from "@/data/guides";
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 
 function LangSwitcher({ page, locale }: { page: PageDef; locale: Locale }) {
@@ -177,7 +179,8 @@ export function PageShell({
               {guidePages.map((p) => (
                 <li key={p.key}>
                   <Link href={pathFor(p, locale)} className="hover:text-amber">
-                    {p.slugs[locale].split("/")[1].split("-").join(" ")}
+                    {GUIDE_CONTENT[p.ref ?? ""]?.[locale]?.title ??
+                      p.slugs[locale].split("/")[1].split("-").join(" ")}
                   </Link>
                 </li>
               ))}
@@ -228,6 +231,14 @@ export function PageShell({
             <Wordmark />
             <p className="mt-4">{dict.footer.disclaimer}</p>
             <p className="mt-3">{dict.footer.affiliate}</p>
+          </div>
+        </div>
+        <div className="border-t border-white/10">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <p>
+              © {SITE.year} {SITE.name}. {dict.footer.rights}
+            </p>
+            <p className="sm:text-right">{dict.footer.trademarks}</p>
           </div>
         </div>
       </footer>

@@ -21,6 +21,14 @@ const barlow = Barlow_Condensed({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: "Le Mans Stays",
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
+  },
 };
 
 export default async function RootLayout({
@@ -33,6 +41,11 @@ export default async function RootLayout({
   const { locale } = await params;
   return (
     <html lang={locale} className={`${inter.variable} ${barlow.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://scripts.stay22.com" />
+        <link rel="preconnect" href="https://www.stay22.com" />
+        <link rel="dns-prefetch" href="https://www.booking.com" />
+      </head>
       <body>
         <SiteSchema siteName="Le Mans Stays" />
         {children}

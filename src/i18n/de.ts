@@ -283,9 +283,11 @@ export const de: Dict = {
   legal: {
     title: "Impressum",
     paragraphs: [
-      "Diese Website ist eine unabhängige Publikation. Die Angaben zum Herausgeber werden vor dem öffentlichen Start vervollständigt.",
-      "Alle auf dieser Seite genannten Eventnamen, Marken und Zeichen gehören ihren jeweiligen Inhabern und werden ausschließlich beschreibend verwendet. Diese Seite ist nicht mit dem Automobile Club de l'Ouest (ACO) oder Dorna Sports verbunden. Diese Seite verkauft keine Tickets.",
-      "Unterkunftsbuchungen über die Karten dieser Seite werden von unseren Buchungspartnern zu deren eigenen Bedingungen abgewickelt.",
+      "Diese Website ist eine unabhängige Publikation, herausgegeben vom Le-Mans-Stays-Team. Kontakt: hello@lemansstays.com. Vollständige Angaben zum Herausgeber sind auf Anfrage erhältlich.",
+      "Hosting: Diese Seite wird von Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA gehostet.",
+      "Affiliate-Hinweis: Diese Seite enthält Affiliate-Links. Wir können eine Provision erhalten, wenn Sie über unsere Partner (u. a. Stay22 und Booking.com) buchen, ohne Mehrkosten für Sie. So finanziert sich die Seite; es beeinflusst die veröffentlichten Informationen nicht.",
+      "Alle auf dieser Seite genannten Eventnamen, Marken und Zeichen gehören ihren jeweiligen Inhabern und werden ausschließlich beschreibend verwendet, um anzuzeigen, wann die Nachfrage nach Unterkünften ihren Höhepunkt erreicht. Diese Seite ist unabhängig und weder mit dem Automobile Club de l'Ouest (ACO), Dorna Sports noch einem Veranstalter verbunden, von diesen unterstützt oder gesponsert. Diese Seite verkauft keine Tickets.",
+      "Buchungen über die Karten und Links dieser Seite werden von unseren Partnern zu deren eigenen Bedingungen abgewickelt. Wir sind nicht der Verkäufer und nicht Vertragspartei Ihrer Buchung.",
     ],
   },
 
@@ -308,5 +310,8 @@ export const de: Dict = {
       "Le Mans Stays ist ein unabhängiger Unterkunftsführer. Wir sind weder verbunden mit noch unterstützt durch den Automobile Club de l'Ouest (ACO), Dorna Sports oder die Veranstalter der genannten Events. Eventnamen werden ausschließlich beschreibend verwendet. Wir verkaufen keine Tickets.",
     affiliate:
       "Buchungen über diese Seite können uns eine Provision einbringen, ohne Mehrkosten für Sie.",
+    rights: "Alle Rechte vorbehalten.",
+    trademarks:
+      "Alle Eventnamen und Marken gehören ihren jeweiligen Inhabern.",
   },
 };

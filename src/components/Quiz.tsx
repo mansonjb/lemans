@@ -181,7 +181,11 @@ export function Quiz({
 
     matchedHotels = matchedHotels
       .sort((a, b) => (cat ? Math.abs(a.category - cat) - Math.abs(b.category - cat) : 0))
-      .slice(0, 12);
+      .slice(0, 12)
+      .map((h) => ({
+        ...h,
+        url: `${h.url}&checkin=${event.checkin}&checkout=${event.checkout}&group_adults=${adults}&no_rooms=1`,
+      }));
 
     // Centre the map on the innermost matched zone for a tighter view.
     const focus = matchedZones[0] ?? { lat: event.lat, lng: event.lng };

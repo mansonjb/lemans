@@ -13,7 +13,7 @@ import { CROSS_PAGES } from "@/data/catalog";
 import { HOTELS, hotelsByZone, hotelsForZonePadded } from "@/data/hotels";
 import { routeFor } from "@/data/routes";
 import { hrefFor } from "@/lib/registry";
-import { bookingAreaUrl, bookingUrl } from "@/lib/booking";
+import { bookingAreaUrl, bookingBaseUrl } from "@/lib/booking";
 import { CIRCUIT, eventYear, formatDateRange } from "@/lib/seo";
 import { Stay22Map } from "@/components/Stay22Map";
 import { Countdown } from "@/components/Countdown";
@@ -146,7 +146,10 @@ export function CrossTemplate({
   const names = dict.eventNames[event.id];
   const year = eventYear(event.start);
   const typeContent = dict.typePage[cross.typeKey];
-  const intro = dict.crossPage.intro[cross.key] ?? [];
+  // Some event x type combos have no bespoke intro yet; fall back to the
+  // localised type description so no page ships thin/empty.
+  const bespoke = dict.crossPage.intro[cross.key];
+  const intro = bespoke && bespoke.length ? bespoke : typeContent.intro;
   const xt = x(locale);
   const hotels = HOTELS.filter((h) => h.kind === KIND_OF[cross.typeKey]).slice(
     0,
@@ -544,7 +547,7 @@ export function QuizTemplate({ dict, locale }: { dict: Dict; locale: Locale }) {
     category: h.category,
     kind: h.kind,
     note: h.note,
-    url: bookingUrl(h),
+    url: bookingBaseUrl(h),
   }));
 
   return (

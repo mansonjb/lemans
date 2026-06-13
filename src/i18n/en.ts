@@ -281,9 +281,11 @@ export const en = {
   legal: {
     title: "Legal notice",
     paragraphs: [
-      "This website is an independent publication. Publisher details will be completed before public launch.",
-      "All event names, trademarks and brands quoted on this site belong to their respective owners and are used for descriptive purposes only. This site is not affiliated with the Automobile Club de l'Ouest (ACO) or Dorna Sports. This site does not sell tickets.",
-      "Accommodation bookings made through the maps on this site are processed by our booking partners under their own terms and conditions.",
+      "This website is an independent publication, published by the Le Mans Stays team. Contact: hello@lemansstays.com. Full publisher company details are available on request.",
+      "Hosting: this site is hosted by Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA.",
+      "Affiliate disclosure: this site contains affiliate links. We may earn a commission when you book through our partners (including Stay22 and Booking.com), at no extra cost to you. This is how the site is funded; it does not influence the information we publish.",
+      "All event names, trademarks and brands quoted on this site belong to their respective owners and are used for descriptive purposes only, to indicate when accommodation demand peaks. This site is independent and is not affiliated with, endorsed by or sponsored by the Automobile Club de l'Ouest (ACO), Dorna Sports or any event organiser. This site does not sell tickets.",
+      "Accommodation bookings made through the maps and links on this site are processed by our booking partners under their own terms and conditions. We are not the seller and are not party to your booking contract.",
     ],
   },
 
@@ -306,6 +308,9 @@ export const en = {
       "Le Mans Stays is an independent accommodation guide. We are not affiliated with or endorsed by the Automobile Club de l'Ouest (ACO), Dorna Sports, or the organisers of the events mentioned. Event names are used for descriptive purposes only. We do not sell tickets.",
     affiliate:
       "Bookings made through this site may earn us a commission, at no extra cost to you.",
+    rights: "All rights reserved.",
+    trademarks:
+      "All event names and trademarks belong to their respective owners.",
   },
 };
 

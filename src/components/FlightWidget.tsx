@@ -35,14 +35,9 @@ export function FlightWidget({ labels }: { labels: Labels }) {
         </p>
 
         {/* === Partner widget slot ===
-            Paste the Kiwi.com (Tequila) or Skyscanner widget snippet here.
-            Replace this placeholder block with the <script>/<iframe> embed. */}
-        <div
-          id="flight-widget-slot"
-          className="mt-6 flex min-h-28 items-center justify-center rounded-xl border-2 border-dashed border-line bg-paper px-4 py-6 text-center text-sm text-muted"
-        >
-          {labels.widgetPending}
-        </div>
+            Paste the Kiwi.com (Tequila) or Skyscanner widget snippet here to
+            replace the airport links below with a live embedded search. */}
+        <div id="flight-widget-slot" />
 
         <p className="mt-8 font-display text-sm font-semibold uppercase tracking-wide text-muted">
           {labels.airportsHeading}

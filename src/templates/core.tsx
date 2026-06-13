@@ -9,7 +9,7 @@ import { HOTELS, hotelsByZone, hotelsForZonePadded, topPicks } from "@/data/hote
 import { routeFor } from "@/data/routes";
 import { hrefFor } from "@/lib/registry";
 import { bookingAreaUrl } from "@/lib/booking";
-import { CIRCUIT, eventYear, formatDateRange } from "@/lib/seo";
+import { CIRCUIT, eventYear, formatDateRange, SITE_URL } from "@/lib/seo";
 import { Stay22Map } from "@/components/Stay22Map";
 import { Countdown } from "@/components/Countdown";
 import { EventCard, GuideCard, PlaceCard } from "@/components/cards";
@@ -394,6 +394,21 @@ export function EventTemplate({
           <div className="mt-8">
             <ZoneRings dict={dict} locale={locale} />
           </div>
+          <div className="mt-8 flex flex-wrap gap-2">
+            {PLACES.map((p) => {
+              const zoneName =
+                p.key === "le-mans-city-centre" ? "Le Mans" : p.name;
+              return (
+                <Link
+                  key={p.key}
+                  href={hrefFor(`ez:${event.key}--${p.key}`, locale)}
+                  className="rounded-lg border border-line bg-card px-3 py-1.5 text-sm font-medium transition hover:border-bleu hover:text-bleu"
+                >
+                  {xt.eventZone.title(names.short, zoneName, year)}
+                </Link>
+              );
+            })}
+          </div>
         </div>
 
         <div className="mt-20">
@@ -438,15 +453,31 @@ export function EventTemplate({
           startDate: event.start,
           endDate: event.end,
           eventStatus: "https://schema.org/EventScheduled",
+          eventAttendanceMode:
+            "https://schema.org/OfflineEventAttendanceMode",
+          description: dict.eventPage.metaDescription(names.name, year),
+          url: `${SITE_URL}${hrefFor(`event:${event.key}`, locale)}`,
+          image: `${SITE_URL}/api/og?title=${encodeURIComponent(
+            dict.eventPage.title(names.name, year)
+          )}`,
           location: {
             "@type": "Place",
             name: CIRCUIT.name,
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: CIRCUIT.lat,
+              longitude: CIRCUIT.lng,
+            },
             address: {
               "@type": "PostalAddress",
               addressLocality: CIRCUIT.locality,
               postalCode: CIRCUIT.postalCode,
               addressCountry: CIRCUIT.country,
             },
+          },
+          organizer: {
+            "@type": "Organization",
+            name: names.name,
           },
         }}
       />
@@ -578,6 +609,21 @@ export function PlaceTemplate({
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {events.map((e) => (
               <EventCard key={e.key} event={e} dict={dict} locale={locale} />
+            ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {events.map((e) => (
+              <Link
+                key={e.key}
+                href={hrefFor(`ez:${e.key}--${place.key}`, locale)}
+                className="rounded-lg border border-line bg-card px-3 py-1.5 text-sm font-medium transition hover:border-bleu hover:text-bleu"
+              >
+                {xt.eventZone.title(
+                  dict.eventNames[e.id].short,
+                  displayName,
+                  eventYear(e.start)
+                )}
+              </Link>
             ))}
           </div>
         </div>

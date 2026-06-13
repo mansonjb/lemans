@@ -30,6 +30,18 @@ export function bookingUrl(
   return `https://www.booking.com/searchresults.html?${params.toString()}`;
 }
 
+/** Bare Booking search by name + town, no dates/adults. Lets a client
+ *  append the chosen event dates and party size (used by the quiz). */
+export function bookingBaseUrl(hotel: Hotel): string {
+  const place = placeByKey(hotel.zone);
+  const town =
+    hotel.zone === "le-mans-city-centre" || hotel.zone === "circuit-area"
+      ? "Le Mans"
+      : place?.name ?? "Le Mans";
+  const params = new URLSearchParams({ ss: `${hotel.name}, ${town}` });
+  return `https://www.booking.com/searchresults.html?${params.toString()}`;
+}
+
 /** Generic "see all stays in this area" Booking search for a zone. */
 export function bookingAreaUrl(
   place: Place,

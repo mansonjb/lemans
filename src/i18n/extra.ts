@@ -168,7 +168,7 @@ const enX: ExtraDict = {
   accommodation: {
     heading: "Top stays in this area",
     sub: "A hand-picked selection of real hotels, campsites and rentals. Tap any to see live prices and availability for your dates.",
-    seePrice: "See price",
+    seePrice: "Check dates & price",
     seeAllArea: "See all stays in this area",
     disclaimer:
       "A curated selection of real establishments. Live prices and availability open at our booking partner; bookings support this site at no extra cost to you.",
@@ -400,7 +400,7 @@ const frX: ExtraDict = {
   accommodation: {
     heading: "Les meilleurs hébergements de la zone",
     sub: "Une sélection d'hôtels, campings et locations réels. Cliquez pour voir les prix et disponibilités en direct à vos dates.",
-    seePrice: "Voir le prix",
+    seePrice: "Voir dispo & prix",
     seeAllArea: "Voir tous les hébergements de la zone",
     disclaimer:
       "Une sélection d'établissements réels. Les prix et disponibilités en direct s'ouvrent chez notre partenaire ; les réservations soutiennent ce site, sans surcoût pour vous.",
@@ -632,7 +632,7 @@ const nlX: ExtraDict = {
   accommodation: {
     heading: "Topverblijven in deze zone",
     sub: "Een geselecteerd aanbod van echte hotels, campings en huizen. Klik voor live prijzen en beschikbaarheid op jouw data.",
-    seePrice: "Bekijk prijs",
+    seePrice: "Datums & prijs",
     seeAllArea: "Bekijk alle verblijven in deze zone",
     disclaimer:
       "Een geselecteerd aanbod van echte accommodaties. Live prijzen en beschikbaarheid openen bij onze boekingspartner; boekingen steunen deze site zonder extra kosten.",
@@ -854,7 +854,7 @@ const deX: ExtraDict = {
   accommodation: {
     heading: "Top-Unterkünfte in dieser Zone",
     sub: "Eine handverlesene Auswahl echter Hotels, Campingplätze und Ferienunterkünfte. Tippen Sie für Live-Preise und Verfügbarkeit zu Ihren Daten.",
-    seePrice: "Preis ansehen",
+    seePrice: "Termine & Preis",
     seeAllArea: "Alle Unterkünfte dieser Zone ansehen",
     disclaimer:
       "Eine kuratierte Auswahl echter Häuser. Live-Preise und Verfügbarkeit öffnen bei unserem Buchungspartner; Buchungen unterstützen diese Seite ohne Mehrkosten.",
@@ -1076,7 +1076,7 @@ const itX: ExtraDict = {
   accommodation: {
     heading: "I migliori alloggi della zona",
     sub: "Una selezione di hotel, campeggi e case reali. Tocca per vedere prezzi e disponibilità in tempo reale alle tue date.",
-    seePrice: "Vedi prezzo",
+    seePrice: "Date & prezzo",
     seeAllArea: "Vedi tutti gli alloggi della zona",
     disclaimer:
       "Una selezione di strutture reali. Prezzi e disponibilità in tempo reale si aprono presso il nostro partner; le prenotazioni sostengono questo sito senza costi extra.",
@@ -1298,7 +1298,7 @@ const esX: ExtraDict = {
   accommodation: {
     heading: "Mejores alojamientos de la zona",
     sub: "Una selección de hoteles, campings y casas reales. Toca para ver precios y disponibilidad en directo para tus fechas.",
-    seePrice: "Ver precio",
+    seePrice: "Fechas y precio",
     seeAllArea: "Ver todos los alojamientos de la zona",
     disclaimer:
       "Una selección de establecimientos reales. Los precios y la disponibilidad en directo se abren en nuestro socio de reserva; las reservas apoyan esta web sin coste extra.",

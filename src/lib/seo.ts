@@ -5,6 +5,16 @@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lemansstays.com";
 
+/** Centralised site identity for legal notices and copyright. */
+export const SITE = {
+  name: "Le Mans Stays",
+  /** Copyright year, bump on each yearly content refresh. */
+  year: 2026,
+  contactEmail: "hello@lemansstays.com",
+  /** Default deployment host, surfaced in the legal notice. */
+  host: "Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA",
+};
+
 export const CIRCUIT = {
   lat: 47.9499,
   lng: 0.2078,
