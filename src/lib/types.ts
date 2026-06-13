@@ -52,6 +52,35 @@ export interface CrossPage {
   slugs: LocalizedSlug;
 }
 
+export interface EventZonePage {
+  key: string;
+  eventId: RaceEvent["id"];
+  placeKey: string;
+  slugs: LocalizedSlug;
+}
+
+export interface Hotel {
+  name: string;
+  zone: string;
+  /** 1 = budget, 2 = mid-range, 3 = upscale */
+  category: 1 | 2 | 3;
+  kind: "hotel" | "camping" | "rental";
+  /** Short factual note, English. */
+  note: string;
+}
+
+/** A leg of the drive from a zone to the circuit, for the route visual. */
+export interface RouteStep {
+  /** Road or landmark label, e.g. "D338" or "Rocade sud". */
+  via: string;
+  km: number;
+}
+
+export interface ZoneRoute {
+  placeKey: string;
+  steps: RouteStep[];
+}
+
 export interface GuideMeta {
   key: string;
   slugs: LocalizedSlug;
@@ -63,8 +92,10 @@ export type TemplateKind =
   | "place"
   | "type"
   | "cross"
+  | "eventzone"
   | "guide"
-  | "lead"
+  | "travel"
+  | "quiz"
   | "about"
   | "contact"
   | "legal"

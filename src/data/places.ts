@@ -205,3 +205,6 @@ export const PLACES: Place[] = [
 ];
 
 export const placeByKey = (key: string) => PLACES.find((p) => p.key === key);
+
+export const ringOf = (key: string): number | undefined =>
+  placeByKey(key)?.ring;

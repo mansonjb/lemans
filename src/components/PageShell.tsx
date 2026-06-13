@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Dict } from "@/i18n";
+import { x } from "@/i18n/extra";
 import { LOCALES, type Locale, type PageDef } from "@/lib/types";
 import { hrefFor, pathFor, PAGES } from "@/lib/registry";
 import { placeByKey } from "@/data/places";
@@ -86,6 +87,9 @@ export function PageShell({
             <Link href={navLinks[1].href} className="hover:text-bleu">
               {navLinks[1].label}
             </Link>
+            <Link href={hrefFor("travel", locale)} className="hover:text-bleu">
+              {x(locale).navTravel}
+            </Link>
             <Link
               href={hrefFor("guide:everything-booked", locale)}
               className="hover:text-bleu"
@@ -95,10 +99,10 @@ export function PageShell({
           </nav>
           <div className="flex items-center gap-2">
             <Link
-              href={hrefFor("lead", locale)}
+              href={hrefFor("quiz", locale)}
               className="hidden rounded-md bg-amber px-3 py-1.5 font-display text-sm font-bold uppercase tracking-wide text-ink shadow-sm transition hover:brightness-95 sm:inline-block"
             >
-              {dict.nav.listYourHome}
+              {x(locale).ctaFindStay}
             </Link>
             <LangSwitcher page={page} locale={locale} />
           </div>
@@ -178,8 +182,13 @@ export function PageShell({
             </p>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href={hrefFor("lead", locale)} className="hover:text-amber">
-                  {dict.nav.listYourHome}
+                <Link href={hrefFor("quiz", locale)} className="hover:text-amber">
+                  {x(locale).ctaFindStay}
+                </Link>
+              </li>
+              <li>
+                <Link href={hrefFor("travel", locale)} className="hover:text-amber">
+                  {x(locale).navTravel}
                 </Link>
               </li>
               <li>

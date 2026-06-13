@@ -1,4 +1,13 @@
-import type { CrossPage, GuideMeta, StayType } from "@/lib/types";
+import type {
+  CrossPage,
+  EventZonePage,
+  GuideMeta,
+  LocalizedSlug,
+  StayType,
+} from "@/lib/types";
+import { LOCALES } from "@/lib/types";
+import { EVENTS } from "./events";
+import { PLACES } from "./places";
 
 export const STAY_TYPES: StayType[] = [
   {
@@ -36,60 +45,42 @@ export const STAY_TYPES: StayType[] = [
   },
 ];
 
-export const CROSS_PAGES: CrossPage[] = [
-  {
-    key: "lm24-camping",
-    eventId: "lm24",
-    typeKey: "camping",
-    slugs: {
-      en: "le-mans-24-hours-camping",
-      fr: "camping-24-heures-du-mans",
-      nl: "camping-24-uur-van-le-mans",
-      de: "camping-24-stunden-von-le-mans",
-      it: "campeggio-24-ore-di-le-mans",
-      es: "camping-24-horas-de-le-mans",
-    },
-  },
-  {
-    key: "lm24-hotels",
-    eventId: "lm24",
-    typeKey: "hotels",
-    slugs: {
-      en: "le-mans-24-hours-hotels",
-      fr: "hotels-24-heures-du-mans",
-      nl: "hotels-24-uur-van-le-mans",
-      de: "hotels-24-stunden-von-le-mans",
-      it: "hotel-24-ore-di-le-mans",
-      es: "hoteles-24-horas-de-le-mans",
-    },
-  },
-  {
-    key: "motogp-camping",
-    eventId: "motogp",
-    typeKey: "camping",
-    slugs: {
-      en: "le-mans-motogp-camping",
-      fr: "camping-grand-prix-de-france-moto",
-      nl: "camping-le-mans-motogp",
-      de: "camping-le-mans-motogp",
-      it: "campeggio-le-mans-motogp",
-      es: "camping-le-mans-motogp",
-    },
-  },
-  {
-    key: "motogp-hotels",
-    eventId: "motogp",
-    typeKey: "hotels",
-    slugs: {
-      en: "le-mans-motogp-hotels",
-      fr: "hotels-grand-prix-de-france-moto",
-      nl: "hotels-le-mans-motogp",
-      de: "hotels-le-mans-motogp",
-      it: "hotel-le-mans-motogp",
-      es: "hoteles-le-mans-motogp",
-    },
-  },
-];
+const combineSlug = (
+  a: LocalizedSlug,
+  b: LocalizedSlug
+): LocalizedSlug =>
+  Object.fromEntries(
+    LOCALES.map((l) => [l, `${a[l]}-${b[l]}`])
+  ) as LocalizedSlug;
+
+/** type x event, e.g. "camping-24-heures-du-mans". All 15 combinations. */
+export const CROSS_PAGES: CrossPage[] = EVENTS.flatMap((event) =>
+  STAY_TYPES.map((type) => ({
+    key: `${event.key}-${type.key}`,
+    eventId: event.id,
+    typeKey: type.key,
+    slugs: combineSlug(type.slugs, event.slugs),
+  }))
+);
+
+export const crossByKey = (key: string): CrossPage | undefined =>
+  CROSS_PAGES.find((c) => c.key === key);
+
+/** event x zone long-tail, nested under the event, e.g.
+ *  "24-heures-du-mans/arnage". One per event x place. */
+export const EVENT_ZONE_PAGES: EventZonePage[] = EVENTS.flatMap((event) =>
+  PLACES.map((place) => ({
+    key: `${event.key}--${place.key}`,
+    eventId: event.id,
+    placeKey: place.key,
+    slugs: Object.fromEntries(
+      LOCALES.map((l) => [l, `${event.slugs[l]}/${place.slugs[l]}`])
+    ) as LocalizedSlug,
+  }))
+);
+
+export const eventZoneByKey = (key: string): EventZonePage | undefined =>
+  EVENT_ZONE_PAGES.find((p) => p.key === key);
 
 export const GUIDES: GuideMeta[] = [
   {

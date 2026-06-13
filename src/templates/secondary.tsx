@@ -1,14 +1,26 @@
 import Link from "next/link";
 import type { Dict } from "@/i18n";
-import type { CrossPage, Locale, StayType } from "@/lib/types";
+import { x } from "@/i18n/extra";
+import type {
+  CrossPage,
+  EventZonePage,
+  Locale,
+  StayType,
+} from "@/lib/types";
 import { EVENTS, eventByKey } from "@/data/events";
+import { PLACES, placeByKey, ringOf } from "@/data/places";
 import { CROSS_PAGES } from "@/data/catalog";
+import { HOTELS, hotelsForZonePadded } from "@/data/hotels";
+import { routeFor } from "@/data/routes";
 import { hrefFor } from "@/lib/registry";
+import { bookingAreaUrl, bookingUrl } from "@/lib/booking";
 import { CIRCUIT, eventYear, formatDateRange } from "@/lib/seo";
 import { Stay22Map } from "@/components/Stay22Map";
 import { Countdown } from "@/components/Countdown";
 import { FaqBlock } from "@/components/FaqBlock";
-import { LeadForm } from "@/components/LeadForm";
+import { FlightWidget } from "@/components/FlightWidget";
+import { RouteMap } from "@/components/RouteMap";
+import { Quiz, type QuizEvent, type QuizHotel, type QuizZone } from "@/components/Quiz";
 import {
   AmberNote,
   Container,
@@ -18,13 +30,19 @@ import {
   SpeedHeading,
 } from "@/components/ui";
 import { GUIDE_CONTENT } from "@/data/guides";
-import { nextEvent, ZoneRings } from "./core";
+import { AccommodationSection, nextEvent, ZoneRings } from "./core";
 
 const countdownTemplate = (dict: Dict) =>
   dict.common.daysToGo(-1).replace("-1", "%d");
 
 const ringsForType = (typeKey: StayType["key"]): number[] =>
   typeKey === "hotels" ? [2, 3, 4] : [1, 2, 3];
+
+const KIND_OF: Record<StayType["key"], "hotel" | "camping" | "rental"> = {
+  hotels: "hotel",
+  camping: "camping",
+  rentals: "rental",
+};
 
 export function TypeTemplate({
   dict,
@@ -38,6 +56,7 @@ export function TypeTemplate({
   const content = dict.typePage[typeKey];
   const next = nextEvent();
   const crosses = CROSS_PAGES.filter((c) => c.typeKey === typeKey);
+  const hotels = HOTELS.filter((h) => h.kind === KIND_OF[typeKey]).slice(0, 14);
 
   return (
     <>
@@ -53,19 +72,6 @@ export function TypeTemplate({
               <p key={p.slice(0, 24)}>{p}</p>
             ))}
           </div>
-          {content.pitch && (
-            <div className="mt-8 max-w-2xl">
-              <AmberNote>
-                {content.pitch}{" "}
-                <Link
-                  href={hrefFor("lead", locale)}
-                  className="font-semibold text-bleu underline"
-                >
-                  {dict.nav.listYourHome} →
-                </Link>
-              </AmberNote>
-            </div>
-          )}
         </Container>
       </section>
 
@@ -83,6 +89,17 @@ export function TypeTemplate({
             locale={locale}
           />
         </div>
+
+        {hotels.length > 0 && (
+          <div className="mt-16">
+            <AccommodationSection
+              dict={dict}
+              locale={locale}
+              hotels={hotels}
+              event={next}
+            />
+          </div>
+        )}
 
         {crosses.length > 0 && (
           <div className="mt-10 flex flex-wrap gap-3">
@@ -129,6 +146,11 @@ export function CrossTemplate({
   const year = eventYear(event.start);
   const typeContent = dict.typePage[cross.typeKey];
   const intro = dict.crossPage.intro[cross.key] ?? [];
+  const xt = x(locale);
+  const hotels = HOTELS.filter((h) => h.kind === KIND_OF[cross.typeKey]).slice(
+    0,
+    14
+  );
 
   return (
     <>
@@ -174,6 +196,17 @@ export function CrossTemplate({
           />
         </div>
 
+        {hotels.length > 0 && (
+          <div className="mt-16">
+            <AccommodationSection
+              dict={dict}
+              locale={locale}
+              hotels={hotels}
+              event={event}
+            />
+          </div>
+        )}
+
         <div className="mt-10 flex flex-wrap gap-3">
           <Link
             href={hrefFor(`event:${event.key}`, locale)}
@@ -203,7 +236,141 @@ export function CrossTemplate({
         <div className="mt-20">
           <FaqBlock
             heading={dict.common.faqHeading}
-            items={dict.eventPage.faq(names.name, event.bookAheadMonths, year)}
+            items={xt.faq({
+              eventName: names.name,
+              months: event.bookAheadMonths,
+              year,
+            })}
+          />
+        </div>
+      </Container>
+    </>
+  );
+}
+
+export function EventZoneTemplate({
+  dict,
+  locale,
+  page,
+}: {
+  dict: Dict;
+  locale: Locale;
+  page: EventZonePage;
+}) {
+  const event = eventByKey(page.eventId);
+  const place = placeByKey(page.placeKey);
+  if (!event || !place) return null;
+  const names = dict.eventNames[event.id];
+  const year = eventYear(event.start);
+  const displayName =
+    place.key === "le-mans-city-centre" ? "Le Mans" : place.name;
+  const xt = x(locale);
+  const route = routeFor(place.key);
+  const hotels = hotelsForZonePadded(place.key, ringOf, 10);
+
+  return (
+    <>
+      <section className="border-b border-line bg-gradient-to-b from-card to-paper">
+        <Container className="py-14 sm:py-20">
+          <Kicker>{xt.eventZone.heroKicker}</Kicker>
+          <h1 className="mt-3 max-w-4xl font-display text-4xl font-bold uppercase italic leading-[1.02] tracking-tight sm:text-6xl">
+            {xt.eventZone.title(names.name, displayName, year)}
+          </h1>
+          <div className="speedline mt-5 w-40" />
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <SlantBadge tone="ink">
+              {formatDateRange(locale, event.start, event.end)}
+            </SlantBadge>
+            <SlantBadge tone="bleu">
+              {place.ring === 1
+                ? dict.common.walkToCircuit
+                : dict.common.minToCircuit(place.driveMin)}
+            </SlantBadge>
+            <Countdown startISO={event.start} template={countdownTemplate(dict)} />
+          </div>
+          <div className="mt-6 max-w-3xl space-y-4 text-[15px] leading-relaxed text-muted">
+            {xt.eventZone
+              .intro(names.name, displayName, place.driveMin, place.raceWeekMin, place.ring)
+              .map((p) => (
+                <p key={p.slice(0, 24)}>{p}</p>
+              ))}
+          </div>
+        </Container>
+      </section>
+
+      <Container className="py-14">
+        {route && place.ring > 1 && (
+          <div>
+            <SpeedHeading>{xt.eventZone.routeHeading(displayName)}</SpeedHeading>
+            <div className="mt-6">
+              <RouteMap
+                place={place}
+                route={route}
+                labels={{
+                  start: xt.route.start,
+                  finish: xt.route.finish,
+                  normalDrive: xt.route.normalDrive,
+                  raceWeekDrive: xt.route.raceWeekDrive,
+                  totalDistance: xt.route.totalDistance,
+                }}
+              />
+            </div>
+          </div>
+        )}
+
+        <div className={route && place.ring > 1 ? "mt-16" : ""}>
+          <SpeedHeading>{xt.eventZone.mapHeading(displayName)}</SpeedHeading>
+          <div className="mt-6">
+            <Stay22Map
+              title={xt.eventZone.mapHeading(displayName)}
+              note={dict.common.mapNote}
+              lat={place.lat}
+              lng={place.lng}
+              checkin={event.checkin}
+              checkout={event.checkout}
+              zoom={place.ring >= 3 ? 12 : 13}
+              locale={locale}
+            />
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <AccommodationSection
+            dict={dict}
+            locale={locale}
+            hotels={hotels}
+            event={event}
+            areaUrl={bookingAreaUrl(place, event)}
+          />
+        </div>
+
+        <div className="mt-10 flex flex-wrap gap-3">
+          <Link
+            href={hrefFor(`event:${event.key}`, locale)}
+            className="rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold transition hover:border-bleu hover:text-bleu"
+          >
+            {names.name} {year} →
+          </Link>
+          <Link
+            href={hrefFor(`place:${place.key}`, locale)}
+            className="rounded-lg border border-line bg-card px-4 py-2 text-sm font-semibold transition hover:border-bleu hover:text-bleu"
+          >
+            {displayName} →
+          </Link>
+        </div>
+
+        <div className="mt-20">
+          <FaqBlock
+            heading={dict.common.faqHeading}
+            items={xt.faq({
+              eventName: names.name,
+              zoneName: displayName,
+              driveMin: place.driveMin,
+              raceWeekMin: place.raceWeekMin,
+              ring: place.ring,
+              months: event.bookAheadMonths,
+              year,
+            })}
           />
         </div>
       </Container>
@@ -262,10 +429,10 @@ export function GuideTemplate({
         ))}
         <div className="mt-12">
           <Link
-            href={`/${locale}#map`}
+            href={hrefFor("quiz", locale)}
             className="inline-block rounded-lg bg-bleu px-6 py-3 font-display text-base font-bold uppercase tracking-wide text-white shadow-sm transition hover:bg-bleu-deep"
           >
-            {dict.home.ctaPrimary}
+            {x(locale).ctaFindStay}
           </Link>
         </div>
       </article>
@@ -273,46 +440,114 @@ export function GuideTemplate({
   );
 }
 
-export function LeadTemplate({ dict, locale }: { dict: Dict; locale: Locale }) {
-  const eventOptions = EVENTS.map((e) => ({
-    key: e.key,
-    label: `${dict.eventNames[e.id].short} ${eventYear(e.start)}`,
+export function TravelTemplate({ dict, locale }: { dict: Dict; locale: Locale }) {
+  const xt = x(locale);
+  return (
+    <>
+      <section className="border-b border-line bg-gradient-to-b from-card to-paper">
+        <Container className="py-14 sm:py-20">
+          <Kicker>{xt.travel.heroKicker}</Kicker>
+          <h1 className="mt-3 max-w-4xl font-display text-4xl font-bold uppercase italic leading-[1.02] tracking-tight sm:text-6xl">
+            {xt.travel.title}
+          </h1>
+          <div className="speedline mt-5 w-40" />
+          <div className="mt-6 max-w-3xl space-y-4 text-[15px] leading-relaxed text-muted">
+            {xt.travel.intro.map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <Container className="py-14">
+        <FlightWidget labels={xt.travel.flight} />
+
+        <div className="mt-16 grid gap-8 md:grid-cols-2">
+          {xt.travel.sections.map((s) => (
+            <div key={s.heading}>
+              <h2 className="font-display text-2xl font-semibold uppercase italic tracking-tight">
+                {s.heading}
+              </h2>
+              <div className="speedline mt-2 w-16" />
+              <div className="mt-4 space-y-3 text-[15px] leading-relaxed text-muted">
+                {s.paragraphs.map((p) => (
+                  <p key={p.slice(0, 24)}>{p}</p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-14">
+          <Link
+            href={hrefFor("guide:getting-there", locale)}
+            className="inline-block rounded-lg border border-line bg-card px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide transition hover:border-bleu hover:text-bleu"
+          >
+            {GUIDE_CONTENT["getting-there"][locale].title} →
+          </Link>
+        </div>
+      </Container>
+    </>
+  );
+}
+
+export function QuizTemplate({ dict, locale }: { dict: Dict; locale: Locale }) {
+  const xt = x(locale);
+
+  const events: QuizEvent[] = [...EVENTS]
+    .sort((a, b) => a.start.localeCompare(b.start))
+    .map((e) => ({
+      key: e.key,
+      id: e.id,
+      name: `${dict.eventNames[e.id].name} ${eventYear(e.start)}`,
+      checkin: e.checkin,
+      checkout: e.checkout,
+      lat: CIRCUIT.lat,
+      lng: CIRCUIT.lng,
+    }));
+
+  const zones: QuizZone[] = PLACES.map((p) => ({
+    key: p.key,
+    name: p.key === "le-mans-city-centre" ? "Le Mans" : p.name,
+    ring: p.ring,
+    driveMin: p.driveMin,
+    raceWeekMin: p.raceWeekMin,
+    lat: p.lat,
+    lng: p.lng,
+    href: hrefFor(`place:${p.key}`, locale),
+  }));
+
+  const hotels: QuizHotel[] = HOTELS.map((h) => ({
+    name: h.name,
+    zone: h.zone,
+    category: h.category,
+    kind: h.kind,
+    note: h.note,
+    url: bookingUrl(h),
   }));
 
   return (
     <>
       <section className="border-b border-line bg-ink text-white">
         <Container className="py-14 sm:py-20">
-          <Kicker>{dict.nav.listYourHome}</Kicker>
+          <Kicker>{xt.quiz.heroKicker}</Kicker>
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-bold uppercase italic leading-[1.02] tracking-tight sm:text-6xl">
-            {dict.lead.heroTitle}
+            {xt.quiz.title}
           </h1>
           <div className="mt-5 h-[3px] w-40 rounded-full bg-gradient-to-r from-amber to-transparent" />
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
-            {dict.lead.heroSub}
+            {xt.quiz.intro}
           </p>
         </Container>
       </section>
 
       <Container className="py-14">
-        <div className="grid gap-4 sm:grid-cols-3">
-          {dict.lead.benefits.map((b) => (
-            <div
-              key={b.t}
-              className="rounded-2xl border border-line bg-card p-5 shadow-sm"
-            >
-              <h2 className="font-display text-lg font-semibold uppercase italic tracking-tight text-bleu">
-                {b.t}
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{b.d}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mx-auto mt-14 max-w-2xl rounded-3xl border border-line bg-card p-6 shadow-sm sm:p-10">
-          <LeadForm
-            labels={dict.lead.form}
-            eventOptions={eventOptions}
+        <div className="mx-auto max-w-3xl rounded-3xl border border-line bg-card p-6 shadow-sm sm:p-10">
+          <Quiz
+            events={events}
+            zones={zones}
+            hotels={hotels}
+            labels={xt.quiz.labels}
             locale={locale}
           />
         </div>

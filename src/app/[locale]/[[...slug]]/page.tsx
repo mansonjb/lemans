@@ -12,16 +12,19 @@ import {
 } from "@/lib/registry";
 import { eventByKey } from "@/data/events";
 import { placeByKey } from "@/data/places";
-import { CROSS_PAGES } from "@/data/catalog";
+import { CROSS_PAGES, crossByKey, eventZoneByKey } from "@/data/catalog";
 import { GUIDE_CONTENT } from "@/data/guides";
 import { eventYear } from "@/lib/seo";
+import { x } from "@/i18n/extra";
 import { PageShell } from "@/components/PageShell";
 import { EventTemplate, HomeTemplate, PlaceTemplate } from "@/templates/core";
 import {
   CrossTemplate,
+  EventZoneTemplate,
   GuideTemplate,
-  LeadTemplate,
+  QuizTemplate,
   StaticTemplate,
+  TravelTemplate,
   TypeTemplate,
 } from "@/templates/secondary";
 
@@ -80,15 +83,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description = dict.crossPage.metaDescription(tc.heroTitle, name);
       break;
     }
+    case "eventzone": {
+      const ez = eventZoneByKey(page.ref!)!;
+      const e = eventByKey(ez.eventId)!;
+      const p = placeByKey(ez.placeKey)!;
+      const name = dict.eventNames[e.id].name;
+      const zone = p.key === "le-mans-city-centre" ? "Le Mans" : p.name;
+      title = `${x(locale).eventZone.title(name, zone, eventYear(e.start))} | ${dict.siteName}`;
+      description = x(locale).eventZone.metaDescription(name, zone, p.driveMin);
+      break;
+    }
     case "guide": {
       const g = GUIDE_CONTENT[page.ref!][locale];
       title = `${g.title} | ${dict.siteName}`;
       description = g.description;
       break;
     }
-    case "lead": {
-      title = dict.lead.title;
-      description = dict.lead.metaDescription;
+    case "quiz": {
+      title = `${x(locale).quiz.title} | ${dict.siteName}`;
+      description = x(locale).quiz.metaDescription;
+      break;
+    }
+    case "travel": {
+      title = `${x(locale).travel.title} | ${dict.siteName}`;
+      description = x(locale).travel.metaDescription;
       break;
     }
     case "about":
@@ -155,15 +173,27 @@ export default async function Page({ params }: Props) {
         <CrossTemplate
           dict={dict}
           locale={locale}
-          cross={CROSS_PAGES.find((c) => c.key === page.ref)!}
+          cross={crossByKey(page.ref!)!}
+        />
+      );
+      break;
+    case "eventzone":
+      body = (
+        <EventZoneTemplate
+          dict={dict}
+          locale={locale}
+          page={eventZoneByKey(page.ref!)!}
         />
       );
       break;
     case "guide":
       body = <GuideTemplate dict={dict} locale={locale} guideKey={page.ref!} />;
       break;
-    case "lead":
-      body = <LeadTemplate dict={dict} locale={locale} />;
+    case "quiz":
+      body = <QuizTemplate dict={dict} locale={locale} />;
+      break;
+    case "travel":
+      body = <TravelTemplate dict={dict} locale={locale} />;
       break;
     default:
       body = (

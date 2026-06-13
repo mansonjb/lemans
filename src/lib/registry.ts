@@ -1,6 +1,11 @@
 import { EVENTS } from "@/data/events";
 import { PLACES } from "@/data/places";
-import { CROSS_PAGES, GUIDES, STAY_TYPES } from "@/data/catalog";
+import {
+  CROSS_PAGES,
+  EVENT_ZONE_PAGES,
+  GUIDES,
+  STAY_TYPES,
+} from "@/data/catalog";
 import {
   LOCALES,
   type Locale,
@@ -52,6 +57,12 @@ export const PAGES: PageDef[] = [
     slugs: c.slugs,
     ref: c.key,
   })),
+  ...EVENT_ZONE_PAGES.map((p) => ({
+    key: `ez:${p.key}`,
+    template: "eventzone" as const,
+    slugs: p.slugs,
+    ref: p.key,
+  })),
   ...GUIDES.map((g) => ({
     key: `guide:${g.key}`,
     template: "guide" as const,
@@ -59,15 +70,27 @@ export const PAGES: PageDef[] = [
     ref: g.key,
   })),
   {
-    key: "lead",
-    template: "lead",
+    key: "quiz",
+    template: "quiz",
     slugs: {
-      en: "list-your-home",
-      fr: "louer-votre-logement",
-      nl: "verhuur-uw-woning",
-      de: "unterkunft-vermieten",
-      it: "affitta-la-tua-casa",
-      es: "alquila-tu-casa",
+      en: "find-your-stay",
+      fr: "trouver-mon-hebergement",
+      nl: "vind-jouw-verblijf",
+      de: "unterkunft-finden",
+      it: "trova-il-tuo-alloggio",
+      es: "encuentra-tu-alojamiento",
+    },
+  },
+  {
+    key: "travel",
+    template: "travel",
+    slugs: {
+      en: "getting-to-le-mans",
+      fr: "venir-au-mans",
+      nl: "reizen-naar-le-mans",
+      de: "anreise-nach-le-mans",
+      it: "come-arrivare-a-le-mans",
+      es: "como-llegar-a-le-mans",
     },
   },
   {
