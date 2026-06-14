@@ -1,5 +1,6 @@
 import type { Hotel } from "@/lib/types";
 import { placeByKey } from "./places";
+import { hasHotelImage, hotelImageSrc } from "./hotel-images";
 
 /**
  * Curated, real establishments verified via web research (chain sites, tourism
@@ -111,6 +112,15 @@ export const hotelSlug = (name: string): string =>
 
 export const hotelsByZone = (zone: string): Hotel[] =>
   HOTELS.filter((h) => h.zone === zone);
+
+/** A representative real photo for a zone: the highest-category establishment
+ *  in that zone that has a downloaded photo. Null if none (use a fallback). */
+export const zoneImage = (zone: string): string | null => {
+  const withPhoto = hotelsByZone(zone)
+    .filter((h) => hasHotelImage(hotelSlug(h.name)))
+    .sort((a, b) => b.category - a.category);
+  return withPhoto[0] ? hotelImageSrc(hotelSlug(withPhoto[0].name)) : null;
+};
 
 const noteHas = (h: Hotel, re: RegExp) => re.test(h.note);
 

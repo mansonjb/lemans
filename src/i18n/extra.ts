@@ -87,6 +87,8 @@ export interface ExtraDict {
     yes: string;
     nearbyHeading: string;
     popularSearches: string;
+    zoneCircuitArea: string;
+    stays: string;
     trust: { livePrices: string; freeCancel: string; noFees: string };
   };
 }
@@ -316,6 +318,8 @@ const enX: ExtraDict = {
     yes: "Yes",
     nearbyHeading: "Compare nearby zones",
     popularSearches: "Popular searches",
+    zoneCircuitArea: "Around the circuit",
+    stays: "stays",
     trust: {
       livePrices: "Live prices from booking partners",
       freeCancel: "Free cancellation often available",
@@ -549,6 +553,8 @@ const frX: ExtraDict = {
     yes: "Oui",
     nearbyHeading: "Comparer les zones voisines",
     popularSearches: "Recherches populaires",
+    zoneCircuitArea: "Autour du circuit",
+    stays: "hébergements",
     trust: {
       livePrices: "Prix en direct chez nos partenaires",
       freeCancel: "Annulation gratuite souvent disponible",
@@ -772,6 +778,8 @@ const nlX: ExtraDict = {
     yes: "Ja",
     nearbyHeading: "Vergelijk nabije zones",
     popularSearches: "Populaire zoekopdrachten",
+    zoneCircuitArea: "Rond het circuit",
+    stays: "verblijven",
     trust: {
       livePrices: "Live prijzen van boekingspartners",
       freeCancel: "Gratis annulering vaak mogelijk",
@@ -995,6 +1003,8 @@ const deX: ExtraDict = {
     yes: "Ja",
     nearbyHeading: "Nahe Zonen vergleichen",
     popularSearches: "Beliebte Suchen",
+    zoneCircuitArea: "Rund um die Strecke",
+    stays: "Unterkünfte",
     trust: {
       livePrices: "Live-Preise von Buchungspartnern",
       freeCancel: "Kostenlose Stornierung oft möglich",
@@ -1218,6 +1228,8 @@ const itX: ExtraDict = {
     yes: "Sì",
     nearbyHeading: "Confronta le zone vicine",
     popularSearches: "Ricerche popolari",
+    zoneCircuitArea: "Intorno al circuito",
+    stays: "alloggi",
     trust: {
       livePrices: "Prezzi in tempo reale dai partner",
       freeCancel: "Cancellazione gratuita spesso disponibile",
@@ -1441,6 +1453,8 @@ const esX: ExtraDict = {
     yes: "Sí",
     nearbyHeading: "Comparar zonas cercanas",
     popularSearches: "Búsquedas populares",
+    zoneCircuitArea: "Alrededor del circuito",
+    stays: "alojamientos",
     trust: {
       livePrices: "Precios en directo de los socios",
       freeCancel: "Cancelación gratuita a menudo disponible",
