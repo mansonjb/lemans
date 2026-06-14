@@ -18,12 +18,10 @@ export function FaqBlock({ heading, items }: { heading: string; items: FaqItem[]
             key={item.q}
             className="group rounded-xl border border-line bg-card p-5 shadow-sm"
           >
-            <summary className="cursor-pointer list-none font-semibold marker:hidden">
-              <span className="flex items-start justify-between gap-4">
-                {item.q}
-                <span className="mt-1 text-bleu transition-transform group-open:rotate-45">
-                  +
-                </span>
+            <summary className="flex cursor-pointer list-none items-start gap-4 font-semibold marker:hidden">
+              <span className="flex-1">{item.q}</span>
+              <span className="mt-1 shrink-0 text-bleu transition-transform group-open:rotate-45">
+                +
               </span>
             </summary>
             <p className="mt-3 text-[15px] leading-relaxed text-muted">{item.a}</p>

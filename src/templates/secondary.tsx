@@ -8,15 +8,9 @@ import type {
   StayType,
 } from "@/lib/types";
 import { EVENTS, eventByKey } from "@/data/events";
-import { PLACES, placeByKey, ringOf } from "@/data/places";
+import { PLACES, placeByKey } from "@/data/places";
 import { CROSS_PAGES } from "@/data/catalog";
-import {
-  HOTELS,
-  hotelsByZone,
-  hotelsForZonePadded,
-  hotelSlug,
-  zoneImage,
-} from "@/data/hotels";
+import { HOTELS, hotelsByZone, hotelSlug, zoneImage } from "@/data/hotels";
 import { hasHotelImage, hotelImageSrc } from "@/data/hotel-images";
 import { routeFor } from "@/data/routes";
 import { hrefFor } from "@/lib/registry";
@@ -292,7 +286,7 @@ export function EventZoneTemplate({
     place.key === "le-mans-city-centre" ? "Le Mans" : place.name;
   const xt = x(locale);
   const route = routeFor(place.key);
-  const hotels = hotelsForZonePadded(place.key, ringOf, 10);
+  const hotels = hotelsByZone(place.key);
 
   return (
     <>

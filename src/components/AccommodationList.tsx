@@ -72,13 +72,31 @@ export function AccommodationList({
 }) {
   if (!hotels.length) return null;
 
+  // A fallback (zone) photo must not repeat a photo a real owner already shows
+  // on this page, nor be reused twice. Such cards get the illustrated thumb.
+  const ownSrcs = new Set(
+    hotels
+      .filter((h) => hasHotelImage(hotelSlug(h.name)))
+      .map((h) => hotelImageSrc(hotelSlug(h.name)))
+  );
+  const usedFallback = new Set<string>();
+
   return (
     <div>
       <div className="grid gap-3 sm:grid-cols-2">
         {hotels.map((h) => {
           const place = placeByKey(h.zone);
           const slug = hotelSlug(h.name);
-          const img = hasHotelImage(slug) ? hotelImageSrc(slug) : zoneImage(h.zone);
+          let img: string | null = null;
+          if (hasHotelImage(slug)) {
+            img = hotelImageSrc(slug);
+          } else {
+            const z = zoneImage(h.zone);
+            if (z && !ownSrcs.has(z) && !usedFallback.has(z)) {
+              img = z;
+              usedFallback.add(z);
+            }
+          }
           return (
             <a
               key={`${h.zone}-${h.name}`}

@@ -3,9 +3,9 @@ import type { Dict } from "@/i18n";
 import { x } from "@/i18n/extra";
 import type { Locale, Place, RaceEvent } from "@/lib/types";
 import { EVENTS } from "@/data/events";
-import { PLACES, ringOf } from "@/data/places";
+import { PLACES } from "@/data/places";
 import { CROSS_PAGES } from "@/data/catalog";
-import { HOTELS, hotelsByZone, hotelsForZonePadded, topPicks } from "@/data/hotels";
+import { HOTELS, hotelsByZone, topPicks } from "@/data/hotels";
 import { routeFor } from "@/data/routes";
 import { LEAD_PAGES } from "@/data/leadpages";
 import { leadContent } from "@/i18n/leadpages";
@@ -578,7 +578,8 @@ export function PlaceTemplate({
   const displayName = place.key === "le-mans-city-centre" ? "Le Mans" : place.name;
   const xt = x(locale);
   const route = routeFor(place.key);
-  const hotels = hotelsForZonePadded(place.key, ringOf, 10);
+  // Only this commune's real establishments, never padded with other towns.
+  const hotels = hotelsByZone(place.key);
 
   const facts: Fact[] = [
     { label: dict.placePage.statDistance, value: `${place.km} km` },
