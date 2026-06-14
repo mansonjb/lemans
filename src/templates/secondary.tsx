@@ -10,7 +10,13 @@ import type {
 import { EVENTS, eventByKey } from "@/data/events";
 import { PLACES, placeByKey, ringOf } from "@/data/places";
 import { CROSS_PAGES } from "@/data/catalog";
-import { HOTELS, hotelsByZone, hotelsForZonePadded, hotelSlug } from "@/data/hotels";
+import {
+  HOTELS,
+  hotelsByZone,
+  hotelsForZonePadded,
+  hotelSlug,
+  zoneImage,
+} from "@/data/hotels";
 import { hasHotelImage, hotelImageSrc } from "@/data/hotel-images";
 import { routeFor } from "@/data/routes";
 import { hrefFor } from "@/lib/registry";
@@ -551,7 +557,9 @@ export function QuizTemplate({ dict, locale }: { dict: Dict; locale: Locale }) {
       kind: h.kind,
       note: h.note,
       url: bookingBaseUrl(h),
-      img: hasHotelImage(slug) ? hotelImageSrc(slug) : undefined,
+      img: hasHotelImage(slug)
+        ? hotelImageSrc(slug)
+        : zoneImage(h.zone) ?? undefined,
     };
   });
 

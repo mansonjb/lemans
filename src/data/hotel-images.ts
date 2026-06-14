@@ -3,11 +3,11 @@
 // in /public/images/hotels/<slug>.jpg.
 export const HOTEL_IMAGES: string[] = [
   "ashley-hotel-le-mans-sud",
-  "aux-portes-du-circuit",
   "b-b-hotel-alencon-nord",
   "b-b-hotel-laval-ouest",
   "b-b-hotel-le-mans-sud",
   "b-b-hotel-tours-nord-2",
+  "best-western-auberge-de-la-foresterie",
   "best-western-central-hotel-tours",
   "best-western-plus-hotel-d-anjou",
   "best-western-premier-leprince-hotel-spa",

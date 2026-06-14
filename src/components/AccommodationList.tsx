@@ -1,7 +1,7 @@
 import type { Hotel, RaceEvent } from "@/lib/types";
 import { bookingUrl } from "@/lib/booking";
 import { placeByKey } from "@/data/places";
-import { hotelSlug } from "@/data/hotels";
+import { hotelSlug, zoneImage } from "@/data/hotels";
 import { hasHotelImage, hotelImageSrc } from "@/data/hotel-images";
 import { HotelThumb } from "./HotelThumb";
 
@@ -14,6 +14,43 @@ interface Labels {
   disclaimer: string;
   walk: string;
   minToCircuit: (min: number) => string;
+  transport: {
+    toCircuit: string;
+    car: string;
+    train: string;
+    tram: string;
+    walk: string;
+  };
+}
+
+function TransportRow({
+  ring,
+  driveMin,
+  station,
+  tram,
+  t,
+}: {
+  ring: number;
+  driveMin: number;
+  station: boolean;
+  tram: boolean;
+  t: Labels["transport"];
+}) {
+  return (
+    <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-line pt-2.5 text-[12px]">
+      <span className="font-semibold text-ink">
+        {ring === 1 ? (
+          <>🚶 {t.walk}</>
+        ) : (
+          <>
+            🚗 {t.car} · {driveMin} min
+          </>
+        )}
+      </span>
+      {station && <span className="text-muted">🚆 {t.train}</span>}
+      {tram && <span className="text-muted">🚊 {t.tram}</span>}
+    </div>
+  );
 }
 
 const KIND_TONE: Record<string, string> = {
@@ -40,13 +77,8 @@ export function AccommodationList({
       <div className="grid gap-3 sm:grid-cols-2">
         {hotels.map((h) => {
           const place = placeByKey(h.zone);
-          const drive =
-            place?.ring === 1
-              ? labels.walk
-              : place
-                ? labels.minToCircuit(place.driveMin)
-                : null;
           const slug = hotelSlug(h.name);
+          const img = hasHotelImage(slug) ? hotelImageSrc(slug) : zoneImage(h.zone);
           return (
             <a
               key={`${h.zone}-${h.name}`}
@@ -56,10 +88,10 @@ export function AccommodationList({
               className="group flex flex-col overflow-hidden rounded-xl border border-line bg-card shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
             >
               <div className="relative h-24 w-full overflow-hidden bg-paper">
-                {hasHotelImage(slug) ? (
+                {img ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={hotelImageSrc(slug)}
+                    src={img}
                     alt={h.name}
                     loading="lazy"
                     className="h-full w-full object-cover"
@@ -72,12 +104,6 @@ export function AccommodationList({
                 >
                   {labels.kind[h.kind]}
                 </span>
-                {drive && (
-                  <span className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full bg-ink/85 px-2 py-0.5 text-[11px] font-semibold text-white">
-                    <span className="text-amber">▸</span>
-                    {drive}
-                  </span>
-                )}
               </div>
               <div className="flex flex-1 flex-col justify-between p-4">
                 <div>
@@ -89,6 +115,15 @@ export function AccommodationList({
                   <p className="mt-0.5 text-[13px] leading-snug text-muted">
                     {h.note}
                   </p>
+                  {place && (
+                    <TransportRow
+                      ring={place.ring}
+                      driveMin={place.driveMin}
+                      station={!!place.station}
+                      tram={!!place.tram}
+                      t={labels.transport}
+                    />
+                  )}
                 </div>
                 <span className="mt-3 inline-flex items-center justify-center gap-1 rounded-lg bg-ink px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-white transition group-hover:bg-bleu">
                   {labels.seePrice}

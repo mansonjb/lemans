@@ -116,6 +116,7 @@ export function AccommodationSection({
             disclaimer: xt.accommodation.disclaimer,
             walk: dict.common.walkToCircuit,
             minToCircuit: dict.common.minToCircuit,
+            transport: xt.seo.transport,
           }}
         />
       </div>

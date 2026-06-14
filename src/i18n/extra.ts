@@ -89,6 +89,7 @@ export interface ExtraDict {
     popularSearches: string;
     zoneCircuitArea: string;
     stays: string;
+    transport: { toCircuit: string; car: string; train: string; tram: string; walk: string };
     trust: { livePrices: string; freeCancel: string; noFees: string };
   };
 }
@@ -320,6 +321,7 @@ const enX: ExtraDict = {
     popularSearches: "Popular searches",
     zoneCircuitArea: "Around the circuit",
     stays: "stays",
+    transport: { toCircuit: "To the circuit", car: "Car", train: "Train", tram: "Tram", walk: "On foot" },
     trust: {
       livePrices: "Live prices from booking partners",
       freeCancel: "Free cancellation often available",
@@ -555,6 +557,7 @@ const frX: ExtraDict = {
     popularSearches: "Recherches populaires",
     zoneCircuitArea: "Autour du circuit",
     stays: "hébergements",
+    transport: { toCircuit: "Vers le circuit", car: "Voiture", train: "Train", tram: "Tram", walk: "À pied" },
     trust: {
       livePrices: "Prix en direct chez nos partenaires",
       freeCancel: "Annulation gratuite souvent disponible",
@@ -780,6 +783,7 @@ const nlX: ExtraDict = {
     popularSearches: "Populaire zoekopdrachten",
     zoneCircuitArea: "Rond het circuit",
     stays: "verblijven",
+    transport: { toCircuit: "Naar het circuit", car: "Auto", train: "Trein", tram: "Tram", walk: "Te voet" },
     trust: {
       livePrices: "Live prijzen van boekingspartners",
       freeCancel: "Gratis annulering vaak mogelijk",
@@ -1005,6 +1009,7 @@ const deX: ExtraDict = {
     popularSearches: "Beliebte Suchen",
     zoneCircuitArea: "Rund um die Strecke",
     stays: "Unterkünfte",
+    transport: { toCircuit: "Zur Strecke", car: "Auto", train: "Zug", tram: "Tram", walk: "Zu Fuß" },
     trust: {
       livePrices: "Live-Preise von Buchungspartnern",
       freeCancel: "Kostenlose Stornierung oft möglich",
@@ -1230,6 +1235,7 @@ const itX: ExtraDict = {
     popularSearches: "Ricerche popolari",
     zoneCircuitArea: "Intorno al circuito",
     stays: "alloggi",
+    transport: { toCircuit: "Verso il circuito", car: "Auto", train: "Treno", tram: "Tram", walk: "A piedi" },
     trust: {
       livePrices: "Prezzi in tempo reale dai partner",
       freeCancel: "Cancellazione gratuita spesso disponibile",
@@ -1455,6 +1461,7 @@ const esX: ExtraDict = {
     popularSearches: "Búsquedas populares",
     zoneCircuitArea: "Alrededor del circuito",
     stays: "alojamientos",
+    transport: { toCircuit: "Al circuito", car: "Coche", train: "Tren", tram: "Tranvía", walk: "A pie" },
     trust: {
       livePrices: "Precios en directo de los socios",
       freeCancel: "Cancelación gratuita a menudo disponible",

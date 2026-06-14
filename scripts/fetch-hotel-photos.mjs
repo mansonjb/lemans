@@ -64,7 +64,7 @@ function parseHotels(src) {
   return out;
 }
 
-async function searchPhoto(name, town, apiKey) {
+async function queryOnce(textQuery, apiKey) {
   const res = await fetch("https://places.googleapis.com/v1/places:searchText", {
     method: "POST",
     headers: {
@@ -72,14 +72,19 @@ async function searchPhoto(name, town, apiKey) {
       "X-Goog-Api-Key": apiKey,
       "X-Goog-FieldMask": "places.id,places.displayName,places.photos",
     },
-    body: JSON.stringify({
-      textQuery: `${name}, ${town}, France`,
-      languageCode: "en",
-    }),
+    body: JSON.stringify({ textQuery, languageCode: "fr" }),
   });
-  if (!res.ok) throw new Error(`searchText HTTP ${res.status}: ${(await res.text()).slice(0, 160)}`);
+  if (!res.ok)
+    throw new Error(`searchText HTTP ${res.status}: ${(await res.text()).slice(0, 160)}`);
   const data = await res.json();
-  const place = data.places?.[0];
+  return data.places?.[0] ?? null;
+}
+
+async function searchPhoto(name, town, apiKey) {
+  // Strict query only: name + exact town + France. Looser variants caused
+  // false matches (the circuit, wrong-city hotels), so we keep it precise and
+  // let establishments with no reliable match fall back to a zone photo.
+  const place = await queryOnce(`${name}, ${town}, France`, apiKey);
   if (!place) throw new Error("no place");
   const photoName = place.photos?.[0]?.name;
   if (!photoName) throw new Error("no photos");
@@ -118,6 +123,13 @@ const failures = [];
 
 for (const h of hotels) {
   const slug = slugify(h.name);
+  // Small private rentals (gîtes, chambres d'hôtes, châteaux) rarely resolve
+  // to the right Google place, so we skip them and let the UI fall back to a
+  // representative zone photo rather than risk a wrong-property image.
+  if (h.kind === "rental") {
+    skip++;
+    continue;
+  }
   const outPath = path.join(OUT_DIR, `${slug}.jpg`);
   if (!FORCE && existsSync(outPath)) {
     have.push(slug);
