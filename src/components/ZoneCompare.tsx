@@ -3,6 +3,7 @@ import type { Dict } from "@/i18n";
 import { x } from "@/i18n/extra";
 import type { Locale, Place } from "@/lib/types";
 import { hotelsByZone, zoneImage } from "@/data/hotels";
+import { zonePhotos } from "@/data/zone-images";
 import { hrefFor } from "@/lib/registry";
 import { SpeedHeading } from "./ui";
 
@@ -69,7 +70,7 @@ export function ZoneCompare({
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         {rows.map((p) => {
-          const img = zoneImage(p.key);
+          const img = zonePhotos(p.key)[0] ?? zoneImage(p.key);
           const count = hotelsByZone(p.key).length;
           const style = RING_STYLE[p.ring];
           return (

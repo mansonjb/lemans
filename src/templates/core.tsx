@@ -24,6 +24,7 @@ import { ZoneCompare } from "@/components/ZoneCompare";
 import { TipsBox } from "@/components/TipsBox";
 import { LodgingListSchema, ZoneSchema } from "@/components/schema";
 import { zoneBlurb, eventBlurb } from "@/i18n/context";
+import { homeFaq } from "@/i18n/homefaq";
 import {
   AmberNote,
   Container,
@@ -206,6 +207,7 @@ function QuizNudge({ dict, locale }: { dict: Dict; locale: Locale }) {
 
 export function HomeTemplate({ dict, locale }: { dict: Dict; locale: Locale }) {
   const next = nextEvent();
+  const lm24 = EVENTS.find((e) => e.id === "lm24") ?? next;
   const events = [...EVENTS].sort((a, b) => a.start.localeCompare(b.start));
   const guides = Object.entries(GUIDE_CONTENT);
 
@@ -328,6 +330,20 @@ export function HomeTemplate({ dict, locale }: { dict: Dict; locale: Locale }) {
               <p key={p.slice(0, 24)}>{p}</p>
             ))}
           </div>
+        </div>
+
+        <div className="mt-20">
+          <FaqBlock
+            heading={dict.common.faqHeading}
+            items={[
+              ...homeFaq(locale),
+              ...x(locale).faq({
+                eventName: dict.eventNames.lm24.name,
+                months: lm24.bookAheadMonths,
+                year: eventYear(lm24.start),
+              }),
+            ]}
+          />
         </div>
       </Container>
     </>

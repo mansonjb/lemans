@@ -1,8 +1,9 @@
 import type { Hotel, RaceEvent } from "@/lib/types";
 import { bookingUrl } from "@/lib/booking";
 import { placeByKey } from "@/data/places";
-import { hotelSlug, zoneImage } from "@/data/hotels";
+import { hotelSlug } from "@/data/hotels";
 import { hasHotelImage, hotelImageSrc } from "@/data/hotel-images";
+import { zonePhotos } from "@/data/zone-images";
 import { HotelThumb } from "./HotelThumb";
 
 interface Labels {
@@ -72,14 +73,15 @@ export function AccommodationList({
 }) {
   if (!hotels.length) return null;
 
-  // A fallback (zone) photo must not repeat a photo a real owner already shows
-  // on this page, nor be reused twice. Such cards get the illustrated thumb.
-  const ownSrcs = new Set(
-    hotels
-      .filter((h) => hasHotelImage(hotelSlug(h.name)))
-      .map((h) => hotelImageSrc(hotelSlug(h.name)))
-  );
-  const usedFallback = new Set<string>();
+  // Every card gets a real photo: its own if we have it, otherwise the next
+  // unused ambiance photo from its zone's pool. Tracking used srcs means no two
+  // cards on the page ever share an image (a card only falls back to the
+  // illustrated thumb if the whole zone pool is exhausted).
+  const usedImages = new Set<string>();
+  hotels.forEach((h) => {
+    const s = hotelSlug(h.name);
+    if (hasHotelImage(s)) usedImages.add(hotelImageSrc(s));
+  });
 
   return (
     <div>
@@ -91,11 +93,8 @@ export function AccommodationList({
           if (hasHotelImage(slug)) {
             img = hotelImageSrc(slug);
           } else {
-            const z = zoneImage(h.zone);
-            if (z && !ownSrcs.has(z) && !usedFallback.has(z)) {
-              img = z;
-              usedFallback.add(z);
-            }
+            img = zonePhotos(h.zone).find((p) => !usedImages.has(p)) ?? null;
+            if (img) usedImages.add(img);
           }
           return (
             <a

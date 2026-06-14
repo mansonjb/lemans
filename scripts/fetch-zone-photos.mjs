@@ -1,0 +1,141 @@
+/**
+ * Fetches a small POOL of real photos per zone (the town/commune itself) from
+ * Google Places, so establishments without their own photo fall back to a
+ * genuine local ambiance image instead of an illustrated placeholder. Rotating
+ * the pool keeps cards in the same zone from showing the same image.
+ *
+ * Writes /public/images/zones/<zone>-<n>.jpg and src/data/zone-images.ts.
+ *   node scripts/fetch-zone-photos.mjs [--force]
+ */
+import sharp from "sharp";
+import { mkdir, readFile, writeFile } from "fs/promises";
+import { existsSync } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.join(__dirname, "..");
+const OUT_DIR = path.join(ROOT, "public", "images", "zones");
+const MANIFEST = path.join(ROOT, "src", "data", "zone-images.ts");
+const FORCE = process.argv.includes("--force");
+const PER_ZONE = 4;
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Search query/queries per zone: the commune itself (ambiance, not a hotel).
+// Arrays are tried in order and accumulated to build a pool for small towns.
+const ZONE_QUERY = {
+  "circuit-area": "Circuit des 24 Heures du Mans, Le Mans",
+  "le-mans-city-centre": "Le Mans vieille ville Plantagenêt",
+  arnage: "Arnage, Sarthe, France",
+  mulsanne: "Mulsanne, Sarthe, France",
+  ruaudin: ["Ruaudin, Sarthe, France", "Église Ruaudin", "Antarès Le Mans"],
+  change: "Changé, Sarthe, France",
+  ecommoy: ["Écommoy, Sarthe, France", "Forêt de Bercé", "Église Écommoy"],
+  "la-fleche": "La Flèche, Sarthe, France",
+  alencon: "Alençon, Orne, France",
+  laval: "Laval, Mayenne, France",
+  tours: "Tours, France",
+  angers: "Angers, France",
+};
+
+async function loadApiKey() {
+  if (process.env.GOOGLE_PLACES_API_KEY) return process.env.GOOGLE_PLACES_API_KEY;
+  const env = await readFile(path.join(ROOT, ".env.local"), "utf-8");
+  const m = env.match(/GOOGLE_PLACES_API_KEY=(.+)/);
+  if (!m) throw new Error("No GOOGLE_PLACES_API_KEY in .env.local");
+  return m[1].trim();
+}
+
+async function searchPhotos(query, apiKey) {
+  const res = await fetch("https://places.googleapis.com/v1/places:searchText", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Goog-Api-Key": apiKey,
+      "X-Goog-FieldMask": "places.id,places.displayName,places.photos",
+    },
+    body: JSON.stringify({ textQuery: query, languageCode: "fr" }),
+  });
+  if (!res.ok) throw new Error(`searchText HTTP ${res.status}`);
+  const data = await res.json();
+  return data.places?.[0]?.photos?.map((p) => p.name) ?? [];
+}
+
+async function fetchPhoto(photoName, apiKey) {
+  const url = `https://places.googleapis.com/v1/${photoName}/media?maxWidthPx=1000&skipHttpRedirect=true&key=${apiKey}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`media HTTP ${res.status}`);
+  const data = await res.json();
+  if (!data.photoUri) throw new Error("no photoUri");
+  const img = await fetch(data.photoUri);
+  if (!img.ok) throw new Error(`image HTTP ${img.status}`);
+  return Buffer.from(await img.arrayBuffer());
+}
+
+const apiKey = await loadApiKey();
+await mkdir(OUT_DIR, { recursive: true });
+const manifest = {};
+
+console.log(`\n🏙️  Zone photo pools — ${Object.keys(ZONE_QUERY).length} zones\n`);
+
+for (const [zone, query] of Object.entries(ZONE_QUERY)) {
+  const have = [];
+  // Skip work if all target files already exist (unless --force)
+  const allExist =
+    !FORCE &&
+    Array.from({ length: PER_ZONE }).every((_, i) =>
+      existsSync(path.join(OUT_DIR, `${zone}-${i + 1}.jpg`))
+    );
+  if (allExist) {
+    for (let i = 0; i < PER_ZONE; i++) have.push(`/images/zones/${zone}-${i + 1}.jpg`);
+    manifest[zone] = have;
+    console.log(`  ${zone}: skipped (${PER_ZONE} on disk)`);
+    continue;
+  }
+  process.stdout.write(`  ${zone} … `);
+  try {
+    const queries = Array.isArray(query) ? query : [query];
+    const photoNames = [];
+    for (const q of queries) {
+      if (photoNames.length >= PER_ZONE) break;
+      try {
+        photoNames.push(...(await searchPhotos(q, apiKey)));
+      } catch {
+        /* try next query */
+      }
+      await sleep(120);
+    }
+    let n = 0;
+    for (const pn of photoNames.slice(0, PER_ZONE)) {
+      try {
+        const buf = await fetchPhoto(pn, apiKey);
+        const out = path.join(OUT_DIR, `${zone}-${n + 1}.jpg`);
+        await sharp(buf)
+          .resize(800, 500, { fit: "cover", position: "centre" })
+          .jpeg({ quality: 80, progressive: true, mozjpeg: true })
+          .toFile(out);
+        have.push(`/images/zones/${zone}-${n + 1}.jpg`);
+        n++;
+      } catch {
+        /* skip this photo */
+      }
+      await sleep(120);
+    }
+    manifest[zone] = have;
+    console.log(`✓ ${have.length} photos`);
+  } catch (e) {
+    manifest[zone] = [];
+    console.log(`✗ ${e.message}`);
+  }
+  await sleep(150);
+}
+
+const body = `// Auto-generated by scripts/fetch-zone-photos.mjs.
+// A small pool of real ambiance photos per zone (the commune itself), used as
+// a fallback on accommodation cards that have no own photo.
+export const ZONE_PHOTOS: Record<string, string[]> = ${JSON.stringify(manifest, null, 2)};
+
+export const zonePhotos = (zone: string): string[] => ZONE_PHOTOS[zone] ?? [];
+`;
+await writeFile(MANIFEST, body);
+console.log(`\n📊 manifest written: ${MANIFEST}`);
