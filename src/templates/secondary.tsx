@@ -28,6 +28,9 @@ import { FaqBlock } from "@/components/FaqBlock";
 import { FlightWidget } from "@/components/FlightWidget";
 import { RouteMap } from "@/components/RouteMap";
 import { KeyFacts, type Fact } from "@/components/KeyFacts";
+import { TipsBox } from "@/components/TipsBox";
+import { zoneBlurb, eventBlurb } from "@/i18n/context";
+import { AccommodationSection, nextEvent, ZoneRings, zoneTips, eventTips } from "./core";
 import { Quiz, type QuizEvent, type QuizHotel, type QuizZone } from "@/components/Quiz";
 import {
   AmberNote,
@@ -38,7 +41,6 @@ import {
   SpeedHeading,
 } from "@/components/ui";
 import { GUIDE_CONTENT } from "@/data/guides";
-import { AccommodationSection, nextEvent, ZoneRings } from "./core";
 
 const countdownTemplate = (dict: Dict) =>
   dict.common.daysToGo(-1).replace("-1", "%d");
@@ -233,6 +235,19 @@ export function CrossTemplate({
           </Link>
         </div>
 
+        <div className="mt-16 grid gap-6 lg:grid-cols-[1fr_320px] lg:items-start">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+            <SpeedHeading>{xt.seo.aboutEvent(names.name)}</SpeedHeading>
+            {eventBlurb(event.id, locale).map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+          </div>
+          <TipsBox
+            title={xt.seo.goodToKnow}
+            items={eventTips(dict, xt, event, hotels.length)}
+          />
+        </div>
+
         <div className="mt-20">
           <SpeedHeading>{dict.eventPage.zonesHeading}</SpeedHeading>
           <div className="mt-8">
@@ -329,7 +344,27 @@ export function EventZoneTemplate({
           }
         />
 
-        <div className="mt-14" />
+        <div className="mt-12 grid gap-6 lg:grid-cols-[1fr_320px] lg:items-start">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+            <SpeedHeading>{xt.seo.aboutZone(displayName)}</SpeedHeading>
+            {zoneBlurb(place.key, locale).map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+            {eventBlurb(event.id, locale)
+              .slice(0, 1)
+              .map((p) => (
+                <p key={p.slice(0, 24)} className="text-muted">
+                  {p}
+                </p>
+              ))}
+          </div>
+          <TipsBox
+            title={xt.seo.goodToKnow}
+            items={zoneTips(dict, xt, place, event.bookAheadMonths)}
+          />
+        </div>
+
+        <div className="mt-16" />
         {route && place.ring > 1 && (
           <div>
             <SpeedHeading>{xt.eventZone.routeHeading(displayName)}</SpeedHeading>

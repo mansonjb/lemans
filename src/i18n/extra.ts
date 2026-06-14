@@ -90,6 +90,9 @@ export interface ExtraDict {
     zoneCircuitArea: string;
     stays: string;
     transport: { toCircuit: string; car: string; train: string; tram: string; walk: string };
+    goodToKnow: string;
+    aboutZone: (zone: string) => string;
+    aboutEvent: (event: string) => string;
     trust: { livePrices: string; freeCancel: string; noFees: string };
   };
 }
@@ -322,6 +325,9 @@ const enX: ExtraDict = {
     zoneCircuitArea: "Around the circuit",
     stays: "stays",
     transport: { toCircuit: "To the circuit", car: "Car", train: "Train", tram: "Tram", walk: "On foot" },
+    goodToKnow: "Good to know",
+    aboutZone: (z) => `Staying in ${z}`,
+    aboutEvent: (e) => `About ${e}`,
     trust: {
       livePrices: "Live prices from booking partners",
       freeCancel: "Free cancellation often available",
@@ -558,6 +564,9 @@ const frX: ExtraDict = {
     zoneCircuitArea: "Autour du circuit",
     stays: "hébergements",
     transport: { toCircuit: "Vers le circuit", car: "Voiture", train: "Train", tram: "Tram", walk: "À pied" },
+    goodToKnow: "Bon à savoir",
+    aboutZone: (z) => `Dormir à ${z}`,
+    aboutEvent: (e) => `${e} en bref`,
     trust: {
       livePrices: "Prix en direct chez nos partenaires",
       freeCancel: "Annulation gratuite souvent disponible",
@@ -784,6 +793,9 @@ const nlX: ExtraDict = {
     zoneCircuitArea: "Rond het circuit",
     stays: "verblijven",
     transport: { toCircuit: "Naar het circuit", car: "Auto", train: "Trein", tram: "Tram", walk: "Te voet" },
+    goodToKnow: "Goed om te weten",
+    aboutZone: (z) => `Overnachten in ${z}`,
+    aboutEvent: (e) => `Over ${e}`,
     trust: {
       livePrices: "Live prijzen van boekingspartners",
       freeCancel: "Gratis annulering vaak mogelijk",
@@ -1010,6 +1022,9 @@ const deX: ExtraDict = {
     zoneCircuitArea: "Rund um die Strecke",
     stays: "Unterkünfte",
     transport: { toCircuit: "Zur Strecke", car: "Auto", train: "Zug", tram: "Tram", walk: "Zu Fuß" },
+    goodToKnow: "Gut zu wissen",
+    aboutZone: (z) => `Übernachten in ${z}`,
+    aboutEvent: (e) => `${e} im Überblick`,
     trust: {
       livePrices: "Live-Preise von Buchungspartnern",
       freeCancel: "Kostenlose Stornierung oft möglich",
@@ -1236,6 +1251,9 @@ const itX: ExtraDict = {
     zoneCircuitArea: "Intorno al circuito",
     stays: "alloggi",
     transport: { toCircuit: "Verso il circuito", car: "Auto", train: "Treno", tram: "Tram", walk: "A piedi" },
+    goodToKnow: "Da sapere",
+    aboutZone: (z) => `Dormire a ${z}`,
+    aboutEvent: (e) => `${e} in breve`,
     trust: {
       livePrices: "Prezzi in tempo reale dai partner",
       freeCancel: "Cancellazione gratuita spesso disponibile",
@@ -1462,6 +1480,9 @@ const esX: ExtraDict = {
     zoneCircuitArea: "Alrededor del circuito",
     stays: "alojamientos",
     transport: { toCircuit: "Al circuito", car: "Coche", train: "Tren", tram: "Tranvía", walk: "A pie" },
+    goodToKnow: "Conviene saber",
+    aboutZone: (z) => `Dormir en ${z}`,
+    aboutEvent: (e) => `${e} en breve`,
     trust: {
       livePrices: "Precios en directo de los socios",
       freeCancel: "Cancelación gratuita a menudo disponible",

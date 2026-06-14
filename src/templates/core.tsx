@@ -21,7 +21,9 @@ import { AccommodationList, TrustStrip } from "@/components/AccommodationList";
 import { RouteMap } from "@/components/RouteMap";
 import { KeyFacts, type Fact } from "@/components/KeyFacts";
 import { ZoneCompare } from "@/components/ZoneCompare";
+import { TipsBox } from "@/components/TipsBox";
 import { LodgingListSchema, ZoneSchema } from "@/components/schema";
+import { zoneBlurb, eventBlurb } from "@/i18n/context";
 import {
   AmberNote,
   Container,
@@ -34,6 +36,46 @@ import { GUIDE_CONTENT } from "@/data/guides";
 
 export const nextEvent = (): RaceEvent =>
   [...EVENTS].sort((a, b) => a.start.localeCompare(b.start))[0];
+
+type Xt = ReturnType<typeof x>;
+
+/** Practical, data-derived tips for a zone's "Good to know" box. */
+export function zoneTips(
+  dict: Dict,
+  xt: Xt,
+  place: Place,
+  bookAheadMonths: number
+): string[] {
+  const tips = [dict.common.bookAhead(bookAheadMonths)];
+  if (place.ring === 1) {
+    tips.push(`${dict.common.walkToCircuit}.`);
+  } else {
+    tips.push(
+      `${xt.seo.transport.car}: ${dict.common.minToCircuit(place.driveMin)}; ${dict.common.raceWeekTraffic(place.raceWeekMin)}.`
+    );
+  }
+  const modes = [
+    place.station ? dict.common.station : null,
+    place.tram ? dict.common.tram : null,
+  ].filter(Boolean);
+  if (modes.length) tips.push(`${modes.join(" · ")}.`);
+  tips.push(`${dict.common.parking[place.parking]}.`);
+  return tips;
+}
+
+/** Practical tips for an event's "Good to know" box. */
+export function eventTips(
+  dict: Dict,
+  xt: Xt,
+  event: RaceEvent,
+  stays: number
+): string[] {
+  return [
+    dict.common.bookAhead(event.bookAheadMonths),
+    `${dict.common.crowd(event.crowd)}.`,
+    `${stays}+ ${xt.seo.stays}.`,
+  ];
+}
 
 const countdownTemplate = (dict: Dict) =>
   dict.common.daysToGo(-1).replace("-1", "%d");
@@ -357,7 +399,20 @@ export function EventTemplate({
           ]}
         />
 
-        <div className="mt-14">
+        <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_320px] lg:items-start">
+          <div className="space-y-4 text-[15px] leading-relaxed">
+            <SpeedHeading>{xt.seo.aboutEvent(names.name)}</SpeedHeading>
+            {eventBlurb(event.id, locale).map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+          </div>
+          <TipsBox
+            title={xt.seo.goodToKnow}
+            items={eventTips(dict, xt, event, HOTELS.length)}
+          />
+        </div>
+
+        <div className="mt-16">
           <SpeedHeading>{dict.eventPage.mapHeading(names.name)}</SpeedHeading>
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted">
             {dict.eventPage.mapSub}
@@ -566,15 +621,25 @@ export function PlaceTemplate({
       <Container className="py-14">
         <KeyFacts title={xt.seo.keyFactsTitle} facts={facts} />
 
-        <div className="mt-10 max-w-3xl space-y-5 text-[15px] leading-relaxed">
-          <p>{dict.placePage.introByRing[place.ring](place)}</p>
-          <Pitboard>
-            <ul className="space-y-2">
-              <li>{dict.placePage.parkingNote[place.parking]}</li>
-              {place.station && <li>{dict.placePage.stationNote}</li>}
-              {place.tram && <li>{dict.placePage.tramNote}</li>}
-            </ul>
-          </Pitboard>
+        <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_320px] lg:items-start">
+          <div className="space-y-5 text-[15px] leading-relaxed">
+            <SpeedHeading>{xt.seo.aboutZone(displayName)}</SpeedHeading>
+            {zoneBlurb(place.key, locale).map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+            <p>{dict.placePage.introByRing[place.ring](place)}</p>
+            <Pitboard>
+              <ul className="space-y-2">
+                <li>{dict.placePage.parkingNote[place.parking]}</li>
+                {place.station && <li>{dict.placePage.stationNote}</li>}
+                {place.tram && <li>{dict.placePage.tramNote}</li>}
+              </ul>
+            </Pitboard>
+          </div>
+          <TipsBox
+            title={xt.seo.goodToKnow}
+            items={zoneTips(dict, xt, place, next.bookAheadMonths)}
+          />
         </div>
 
         {route && place.ring > 1 && (
