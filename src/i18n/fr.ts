@@ -3,7 +3,7 @@ import type { Dict } from "./en";
 
 export const fr: Dict = {
   locale: "fr",
-  siteName: "Le Mans Stays",
+  siteName: "RaceWeekStays",
   tagline: "Où dormir pendant les week-ends de course au Mans",
 
   nav: {
@@ -266,7 +266,7 @@ export const fr: Dict = {
   about: {
     title: "À propos de ce site",
     paragraphs: [
-      "Le Mans Stays est un guide indépendant de l'hébergement pour les grands week-ends de course au Mans. Nous cartographions hôtels, locations et campings privés autour du circuit et nous les comparons comme les visiteurs choisissent vraiment : au temps de trajet réel les jours de course.",
+      "RaceWeekStays est un guide indépendant de l'hébergement pour les grands week-ends de course au Mans. Nous cartographions hôtels, locations et campings privés autour du circuit et nous les comparons comme les visiteurs choisissent vraiment : au temps de trajet réel les jours de course.",
       "Nous touchons une commission quand vous réservez via les cartes de ce site, sans surcoût pour vous. C'est tout le modèle : pas de bannières, pas de classements sponsorisés.",
       "Nous ne sommes ni affiliés, ni associés à l'Automobile Club de l'Ouest (ACO), à Dorna Sports ou aux organisateurs des événements mentionnés sur ce site. Les noms d'événements sont utilisés uniquement à titre descriptif, pour indiquer quand la demande d'hébergement atteint ses pics. Nous ne vendons pas de billets.",
     ],
@@ -283,7 +283,7 @@ export const fr: Dict = {
   legal: {
     title: "Mentions légales",
     paragraphs: [
-      "Ce site est une publication indépendante, éditée par l'équipe Le Mans Stays. Contact : hello@lemansstays.com. Les informations complètes de l'éditeur sont disponibles sur demande.",
+      "Ce site est une publication indépendante, éditée par l'équipe RaceWeekStays. Contact : hello@lemansstays.com. Les informations complètes de l'éditeur sont disponibles sur demande.",
       "Hébergement : ce site est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA.",
       "Divulgation d'affiliation : ce site contient des liens affiliés. Nous pouvons percevoir une commission lorsque vous réservez via nos partenaires (notamment Stay22 et Booking.com), sans surcoût pour vous. C'est ainsi que le site est financé ; cela n'influence pas les informations publiées.",
       "Les noms d'événements, marques et enseignes cités sur ce site appartiennent à leurs propriétaires respectifs et sont utilisés uniquement à titre descriptif, pour indiquer les pics de demande d'hébergement. Ce site est indépendant et n'est ni affilié, ni approuvé, ni sponsorisé par l'Automobile Club de l'Ouest (ACO), Dorna Sports ou un quelconque organisateur. Ce site ne vend pas de billets.",
@@ -307,7 +307,7 @@ export const fr: Dict = {
     guides: "Guides",
     site: "Site",
     disclaimer:
-      "Le Mans Stays est un guide indépendant d'hébergement. Nous ne sommes ni affiliés, ni associés à l'Automobile Club de l'Ouest (ACO), à Dorna Sports ou aux organisateurs des événements mentionnés. Les noms d'événements sont utilisés uniquement à titre descriptif. Nous ne vendons pas de billets.",
+      "RaceWeekStays est un guide indépendant d'hébergement. Nous ne sommes ni affiliés, ni associés à l'Automobile Club de l'Ouest (ACO), à Dorna Sports ou aux organisateurs des événements mentionnés. Les noms d'événements sont utilisés uniquement à titre descriptif. Nous ne vendons pas de billets.",
     affiliate:
       "Les réservations effectuées via ce site peuvent nous rapporter une commission, sans surcoût pour vous.",
     rights: "Tous droits réservés.",

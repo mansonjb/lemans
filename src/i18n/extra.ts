@@ -95,6 +95,7 @@ export interface ExtraDict {
     aboutEvent: (event: string) => string;
     trust: { livePrices: string; freeCancel: string; noFees: string };
   };
+  circuitNet: { heading: string; sub: string; soon: string; flagship: string };
 }
 
 /* ----------------------------- ENGLISH ----------------------------- */
@@ -333,6 +334,12 @@ const enX: ExtraDict = {
       freeCancel: "Free cancellation often available",
       noFees: "No booking fee from us",
     },
+  },
+  circuitNet: {
+    heading: "Our circuit network",
+    sub: "We map race-week accommodation circuit by circuit. Le Mans is live; the rest of the first wave is on the way.",
+    soon: "Coming soon",
+    flagship: "Live now",
   },
 };
 
@@ -573,6 +580,12 @@ const frX: ExtraDict = {
       noFees: "Aucun frais de réservation de notre part",
     },
   },
+  circuitNet: {
+    heading: "Notre réseau de circuits",
+    sub: "On cartographie l'hébergement de semaine de course, circuit par circuit. Le Mans est en ligne ; le reste de la première vague arrive.",
+    soon: "Bientôt",
+    flagship: "En ligne",
+  },
 };
 
 /* ----------------------------- DUTCH ----------------------------- */
@@ -801,6 +814,12 @@ const nlX: ExtraDict = {
       freeCancel: "Gratis annulering vaak mogelijk",
       noFees: "Geen boekingskosten van ons",
     },
+  },
+  circuitNet: {
+    heading: "Ons circuitnetwerk",
+    sub: "We brengen raceweek-accommodatie in kaart, circuit voor circuit. Le Mans is live; de rest van de eerste golf komt eraan.",
+    soon: "Binnenkort",
+    flagship: "Nu live",
   },
 };
 
@@ -1031,6 +1050,12 @@ const deX: ExtraDict = {
       noFees: "Keine Buchungsgebühr von uns",
     },
   },
+  circuitNet: {
+    heading: "Unser Streckennetz",
+    sub: "Wir kartieren Rennwochen-Unterkünfte Strecke für Strecke. Le Mans ist live; der Rest der ersten Welle folgt.",
+    soon: "Bald",
+    flagship: "Jetzt live",
+  },
 };
 
 /* ----------------------------- ITALIAN ----------------------------- */
@@ -1260,6 +1285,12 @@ const itX: ExtraDict = {
       noFees: "Nessuna commissione di prenotazione da parte nostra",
     },
   },
+  circuitNet: {
+    heading: "La nostra rete di circuiti",
+    sub: "Mappiamo gli alloggi della settimana di gara, circuito per circuito. Le Mans è online; il resto della prima ondata è in arrivo.",
+    soon: "Presto",
+    flagship: "Online",
+  },
 };
 
 /* ----------------------------- SPANISH ----------------------------- */
@@ -1488,6 +1519,12 @@ const esX: ExtraDict = {
       freeCancel: "Cancelación gratuita a menudo disponible",
       noFees: "Sin gastos de reserva por nuestra parte",
     },
+  },
+  circuitNet: {
+    heading: "Nuestra red de circuitos",
+    sub: "Mapeamos el alojamiento de la semana de carrera, circuito a circuito. Le Mans está en línea; el resto de la primera oleada llega pronto.",
+    soon: "Próximamente",
+    flagship: "En línea",
   },
 };
 

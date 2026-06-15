@@ -39,7 +39,7 @@ function Wordmark() {
   return (
     <span className="flex items-baseline gap-1.5">
       <span className="font-display text-xl font-bold uppercase italic tracking-tight text-bleu">
-        Le Mans
+        RaceWeek
       </span>
       <span className="font-display text-xl font-bold uppercase tracking-tight">
         Stays

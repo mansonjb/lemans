@@ -7,7 +7,7 @@ export const SITE_URL =
 
 /** Centralised site identity for legal notices and copyright. */
 export const SITE = {
-  name: "Le Mans Stays",
+  name: "RaceWeekStays",
   /** Copyright year, bump on each yearly content refresh. */
   year: 2026,
   contactEmail: "hello@lemansstays.com",

@@ -3,7 +3,7 @@ import type { Dict } from "./en";
 
 export const nl: Dict = {
   locale: "nl",
-  siteName: "Le Mans Stays",
+  siteName: "RaceWeekStays",
   tagline: "Overnachten tijdens de raceweekenden in Le Mans",
 
   nav: {
@@ -265,7 +265,7 @@ export const nl: Dict = {
   about: {
     title: "Over deze site",
     paragraphs: [
-      "Le Mans Stays is een onafhankelijke accommodatiegids voor de grote raceweekenden in Le Mans. Wij zetten hotels, vakantiehuizen en particuliere campings rond het circuit op de kaart en vergelijken ze zoals bezoekers echt kiezen: op echte rijtijd op racedagen.",
+      "RaceWeekStays is een onafhankelijke accommodatiegids voor de grote raceweekenden in Le Mans. Wij zetten hotels, vakantiehuizen en particuliere campings rond het circuit op de kaart en vergelijken ze zoals bezoekers echt kiezen: op echte rijtijd op racedagen.",
       "Wij verdienen een commissie wanneer u via de kaarten op deze site boekt, zonder extra kosten voor u. Dat is het hele model: geen banners, geen gesponsorde rangschikkingen.",
       "Wij zijn niet verbonden aan of goedgekeurd door de Automobile Club de l'Ouest (ACO), Dorna Sports of de organisatoren van de genoemde evenementen. Namen van evenementen worden uitsluitend beschrijvend gebruikt. Wij verkopen geen tickets.",
     ],
@@ -282,7 +282,7 @@ export const nl: Dict = {
   legal: {
     title: "Juridische informatie",
     paragraphs: [
-      "Deze website is een onafhankelijke publicatie, uitgegeven door het Le Mans Stays-team. Contact: hello@lemansstays.com. Volledige uitgeversgegevens zijn op aanvraag beschikbaar.",
+      "Deze website is een onafhankelijke publicatie, uitgegeven door het RaceWeekStays-team. Contact: hello@lemansstays.com. Volledige uitgeversgegevens zijn op aanvraag beschikbaar.",
       "Hosting: deze site wordt gehost door Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, VS.",
       "Affiliate-melding: deze site bevat affiliate-links. We kunnen een commissie verdienen wanneer u boekt via onze partners (waaronder Stay22 en Booking.com), zonder extra kosten voor u. Zo wordt de site gefinancierd; het beïnvloedt de gepubliceerde informatie niet.",
       "Alle namen van evenementen, merken en handelsnamen op deze site behoren toe aan hun respectieve eigenaren en worden uitsluitend beschrijvend gebruikt, om aan te geven wanneer de vraag naar accommodatie piekt. Deze site is onafhankelijk en is niet verbonden aan, goedgekeurd of gesponsord door de Automobile Club de l'Ouest (ACO), Dorna Sports of enige organisator. Deze site verkoopt geen tickets.",
@@ -306,7 +306,7 @@ export const nl: Dict = {
     guides: "Gidsen",
     site: "Site",
     disclaimer:
-      "Le Mans Stays is een onafhankelijke accommodatiegids. Wij zijn niet verbonden aan of goedgekeurd door de Automobile Club de l'Ouest (ACO), Dorna Sports of de organisatoren van de genoemde evenementen. Namen van evenementen worden uitsluitend beschrijvend gebruikt. Wij verkopen geen tickets.",
+      "RaceWeekStays is een onafhankelijke accommodatiegids. Wij zijn niet verbonden aan of goedgekeurd door de Automobile Club de l'Ouest (ACO), Dorna Sports of de organisatoren van de genoemde evenementen. Namen van evenementen worden uitsluitend beschrijvend gebruikt. Wij verkopen geen tickets.",
     affiliate:
       "Boekingen via deze site kunnen ons een commissie opleveren, zonder extra kosten voor u.",
     rights: "Alle rechten voorbehouden.",

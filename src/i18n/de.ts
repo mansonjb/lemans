@@ -3,7 +3,7 @@ import type { Dict } from "./en";
 
 export const de: Dict = {
   locale: "de",
-  siteName: "Le Mans Stays",
+  siteName: "RaceWeekStays",
   tagline: "Übernachten an den Rennwochenenden in Le Mans",
 
   nav: {
@@ -266,7 +266,7 @@ export const de: Dict = {
   about: {
     title: "Über diese Seite",
     paragraphs: [
-      "Le Mans Stays ist ein unabhängiger Unterkunftsführer für die großen Rennwochenenden in Le Mans. Wir kartieren Hotels, Ferienhäuser und private Campingplätze rund um die Strecke und vergleichen sie so, wie Besucher wirklich entscheiden: nach echter Fahrzeit an Renntagen.",
+      "RaceWeekStays ist ein unabhängiger Unterkunftsführer für die großen Rennwochenenden in Le Mans. Wir kartieren Hotels, Ferienhäuser und private Campingplätze rund um die Strecke und vergleichen sie so, wie Besucher wirklich entscheiden: nach echter Fahrzeit an Renntagen.",
       "Wir verdienen eine Provision, wenn Sie über die Karten dieser Seite buchen, ohne Mehrkosten für Sie. Das ist das ganze Modell: keine Banner, keine gesponserten Rankings.",
       "Wir sind weder verbunden mit noch unterstützt durch den Automobile Club de l'Ouest (ACO), Dorna Sports oder die Veranstalter der genannten Events. Eventnamen werden ausschließlich beschreibend verwendet. Wir verkaufen keine Tickets.",
     ],
@@ -307,7 +307,7 @@ export const de: Dict = {
     guides: "Guides",
     site: "Seite",
     disclaimer:
-      "Le Mans Stays ist ein unabhängiger Unterkunftsführer. Wir sind weder verbunden mit noch unterstützt durch den Automobile Club de l'Ouest (ACO), Dorna Sports oder die Veranstalter der genannten Events. Eventnamen werden ausschließlich beschreibend verwendet. Wir verkaufen keine Tickets.",
+      "RaceWeekStays ist ein unabhängiger Unterkunftsführer. Wir sind weder verbunden mit noch unterstützt durch den Automobile Club de l'Ouest (ACO), Dorna Sports oder die Veranstalter der genannten Events. Eventnamen werden ausschließlich beschreibend verwendet. Wir verkaufen keine Tickets.",
     affiliate:
       "Buchungen über diese Seite können uns eine Provision einbringen, ohne Mehrkosten für Sie.",
     rights: "Alle Rechte vorbehalten.",

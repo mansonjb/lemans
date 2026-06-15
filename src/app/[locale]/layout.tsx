@@ -21,7 +21,7 @@ const barlow = Barlow_Condensed({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  applicationName: "Le Mans Stays",
+  applicationName: "RaceWeekStays",
   robots: {
     index: true,
     follow: true,
@@ -47,7 +47,7 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://www.booking.com" />
       </head>
       <body>
-        <SiteSchema siteName="Le Mans Stays" />
+        <SiteSchema siteName="RaceWeekStays" />
         {children}
         <Script
           id="stay22-letmeallez"

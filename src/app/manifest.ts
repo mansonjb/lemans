@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Le Mans Stays",
-    short_name: "Le Mans Stays",
+    name: "RaceWeekStays",
+    short_name: "RaceWeekStays",
     description:
       "Independent accommodation guide for the major race weekends at the Le Mans circuit.",
     start_url: "/en",

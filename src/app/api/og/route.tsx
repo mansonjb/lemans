@@ -8,7 +8,7 @@ export const runtime = "edge";
  */
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const title = (searchParams.get("title") ?? "Le Mans Stays").slice(0, 120);
+  const title = (searchParams.get("title") ?? "RaceWeekStays").slice(0, 120);
   const kicker = (searchParams.get("kicker") ?? "Race-week accommodation").slice(
     0,
     60
@@ -38,7 +38,7 @@ export async function GET(req: Request) {
               letterSpacing: "-1px",
             }}
           >
-            LE MANS
+            RACEWEEK
           </div>
           <div style={{ fontSize: "30px", fontWeight: 800, color: "#161a22" }}>
             STAYS
