@@ -87,6 +87,8 @@ export interface GuideMeta {
 }
 
 export type TemplateKind =
+  | "globalhome"
+  | "circuitsoon"
   | "home"
   | "event"
   | "place"

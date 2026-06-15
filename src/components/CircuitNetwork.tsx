@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { x } from "@/i18n/extra";
 import type { Locale } from "@/lib/types";
 import { CIRCUITS } from "@/data/circuits";
+import { hrefFor } from "@/lib/registry";
 import { SpeedHeading } from "./ui";
 
 /**
@@ -19,12 +21,13 @@ export function CircuitNetwork({ locale }: { locale: Locale }) {
         {CIRCUITS.map((c) => {
           const live = c.status === "live";
           return (
-            <div
+            <Link
               key={c.key}
-              className={`flex flex-col rounded-xl border bg-card p-4 shadow-sm transition ${
+              href={hrefFor(`circuit:${c.key}`, locale)}
+              className={`group flex flex-col rounded-xl border bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
                 live
-                  ? "border-bleu/40 ring-1 ring-bleu/10"
-                  : "border-line opacity-90"
+                  ? "border-bleu/40 ring-1 ring-bleu/10 hover:border-bleu"
+                  : "border-line hover:border-bleu/50"
               }`}
             >
               <div className="flex items-start justify-between gap-2">
@@ -54,7 +57,7 @@ export function CircuitNetwork({ locale }: { locale: Locale }) {
               <p className="mt-3 text-[13px] leading-snug text-muted">
                 {c.events}
               </p>
-            </div>
+            </Link>
           );
         })}
       </div>

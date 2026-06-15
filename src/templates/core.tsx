@@ -25,7 +25,6 @@ import { TipsBox } from "@/components/TipsBox";
 import { LodgingListSchema, ZoneSchema } from "@/components/schema";
 import { zoneBlurb, eventBlurb } from "@/i18n/context";
 import { homeFaq } from "@/i18n/homefaq";
-import { CircuitNetwork } from "@/components/CircuitNetwork";
 import {
   AmberNote,
   Container,
@@ -242,9 +241,7 @@ export function HomeTemplate({ dict, locale }: { dict: Dict; locale: Locale }) {
       </section>
 
       <Container className="py-14">
-        <CircuitNetwork locale={locale} />
-
-        <div id="map" className="mt-20 scroll-mt-24">
+        <div id="map" className="scroll-mt-24">
           <SpeedHeading>{dict.common.seeAvailability}</SpeedHeading>
           <div className="mt-6">
             <Stay22Map

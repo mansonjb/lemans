@@ -7,6 +7,7 @@ import {
   STAY_TYPES,
 } from "@/data/catalog";
 import { LEAD_PAGES } from "@/data/leadpages";
+import { CIRCUITS } from "@/data/circuits";
 import {
   LOCALES,
   type Locale,
@@ -32,73 +33,83 @@ const prefixSlugs = (slugs: LocalizedSlug, prefix: LocalizedSlug): LocalizedSlug
 const same = (s: string): LocalizedSlug =>
   Object.fromEntries(LOCALES.map((l) => [l, s])) as LocalizedSlug;
 
+/** Prefix a page's slugs with the Le Mans circuit segment, e.g. le-mans/... */
+const lm = (slugs: LocalizedSlug): LocalizedSlug =>
+  prefixSlugs(slugs, same("le-mans"));
+
 export const PAGES: PageDef[] = [
-  { key: "home", template: "home", slugs: same("") },
+  { key: "home", template: "globalhome", slugs: same("") },
+  ...CIRCUITS.map((c): PageDef => ({
+    key: `circuit:${c.key}`,
+    template: c.status === "live" ? "home" : "circuitsoon",
+    slugs: same(c.slug),
+    ref: c.key,
+  })),
   ...EVENTS.map((e) => ({
     key: `event:${e.key}`,
     template: "event" as const,
-    slugs: e.slugs,
+    slugs: lm(e.slugs),
     ref: e.key,
   })),
   ...PLACES.map((p) => ({
     key: `place:${p.key}`,
     template: "place" as const,
-    slugs: prefixSlugs(p.slugs, PLACE_PREFIX),
+    slugs: lm(prefixSlugs(p.slugs, PLACE_PREFIX)),
     ref: p.key,
   })),
   ...STAY_TYPES.map((t) => ({
     key: `type:${t.key}`,
     template: "type" as const,
-    slugs: t.slugs,
+    slugs: lm(t.slugs),
     ref: t.key,
   })),
   ...CROSS_PAGES.map((c) => ({
     key: `cross:${c.key}`,
     template: "cross" as const,
-    slugs: c.slugs,
+    slugs: lm(c.slugs),
     ref: c.key,
   })),
   ...EVENT_ZONE_PAGES.map((p) => ({
     key: `ez:${p.key}`,
     template: "eventzone" as const,
-    slugs: p.slugs,
+    slugs: lm(p.slugs),
     ref: p.key,
   })),
   ...LEAD_PAGES.map((p) => ({
     key: `money:${p.key}`,
     template: "money" as const,
-    slugs: p.slugs,
+    slugs: lm(p.slugs),
     ref: p.key,
   })),
   ...GUIDES.map((g) => ({
     key: `guide:${g.key}`,
     template: "guide" as const,
-    slugs: g.slugs,
+    slugs: lm(g.slugs),
     ref: g.key,
   })),
   {
     key: "quiz",
     template: "quiz",
-    slugs: {
+    slugs: lm({
       en: "find-your-stay",
       fr: "trouver-mon-hebergement",
       nl: "vind-jouw-verblijf",
       de: "unterkunft-finden",
       it: "trova-il-tuo-alloggio",
       es: "encuentra-tu-alojamiento",
-    },
+    }),
   },
   {
     key: "travel",
     template: "travel",
-    slugs: {
+    slugs: lm({
       en: "getting-to-le-mans",
       fr: "venir-au-mans",
       nl: "reizen-naar-le-mans",
       de: "anreise-nach-le-mans",
       it: "come-arrivare-a-le-mans",
       es: "como-llegar-a-le-mans",
-    },
+    }),
   },
   {
     key: "about",

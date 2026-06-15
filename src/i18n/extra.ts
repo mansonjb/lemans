@@ -96,6 +96,14 @@ export interface ExtraDict {
     trust: { livePrices: string; freeCancel: string; noFees: string };
   };
   circuitNet: { heading: string; sub: string; soon: string; flagship: string };
+  hub: {
+    heroTitle: string;
+    heroSub: string;
+    soonTitle: (c: string) => string;
+    soonIntro: (c: string) => string;
+    soonMap: (c: string) => string;
+    exploreLeMans: string;
+  };
 }
 
 /* ----------------------------- ENGLISH ----------------------------- */
@@ -340,6 +348,16 @@ const enX: ExtraDict = {
     sub: "We map race-week accommodation circuit by circuit. Le Mans is live; the rest of the first wave is on the way.",
     soon: "Coming soon",
     flagship: "Live now",
+  },
+  hub: {
+    heroTitle: "Where to stay for race week, circuit by circuit",
+    heroSub:
+      "Race weekends sell out the towns around the track months ahead. We map hotels, camping and rentals by real drive time at the world's great circuits, so you book the right base before it's gone.",
+    soonTitle: (c) => `Where to stay for race week at ${c}`,
+    soonIntro: (c) =>
+      `We're building the full ${c} accommodation guide: hotels, camping and rentals ranked by drive time to the circuit. It is coming soon. Meanwhile, the live map below shows real availability around the track.`,
+    soonMap: (c) => `Live availability around ${c}`,
+    exploreLeMans: "See our live Le Mans guide",
   },
 };
 
@@ -586,6 +604,16 @@ const frX: ExtraDict = {
     soon: "Bientôt",
     flagship: "En ligne",
   },
+  hub: {
+    heroTitle: "Où dormir pendant la semaine de course, circuit par circuit",
+    heroSub:
+      "Les week-ends de course remplissent les villes autour de la piste des mois à l'avance. On cartographie hôtels, campings et locations au temps de trajet réel sur les grands circuits du monde, pour réserver le bon camp de base avant qu'il ne parte.",
+    soonTitle: (c) => `Où dormir pendant la semaine de course à ${c}`,
+    soonIntro: (c) =>
+      `On construit le guide complet d'hébergement de ${c} : hôtels, campings et locations classés au temps de trajet vers le circuit. Ça arrive bientôt. En attendant, la carte en direct ci-dessous montre les disponibilités réelles autour de la piste.`,
+    soonMap: (c) => `Disponibilités en direct autour de ${c}`,
+    exploreLeMans: "Voir notre guide Le Mans en ligne",
+  },
 };
 
 /* ----------------------------- DUTCH ----------------------------- */
@@ -820,6 +848,16 @@ const nlX: ExtraDict = {
     sub: "We brengen raceweek-accommodatie in kaart, circuit voor circuit. Le Mans is live; de rest van de eerste golf komt eraan.",
     soon: "Binnenkort",
     flagship: "Nu live",
+  },
+  hub: {
+    heroTitle: "Waar overnachten tijdens de raceweek, circuit voor circuit",
+    heroSub:
+      "Raceweekenden boeken de plaatsen rond de baan maanden vooruit vol. We brengen hotels, camping en huizen in kaart op echte rijtijd bij de grote circuits ter wereld, zodat je de juiste basis boekt voordat die weg is.",
+    soonTitle: (c) => `Waar overnachten tijdens de raceweek bij ${c}`,
+    soonIntro: (c) =>
+      `We bouwen de volledige accommodatiegids voor ${c}: hotels, camping en huizen op rijtijd naar het circuit. Het komt binnenkort. Intussen toont de live kaart hieronder de echte beschikbaarheid rond de baan.`,
+    soonMap: (c) => `Live beschikbaarheid rond ${c}`,
+    exploreLeMans: "Bekijk onze live Le Mans-gids",
   },
 };
 
@@ -1056,6 +1094,16 @@ const deX: ExtraDict = {
     soon: "Bald",
     flagship: "Jetzt live",
   },
+  hub: {
+    heroTitle: "Wo übernachten zur Rennwoche, Strecke für Strecke",
+    heroSub:
+      "Rennwochenenden buchen die Orte rund um die Strecke Monate im Voraus aus. Wir kartieren Hotels, Camping und Ferienunterkünfte nach echter Fahrzeit an den großen Strecken der Welt, damit Sie die richtige Basis buchen, bevor sie weg ist.",
+    soonTitle: (c) => `Wo übernachten zur Rennwoche am ${c}`,
+    soonIntro: (c) =>
+      `Wir bauen den vollständigen Unterkunftsguide für ${c}: Hotels, Camping und Ferienunterkünfte nach Fahrzeit zur Strecke. Er kommt bald. In der Zwischenzeit zeigt die Live-Karte unten die echte Verfügbarkeit rund um die Strecke.`,
+    soonMap: (c) => `Live-Verfügbarkeit rund um ${c}`,
+    exploreLeMans: "Unseren Live-Guide für Le Mans ansehen",
+  },
 };
 
 /* ----------------------------- ITALIAN ----------------------------- */
@@ -1291,6 +1339,16 @@ const itX: ExtraDict = {
     soon: "Presto",
     flagship: "Online",
   },
+  hub: {
+    heroTitle: "Dove dormire durante la settimana di gara, circuito per circuito",
+    heroSub:
+      "I weekend di gara esauriscono le città intorno alla pista con mesi di anticipo. Mappiamo hotel, campeggi e case per tempo di guida reale nei grandi circuiti del mondo, così prenoti la base giusta prima che finisca.",
+    soonTitle: (c) => `Dove dormire durante la settimana di gara a ${c}`,
+    soonIntro: (c) =>
+      `Stiamo costruendo la guida completa agli alloggi di ${c}: hotel, campeggi e case ordinati per tempo di guida verso il circuito. Arriva presto. Intanto la mappa live qui sotto mostra la disponibilità reale intorno alla pista.`,
+    soonMap: (c) => `Disponibilità in tempo reale intorno a ${c}`,
+    exploreLeMans: "Vedi la nostra guida live di Le Mans",
+  },
 };
 
 /* ----------------------------- SPANISH ----------------------------- */
@@ -1525,6 +1583,16 @@ const esX: ExtraDict = {
     sub: "Mapeamos el alojamiento de la semana de carrera, circuito a circuito. Le Mans está en línea; el resto de la primera oleada llega pronto.",
     soon: "Próximamente",
     flagship: "En línea",
+  },
+  hub: {
+    heroTitle: "Dónde dormir durante la semana de carrera, circuito a circuito",
+    heroSub:
+      "Los fines de semana de carrera agotan los pueblos alrededor de la pista con meses de antelación. Mapeamos hoteles, campings y casas por tiempo real de trayecto en los grandes circuitos del mundo, para que reserves la base adecuada antes de que se agote.",
+    soonTitle: (c) => `Dónde dormir durante la semana de carrera en ${c}`,
+    soonIntro: (c) =>
+      `Estamos construyendo la guía completa de alojamiento de ${c}: hoteles, campings y casas ordenados por tiempo de trayecto al circuito. Llega pronto. Mientras tanto, el mapa en directo de abajo muestra la disponibilidad real alrededor de la pista.`,
+    soonMap: (c) => `Disponibilidad en directo alrededor de ${c}`,
+    exploreLeMans: "Ver nuestra guía de Le Mans en directo",
   },
 };
 

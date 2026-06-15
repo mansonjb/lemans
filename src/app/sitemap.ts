@@ -2,7 +2,9 @@ import type { MetadataRoute } from "next";
 import { languageAlternates, PAGES, urlFor } from "@/lib/registry";
 
 const PRIORITY: Record<string, number> = {
-  home: 1,
+  globalhome: 1,
+  home: 0.9,
+  circuitsoon: 0.6,
   event: 0.9,
   quiz: 0.8,
   travel: 0.8,

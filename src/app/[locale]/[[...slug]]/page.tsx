@@ -16,6 +16,7 @@ import { CROSS_PAGES, crossByKey, eventZoneByKey } from "@/data/catalog";
 import { GUIDE_CONTENT } from "@/data/guides";
 import { leadContent } from "@/i18n/leadpages";
 import { leadByKey } from "@/data/leadpages";
+import { circuitByKey } from "@/data/circuits";
 import { eventYear } from "@/lib/seo";
 import { x } from "@/i18n/extra";
 import { PageShell } from "@/components/PageShell";
@@ -23,6 +24,7 @@ import type { Crumb } from "@/components/Breadcrumbs";
 import type { PageDef } from "@/lib/types";
 import { hrefFor } from "@/lib/registry";
 import { EventTemplate, HomeTemplate, PlaceTemplate } from "@/templates/core";
+import { GlobalHomeTemplate, CircuitSoonTemplate } from "@/templates/hub";
 import { MoneyTemplate } from "@/templates/money";
 import {
   CrossTemplate,
@@ -60,6 +62,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   let description = dict.home.metaDescription;
 
   switch (page.template) {
+    case "globalhome": {
+      title = `${x(locale).hub.heroTitle} | ${dict.siteName}`;
+      description = x(locale).hub.heroSub;
+      break;
+    }
+    case "circuitsoon": {
+      const c = circuitByKey(page.ref!)!;
+      title = `${x(locale).hub.soonTitle(c.name)} | ${dict.siteName}`;
+      description = x(locale).hub.soonIntro(c.name);
+      break;
+    }
     case "event": {
       const e = eventByKey(page.ref!)!;
       const name = dict.eventNames[e.id].name;
@@ -168,7 +181,25 @@ function buildCrumbs(
     { name: dict.common.backHome, href: `/${locale}` },
   ];
   const here = pathFor(page, locale);
+  const lmScoped = new Set([
+    "event",
+    "place",
+    "type",
+    "cross",
+    "eventzone",
+    "money",
+    "guide",
+    "quiz",
+    "travel",
+  ]);
+  if (lmScoped.has(page.template)) {
+    crumbs.push({ name: "Le Mans", href: hrefFor("circuit:le-mans", locale) });
+  }
   switch (page.template) {
+    case "home":
+    case "circuitsoon":
+      crumbs.push({ name: circuitByKey(page.ref!)?.name ?? page.ref!, href: here });
+      break;
     case "event":
       crumbs.push({
         name: dict.eventNames[eventByKey(page.ref!)!.id].name,
@@ -256,6 +287,18 @@ export default async function Page({ params }: Props) {
 
   let body: ReactNode = null;
   switch (page.template) {
+    case "globalhome":
+      body = <GlobalHomeTemplate dict={dict} locale={locale} />;
+      break;
+    case "circuitsoon":
+      body = (
+        <CircuitSoonTemplate
+          dict={dict}
+          locale={locale}
+          circuit={circuitByKey(page.ref!)!}
+        />
+      );
+      break;
     case "home":
       body = <HomeTemplate dict={dict} locale={locale} />;
       break;
