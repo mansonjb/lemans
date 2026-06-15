@@ -27,3 +27,6 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# circuit pipeline scratch
+scripts/_circuit-*.json
