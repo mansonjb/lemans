@@ -152,6 +152,52 @@ function CoursesMenu({
   );
 }
 
+/** A dropdown that lists every destination (circuit), each linking to that
+ *  circuit's version of a sub-page (getting there, guide…). Keeps the menu
+ *  consistent and avoids jumping to Le Mans from the global hub. */
+function DestinationsMenu({
+  label,
+  currentKey,
+  hrefForCircuit,
+}: {
+  label: string;
+  currentKey: string | null;
+  hrefForCircuit: (key: string) => string;
+}) {
+  return (
+    <div className="group relative">
+      <button
+        type="button"
+        className="inline-flex items-center gap-1 hover:text-bleu"
+      >
+        {label}
+        <span className="text-[10px] text-muted">▾</span>
+      </button>
+      <div className="invisible absolute left-0 top-full z-50 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+        <div className="max-h-[70vh] min-w-[260px] overflow-auto rounded-xl border border-line bg-card shadow-lg">
+          <div className="h-1 bg-gradient-to-r from-bleu via-amber to-ink" />
+          <div className="p-2">
+            {CIRCUITS.map((c) => (
+              <Link
+                key={c.key}
+                href={hrefForCircuit(c.key)}
+                className={`flex items-center gap-2.5 rounded-lg px-3 py-2 hover:bg-paper hover:text-bleu ${
+                  c.key === currentKey ? "bg-paper text-bleu" : ""
+                }`}
+              >
+                <span className="text-base" aria-hidden>
+                  {c.flag}
+                </span>
+                <span className="flex-1 font-medium">{c.name}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function PageShell({
   locale,
   dict,
@@ -209,16 +255,6 @@ export function PageShell({
       ? hrefFor(`circuit:${circuitKey}`, locale)
       : hrefFor("quiz", locale);
 
-  // Getting there / Guides resolve to the current circuit's pages (Le Mans
-  // keeps its bespoke ones; the global hub defaults to the flagship).
-  const isGeneric = !!circuitKey && circuitKey !== "le-mans";
-  const travelHref = isGeneric
-    ? hrefFor(`ctravel:${circuitKey}`, locale)
-    : hrefFor("travel", locale);
-  const guideHref = isGeneric
-    ? hrefFor(`cguide:${circuitKey}`, locale)
-    : hrefFor("guide:everything-booked", locale);
-
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur">
@@ -233,12 +269,24 @@ export function PageShell({
               label={xt.navCircuits}
             />
             <CoursesMenu label={dict.nav.events} entries={raceEntries} />
-            <Link href={travelHref} className="hover:text-bleu">
-              {xt.navTravel}
-            </Link>
-            <Link href={guideHref} className="hover:text-bleu">
-              {dict.common.guidesHeading}
-            </Link>
+            <DestinationsMenu
+              label={xt.navTravel}
+              currentKey={circuitKey}
+              hrefForCircuit={(k) =>
+                k === "le-mans"
+                  ? hrefFor("travel", locale)
+                  : hrefFor(`ctravel:${k}`, locale)
+              }
+            />
+            <DestinationsMenu
+              label={dict.common.guidesHeading}
+              currentKey={circuitKey}
+              hrefForCircuit={(k) =>
+                k === "le-mans"
+                  ? hrefFor("guide:everything-booked", locale)
+                  : hrefFor(`cguide:${k}`, locale)
+              }
+            />
           </nav>
           <div className="flex items-center gap-2">
             <Link
