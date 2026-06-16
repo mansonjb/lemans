@@ -3,8 +3,9 @@ import type { ReactNode } from "react";
 import type { Dict } from "@/i18n";
 import { x } from "@/i18n/extra";
 import { LOCALES, type Locale, type PageDef } from "@/lib/types";
-import { hrefFor, pathFor, PAGES } from "@/lib/registry";
+import { hrefFor, pathFor, PAGES, circuitKeyForPage } from "@/lib/registry";
 import { SITE } from "@/lib/seo";
+import { CIRCUITS } from "@/data/circuits";
 import { placeByKey } from "@/data/places";
 import { GUIDE_CONTENT } from "@/data/guides";
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
@@ -49,6 +50,64 @@ function Wordmark() {
   );
 }
 
+/** The circuit network dropdown — the spine of the multi-circuit site, on every page. */
+function CircuitsMenu({
+  locale,
+  currentKey,
+  label,
+}: {
+  locale: Locale;
+  currentKey: string | null;
+  label: string;
+}) {
+  const xt = x(locale);
+  return (
+    <div className="group relative">
+      <button
+        type="button"
+        className="inline-flex items-center gap-1 hover:text-bleu"
+      >
+        {label}
+        <span className="text-[10px] text-muted">▾</span>
+      </button>
+      <div className="invisible absolute left-0 top-full z-50 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+        <div className="min-w-[300px] overflow-hidden rounded-xl border border-line bg-card shadow-lg">
+          <div className="h-1 bg-gradient-to-r from-bleu via-amber to-ink" />
+          <div className="p-2">
+            {CIRCUITS.map((c) => {
+              const active = c.key === currentKey;
+              const live = c.status === "live";
+              return (
+                <Link
+                  key={c.key}
+                  href={hrefFor(`circuit:${c.key}`, locale)}
+                  className={`flex items-center gap-2.5 rounded-lg px-3 py-2 hover:bg-paper ${
+                    active ? "bg-paper text-bleu" : ""
+                  }`}
+                >
+                  <span className="text-base" aria-hidden>
+                    {c.flag}
+                  </span>
+                  <span className="flex-1 font-medium">{c.name}</span>
+                  <span
+                    className={`rounded-sm px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
+                      live
+                        ? "bg-grass/15 text-grass"
+                        : "bg-line/60 text-muted"
+                    }`}
+                  >
+                    {live ? xt.circuitNet.flagship : xt.circuitNet.soon}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function PageShell({
   locale,
   dict,
@@ -62,6 +121,12 @@ export function PageShell({
   children: ReactNode;
   breadcrumbs?: Crumb[];
 }) {
+  const xt = x(locale);
+  const circuitKey = circuitKeyForPage(page);
+  const isLeMans = circuitKey === "le-mans";
+
+  // Le Mans is the only circuit with deep sub-pages today; those links only
+  // make sense (and only exist) on Le Mans pages.
   const eventPages = PAGES.filter((p) => p.template === "event");
   const placePages = PAGES.filter((p) => p.template === "place");
   const typePages = PAGES.filter((p) => p.template === "type");
@@ -78,66 +143,60 @@ export function PageShell({
             <Wordmark />
           </Link>
           <nav className="hidden items-center gap-5 text-sm font-medium md:flex">
-            <div className="group relative">
-              <button
-                type="button"
-                className="inline-flex items-center gap-1 hover:text-bleu"
-              >
-                {dict.nav.events}
-                <span className="text-[10px] text-muted">▾</span>
-              </button>
-              <div className="invisible absolute left-0 top-full z-50 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                <div className="min-w-[280px] overflow-hidden rounded-xl border border-line bg-card shadow-lg">
-                  <div className="h-1 bg-gradient-to-r from-bleu via-amber to-ink" />
-                  <div className="p-2">
-                    {eventPages.map((p) => (
-                      <Link
-                        key={p.key}
-                        href={pathFor(p, locale)}
-                        className="flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-paper hover:text-bleu"
-                      >
-                        <span className="font-display text-base italic text-bleu">
-                          ›
-                        </span>
-                        {eventLabel(p)}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <Link href={hrefFor("travel", locale)} className="hover:text-bleu">
-              {x(locale).navTravel}
-            </Link>
-            <Link
-              href={hrefFor("guide:everything-booked", locale)}
-              className="hover:text-bleu"
-            >
-              {dict.common.guidesHeading}
-            </Link>
+            <CircuitsMenu
+              locale={locale}
+              currentKey={circuitKey}
+              label={xt.navCircuits}
+            />
+            {isLeMans && (
+              <>
+                <Link
+                  href={hrefFor("travel", locale)}
+                  className="hover:text-bleu"
+                >
+                  {xt.navTravel}
+                </Link>
+                <Link
+                  href={hrefFor("guide:everything-booked", locale)}
+                  className="hover:text-bleu"
+                >
+                  {dict.common.guidesHeading}
+                </Link>
+              </>
+            )}
           </nav>
           <div className="flex items-center gap-2">
-            <Link
-              href={hrefFor("quiz", locale)}
-              className="hidden rounded-md bg-amber px-3 py-1.5 font-display text-sm font-bold uppercase tracking-wide text-ink shadow-sm transition hover:brightness-95 sm:inline-block"
-            >
-              {x(locale).ctaFindStay}
-            </Link>
+            {isLeMans && (
+              <Link
+                href={hrefFor("quiz", locale)}
+                className="hidden rounded-md bg-amber px-3 py-1.5 font-display text-sm font-bold uppercase tracking-wide text-ink shadow-sm transition hover:brightness-95 sm:inline-block"
+              >
+                {xt.ctaFindStay}
+              </Link>
+            )}
             <LangSwitcher page={page} locale={locale} />
           </div>
         </div>
+        {/* Mobile circuit switcher — jump to any circuit from anywhere. */}
         <div className="border-t border-line md:hidden">
           <div className="flex gap-2 overflow-x-auto px-4 py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {eventPages.map((p) => (
-              <Link
-                key={p.key}
-                href={pathFor(p, locale)}
-                className="whitespace-nowrap rounded-full border border-line bg-card px-3 py-1 text-xs font-semibold text-ink"
-              >
-                {dict.eventNames[p.ref as keyof typeof dict.eventNames]?.short ??
-                  p.ref}
-              </Link>
-            ))}
+            {CIRCUITS.map((c) => {
+              const active = c.key === circuitKey;
+              return (
+                <Link
+                  key={c.key}
+                  href={hrefFor(`circuit:${c.key}`, locale)}
+                  className={`flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1 text-xs font-semibold ${
+                    active
+                      ? "border-bleu bg-bleu/10 text-bleu"
+                      : "border-line bg-card text-ink"
+                  }`}
+                >
+                  <span aria-hidden>{c.flag}</span>
+                  {c.name}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </header>
@@ -148,85 +207,137 @@ export function PageShell({
 
       <footer className="mt-20 bg-ink text-white/80">
         <div className="h-1 bg-gradient-to-r from-bleu via-amber to-bleu" />
-        <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
+        <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-x-8 gap-y-10 px-4 py-12 sm:px-6 md:grid-cols-3 lg:grid-cols-5">
+          {/* Circuits — global, every page */}
           <div>
             <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white">
-              {dict.footer.events}
+              {xt.navCircuits}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              {eventPages.map((p) => (
-                <li key={p.key}>
-                  <Link href={pathFor(p, locale)} className="hover:text-amber">
-                    {eventLabel(p)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 font-display text-sm font-bold uppercase tracking-[0.2em] text-white">
-              {dict.footer.types}
-            </p>
-            <ul className="mt-4 space-y-2 text-sm">
-              {typePages.map((p) => (
-                <li key={p.key}>
-                  <Link href={pathFor(p, locale)} className="hover:text-amber">
-                    {
-                      dict.typePage[p.ref as "camping" | "hotels" | "rentals"]
-                        .heroTitle
-                    }
+              {CIRCUITS.map((c) => (
+                <li key={c.key}>
+                  <Link
+                    href={hrefFor(`circuit:${c.key}`, locale)}
+                    className="flex items-center gap-2 hover:text-amber"
+                  >
+                    <span aria-hidden>{c.flag}</span>
+                    {c.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white">
-              {dict.footer.zones}
-            </p>
-            <ul className="mt-4 columns-2 space-y-2 text-sm md:columns-1 lg:columns-2">
-              {placePages.map((p) => {
-                const place = placeByKey(p.ref ?? "");
-                const label =
-                  p.ref === "le-mans-city-centre"
-                    ? "Le Mans"
-                    : place?.name ?? p.ref;
-                return (
+
+          {/* Le Mans deep links — only on Le Mans pages, clearly labelled */}
+          {isLeMans && (
+            <div>
+              <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white">
+                Le Mans
+              </p>
+              <ul className="mt-4 space-y-2 text-sm">
+                {eventPages.map((p) => (
                   <li key={p.key}>
                     <Link href={pathFor(p, locale)} className="hover:text-amber">
-                      {label}
+                      {eventLabel(p)}
                     </Link>
                   </li>
-                );
-              })}
-            </ul>
-          </div>
+                ))}
+              </ul>
+              <p className="mt-6 font-display text-sm font-bold uppercase tracking-[0.2em] text-white">
+                {dict.footer.types}
+              </p>
+              <ul className="mt-4 space-y-2 text-sm">
+                {typePages.map((p) => (
+                  <li key={p.key}>
+                    <Link href={pathFor(p, locale)} className="hover:text-amber">
+                      {
+                        dict.typePage[p.ref as "camping" | "hotels" | "rentals"]
+                          .heroTitle
+                      }
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {isLeMans && (
+            <div>
+              <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white">
+                {dict.footer.zones}
+              </p>
+              <ul className="mt-4 space-y-2 text-sm">
+                {placePages.map((p) => {
+                  const place = placeByKey(p.ref ?? "");
+                  const label =
+                    p.ref === "le-mans-city-centre"
+                      ? "Le Mans"
+                      : place?.name ?? p.ref;
+                  return (
+                    <li key={p.key}>
+                      <Link
+                        href={pathFor(p, locale)}
+                        className="hover:text-amber"
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+
+          {/* Guides + site — guides only when on Le Mans */}
           <div>
-            <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white">
-              {dict.footer.guides}
-            </p>
-            <ul className="mt-4 space-y-2 text-sm">
-              {guidePages.map((p) => (
-                <li key={p.key}>
-                  <Link href={pathFor(p, locale)} className="hover:text-amber">
-                    {GUIDE_CONTENT[p.ref ?? ""]?.[locale]?.title ??
-                      p.slugs[locale].split("/")[1].split("-").join(" ")}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 font-display text-sm font-bold uppercase tracking-[0.2em] text-white">
+            {isLeMans && (
+              <>
+                <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white">
+                  {dict.footer.guides}
+                </p>
+                <ul className="mt-4 space-y-2 text-sm">
+                  {guidePages.map((p) => (
+                    <li key={p.key}>
+                      <Link
+                        href={pathFor(p, locale)}
+                        className="hover:text-amber"
+                      >
+                        {GUIDE_CONTENT[p.ref ?? ""]?.[locale]?.title ??
+                          p.slugs[locale].split("/")[1].split("-").join(" ")}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            <p
+              className={`font-display text-sm font-bold uppercase tracking-[0.2em] text-white ${
+                isLeMans ? "mt-6" : ""
+              }`}
+            >
               {dict.footer.site}
             </p>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>
-                <Link href={hrefFor("quiz", locale)} className="hover:text-amber">
-                  {x(locale).ctaFindStay}
-                </Link>
-              </li>
-              <li>
-                <Link href={hrefFor("travel", locale)} className="hover:text-amber">
-                  {x(locale).navTravel}
-                </Link>
-              </li>
+              {isLeMans && (
+                <>
+                  <li>
+                    <Link
+                      href={hrefFor("quiz", locale)}
+                      className="hover:text-amber"
+                    >
+                      {xt.ctaFindStay}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={hrefFor("travel", locale)}
+                      className="hover:text-amber"
+                    >
+                      {xt.navTravel}
+                    </Link>
+                  </li>
+                </>
+              )}
               <li>
                 <Link href={hrefFor("about", locale)} className="hover:text-amber">
                   {dict.about.title}
@@ -255,6 +366,7 @@ export function PageShell({
               </li>
             </ul>
           </div>
+
           <div className="text-xs leading-relaxed text-white/60">
             <Wordmark />
             <p className="mt-4">{dict.footer.disclaimer}</p>

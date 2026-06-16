@@ -15,6 +15,7 @@ export interface FaqCtx {
 export interface ExtraDict {
   ctaFindStay: string;
   navTravel: string;
+  navCircuits: string;
   homeQuiz: { title: string; text: string; cta: string };
   faq: (c: FaqCtx) => FaqItem[];
   accommodation: {
@@ -128,6 +129,7 @@ export interface ExtraDict {
 const enX: ExtraDict = {
   ctaFindStay: "Find your stay",
   navTravel: "Getting there",
+  navCircuits: "Circuits",
   homeQuiz: {
     title: "Not sure where to base yourself?",
     text: "Answer five quick questions and we'll point you to the right zones, the best-matched stays and a live map for your race weekend.",
@@ -424,6 +426,7 @@ const enX: ExtraDict = {
 const frX: ExtraDict = {
   ctaFindStay: "Trouver mon hébergement",
   navTravel: "Comment venir",
+  navCircuits: "Circuits",
   homeQuiz: {
     title: "Vous ne savez pas où poser votre camp ?",
     text: "Répondez à cinq questions rapides : on vous oriente vers les bonnes zones, les hébergements les plus adaptés et une carte en direct pour votre week-end de course.",
@@ -720,6 +723,7 @@ const frX: ExtraDict = {
 const nlX: ExtraDict = {
   ctaFindStay: "Vind jouw verblijf",
   navTravel: "Route ernaartoe",
+  navCircuits: "Circuits",
   homeQuiz: {
     title: "Weet je niet waar je je moet baseren?",
     text: "Beantwoord vijf korte vragen en we wijzen je de juiste zones, de best passende verblijven en een live kaart voor jouw raceweekend.",
@@ -1006,6 +1010,7 @@ const nlX: ExtraDict = {
 const deX: ExtraDict = {
   ctaFindStay: "Unterkunft finden",
   navTravel: "Anreise",
+  navCircuits: "Strecken",
   homeQuiz: {
     title: "Unsicher, wo Sie sich einquartieren sollen?",
     text: "Beantworten Sie fünf kurze Fragen und wir zeigen Ihnen die passenden Zonen, die am besten passenden Unterkünfte und eine Live-Karte für Ihr Rennwochenende.",
@@ -1292,6 +1297,7 @@ const deX: ExtraDict = {
 const itX: ExtraDict = {
   ctaFindStay: "Trova il tuo alloggio",
   navTravel: "Come arrivare",
+  navCircuits: "Circuiti",
   homeQuiz: {
     title: "Non sai dove sistemarti?",
     text: "Rispondi a cinque domande veloci e ti indichiamo le zone giuste, gli alloggi più adatti e una mappa in tempo reale per il tuo weekend di gara.",
@@ -1578,6 +1584,7 @@ const itX: ExtraDict = {
 const esX: ExtraDict = {
   ctaFindStay: "Encuentra tu alojamiento",
   navTravel: "Cómo llegar",
+  navCircuits: "Circuitos",
   homeQuiz: {
     title: "¿No sabes dónde alojarte?",
     text: "Responde cinco preguntas rápidas y te señalamos las zonas adecuadas, los alojamientos que mejor encajan y un mapa en directo para tu fin de semana de carreras.",

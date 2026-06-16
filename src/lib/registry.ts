@@ -171,6 +171,31 @@ export const PAGES: PageDef[] = [
 export const pageByKey = (key: string): PageDef | undefined =>
   PAGES.find((p) => p.key === key);
 
+/** Templates whose content lives under the Le Mans circuit. */
+const LM_SCOPED = new Set([
+  "event",
+  "place",
+  "type",
+  "cross",
+  "eventzone",
+  "money",
+  "guide",
+  "quiz",
+  "travel",
+]);
+
+/**
+ * Which circuit a page belongs to, or null for the global hub and the
+ * site-wide static pages. Drives the circuit-aware header/footer chrome.
+ */
+export const circuitKeyForPage = (page: PageDef): string | null => {
+  if (page.template === "home") return "le-mans";
+  if (page.template === "circuithub" || page.template === "circuitsoon")
+    return page.ref ?? null;
+  if (LM_SCOPED.has(page.template)) return "le-mans";
+  return null;
+};
+
 export const resolvePage = (
   locale: Locale,
   slugParts: string[]
