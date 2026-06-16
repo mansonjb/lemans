@@ -94,6 +94,7 @@ export type TemplateKind =
   | "circuitguide"
   | "circuitzone"
   | "circuitfilter"
+  | "guideindex"
   | "home"
   | "event"
   | "place"

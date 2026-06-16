@@ -18,6 +18,7 @@ const PRIORITY: Record<string, number> = {
   cross: 0.65,
   eventzone: 0.6,
   guide: 0.6,
+  guideindex: 0.6,
 };
 
 const CHANGEFREQ: Record<string, MetadataRoute.Sitemap[number]["changeFrequency"]> = {

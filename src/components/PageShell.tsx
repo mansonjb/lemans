@@ -283,7 +283,7 @@ export function PageShell({
               currentKey={circuitKey}
               hrefForCircuit={(k) =>
                 k === "le-mans"
-                  ? hrefFor("guide:everything-booked", locale)
+                  ? hrefFor("guides", locale)
                   : hrefFor(`cguide:${k}`, locale)
               }
             />

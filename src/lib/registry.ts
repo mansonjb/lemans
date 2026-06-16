@@ -185,6 +185,18 @@ export const PAGES: PageDef[] = [
     ref: g.key,
   })),
   {
+    key: "guides",
+    template: "guideindex",
+    slugs: lm({
+      en: "guides",
+      fr: "guides",
+      nl: "gidsen",
+      de: "guides",
+      it: "guide",
+      es: "guias",
+    }),
+  },
+  {
     key: "quiz",
     template: "quiz",
     slugs: lm({
@@ -270,6 +282,7 @@ const LM_SCOPED = new Set([
   "eventzone",
   "money",
   "guide",
+  "guideindex",
   "quiz",
   "travel",
 ]);

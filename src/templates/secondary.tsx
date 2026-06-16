@@ -9,7 +9,7 @@ import type {
 } from "@/lib/types";
 import { EVENTS, eventByKey } from "@/data/events";
 import { PLACES, placeByKey } from "@/data/places";
-import { CROSS_PAGES } from "@/data/catalog";
+import { CROSS_PAGES, GUIDES } from "@/data/catalog";
 import { HOTELS, hotelsByZone, hotelSlug } from "@/data/hotels";
 import { hasHotelImage, hotelImageSrc } from "@/data/hotel-images";
 import { zonePhotos } from "@/data/zone-images";
@@ -497,6 +497,47 @@ export function GuideTemplate({
           </Link>
         </div>
       </article>
+    </Container>
+  );
+}
+
+/** Le Mans guides index — lists every Le Mans survival guide. */
+export function GuidesIndexTemplate({
+  dict,
+  locale,
+}: {
+  dict: Dict;
+  locale: Locale;
+}) {
+  return (
+    <Container className="py-14 sm:py-20">
+      <Kicker>Le Mans</Kicker>
+      <h1 className="mt-3 font-display text-4xl font-bold uppercase italic leading-[1.02] tracking-tight sm:text-5xl">
+        {dict.common.guidesHeading}
+      </h1>
+      <div className="speedline mt-5 w-40" />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        {GUIDES.map((g) => {
+          const c = GUIDE_CONTENT[g.key][locale];
+          return (
+            <Link
+              key={g.key}
+              href={hrefFor(`guide:${g.key}`, locale)}
+              className="group flex flex-col rounded-2xl border border-line bg-card p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
+            >
+              <h2 className="font-display text-xl font-bold uppercase italic tracking-tight group-hover:text-bleu">
+                {c.title}
+              </h2>
+              <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted">
+                {c.description}
+              </p>
+              <span className="mt-4 font-display text-sm font-bold uppercase tracking-wide text-bleu transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </Link>
+          );
+        })}
+      </div>
     </Container>
   );
 }

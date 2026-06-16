@@ -41,6 +41,7 @@ import {
   CrossTemplate,
   EventZoneTemplate,
   GuideTemplate,
+  GuidesIndexTemplate,
   QuizTemplate,
   StaticTemplate,
   TravelTemplate,
@@ -174,6 +175,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description = g.description;
       break;
     }
+    case "guideindex": {
+      title = `${dict.common.guidesHeading} · Le Mans | ${dict.siteName}`;
+      description = GUIDE_CONTENT["everything-booked"][locale].description;
+      break;
+    }
     case "quiz": {
       title = `${x(locale).quiz.title} | ${dict.siteName}`;
       description = x(locale).quiz.metaDescription;
@@ -239,6 +245,7 @@ function buildCrumbs(
     "eventzone",
     "money",
     "guide",
+    "guideindex",
     "quiz",
     "travel",
   ]);
@@ -343,6 +350,9 @@ function buildCrumbs(
     }
     case "guide":
       crumbs.push({ name: GUIDE_CONTENT[page.ref!][locale].title, href: here });
+      break;
+    case "guideindex":
+      crumbs.push({ name: dict.common.guidesHeading, href: here });
       break;
     case "quiz":
       crumbs.push({ name: x(locale).quiz.title, href: here });
@@ -486,6 +496,9 @@ export default async function Page({ params }: Props) {
       break;
     case "guide":
       body = <GuideTemplate dict={dict} locale={locale} guideKey={page.ref!} />;
+      break;
+    case "guideindex":
+      body = <GuidesIndexTemplate dict={dict} locale={locale} />;
       break;
     case "quiz":
       body = <QuizTemplate dict={dict} locale={locale} />;
