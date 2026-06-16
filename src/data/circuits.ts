@@ -50,7 +50,7 @@ export const CIRCUITS: Circuit[] = [
     lat: 50.4372,
     lng: 5.9714,
     events: "Belgian Grand Prix · 6 Hours of Spa",
-    status: "soon",
+    status: "live",
   },
   {
     key: "zandvoort",
@@ -61,7 +61,7 @@ export const CIRCUITS: Circuit[] = [
     lat: 52.3888,
     lng: 4.5409,
     events: "Dutch Grand Prix",
-    status: "soon",
+    status: "live",
   },
   {
     key: "nurburgring",
@@ -72,7 +72,7 @@ export const CIRCUITS: Circuit[] = [
     lat: 50.3356,
     lng: 6.9475,
     events: "Nürburgring 24 Hours",
-    status: "soon",
+    status: "live",
   },
   {
     key: "monza",
@@ -83,7 +83,7 @@ export const CIRCUITS: Circuit[] = [
     lat: 45.6156,
     lng: 9.2811,
     events: "Italian Grand Prix",
-    status: "soon",
+    status: "live",
   },
   {
     key: "spielberg",
@@ -94,7 +94,7 @@ export const CIRCUITS: Circuit[] = [
     lat: 47.2197,
     lng: 14.7647,
     events: "Austrian Grand Prix · MotoGP",
-    status: "soon",
+    status: "live",
   },
   {
     key: "monaco",
@@ -105,7 +105,7 @@ export const CIRCUITS: Circuit[] = [
     lat: 43.7347,
     lng: 7.4206,
     events: "Monaco Grand Prix",
-    status: "soon",
+    status: "live",
   },
   {
     key: "barcelona",
@@ -116,7 +116,7 @@ export const CIRCUITS: Circuit[] = [
     lat: 41.57,
     lng: 2.2611,
     events: "Spanish Grand Prix · MotoGP",
-    status: "soon",
+    status: "live",
   },
 ];
 

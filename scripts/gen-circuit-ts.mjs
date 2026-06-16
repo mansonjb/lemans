@@ -36,7 +36,8 @@ const hotels = raw
   .filter((h) => h.distKm <= MAX_KM)
   .sort((a, b) => a.ring - b.ring || a.distKm - b.distKm || (b.score ?? 0) - (a.score ?? 0))
   .map((h) => {
-    const city = h.city || "Circuit area";
+    // Fall back for missing or code-like city values (e.g. "Hb004484").
+    const city = h.city && !/\d/.test(h.city) ? h.city : "Circuit area";
     return {
       name: h.name,
       slug: h.slug,
