@@ -123,6 +123,53 @@ export interface ExtraDict {
     mapHeading: (circuit: string) => string;
     faq: (circuit: string, event: string, town: string, bookAhead: string) => FaqItem[];
   };
+  /** Per-circuit sub-pages: getting there, race-week guide, zones, filters. */
+  circuitPages: {
+    travelKicker: string;
+    travelTitle: (circuit: string) => string;
+    travelIntro: (circuit: string, event: string) => string;
+    byPlane: string;
+    byTrain: string;
+    byCar: string;
+    planeNote: (circuit: string) => string;
+    trainNote: string;
+    carNote: string;
+    carBody: (circuit: string) => string;
+    minByCar: (min: number) => string;
+    searchFlights: string;
+    mapHere: (circuit: string) => string;
+    guideKicker: string;
+    guideTitle: (circuit: string) => string;
+    guideIntro: (circuit: string, event: string) => string;
+    whenToBook: string;
+    whereToBase: string;
+    campingH: string;
+    gettingAround: string;
+    whenToBookBody: (event: string, bookAhead: string) => string;
+    whereToBaseBody: (circuit: string, town: string) => string;
+    campingBody: (circuit: string) => string;
+    gettingAroundBody: (circuit: string, roads: string) => string;
+    zoneKicker: (circuit: string) => string;
+    zoneTitle: (zone: string, circuit: string) => string;
+    zoneIntro: (
+      zone: string,
+      circuit: string,
+      event: string,
+      driveMin: number
+    ) => string;
+    zoneStaysH: (zone: string) => string;
+    zoneMapH: (zone: string) => string;
+    otherZones: (circuit: string) => string;
+    filterKicker: string;
+    filterTitle: Record<
+      "hotels" | "campsites" | "walking-distance" | "cheap",
+      (circuit: string) => string
+    >;
+    filterIntro: Record<
+      "hotels" | "campsites" | "walking-distance" | "cheap",
+      (circuit: string, event: string) => string
+    >;
+  };
 }
 
 /* ----------------------------- ENGLISH ----------------------------- */
@@ -419,6 +466,63 @@ const enX: ExtraDict = {
         a: "Yes. Every stay links to live availability and pricing for your dates, and the map updates in real time. We may earn a commission if you book, at no extra cost to you.",
       },
     ],
+  },
+  circuitPages: {
+    travelKicker: "Getting there",
+    travelTitle: (c) => `Getting to ${c}`,
+    travelIntro: (c, e) =>
+      `How to reach ${c} for the ${e}: the closest airports, the nearest train stations and the main roads in, plus a live map of where to stay once you arrive.`,
+    byPlane: "By plane",
+    byTrain: "By train",
+    byCar: "By car",
+    planeNote: (c) => `Closest airports to ${c}, nearest first.`,
+    trainNote: "Nearest stations, then a taxi or shuttle for the last stretch.",
+    carNote: "Main roads in — expect heavy race-day traffic near the gates.",
+    carBody: (c) =>
+      `Driving is the simplest way to reach ${c} and the surrounding towns. Leave early on race mornings and book a stay with parking or a short hop to the circuit.`,
+    minByCar: (m) => `${m} min by car`,
+    searchFlights: "Search flights",
+    mapHere: (c) => `Where to stay around ${c}`,
+    guideKicker: "Race-week guide",
+    guideTitle: (c) => `${c} race-week guide`,
+    guideIntro: (c, e) =>
+      `Everything you need to plan a stay for the ${e} at ${c}: when to book, the best areas to base yourself, camping and how to get around on race days.`,
+    whenToBook: "When to book",
+    whereToBase: "Where to base yourself",
+    campingH: "Camping",
+    gettingAround: "Getting around",
+    whenToBookBody: (e, b) =>
+      `The closest stays for the ${e} sell out ${b} ahead. Book with free cancellation as soon as the dates are confirmed, then refine closer to the weekend.`,
+    whereToBaseBody: (c, t) =>
+      `The handiest bases are right by the circuit and in ${t}. For more choice and better prices, widen to the towns within about 30 minutes — they fill up later and still link back to the circuit easily.`,
+    campingBody: (c) =>
+      `Official and private campsites open around ${c} for the race weekend. They are the closest, cheapest option and the first to sell out, so book ahead and bring everything you need.`,
+    gettingAroundBody: (c, r) =>
+      `Most fans drive: the main roads in are ${r}, and traffic peaks right before and after sessions. Leave early, share lifts where you can, and check for park-and-ride or shuttle options.`,
+    zoneKicker: (c) => `Near ${c}`,
+    zoneTitle: (z, c) => `Where to stay in ${z} for ${c}`,
+    zoneIntro: (z, c, e, m) =>
+      `${z} is ${m === 0 ? "right at the circuit" : `about ${m} minutes from ${c}`} — a practical base for the ${e}. Here are its stays with live prices, plus a map of what's available on your dates.`,
+    zoneStaysH: (z) => `Stays in ${z}`,
+    zoneMapH: (z) => `Live availability in ${z}`,
+    otherZones: (c) => `Other areas near ${c}`,
+    filterKicker: "Filtered stays",
+    filterTitle: {
+      hotels: (c) => `Hotels near ${c}`,
+      campsites: (c) => `Campsites near ${c}`,
+      "walking-distance": (c) => `Closest stays to ${c}`,
+      cheap: (c) => `Cheap stays near ${c}`,
+    },
+    filterIntro: {
+      hotels: (c, e) =>
+        `Hotels near ${c} for the ${e}, closest first, with live prices for the race weekend. From simple roadside stops to comfortable bases a short drive from the gates.`,
+      campsites: (c, e) =>
+        `Campsites near ${c} for the ${e}: the closest, best-value way to stay trackside. They sell out first, so book early.`,
+      "walking-distance": (c, e) =>
+        `The closest stays to ${c} for the ${e} — walking distance or a few minutes by car. Tiny inventory that goes fast, so book the moment dates are set.`,
+      cheap: (c, e) =>
+        `The best-value stays near ${c} for the ${e}. Budget hotels, guest houses and campsites, closest first, with live prices.`,
+    },
   },
 };
 
@@ -717,6 +821,65 @@ const frX: ExtraDict = {
       },
     ],
   },
+  circuitPages: {
+    travelKicker: "Accès",
+    travelTitle: (c) => `Comment venir à ${c}`,
+    travelIntro: (c, e) =>
+      `Comment rejoindre ${c} pour le ${e} : les aéroports les plus proches, les gares les plus pratiques et les grands axes routiers, plus une carte en direct des hébergements une fois sur place.`,
+    byPlane: "En avion",
+    byTrain: "En train",
+    byCar: "En voiture",
+    planeNote: (c) =>
+      `Aéroports les plus proches de ${c}, du plus près au plus loin.`,
+    trainNote:
+      "Gares les plus proches, puis taxi ou navette pour le dernier kilomètre.",
+    carNote: "Grands axes d'accès — trafic dense les jours de course près des entrées.",
+    carBody: (c) =>
+      `La voiture reste le moyen le plus simple de rejoindre ${c} et les villes alentour. Partez tôt les matins de course et réservez un hébergement avec parking ou à quelques minutes du circuit.`,
+    minByCar: (m) => `${m} min en voiture`,
+    searchFlights: "Chercher un vol",
+    mapHere: (c) => `Où dormir autour de ${c}`,
+    guideKicker: "Guide week-end de course",
+    guideTitle: (c) => `Guide week-end de course : ${c}`,
+    guideIntro: (c, e) =>
+      `Tout pour préparer un séjour au ${e} à ${c} : quand réserver, les meilleures zones où se baser, le camping et comment circuler les jours de course.`,
+    whenToBook: "Quand réserver",
+    whereToBase: "Où se baser",
+    campingH: "Camping",
+    gettingAround: "Se déplacer",
+    whenToBookBody: (e, b) =>
+      `Les hébergements les plus proches pour le ${e} affichent complet ${b} à l'avance. Réservez avec annulation gratuite dès que les dates sont connues, puis affinez à l'approche du week-end.`,
+    whereToBaseBody: (c, t) =>
+      `Les bases les plus pratiques sont au bord du circuit et à ${t}. Pour plus de choix et de meilleurs prix, élargissez aux villes à une trentaine de minutes : elles se remplissent plus tard et restent bien reliées au circuit.`,
+    campingBody: (c) =>
+      `Des campings officiels et privés ouvrent autour de ${c} pour le week-end de course. C'est l'option la plus proche et la moins chère, la première à partir : réservez tôt et venez équipé.`,
+    gettingAroundBody: (c, r) =>
+      `La plupart des fans viennent en voiture : les grands axes sont ${r}, et le trafic culmine juste avant et après les séances. Partez tôt, covoiturez si possible et repérez les parkings-relais ou navettes.`,
+    zoneKicker: (c) => `Près de ${c}`,
+    zoneTitle: (z, c) => `Où dormir à ${z} pour ${c}`,
+    zoneIntro: (z, c, e, m) =>
+      `${z} est ${m === 0 ? "juste au circuit" : `à environ ${m} minutes de ${c}`} — une base pratique pour le ${e}. Voici ses hébergements avec les prix en direct, plus une carte des disponibilités à vos dates.`,
+    zoneStaysH: (z) => `Hébergements à ${z}`,
+    zoneMapH: (z) => `Disponibilités en direct à ${z}`,
+    otherZones: (c) => `Autres zones près de ${c}`,
+    filterKicker: "Hébergements filtrés",
+    filterTitle: {
+      hotels: (c) => `Hôtels près de ${c}`,
+      campsites: (c) => `Campings près de ${c}`,
+      "walking-distance": (c) => `Hébergements les plus proches de ${c}`,
+      cheap: (c) => `Hébergements pas chers près de ${c}`,
+    },
+    filterIntro: {
+      hotels: (c, e) =>
+        `Les hôtels près de ${c} pour le ${e}, du plus proche au plus loin, avec les prix en direct. Du simple arrêt en bord de route à la base confortable à quelques minutes des entrées.`,
+      campsites: (c, e) =>
+        `Les campings près de ${c} pour le ${e} : la façon la plus proche et la plus économique de dormir au bord de la piste. Ils partent en premier, réservez tôt.`,
+      "walking-distance": (c, e) =>
+        `Les hébergements les plus proches de ${c} pour le ${e} — à pied ou à quelques minutes en voiture. Très peu de stock qui part vite : réservez dès les dates connues.`,
+      cheap: (c, e) =>
+        `Les hébergements au meilleur rapport qualité-prix près de ${c} pour le ${e}. Hôtels économiques, chambres d'hôtes et campings, du plus proche au plus loin, prix en direct.`,
+    },
+  },
 };
 
 /* ----------------------------- DUTCH ----------------------------- */
@@ -1003,6 +1166,64 @@ const nlX: ExtraDict = {
         a: "Ja. Elk verblijf linkt naar live beschikbaarheid en prijzen voor jouw data, en de kaart werkt in realtime bij. We ontvangen mogelijk een commissie als je boekt, zonder extra kosten voor jou.",
       },
     ],
+  },
+  circuitPages: {
+    travelKicker: "Bereikbaarheid",
+    travelTitle: (c) => `Reizen naar ${c}`,
+    travelIntro: (c, e) =>
+      `Hoe je ${c} bereikt voor de ${e}: de dichtstbijzijnde luchthavens, de handigste treinstations en de belangrijkste wegen, plus een live kaart van overnachtingen zodra je er bent.`,
+    byPlane: "Met het vliegtuig",
+    byTrain: "Met de trein",
+    byCar: "Met de auto",
+    planeNote: (c) => `Dichtstbijzijnde luchthavens bij ${c}, dichtstbij eerst.`,
+    trainNote:
+      "Dichtstbijzijnde stations, daarna een taxi of shuttle voor het laatste stuk.",
+    carNote: "Belangrijkste aanrijroutes — reken op druk verkeer op racedagen bij de poorten.",
+    carBody: (c) =>
+      `Met de auto is het veruit het makkelijkst om ${c} en de omliggende plaatsen te bereiken. Vertrek vroeg op racedagen en boek een verblijf met parkeerplaats of op een paar minuten van het circuit.`,
+    minByCar: (m) => `${m} min met de auto`,
+    searchFlights: "Vluchten zoeken",
+    mapHere: (c) => `Waar overnachten rond ${c}`,
+    guideKicker: "Raceweek-gids",
+    guideTitle: (c) => `Raceweek-gids ${c}`,
+    guideIntro: (c, e) =>
+      `Alles om een verblijf voor de ${e} op ${c} te plannen: wanneer boeken, de beste gebieden om te overnachten, kamperen en hoe je je op racedagen verplaatst.`,
+    whenToBook: "Wanneer boeken",
+    whereToBase: "Waar overnachten",
+    campingH: "Kamperen",
+    gettingAround: "Verplaatsen",
+    whenToBookBody: (e, b) =>
+      `De dichtstbijzijnde verblijven voor de ${e} zijn ${b} van tevoren volgeboekt. Boek met gratis annulering zodra de data bekend zijn en verfijn dichter bij het weekend.`,
+    whereToBaseBody: (c, t) =>
+      `De handigste uitvalsbases liggen pal bij het circuit en in ${t}. Voor meer keuze en betere prijzen verbreed je naar de plaatsen binnen zo'n 30 minuten: die lopen later vol en blijven goed verbonden met het circuit.`,
+    campingBody: (c) =>
+      `Officiële en particuliere campings openen rond ${c} voor het raceweekend. Het is de dichtstbijzijnde, goedkoopste optie en het eerst vol, dus boek op tijd en neem alles mee.`,
+    gettingAroundBody: (c, r) =>
+      `De meeste fans rijden: de belangrijkste wegen zijn ${r}, en het verkeer piekt vlak voor en na de sessies. Vertrek vroeg, rijd samen waar het kan en let op P+R of shuttles.`,
+    zoneKicker: (c) => `Bij ${c}`,
+    zoneTitle: (z, c) => `Waar overnachten in ${z} voor ${c}`,
+    zoneIntro: (z, c, e, m) =>
+      `${z} ligt ${m === 0 ? "pal bij het circuit" : `op zo'n ${m} minuten van ${c}`} — een praktische uitvalsbasis voor de ${e}. Hier de verblijven met live prijzen, plus een kaart van wat beschikbaar is op jouw data.`,
+    zoneStaysH: (z) => `Verblijven in ${z}`,
+    zoneMapH: (z) => `Live beschikbaarheid in ${z}`,
+    otherZones: (c) => `Andere gebieden bij ${c}`,
+    filterKicker: "Gefilterde verblijven",
+    filterTitle: {
+      hotels: (c) => `Hotels bij ${c}`,
+      campsites: (c) => `Campings bij ${c}`,
+      "walking-distance": (c) => `Dichtstbijzijnde verblijven bij ${c}`,
+      cheap: (c) => `Goedkope verblijven bij ${c}`,
+    },
+    filterIntro: {
+      hotels: (c, e) =>
+        `Hotels bij ${c} voor de ${e}, dichtstbij eerst, met live prijzen voor het raceweekend. Van eenvoudige stops langs de weg tot comfortabele bases op een paar minuten van de poorten.`,
+      campsites: (c, e) =>
+        `Campings bij ${c} voor de ${e}: de dichtstbijzijnde, voordeligste manier om langs de baan te overnachten. Ze zijn het eerst vol, dus boek vroeg.`,
+      "walking-distance": (c, e) =>
+        `De dichtstbijzijnde verblijven bij ${c} voor de ${e} — op loopafstand of een paar minuten rijden. Weinig aanbod dat snel weg is, dus boek zodra de data vaststaan.`,
+      cheap: (c, e) =>
+        `De voordeligste verblijven bij ${c} voor de ${e}. Budgethotels, pensions en campings, dichtstbij eerst, met live prijzen.`,
+    },
   },
 };
 
@@ -1291,6 +1512,63 @@ const deX: ExtraDict = {
       },
     ],
   },
+  circuitPages: {
+    travelKicker: "Anreise",
+    travelTitle: (c) => `Anreise zum ${c}`,
+    travelIntro: (c, e) =>
+      `Wie du zum ${c} für das ${e} kommst: die nächsten Flughäfen, die nächstgelegenen Bahnhöfe und die wichtigsten Straßen, plus eine Live-Karte der Unterkünfte vor Ort.`,
+    byPlane: "Mit dem Flugzeug",
+    byTrain: "Mit der Bahn",
+    byCar: "Mit dem Auto",
+    planeNote: (c) => `Nächste Flughäfen zum ${c}, die nächsten zuerst.`,
+    trainNote: "Nächste Bahnhöfe, danach Taxi oder Shuttle für das letzte Stück.",
+    carNote: "Hauptzufahrten — an Renntagen dichter Verkehr nahe den Toren.",
+    carBody: (c) =>
+      `Mit dem Auto erreichst du ${c} und die umliegenden Orte am einfachsten. Fahre an Renntagen früh los und buche eine Unterkunft mit Parkplatz oder wenige Minuten von der Strecke.`,
+    minByCar: (m) => `${m} Min. mit dem Auto`,
+    searchFlights: "Flüge suchen",
+    mapHere: (c) => `Wo übernachten rund um ${c}`,
+    guideKicker: "Rennwochenende-Guide",
+    guideTitle: (c) => `Rennwochenende-Guide ${c}`,
+    guideIntro: (c, e) =>
+      `Alles für die Planung eines Aufenthalts zum ${e} am ${c}: wann buchen, die besten Gegenden zum Übernachten, Camping und wie du dich an Renntagen bewegst.`,
+    whenToBook: "Wann buchen",
+    whereToBase: "Wo übernachten",
+    campingH: "Camping",
+    gettingAround: "Vor Ort unterwegs",
+    whenToBookBody: (e, b) =>
+      `Die nächstgelegenen Unterkünfte für das ${e} sind ${b} im Voraus ausgebucht. Buche mit kostenloser Stornierung, sobald die Termine feststehen, und passe näher am Wochenende an.`,
+    whereToBaseBody: (c, t) =>
+      `Die praktischsten Standorte liegen direkt an der Strecke und in ${t}. Für mehr Auswahl und bessere Preise erweitere auf die Orte in rund 30 Minuten: Sie füllen sich später und bleiben gut an die Strecke angebunden.`,
+    campingBody: (c) =>
+      `Offizielle und private Campingplätze öffnen rund um ${c} zum Rennwochenende. Sie sind die nächste, günstigste Option und zuerst ausgebucht, also früh buchen und alles mitbringen.`,
+    gettingAroundBody: (c, r) =>
+      `Die meisten Fans fahren mit dem Auto: Die Hauptstraßen sind ${r}, der Verkehr ist kurz vor und nach den Sessions am dichtesten. Fahre früh los, bilde Fahrgemeinschaften und achte auf Park-and-ride oder Shuttles.`,
+    zoneKicker: (c) => `Nahe ${c}`,
+    zoneTitle: (z, c) => `Wo übernachten in ${z} für ${c}`,
+    zoneIntro: (z, c, e, m) =>
+      `${z} liegt ${m === 0 ? "direkt an der Strecke" : `etwa ${m} Minuten von ${c}`} — eine praktische Basis für das ${e}. Hier die Unterkünfte mit Live-Preisen, plus eine Karte der Verfügbarkeit für deine Daten.`,
+    zoneStaysH: (z) => `Unterkünfte in ${z}`,
+    zoneMapH: (z) => `Live-Verfügbarkeit in ${z}`,
+    otherZones: (c) => `Weitere Gegenden nahe ${c}`,
+    filterKicker: "Gefilterte Unterkünfte",
+    filterTitle: {
+      hotels: (c) => `Hotels nahe ${c}`,
+      campsites: (c) => `Campingplätze nahe ${c}`,
+      "walking-distance": (c) => `Nächste Unterkünfte zum ${c}`,
+      cheap: (c) => `Günstige Unterkünfte nahe ${c}`,
+    },
+    filterIntro: {
+      hotels: (c, e) =>
+        `Hotels nahe ${c} für das ${e}, die nächsten zuerst, mit Live-Preisen fürs Rennwochenende. Von einfachen Stopps an der Straße bis zu komfortablen Basen wenige Minuten von den Toren.`,
+      campsites: (c, e) =>
+        `Campingplätze nahe ${c} für das ${e}: die nächste, günstigste Art, an der Strecke zu übernachten. Sie sind zuerst ausgebucht, also früh buchen.`,
+      "walking-distance": (c, e) =>
+        `Die nächstgelegenen Unterkünfte zum ${c} für das ${e} — zu Fuß oder wenige Minuten mit dem Auto. Wenig Angebot, das schnell weg ist, also buche, sobald die Termine stehen.`,
+      cheap: (c, e) =>
+        `Die preiswertesten Unterkünfte nahe ${c} für das ${e}. Budgethotels, Pensionen und Campingplätze, die nächsten zuerst, mit Live-Preisen.`,
+    },
+  },
 };
 
 /* ----------------------------- ITALIAN ----------------------------- */
@@ -1578,6 +1856,63 @@ const itX: ExtraDict = {
       },
     ],
   },
+  circuitPages: {
+    travelKicker: "Come arrivare",
+    travelTitle: (c) => `Come arrivare a ${c}`,
+    travelIntro: (c, e) =>
+      `Come raggiungere ${c} per il ${e}: gli aeroporti più vicini, le stazioni ferroviarie più comode e le principali vie d'accesso, più una mappa in tempo reale degli alloggi una volta arrivati.`,
+    byPlane: "In aereo",
+    byTrain: "In treno",
+    byCar: "In auto",
+    planeNote: (c) => `Aeroporti più vicini a ${c}, dal più vicino.`,
+    trainNote: "Stazioni più vicine, poi taxi o navetta per l'ultimo tratto.",
+    carNote: "Principali vie d'accesso — traffico intenso nei giorni di gara vicino agli ingressi.",
+    carBody: (c) =>
+      `L'auto è il modo più semplice per raggiungere ${c} e i paesi vicini. Parti presto nei giorni di gara e prenota un alloggio con parcheggio o a pochi minuti dal circuito.`,
+    minByCar: (m) => `${m} min in auto`,
+    searchFlights: "Cerca voli",
+    mapHere: (c) => `Dove dormire intorno a ${c}`,
+    guideKicker: "Guida al weekend di gara",
+    guideTitle: (c) => `Guida al weekend di gara: ${c}`,
+    guideIntro: (c, e) =>
+      `Tutto per organizzare un soggiorno per il ${e} a ${c}: quando prenotare, le zone migliori dove alloggiare, il campeggio e come muoversi nei giorni di gara.`,
+    whenToBook: "Quando prenotare",
+    whereToBase: "Dove alloggiare",
+    campingH: "Campeggio",
+    gettingAround: "Spostarsi",
+    whenToBookBody: (e, b) =>
+      `Gli alloggi più vicini per il ${e} si esauriscono ${b} prima. Prenota con cancellazione gratuita appena escono le date, poi affina avvicinandoti al weekend.`,
+    whereToBaseBody: (c, t) =>
+      `Le basi più comode sono a ridosso del circuito e a ${t}. Per più scelta e prezzi migliori, allarga ai paesi entro circa 30 minuti: si riempiono più tardi e restano ben collegati al circuito.`,
+    campingBody: (c) =>
+      `Campeggi ufficiali e privati aprono intorno a ${c} per il weekend di gara. Sono l'opzione più vicina ed economica e le prime a esaurirsi, quindi prenota per tempo e porta tutto il necessario.`,
+    gettingAroundBody: (c, r) =>
+      `La maggior parte dei fan arriva in auto: le strade principali sono ${r} e il traffico è al massimo subito prima e dopo le sessioni. Parti presto, condividi i passaggi e cerca parcheggi scambiatori o navette.`,
+    zoneKicker: (c) => `Vicino a ${c}`,
+    zoneTitle: (z, c) => `Dove dormire a ${z} per ${c}`,
+    zoneIntro: (z, c, e, m) =>
+      `${z} è ${m === 0 ? "proprio al circuito" : `a circa ${m} minuti da ${c}`} — una base pratica per il ${e}. Ecco i suoi alloggi con prezzi in tempo reale, più una mappa della disponibilità per le tue date.`,
+    zoneStaysH: (z) => `Alloggi a ${z}`,
+    zoneMapH: (z) => `Disponibilità in tempo reale a ${z}`,
+    otherZones: (c) => `Altre zone vicino a ${c}`,
+    filterKicker: "Alloggi filtrati",
+    filterTitle: {
+      hotels: (c) => `Hotel vicino a ${c}`,
+      campsites: (c) => `Campeggi vicino a ${c}`,
+      "walking-distance": (c) => `Alloggi più vicini a ${c}`,
+      cheap: (c) => `Alloggi economici vicino a ${c}`,
+    },
+    filterIntro: {
+      hotels: (c, e) =>
+        `Hotel vicino a ${c} per il ${e}, dal più vicino, con prezzi in tempo reale per il weekend di gara. Da semplici soste lungo la strada a basi comode a pochi minuti dagli ingressi.`,
+      campsites: (c, e) =>
+        `Campeggi vicino a ${c} per il ${e}: il modo più vicino ed economico di dormire a bordo pista. Si esauriscono per primi, quindi prenota presto.`,
+      "walking-distance": (c, e) =>
+        `Gli alloggi più vicini a ${c} per il ${e} — a piedi o a pochi minuti in auto. Poca disponibilità che va via in fretta, quindi prenota appena escono le date.`,
+      cheap: (c, e) =>
+        `Gli alloggi col miglior rapporto qualità-prezzo vicino a ${c} per il ${e}. Hotel economici, pensioni e campeggi, dal più vicino, con prezzi in tempo reale.`,
+    },
+  },
 };
 
 /* ----------------------------- SPANISH ----------------------------- */
@@ -1864,6 +2199,63 @@ const esX: ExtraDict = {
         a: "Sí. Cada alojamiento enlaza con disponibilidad y precios en directo para tus fechas, y el mapa se actualiza en tiempo real. Podemos recibir una comisión si reservas, sin coste adicional para ti.",
       },
     ],
+  },
+  circuitPages: {
+    travelKicker: "Cómo llegar",
+    travelTitle: (c) => `Cómo llegar a ${c}`,
+    travelIntro: (c, e) =>
+      `Cómo llegar a ${c} para el ${e}: los aeropuertos más cercanos, las estaciones de tren más prácticas y las principales vías de acceso, más un mapa en directo de los alojamientos una vez allí.`,
+    byPlane: "En avión",
+    byTrain: "En tren",
+    byCar: "En coche",
+    planeNote: (c) => `Aeropuertos más cercanos a ${c}, del más cercano.`,
+    trainNote: "Estaciones más cercanas, luego taxi o lanzadera para el último tramo.",
+    carNote: "Principales accesos — tráfico denso los días de carrera cerca de las entradas.",
+    carBody: (c) =>
+      `El coche es la forma más sencilla de llegar a ${c} y a los pueblos de alrededor. Sal temprano los días de carrera y reserva un alojamiento con parking o a unos minutos del circuito.`,
+    minByCar: (m) => `${m} min en coche`,
+    searchFlights: "Buscar vuelos",
+    mapHere: (c) => `Dónde alojarse alrededor de ${c}`,
+    guideKicker: "Guía del fin de semana de carrera",
+    guideTitle: (c) => `Guía del fin de semana: ${c}`,
+    guideIntro: (c, e) =>
+      `Todo para planear una estancia para el ${e} en ${c}: cuándo reservar, las mejores zonas donde alojarse, el camping y cómo moverse los días de carrera.`,
+    whenToBook: "Cuándo reservar",
+    whereToBase: "Dónde alojarse",
+    campingH: "Camping",
+    gettingAround: "Cómo moverse",
+    whenToBookBody: (e, b) =>
+      `Los alojamientos más cercanos para el ${e} se agotan ${b} antes. Reserva con cancelación gratuita en cuanto se confirmen las fechas y ajusta al acercarse el fin de semana.`,
+    whereToBaseBody: (c, t) =>
+      `Las bases más prácticas están pegadas al circuito y en ${t}. Para más opciones y mejores precios, amplía a los pueblos a unos 30 minutos: se llenan más tarde y siguen bien conectados con el circuito.`,
+    campingBody: (c) =>
+      `Campings oficiales y privados abren alrededor de ${c} para el fin de semana de carrera. Son la opción más cercana y económica y las primeras en agotarse, así que reserva pronto y lleva todo lo necesario.`,
+    gettingAroundBody: (c, r) =>
+      `La mayoría de los aficionados va en coche: las vías principales son ${r} y el tráfico es máximo justo antes y después de las sesiones. Sal temprano, comparte coche cuando puedas y busca aparcamientos disuasorios o lanzaderas.`,
+    zoneKicker: (c) => `Cerca de ${c}`,
+    zoneTitle: (z, c) => `Dónde alojarse en ${z} para ${c}`,
+    zoneIntro: (z, c, e, m) =>
+      `${z} está ${m === 0 ? "junto al circuito" : `a unos ${m} minutos de ${c}`} — una base práctica para el ${e}. Estos son sus alojamientos con precios en directo, más un mapa de la disponibilidad para tus fechas.`,
+    zoneStaysH: (z) => `Alojamientos en ${z}`,
+    zoneMapH: (z) => `Disponibilidad en directo en ${z}`,
+    otherZones: (c) => `Otras zonas cerca de ${c}`,
+    filterKicker: "Alojamientos filtrados",
+    filterTitle: {
+      hotels: (c) => `Hoteles cerca de ${c}`,
+      campsites: (c) => `Campings cerca de ${c}`,
+      "walking-distance": (c) => `Alojamientos más cercanos a ${c}`,
+      cheap: (c) => `Alojamientos baratos cerca de ${c}`,
+    },
+    filterIntro: {
+      hotels: (c, e) =>
+        `Hoteles cerca de ${c} para el ${e}, del más cercano, con precios en directo para el fin de semana de carrera. Desde simples paradas de carretera hasta bases cómodas a unos minutos de las entradas.`,
+      campsites: (c, e) =>
+        `Campings cerca de ${c} para el ${e}: la forma más cercana y económica de dormir junto a la pista. Se agotan primero, así que reserva pronto.`,
+      "walking-distance": (c, e) =>
+        `Los alojamientos más cercanos a ${c} para el ${e} — a pie o a unos minutos en coche. Poca disponibilidad que vuela, así que reserva en cuanto haya fechas.`,
+      cheap: (c, e) =>
+        `Los alojamientos con mejor relación calidad-precio cerca de ${c} para el ${e}. Hoteles económicos, pensiones y campings, del más cercano, con precios en directo.`,
+    },
   },
 };
 

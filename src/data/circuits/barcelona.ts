@@ -8,133 +8,171 @@ export const barcelonaZones: CircuitZone[] = [
     "name": "Granollers",
     "driveMin": 0,
     "ring": 1,
-    "count": 3
+    "count": 3,
+    "lat": 41.58534,
+    "lng": 2.27819
   },
   {
     "key": "barcelona",
     "name": "Barcelona",
     "driveMin": 0,
     "ring": 1,
-    "count": 9
+    "count": 9,
+    "lat": 41.50094,
+    "lng": 2.26833
   },
   {
     "key": "mollet-del-valles",
     "name": "Mollet del Vallès",
     "driveMin": 5,
     "ring": 1,
-    "count": 2
+    "count": 2,
+    "lat": 41.54527,
+    "lng": 2.21412
   },
   {
     "key": "vallromanes",
     "name": "Vallromanes",
     "driveMin": 6,
     "ring": 1,
-    "count": 2
+    "count": 2,
+    "lat": 41.52771,
+    "lng": 2.29653
   },
   {
     "key": "alella",
     "name": "Alella",
     "driveMin": 12,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 41.48825,
+    "lng": 2.29661
   },
   {
     "key": "ripollet",
     "name": "Ripollet",
     "driveMin": 14,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 41.49554,
+    "lng": 2.15367
   },
   {
     "key": "circuit-area",
     "name": "Circuit area",
     "driveMin": 15,
     "ring": 1,
-    "count": 3
+    "count": 3,
+    "lat": 41.40067,
+    "lng": 1.93367
   },
   {
     "key": "barbera-del-valles",
     "name": "Barberà del Vallès",
     "driveMin": 15,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 41.5119,
+    "lng": 2.13074
   },
   {
     "key": "sabadell",
     "name": "Sabadell",
     "driveMin": 15,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 41.55307,
+    "lng": 2.10567
   },
   {
     "key": "mataro",
     "name": "Mataró",
     "driveMin": 17,
     "ring": 2,
-    "count": 2
+    "count": 2,
+    "lat": 41.53945,
+    "lng": 2.45817
   },
   {
     "key": "centelles",
     "name": "Centelles",
     "driveMin": 22,
     "ring": 2,
-    "count": 1
+    "count": 1,
+    "lat": 41.72296,
+    "lng": 2.17042
   },
   {
     "key": "arenys-de-mar",
     "name": "Arenys de Mar",
     "driveMin": 30,
     "ring": 2,
-    "count": 1
+    "count": 1,
+    "lat": 41.58348,
+    "lng": 2.56796
   },
   {
     "key": "canet-de-mar",
     "name": "Canet de Mar",
     "driveMin": 32,
     "ring": 3,
-    "count": 1
+    "count": 1,
+    "lat": 41.59132,
+    "lng": 2.59177
   },
   {
     "key": "el-prat-de-llobregat",
     "name": "El Prat de Llobregat",
     "driveMin": 36,
     "ring": 3,
-    "count": 2
+    "count": 2,
+    "lat": 41.32008,
+    "lng": 2.08828
   },
   {
     "key": "santa-susanna",
     "name": "Santa Susanna",
     "driveMin": 44,
     "ring": 3,
-    "count": 2
+    "count": 2,
+    "lat": 41.63067,
+    "lng": 2.71737
   },
   {
     "key": "castelldefels",
     "name": "Castelldefels",
     "driveMin": 46,
     "ring": 3,
-    "count": 1
+    "count": 1,
+    "lat": 41.26988,
+    "lng": 1.99922
   },
   {
     "key": "sitges",
     "name": "Sitges",
     "driveMin": 63,
     "ring": 4,
-    "count": 2
+    "count": 2,
+    "lat": 41.23252,
+    "lng": 1.78275
   },
   {
     "key": "vilanova-i-la-geltru",
     "name": "Vilanova i la Geltrú",
     "driveMin": 68,
     "ring": 4,
-    "count": 2
+    "count": 2,
+    "lat": 41.22345,
+    "lng": 1.71044
   },
   {
     "key": "sant-jaume-de-frontanya",
     "name": "Sant Jaume de Frontanyà",
     "driveMin": 78,
     "ring": 4,
-    "count": 1
+    "count": 1,
+    "lat": 42.14597,
+    "lng": 1.99999
   }
 ];
 
@@ -148,6 +186,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.3,
+    "lat": 41.5712414,
+    "lng": 2.265434,
     "img": "/images/circuits/barcelona/ibis-barcelona-montmelo-granollers.jpg"
   },
   {
@@ -159,6 +199,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4,
+    "lat": 41.5707351,
+    "lng": 2.2652373,
     "img": "/images/circuits/barcelona/holiday-inn-express-barcelona-montmelo-by-ihg.jpg"
   },
   {
@@ -170,6 +212,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": null,
+    "lat": 41.5678626,
+    "lng": 2.2475991,
     "img": "/images/circuits/barcelona/overnight-parking-f1-barcelona-catalunya-grand-prix-f1-spain-easy-parking.jpg"
   },
   {
@@ -181,6 +225,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.1,
+    "lat": 41.5417203,
+    "lng": 2.2230064,
     "img": "/images/circuits/barcelona/b-b-hotel-barcelona-mollet.jpg"
   },
   {
@@ -192,6 +238,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.2,
+    "lat": 41.548817,
+    "lng": 2.2052324,
     "img": "/images/circuits/barcelona/ibis-barcelona-mollet.jpg"
   },
   {
@@ -203,6 +251,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4,
+    "lat": 41.5332064,
+    "lng": 2.300447,
     "img": "/images/circuits/barcelona/hotel-golden-barcelona.jpg"
   },
   {
@@ -214,6 +264,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 7,
     "ring": 1,
     "score": 4.2,
+    "lat": 41.614034,
+    "lng": 2.3038854,
     "img": "/images/circuits/barcelona/b-b-hotel-barcelona-granollers.jpg"
   },
   {
@@ -225,6 +277,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 7,
     "ring": 1,
     "score": 3.4,
+    "lat": 41.5222232,
+    "lng": 2.2926138,
     "img": "/images/circuits/barcelona/el-vedado-camping.jpg"
   },
   {
@@ -236,6 +290,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 12,
     "ring": 1,
     "score": 4.2,
+    "lat": 41.488251,
+    "lng": 2.296607,
     "img": "/images/circuits/barcelona/hotel-arrey-alella.jpg"
   },
   {
@@ -247,6 +303,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 14,
     "ring": 1,
     "score": 4.1,
+    "lat": 41.4955442,
+    "lng": 2.1536686,
     "img": "/images/circuits/barcelona/ibis-barcelona-ripollet.jpg"
   },
   {
@@ -258,6 +316,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 15,
     "ring": 1,
     "score": 4.2,
+    "lat": 41.4561466,
+    "lng": 2.2053894,
     "img": "/images/circuits/barcelona/ibis-barcelona-santa-coloma.jpg"
   },
   {
@@ -269,6 +329,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 15,
     "ring": 1,
     "score": 4.1,
+    "lat": 41.5118951,
+    "lng": 2.1307369,
     "img": "/images/circuits/barcelona/hotel-eurostars-executive.jpg"
   },
   {
@@ -280,6 +342,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 15,
     "ring": 1,
     "score": 3.9,
+    "lat": 41.5530723,
+    "lng": 2.1056669,
     "img": "/images/circuits/barcelona/hotel-urpi.jpg"
   },
   {
@@ -291,6 +355,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 17,
     "ring": 2,
     "score": 4.1,
+    "lat": 41.527518,
+    "lng": 2.4335335,
     "img": "/images/circuits/barcelona/b-b-hotel-mataro.jpg"
   },
   {
@@ -302,6 +368,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 20,
     "ring": 2,
     "score": 4.2,
+    "lat": 41.4231499,
+    "lng": 2.190644,
     "img": "/images/circuits/barcelona/acta-laumon.jpg"
   },
   {
@@ -313,6 +381,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 21,
     "ring": 2,
     "score": 4.3,
+    "lat": 41.4086954,
+    "lng": 2.2174479,
     "img": "/images/circuits/barcelona/hilton-diagonal-mar-barcelona.jpg"
   },
   {
@@ -324,6 +394,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 21,
     "ring": 2,
     "score": 4.2,
+    "lat": 41.4109339,
+    "lng": 2.2186667,
     "img": "/images/circuits/barcelona/hotel-barcelona-princess.jpg"
   },
   {
@@ -335,6 +407,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 21,
     "ring": 2,
     "score": 4.1,
+    "lat": 41.412588,
+    "lng": 2.209064,
     "img": "/images/circuits/barcelona/hotel-barcelona-condal-mar-affiliated-by-melia.jpg"
   },
   {
@@ -346,6 +420,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 22,
     "ring": 2,
     "score": 4.2,
+    "lat": 41.5513733,
+    "lng": 2.4828059,
     "img": "/images/circuits/barcelona/camping-barcelona.jpg"
   },
   {
@@ -357,6 +433,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 22,
     "ring": 2,
     "score": 3.7,
+    "lat": 41.7229586,
+    "lng": 2.1704236,
     "img": "/images/circuits/barcelona/camping-l-illa.jpg"
   },
   {
@@ -368,6 +446,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 24,
     "ring": 2,
     "score": 5,
+    "lat": 41.3929107,
+    "lng": 2.1765148,
     "img": "/images/circuits/barcelona/guest-house-in-barcelona-spain.jpg"
   },
   {
@@ -379,6 +459,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 26,
     "ring": 2,
     "score": 4.1,
+    "lat": 41.3727951,
+    "lng": 2.172097,
     "img": "/images/circuits/barcelona/grums-hotel-spa.jpg"
   },
   {
@@ -390,6 +472,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 30,
     "ring": 2,
     "score": 3.9,
+    "lat": 41.5834771,
+    "lng": 2.5679573,
     "img": "/images/circuits/barcelona/camping-el-toro-azul.jpg"
   },
   {
@@ -401,6 +485,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 30,
     "ring": 2,
     "score": 3.8,
+    "lat": 41.585276,
+    "lng": 2.574169,
     "img": "/images/circuits/barcelona/camping-victoria.jpg"
   },
   {
@@ -412,6 +498,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 32,
     "ring": 3,
     "score": 4.4,
+    "lat": 41.5913202,
+    "lng": 2.5917749,
     "img": "/images/circuits/barcelona/camping-globo-barcelona.jpg"
   },
   {
@@ -423,6 +511,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 36,
     "ring": 3,
     "score": 4.3,
+    "lat": 41.3245102,
+    "lng": 2.0940078,
     "img": "/images/circuits/barcelona/airhostel-bcn.jpg"
   },
   {
@@ -434,6 +524,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 37,
     "ring": 3,
     "score": 3.7,
+    "lat": 41.3156568,
+    "lng": 2.082561,
     "img": "/images/circuits/barcelona/alberg-centre-esplai.jpg"
   },
   {
@@ -445,6 +537,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 44,
     "ring": 3,
     "score": 4.5,
+    "lat": 41.6295835,
+    "lng": 2.7136564,
     "img": "/images/circuits/barcelona/camping-oasis.jpg"
   },
   {
@@ -456,6 +550,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 44,
     "ring": 3,
     "score": 3.8,
+    "lat": 41.272166,
+    "lng": 2.0429629,
     "img": "/images/circuits/barcelona/camping-3-estrelles.jpg"
   },
   {
@@ -467,6 +563,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 45,
     "ring": 3,
     "score": 4.1,
+    "lat": 41.6317495,
+    "lng": 2.7210797,
     "img": "/images/circuits/barcelona/camping-bon-repos.jpg"
   },
   {
@@ -478,6 +576,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 46,
     "ring": 3,
     "score": 3.6,
+    "lat": 41.269876,
+    "lng": 1.9992206,
     "img": "/images/circuits/barcelona/camping-estrella-de-mar.jpg"
   },
   {
@@ -489,6 +589,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 48,
     "ring": 3,
     "score": 3.6,
+    "lat": 41.9342579,
+    "lng": 2.4087497,
     "img": "/images/circuits/barcelona/camping-el-pont.jpg"
   },
   {
@@ -500,6 +602,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 63,
     "ring": 4,
     "score": 4,
+    "lat": 41.2333765,
+    "lng": 1.7810992,
     "img": "/images/circuits/barcelona/holacamp-sitges-garrofer.jpg"
   },
   {
@@ -511,6 +615,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 63,
     "ring": 4,
     "score": 4,
+    "lat": 41.231655,
+    "lng": 1.7843981,
     "img": "/images/circuits/barcelona/holacamp-sitges-relax.jpg"
   },
   {
@@ -522,6 +628,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 68,
     "ring": 4,
     "score": 4.8,
+    "lat": 41.2369774,
+    "lng": 1.7173526,
     "img": "/images/circuits/barcelona/mas-alegria.jpg"
   },
   {
@@ -533,6 +641,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 69,
     "ring": 4,
     "score": 4.6,
+    "lat": 41.473702,
+    "lng": 1.5526478,
     "img": "/images/circuits/barcelona/camping-vilademager-s-l.jpg"
   },
   {
@@ -544,6 +654,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 70,
     "ring": 4,
     "score": 3.6,
+    "lat": 41.209917,
+    "lng": 1.7035292,
     "img": "/images/circuits/barcelona/camping-el-raco-del-mar.jpg"
   },
   {
@@ -555,6 +667,8 @@ export const barcelonaHotels: CircuitHotel[] = [
     "driveMin": 78,
     "ring": 4,
     "score": 4.1,
+    "lat": 42.1459737,
+    "lng": 1.9999871,
     "img": "/images/circuits/barcelona/camping-campalans.jpg"
   }
 ];

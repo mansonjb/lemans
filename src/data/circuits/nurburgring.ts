@@ -8,63 +8,81 @@ export const nurburgringZones: CircuitZone[] = [
     "name": "Nürburg",
     "driveMin": 0,
     "ring": 1,
-    "count": 10
+    "count": 10,
+    "lat": 50.33973,
+    "lng": 6.9513
   },
   {
     "key": "meuspath",
     "name": "Meuspath",
     "driveMin": 3,
     "ring": 1,
-    "count": 2
+    "count": 2,
+    "lat": 50.34438,
+    "lng": 6.9729
   },
   {
     "key": "mullenbach",
     "name": "Müllenbach",
     "driveMin": 3,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.32061,
+    "lng": 6.93788
   },
   {
     "key": "drees",
     "name": "Drees",
     "driveMin": 5,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.34122,
+    "lng": 7.00028
   },
   {
     "key": "wiesemscheid",
     "name": "Wiesemscheid",
     "driveMin": 5,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.33678,
+    "lng": 6.89503
   },
   {
     "key": "adenau",
     "name": "Adenau",
     "driveMin": 6,
     "ring": 1,
-    "count": 4
+    "count": 4,
+    "lat": 50.37892,
+    "lng": 6.9397
   },
   {
     "key": "barweiler",
     "name": "Barweiler",
     "driveMin": 7,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.35722,
+    "lng": 6.86457
   },
   {
     "key": "honerath",
     "name": "Honerath",
     "driveMin": 7,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.37729,
+    "lng": 6.89754
   },
   {
     "key": "boos",
     "name": "Boos",
     "driveMin": 7,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.3138,
+    "lng": 7.01738
   }
 ];
 
@@ -78,6 +96,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.6,
+    "lat": 50.3360051,
+    "lng": 6.949101,
     "img": "/images/circuits/nurburgring/dorint-am-nurburgring-hocheifel.jpg"
   },
   {
@@ -89,6 +109,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.9,
+    "lat": 50.3395841,
+    "lng": 6.9522066,
     "img": "/images/circuits/nurburgring/pension-n-ring.jpg"
   },
   {
@@ -100,6 +122,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.8,
+    "lat": 50.3417608,
+    "lng": 6.9513555,
     "img": "/images/circuits/nurburgring/haus-pit-lane.jpg"
   },
   {
@@ -111,6 +135,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.7,
+    "lat": 50.341854,
+    "lng": 6.9530395,
     "img": "/images/circuits/nurburgring/hotel-am-tiergarten.jpg"
   },
   {
@@ -122,6 +148,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.5,
+    "lat": 50.3435181,
+    "lng": 6.952635,
     "img": "/images/circuits/nurburgring/l-gut-race-hotel-zur-burg-nurburg.jpg"
   },
   {
@@ -133,6 +161,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.5,
+    "lat": 50.3315008,
+    "lng": 6.9437984,
     "img": "/images/circuits/nurburgring/nurburgring-congress-hotel.jpg"
   },
   {
@@ -144,6 +174,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.3,
+    "lat": 50.3311025,
+    "lng": 6.9458357,
     "img": "/images/circuits/nurburgring/nurburgring-motorsport-hotel.jpg"
   },
   {
@@ -155,6 +187,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.3,
+    "lat": 50.3400012,
+    "lng": 6.9510517,
     "img": "/images/circuits/nurburgring/motorsporthotel.jpg"
   },
   {
@@ -166,6 +200,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 3.5,
+    "lat": 50.3455893,
+    "lng": 6.9536085,
     "img": "/images/circuits/nurburgring/df-am-ring-nurburg-hotel.jpg"
   },
   {
@@ -177,6 +213,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.7,
+    "lat": 50.346373,
+    "lng": 6.960342,
     "img": "/images/circuits/nurburgring/ringhaus-home-of-silver-arrow.jpg"
   },
   {
@@ -188,6 +226,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.7,
+    "lat": 50.3471269,
+    "lng": 6.9713115,
     "img": "/images/circuits/nurburgring/hotel-am-ring.jpg"
   },
   {
@@ -199,6 +239,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4,
+    "lat": 50.3416397,
+    "lng": 6.9744943,
     "img": "/images/circuits/nurburgring/campingplatz-meuspath-am-nurburgring.jpg"
   },
   {
@@ -210,6 +252,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 3.6,
+    "lat": 50.3206109,
+    "lng": 6.9378804,
     "img": "/images/circuits/nurburgring/camping-at-the-nurburgring.jpg"
   },
   {
@@ -221,6 +265,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.7,
+    "lat": 50.3412197,
+    "lng": 7.0002787,
     "img": "/images/circuits/nurburgring/nurburgring-ferienpark.jpg"
   },
   {
@@ -232,6 +278,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.6,
+    "lat": 50.3367771,
+    "lng": 6.8950312,
     "img": "/images/circuits/nurburgring/hotel-rieder.jpg"
   },
   {
@@ -243,6 +291,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.9,
+    "lat": 50.3766092,
+    "lng": 6.9504355,
     "img": "/images/circuits/nurburgring/guesthouse-cockpit.jpg"
   },
   {
@@ -254,6 +304,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.6,
+    "lat": 50.37674,
+    "lng": 6.95175,
     "img": "/images/circuits/nurburgring/hotel-an-der-nordschleife.jpg"
   },
   {
@@ -265,6 +317,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.3,
+    "lat": 50.3808364,
+    "lng": 6.9225833,
     "img": "/images/circuits/nurburgring/landhaus-sonnenhof.jpg"
   },
   {
@@ -276,6 +330,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.1,
+    "lat": 50.3815112,
+    "lng": 6.9340393,
     "img": "/images/circuits/nurburgring/nurburgring-rooms-pinocchio.jpg"
   },
   {
@@ -287,6 +343,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 7,
     "ring": 1,
     "score": 4.8,
+    "lat": 50.3572195,
+    "lng": 6.8645693,
     "img": "/images/circuits/nurburgring/fast-lane-hotel.jpg"
   },
   {
@@ -298,6 +356,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 7,
     "ring": 1,
     "score": 4.8,
+    "lat": 50.377285,
+    "lng": 6.897538,
     "img": "/images/circuits/nurburgring/gt3-hotel.jpg"
   },
   {
@@ -309,6 +369,8 @@ export const nurburgringHotels: CircuitHotel[] = [
     "driveMin": 7,
     "ring": 1,
     "score": 4.7,
+    "lat": 50.3138017,
+    "lng": 7.0173812,
     "img": "/images/circuits/nurburgring/eifelhotel-fuchs-gmbh.jpg"
   }
 ];

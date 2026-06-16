@@ -8,49 +8,63 @@ export const monzaZones: CircuitZone[] = [
     "name": "Lissone",
     "driveMin": 3,
     "ring": 1,
-    "count": 4
+    "count": 4,
+    "lat": 45.60433,
+    "lng": 9.23939
   },
   {
     "key": "monza",
     "name": "Monza",
     "driveMin": 3,
     "ring": 1,
-    "count": 13
+    "count": 13,
+    "lat": 45.58451,
+    "lng": 9.26895
   },
   {
     "key": "arcore",
     "name": "Arcore",
     "driveMin": 3,
     "ring": 1,
-    "count": 3
+    "count": 3,
+    "lat": 45.62596,
+    "lng": 9.32711
   },
   {
     "key": "triuggio",
     "name": "Triuggio",
     "driveMin": 5,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 45.65048,
+    "lng": 9.28292
   },
   {
     "key": "agrate-brianza",
     "name": "Agrate Brianza",
     "driveMin": 7,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 45.57229,
+    "lng": 9.33644
   },
   {
     "key": "pl-industriale-via-manzoni",
     "name": "Pl Industriale Via Manzoni",
     "driveMin": 9,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 45.62222,
+    "lng": 9.174
   },
   {
     "key": "verano-brianza",
     "name": "Verano Brianza",
     "driveMin": 10,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 45.68639,
+    "lng": 9.2252
   }
 ];
 
@@ -64,6 +78,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 5,
+    "lat": 45.607833,
+    "lng": 9.244453,
     "img": "/images/circuits/monza/al-suite.jpg"
   },
   {
@@ -75,6 +91,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 5,
+    "lat": 45.6057118,
+    "lng": 9.2466198,
     "img": "/images/circuits/monza/il-giardino-degli-ulivi.jpg"
   },
   {
@@ -86,6 +104,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.7,
+    "lat": 45.592614,
+    "lng": 9.2714172,
     "img": "/images/circuits/monza/hotel-de-la-ville.jpg"
   },
   {
@@ -97,6 +117,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.2,
+    "lat": 45.5869149,
+    "lng": 9.2768093,
     "img": "/images/circuits/monza/carro-rooms.jpg"
   },
   {
@@ -108,6 +130,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.1,
+    "lat": 45.5923424,
+    "lng": 9.253417,
     "img": "/images/circuits/monza/helios-hotel.jpg"
   },
   {
@@ -119,6 +143,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.1,
+    "lat": 45.5869133,
+    "lng": 9.2762186,
     "img": "/images/circuits/monza/antica-trattoria-dell-uva.jpg"
   },
   {
@@ -130,6 +156,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 3.9,
+    "lat": 45.619994,
+    "lng": 9.3241981,
     "img": "/images/circuits/monza/residence-cascina-san-giovanni.jpg"
   },
   {
@@ -141,6 +169,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 3.2,
+    "lat": 45.5904532,
+    "lng": 9.2551967,
     "img": "/images/circuits/monza/mosca.jpg"
   },
   {
@@ -152,6 +182,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 5,
+    "lat": 45.5831337,
+    "lng": 9.2745536,
     "img": "/images/circuits/monza/duomo-guest-house.jpg"
   },
   {
@@ -163,6 +195,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 5,
+    "lat": 45.5797876,
+    "lng": 9.2618468,
     "img": "/images/circuits/monza/villa-tosati.jpg"
   },
   {
@@ -174,6 +208,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.4,
+    "lat": 45.579288,
+    "lng": 9.297426,
     "img": "/images/circuits/monza/residence-oasi-di-monza.jpg"
   },
   {
@@ -185,6 +221,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.4,
+    "lat": 45.6302138,
+    "lng": 9.3310149,
     "img": "/images/circuits/monza/best-western-hotel-borgolecco.jpg"
   },
   {
@@ -196,6 +234,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.3,
+    "lat": 45.6039264,
+    "lng": 9.2300831,
     "img": "/images/circuits/monza/the-regency-hotel.jpg"
   },
   {
@@ -207,6 +247,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.2,
+    "lat": 45.6276765,
+    "lng": 9.3261296,
     "img": "/images/circuits/monza/albergo-ristorante-sant-eustorgio.jpg"
   },
   {
@@ -218,6 +260,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.2,
+    "lat": 45.6504846,
+    "lng": 9.2829219,
     "img": "/images/circuits/monza/hotel-fossati-di-fossati-antonio-snc.jpg"
   },
   {
@@ -229,6 +273,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.1,
+    "lat": 45.5825764,
+    "lng": 9.2497734,
     "img": "/images/circuits/monza/as-hotel-monza.jpg"
   },
   {
@@ -240,6 +286,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.1,
+    "lat": 45.5797226,
+    "lng": 9.2730285,
     "img": "/images/circuits/monza/hotel-royal-falcone.jpg"
   },
   {
@@ -251,6 +299,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4,
+    "lat": 45.5821419,
+    "lng": 9.2764735,
     "img": "/images/circuits/monza/nine-hotel.jpg"
   },
   {
@@ -262,6 +312,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 3.9,
+    "lat": 45.584571,
+    "lng": 9.2717534,
     "img": "/images/circuits/monza/hotel-karol.jpg"
   },
   {
@@ -273,6 +325,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 3.7,
+    "lat": 45.5998579,
+    "lng": 9.23641,
     "img": "/images/circuits/monza/hotel-re.jpg"
   },
   {
@@ -284,6 +338,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 5,
+    "lat": 45.5781618,
+    "lng": 9.2583856,
     "img": "/images/circuits/monza/monza-guest-house-casa30.jpg"
   },
   {
@@ -295,6 +351,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 7,
     "ring": 1,
     "score": 4.3,
+    "lat": 45.5722934,
+    "lng": 9.3364412,
     "img": "/images/circuits/monza/mercure-milano-agrate-brianza.jpg"
   },
   {
@@ -306,6 +364,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 9,
     "ring": 1,
     "score": 5,
+    "lat": 45.6222207,
+    "lng": 9.173997,
     "img": "/images/circuits/monza/parcheggio-camion.jpg"
   },
   {
@@ -317,6 +377,8 @@ export const monzaHotels: CircuitHotel[] = [
     "driveMin": 10,
     "ring": 1,
     "score": null,
+    "lat": 45.6863948,
+    "lng": 9.2252045,
     "img": "/images/circuits/monza/ospedale-vecchio-monza.jpg"
   }
 ];

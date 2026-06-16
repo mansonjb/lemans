@@ -8,49 +8,63 @@ export const monacoZones: CircuitZone[] = [
     "name": "Monaco",
     "driveMin": 0,
     "ring": 1,
-    "count": 14
+    "count": 14,
+    "lat": 43.73697,
+    "lng": 7.42478
   },
   {
     "key": "cap-d-ail",
     "name": "Cap-d'Ail",
     "driveMin": 0,
     "ring": 1,
-    "count": 2
+    "count": 2,
+    "lat": 43.72571,
+    "lng": 7.41609
   },
   {
     "key": "gorbio",
     "name": "Gorbio",
     "driveMin": 7,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 43.78789,
+    "lng": 7.44309
   },
   {
     "key": "peillon",
     "name": "Peillon",
     "driveMin": 7,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 43.77222,
+    "lng": 7.37333
   },
   {
     "key": "menton",
     "name": "Menton",
     "driveMin": 9,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 43.77919,
+    "lng": 7.49807
   },
   {
     "key": "contes",
     "name": "Contes",
     "driveMin": 13,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 43.81597,
+    "lng": 7.34337
   },
   {
     "key": "ventimiglia",
     "name": "Ventimiglia",
     "driveMin": 15,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 43.79297,
+    "lng": 7.56434
   }
 ];
 
@@ -64,6 +78,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.5,
+    "lat": 43.73698,
+    "lng": 7.4225494,
     "img": "/images/circuits/monaco/boutique-hotel-miramar-monte-carlo.jpg"
   },
   {
@@ -75,6 +91,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.5,
+    "lat": 43.737212,
+    "lng": 7.4240751,
     "img": "/images/circuits/monaco/port-palace-hotel.jpg"
   },
   {
@@ -86,6 +104,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.4,
+    "lat": 43.7389627,
+    "lng": 7.4217979,
     "img": "/images/circuits/monaco/novotel-monte-carlo.jpg"
   },
   {
@@ -97,6 +117,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.1,
+    "lat": 43.7332363,
+    "lng": 7.4183192,
     "img": "/images/circuits/monaco/hotel-de-france.jpg"
   },
   {
@@ -108,6 +130,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 3.6,
+    "lat": 43.7329145,
+    "lng": 7.4179626,
     "img": "/images/circuits/monaco/hotel-ambassador-monaco.jpg"
   },
   {
@@ -119,6 +143,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.7,
+    "lat": 43.7390048,
+    "lng": 7.4274645,
     "img": "/images/circuits/monaco/hotel-de-paris-monte-carlo.jpg"
   },
   {
@@ -130,6 +156,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.7,
+    "lat": 43.7384432,
+    "lng": 7.4259517,
     "img": "/images/circuits/monaco/hotel-hermitage-monte-carlo.jpg"
   },
   {
@@ -141,6 +169,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.6,
+    "lat": 43.7409321,
+    "lng": 7.4279326,
     "img": "/images/circuits/monaco/hotel-metropole-monte-carlo.jpg"
   },
   {
@@ -152,6 +182,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.5,
+    "lat": 43.739931,
+    "lng": 7.4300314,
     "img": "/images/circuits/monaco/fairmont-monte-carlo.jpg"
   },
   {
@@ -163,6 +195,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.4,
+    "lat": 43.7275494,
+    "lng": 7.4200205,
     "img": "/images/circuits/monaco/columbus-hotel-monte-carlo-curio-collection-by-hilton.jpg"
   },
   {
@@ -174,6 +208,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.3,
+    "lat": 43.7262765,
+    "lng": 7.4147668,
     "img": "/images/circuits/monaco/riviera-marriott-hotel-la-porte-de-monaco.jpg"
   },
   {
@@ -185,6 +221,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 3.9,
+    "lat": 43.7251358,
+    "lng": 7.4174208,
     "img": "/images/circuits/monaco/le-quai-des-princes.jpg"
   },
   {
@@ -196,6 +234,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 3,
+    "lat": 43.7292631,
+    "lng": 7.4186777,
     "img": "/images/circuits/monaco/la-voglia-matta.jpg"
   },
   {
@@ -207,6 +247,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": null,
+    "lat": 43.7259886,
+    "lng": 7.4175487,
     "img": "/images/circuits/monaco/quality-hotel-menton-mediterranee.jpg"
   },
   {
@@ -218,6 +260,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.6,
+    "lat": 43.7488151,
+    "lng": 7.4387242,
     "img": "/images/circuits/monaco/monte-carlo-bay-hotel-resort.jpg"
   },
   {
@@ -229,6 +273,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.4,
+    "lat": 43.7483482,
+    "lng": 7.4358689,
     "img": "/images/circuits/monaco/le-meridien-beach-plaza.jpg"
   },
   {
@@ -240,6 +286,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 7,
     "ring": 1,
     "score": 4.5,
+    "lat": 43.7878861,
+    "lng": 7.4430878,
     "img": "/images/circuits/monaco/camping-la-giandolla.jpg"
   },
   {
@@ -251,6 +299,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 7,
     "ring": 1,
     "score": 4.2,
+    "lat": 43.7722222,
+    "lng": 7.3733333,
     "img": "/images/circuits/monaco/camping-de-la-laune.jpg"
   },
   {
@@ -262,6 +312,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 9,
     "ring": 1,
     "score": 3.4,
+    "lat": 43.7791883,
+    "lng": 7.4980717,
     "img": "/images/circuits/monaco/camping-parc-saint-michel.jpg"
   },
   {
@@ -273,6 +325,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 13,
     "ring": 1,
     "score": 4.8,
+    "lat": 43.815971,
+    "lng": 7.3433694,
     "img": "/images/circuits/monaco/camping-la-ferme-riola.jpg"
   },
   {
@@ -284,6 +338,8 @@ export const monacoHotels: CircuitHotel[] = [
     "driveMin": 15,
     "ring": 1,
     "score": 4.3,
+    "lat": 43.7929713,
+    "lng": 7.564338,
     "img": "/images/circuits/monaco/camping-por-la-mar.jpg"
   }
 ];

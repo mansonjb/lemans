@@ -8,56 +8,72 @@ export const spielbergZones: CircuitZone[] = [
     "name": "Spielberg",
     "driveMin": 0,
     "ring": 1,
-    "count": 24
+    "count": 24,
+    "lat": 47.21491,
+    "lng": 14.76881
   },
   {
     "key": "circuit-area",
     "name": "Circuit area",
     "driveMin": 0,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 47.21676,
+    "lng": 14.75029
   },
   {
     "key": "flatschach",
     "name": "Flatschach",
     "driveMin": 0,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 47.21581,
+    "lng": 14.75317
   },
   {
     "key": "zeltweg",
     "name": "Zeltweg",
     "driveMin": 3,
     "ring": 1,
-    "count": 5
+    "count": 5,
+    "lat": 47.19342,
+    "lng": 14.74976
   },
   {
     "key": "knittelfeld",
     "name": "Knittelfeld",
     "driveMin": 5,
     "ring": 1,
-    "count": 4
+    "count": 4,
+    "lat": 47.21734,
+    "lng": 14.82378
   },
   {
     "key": "gro-lobming",
     "name": "Großlobming",
     "driveMin": 5,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 47.19132,
+    "lng": 14.8019
   },
   {
     "key": "fohnsdorf",
     "name": "Fohnsdorf",
     "driveMin": 5,
     "ring": 1,
-    "count": 5
+    "count": 5,
+    "lat": 47.20117,
+    "lng": 14.68849
   },
   {
     "key": "kleinlobming",
     "name": "Kleinlobming",
     "driveMin": 12,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 47.14859,
+    "lng": 14.84843
   }
 ];
 
@@ -71,6 +87,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.9,
+    "lat": 47.2167922,
+    "lng": 14.7676675,
     "img": "/images/circuits/spielberg/camping-violett-red-bull-ring.jpg"
   },
   {
@@ -82,6 +100,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.6,
+    "lat": 47.2164689,
+    "lng": 14.7689907,
     "img": "/images/circuits/spielberg/camping-grun-moitzi-spielberg-am-red-bull-ring.jpg"
   },
   {
@@ -93,6 +113,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.3,
+    "lat": 47.2163519,
+    "lng": 14.7619012,
     "img": "/images/circuits/spielberg/camping-at-the-red-bull-ring.jpg"
   },
   {
@@ -104,6 +126,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.3,
+    "lat": 47.2167017,
+    "lng": 14.7640518,
     "img": "/images/circuits/spielberg/spielberg-camping-gelb-beim-red-bull-ring.jpg"
   },
   {
@@ -115,6 +139,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 3.6,
+    "lat": 47.2173717,
+    "lng": 14.7653825,
     "img": "/images/circuits/spielberg/grandprix-camp.jpg"
   },
   {
@@ -126,6 +152,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 5,
+    "lat": 47.216759,
+    "lng": 14.7502925,
     "img": "/images/circuits/spielberg/formel-1-lodge-camping-spielberg-am-red-bull-ring.jpg"
   },
   {
@@ -137,6 +165,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 5,
+    "lat": 47.2199278,
+    "lng": 14.7506786,
     "img": "/images/circuits/spielberg/campingplatz-sturzl.jpg"
   },
   {
@@ -148,6 +178,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.7,
+    "lat": 47.2278675,
+    "lng": 14.7610723,
     "img": "/images/circuits/spielberg/haus-dietrich.jpg"
   },
   {
@@ -159,6 +191,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.7,
+    "lat": 47.2277922,
+    "lng": 14.7593961,
     "img": "/images/circuits/spielberg/schonberghof-spielberg.jpg"
   },
   {
@@ -170,6 +204,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.6,
+    "lat": 47.219118,
+    "lng": 14.7524256,
     "img": "/images/circuits/spielberg/guesthouse-camping-edlinger-flatschach.jpg"
   },
   {
@@ -181,6 +217,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.6,
+    "lat": 47.2206105,
+    "lng": 14.750288,
     "img": "/images/circuits/spielberg/f-f-camping-blau-freitag-filipovic.jpg"
   },
   {
@@ -192,6 +230,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.6,
+    "lat": 47.2192345,
+    "lng": 14.7782297,
     "img": "/images/circuits/spielberg/gptents-camping-f1-motogp-spielberg-austria.jpg"
   },
   {
@@ -203,6 +243,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.5,
+    "lat": 47.2176904,
+    "lng": 14.7533044,
     "img": "/images/circuits/spielberg/camping-pichler-beige.jpg"
   },
   {
@@ -214,6 +256,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.5,
+    "lat": 47.2137501,
+    "lng": 14.7775147,
     "img": "/images/circuits/spielberg/schitterhof-camping-weiss.jpg"
   },
   {
@@ -225,6 +269,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.4,
+    "lat": 47.2307426,
+    "lng": 14.7722049,
     "img": "/images/circuits/spielberg/camping-pink-am-birkmoarhof.jpg"
   },
   {
@@ -236,6 +282,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.2,
+    "lat": 47.2164948,
+    "lng": 14.7739473,
     "img": "/images/circuits/spielberg/privatzimmer-am-red-bull-ring.jpg"
   },
   {
@@ -247,6 +295,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.1,
+    "lat": 47.2158105,
+    "lng": 14.7531731,
     "img": "/images/circuits/spielberg/camping-josef-schindelbacher.jpg"
   },
   {
@@ -258,6 +308,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.9,
+    "lat": 47.2011335,
+    "lng": 14.765216,
     "img": "/images/circuits/spielberg/gastehaus-sigrid.jpg"
   },
   {
@@ -269,6 +321,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.9,
+    "lat": 47.226988,
+    "lng": 14.7468421,
     "img": "/images/circuits/spielberg/camping-blau-westschleife-schindelbacher-karin-u-hans.jpg"
   },
   {
@@ -280,6 +334,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.8,
+    "lat": 47.2036268,
+    "lng": 14.7772585,
     "img": "/images/circuits/spielberg/camping-kaltenbrunner.jpg"
   },
   {
@@ -291,6 +347,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.8,
+    "lat": 47.1975046,
+    "lng": 14.7677947,
     "img": "/images/circuits/spielberg/hotel-urfa.jpg"
   },
   {
@@ -302,6 +360,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.6,
+    "lat": 47.2095491,
+    "lng": 14.7830832,
     "img": "/images/circuits/spielberg/ring-rast-camping-near-red-bull-ring-f1-motogp-air-show-spielberg-austria.jpg"
   },
   {
@@ -313,6 +373,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.4,
+    "lat": 47.2010362,
+    "lng": 14.7780355,
     "img": "/images/circuits/spielberg/burg-rooms.jpg"
   },
   {
@@ -324,6 +386,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.3,
+    "lat": 47.1999442,
+    "lng": 14.777004,
     "img": "/images/circuits/spielberg/camping-gruber.jpg"
   },
   {
@@ -335,6 +399,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.1,
+    "lat": 47.2091701,
+    "lng": 14.7844565,
     "img": "/images/circuits/spielberg/camping-parking-spielberg-f1-motogp-easy-camping.jpg"
   },
   {
@@ -346,6 +412,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.9,
+    "lat": 47.1910324,
+    "lng": 14.7472248,
     "img": "/images/circuits/spielberg/steirerschlossl.jpg"
   },
   {
@@ -357,6 +425,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.9,
+    "lat": 47.1960487,
+    "lng": 14.7642354,
     "img": "/images/circuits/spielberg/die-schlafstube.jpg"
   },
   {
@@ -368,6 +438,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.4,
+    "lat": 47.2011018,
+    "lng": 14.7858891,
     "img": "/images/circuits/spielberg/art-hotel-spielberg.jpg"
   },
   {
@@ -379,6 +451,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.1,
+    "lat": 47.2082795,
+    "lng": 14.7965058,
     "img": "/images/circuits/spielberg/flexy-motel-spielberg.jpg"
   },
   {
@@ -390,6 +464,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.9,
+    "lat": 47.2188376,
+    "lng": 14.8180729,
     "img": "/images/circuits/spielberg/angelika-esser-private-rooms.jpg"
   },
   {
@@ -401,6 +477,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.8,
+    "lat": 47.191325,
+    "lng": 14.801902,
     "img": "/images/circuits/spielberg/g-schlossl-murtal.jpg"
   },
   {
@@ -412,6 +490,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.7,
+    "lat": 47.2195974,
+    "lng": 14.7182735,
     "img": "/images/circuits/spielberg/camping-wildbolz.jpg"
   },
   {
@@ -423,6 +503,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.7,
+    "lat": 47.1933992,
+    "lng": 14.7216171,
     "img": "/images/circuits/spielberg/mt-hotel.jpg"
   },
   {
@@ -434,6 +516,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.7,
+    "lat": 47.2171279,
+    "lng": 14.8150562,
     "img": "/images/circuits/spielberg/gewerkenschlossl-zeilinger.jpg"
   },
   {
@@ -445,6 +529,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.6,
+    "lat": 47.189098,
+    "lng": 14.747929,
     "img": "/images/circuits/spielberg/motel-zeltweg-self-check-in.jpg"
   },
   {
@@ -456,6 +542,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.7,
+    "lat": 47.2182187,
+    "lng": 14.8345727,
     "img": "/images/circuits/spielberg/das-friedrich.jpg"
   },
   {
@@ -467,6 +555,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.7,
+    "lat": 47.1950059,
+    "lng": 14.70962,
     "img": "/images/circuits/spielberg/landhaus-wilhelmer.jpg"
   },
   {
@@ -478,6 +568,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.2,
+    "lat": 47.215189,
+    "lng": 14.827425,
     "img": "/images/circuits/spielberg/pauls-hotel.jpg"
   },
   {
@@ -489,6 +581,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 8,
     "ring": 1,
     "score": 4.4,
+    "lat": 47.2047852,
+    "lng": 14.6749573,
     "img": "/images/circuits/spielberg/hotel-fohnsdorf.jpg"
   },
   {
@@ -500,6 +594,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 9,
     "ring": 1,
     "score": 4.8,
+    "lat": 47.1917953,
+    "lng": 14.6737366,
     "img": "/images/circuits/spielberg/schloss-gabelhofen.jpg"
   },
   {
@@ -511,6 +607,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 9,
     "ring": 1,
     "score": 4.8,
+    "lat": 47.1946424,
+    "lng": 14.6658804,
     "img": "/images/circuits/spielberg/das-karl-august.jpg"
   },
   {
@@ -522,6 +620,8 @@ export const spielbergHotels: CircuitHotel[] = [
     "driveMin": 12,
     "ring": 1,
     "score": 4.8,
+    "lat": 47.1485873,
+    "lng": 14.8484345,
     "img": "/images/circuits/spielberg/gasthof-pension-hubmann.jpg"
   }
 ];

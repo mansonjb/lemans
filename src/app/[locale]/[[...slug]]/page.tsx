@@ -30,6 +30,12 @@ import {
   CircuitGuideTemplate,
 } from "@/templates/hub";
 import { circuitData } from "@/data/circuit-data";
+import {
+  CircuitTravelTemplate,
+  CircuitGuideArticleTemplate,
+  CircuitZoneTemplate,
+  CircuitFilterTemplate,
+} from "@/templates/circuit-pages";
 import { MoneyTemplate } from "@/templates/money";
 import {
   CrossTemplate,
@@ -83,6 +89,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const d = circuitData(c.key)!;
       title = `${x(locale).circuitGuide.staysHeading(c.name)} | ${dict.siteName}`;
       description = x(locale).circuitGuide.intro(c.name, d.event.name);
+      break;
+    }
+    case "circuittravel": {
+      const c = circuitByKey(page.ref!)!;
+      const d = circuitData(c.key)!;
+      title = `${x(locale).circuitPages.travelTitle(c.name)} | ${dict.siteName}`;
+      description = x(locale).circuitPages.travelIntro(c.name, d.event.name);
+      break;
+    }
+    case "circuitguide": {
+      const c = circuitByKey(page.ref!)!;
+      const d = circuitData(c.key)!;
+      title = `${x(locale).circuitPages.guideTitle(c.name)} | ${dict.siteName}`;
+      description = x(locale).circuitPages.guideIntro(c.name, d.event.name);
+      break;
+    }
+    case "circuitzone": {
+      const [ck, zk] = page.ref!.split(":");
+      const c = circuitByKey(ck)!;
+      const d = circuitData(ck)!;
+      const z = d.zones.find((zz) => zz.key === zk)!;
+      title = `${x(locale).circuitPages.zoneTitle(z.name, c.name)} | ${dict.siteName}`;
+      description = x(locale).circuitPages.zoneIntro(z.name, c.name, d.event.name, z.driveMin);
+      break;
+    }
+    case "circuitfilter": {
+      const [ck, fk] = page.ref!.split(":");
+      const c = circuitByKey(ck)!;
+      const d = circuitData(ck)!;
+      const k = fk as "hotels" | "campsites" | "walking-distance" | "cheap";
+      title = `${x(locale).circuitPages.filterTitle[k](c.name)} | ${dict.siteName}`;
+      description = x(locale).circuitPages.filterIntro[k](c.name, d.event.name);
       break;
     }
     case "event": {
@@ -207,12 +245,44 @@ function buildCrumbs(
   if (lmScoped.has(page.template)) {
     crumbs.push({ name: "Le Mans", href: hrefFor("circuit:le-mans", locale) });
   }
+  const circuitSub = new Set([
+    "circuittravel",
+    "circuitguide",
+    "circuitzone",
+    "circuitfilter",
+  ]);
+  if (circuitSub.has(page.template)) {
+    const ck = page.ref!.split(":")[0];
+    const c = circuitByKey(ck);
+    if (c) crumbs.push({ name: c.name, href: hrefFor(`circuit:${ck}`, locale) });
+  }
   switch (page.template) {
     case "home":
     case "circuitsoon":
     case "circuithub":
       crumbs.push({ name: circuitByKey(page.ref!)?.name ?? page.ref!, href: here });
       break;
+    case "circuittravel":
+      crumbs.push({ name: x(locale).circuitPages.travelKicker, href: here });
+      break;
+    case "circuitguide":
+      crumbs.push({ name: x(locale).circuitPages.guideKicker, href: here });
+      break;
+    case "circuitzone": {
+      const [ck, zk] = page.ref!.split(":");
+      const z = circuitData(ck)!.zones.find((zz) => zz.key === zk)!;
+      crumbs.push({ name: z.name, href: here });
+      break;
+    }
+    case "circuitfilter": {
+      const [ck, fk] = page.ref!.split(":");
+      const k = fk as "hotels" | "campsites" | "walking-distance" | "cheap";
+      crumbs.push({
+        name: x(locale).circuitPages.filterTitle[k](circuitByKey(ck)!.name),
+        href: here,
+      });
+      break;
+    }
     case "event":
       crumbs.push({
         name: dict.eventNames[eventByKey(page.ref!)!.id].name,
@@ -322,6 +392,53 @@ export default async function Page({ params }: Props) {
         />
       );
       break;
+    case "circuittravel":
+      body = (
+        <CircuitTravelTemplate
+          dict={dict}
+          locale={locale}
+          circuit={circuitByKey(page.ref!)!}
+          data={circuitData(page.ref!)!}
+        />
+      );
+      break;
+    case "circuitguide":
+      body = (
+        <CircuitGuideArticleTemplate
+          dict={dict}
+          locale={locale}
+          circuit={circuitByKey(page.ref!)!}
+          data={circuitData(page.ref!)!}
+        />
+      );
+      break;
+    case "circuitzone": {
+      const [ck, zk] = page.ref!.split(":");
+      const d = circuitData(ck)!;
+      body = (
+        <CircuitZoneTemplate
+          dict={dict}
+          locale={locale}
+          circuit={circuitByKey(ck)!}
+          data={d}
+          zone={d.zones.find((z) => z.key === zk)!}
+        />
+      );
+      break;
+    }
+    case "circuitfilter": {
+      const [ck, fk] = page.ref!.split(":");
+      body = (
+        <CircuitFilterTemplate
+          dict={dict}
+          locale={locale}
+          circuit={circuitByKey(ck)!}
+          data={circuitData(ck)!}
+          filterKey={fk}
+        />
+      );
+      break;
+    }
     case "home":
       body = <HomeTemplate dict={dict} locale={locale} />;
       break;

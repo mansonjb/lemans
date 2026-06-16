@@ -7,7 +7,13 @@ import {
   STAY_TYPES,
 } from "@/data/catalog";
 import { LEAD_PAGES } from "@/data/leadpages";
-import { CIRCUITS } from "@/data/circuits";
+import { CIRCUITS, circuitByKey } from "@/data/circuits";
+import {
+  circuitDataList,
+  circuitPageZones,
+  circuitFilterHotels,
+  CIRCUIT_FILTERS,
+} from "@/data/circuit-data";
 import {
   LOCALES,
   type Locale,
@@ -23,6 +29,51 @@ const PLACE_PREFIX: LocalizedSlug = {
   de: "unterkunft",
   it: "alloggi",
   es: "alojamiento",
+};
+
+// Localised URL segments for the generic per-circuit sub-pages.
+const GETTING_THERE: LocalizedSlug = {
+  en: "getting-there",
+  fr: "acces",
+  nl: "bereikbaarheid",
+  de: "anreise",
+  it: "come-arrivare",
+  es: "como-llegar",
+};
+const RACE_GUIDE: LocalizedSlug = {
+  en: "race-week-guide",
+  fr: "guide-week-end",
+  nl: "raceweek-gids",
+  de: "rennwochenende-guide",
+  it: "guida-weekend",
+  es: "guia-fin-de-semana",
+};
+const FILTER_SLUGS: Record<string, LocalizedSlug> = {
+  hotels: { en: "hotels", fr: "hotels", nl: "hotels", de: "hotels", it: "hotel", es: "hoteles" },
+  campsites: {
+    en: "campsites",
+    fr: "campings",
+    nl: "campings",
+    de: "campingplaetze",
+    it: "campeggi",
+    es: "campings",
+  },
+  "walking-distance": {
+    en: "closest-stays",
+    fr: "hebergements-proches",
+    nl: "dichtstbij",
+    de: "naechste-unterkuenfte",
+    it: "alloggi-vicini",
+    es: "alojamientos-cercanos",
+  },
+  cheap: {
+    en: "cheap-stays",
+    fr: "pas-cher",
+    nl: "goedkoop",
+    de: "guenstig",
+    it: "economici",
+    es: "baratos",
+  },
 };
 
 const prefixSlugs = (slugs: LocalizedSlug, prefix: LocalizedSlug): LocalizedSlug =>
@@ -52,6 +103,45 @@ export const PAGES: PageDef[] = [
     slugs: same(c.slug),
     ref: c.key,
   })),
+  // Generic per-circuit sub-pages (getting there, guide, zones, filters) for
+  // every circuit that has a data bundle.
+  ...circuitDataList().flatMap((d): PageDef[] => {
+    const c = circuitByKey(d.key)!;
+    const base = same(c.slug);
+    const pages: PageDef[] = [
+      {
+        key: `ctravel:${d.key}`,
+        template: "circuittravel",
+        slugs: prefixSlugs(GETTING_THERE, base),
+        ref: d.key,
+      },
+      {
+        key: `cguide:${d.key}`,
+        template: "circuitguide",
+        slugs: prefixSlugs(RACE_GUIDE, base),
+        ref: d.key,
+      },
+    ];
+    for (const z of circuitPageZones(d)) {
+      pages.push({
+        key: `czone:${d.key}:${z.key}`,
+        template: "circuitzone",
+        slugs: prefixSlugs(prefixSlugs(same(z.key), PLACE_PREFIX), base),
+        ref: `${d.key}:${z.key}`,
+      });
+    }
+    for (const f of CIRCUIT_FILTERS) {
+      if (circuitFilterHotels(d, f.key).length >= 3) {
+        pages.push({
+          key: `cfilter:${d.key}:${f.key}`,
+          template: "circuitfilter",
+          slugs: prefixSlugs(FILTER_SLUGS[f.key], base),
+          ref: `${d.key}:${f.key}`,
+        });
+      }
+    }
+    return pages;
+  }),
   ...EVENTS.map((e) => ({
     key: `event:${e.key}`,
     template: "event" as const,
@@ -192,6 +282,13 @@ export const circuitKeyForPage = (page: PageDef): string | null => {
   if (page.template === "home") return "le-mans";
   if (page.template === "circuithub" || page.template === "circuitsoon")
     return page.ref ?? null;
+  if (
+    page.template === "circuittravel" ||
+    page.template === "circuitguide" ||
+    page.template === "circuitzone" ||
+    page.template === "circuitfilter"
+  )
+    return page.ref ? page.ref.split(":")[0] : null;
   if (LM_SCOPED.has(page.template)) return "le-mans";
   return null;
 };

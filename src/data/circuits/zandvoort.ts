@@ -8,21 +8,27 @@ export const zandvoortZones: CircuitZone[] = [
     "name": "Zandvoort",
     "driveMin": 0,
     "ring": 1,
-    "count": 24
+    "count": 24,
+    "lat": 52.37541,
+    "lng": 4.52985
   },
   {
     "key": "overveen",
     "name": "Overveen",
     "driveMin": 3,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 52.40273,
+    "lng": 4.54428
   },
   {
     "key": "santpoort-zuid",
     "name": "Santpoort-Zuid",
     "driveMin": 8,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 52.41881,
+    "lng": 4.63598
   }
 ];
 
@@ -36,6 +42,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.7,
+    "lat": 52.3911484,
+    "lng": 4.5358877,
     "img": "/images/circuits/zandvoort/camping-association-amsterdam.jpg"
   },
   {
@@ -47,6 +55,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.5,
+    "lat": 52.3889367,
+    "lng": 4.5354334,
     "img": "/images/circuits/zandvoort/hotel-beachhouse.jpg"
   },
   {
@@ -58,6 +68,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.2,
+    "lat": 52.3887444,
+    "lng": 4.5365924,
     "img": "/images/circuits/zandvoort/camping-de-duinrand.jpg"
   },
   {
@@ -69,6 +81,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 3.2,
+    "lat": 52.3873798,
+    "lng": 4.5344738,
     "img": "/images/circuits/zandvoort/camperplaats-zandvoort.jpg"
   },
   {
@@ -80,6 +94,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4,
+    "lat": 52.3802851,
+    "lng": 4.5307569,
     "img": "/images/circuits/zandvoort/center-parcs-strandhotel.jpg"
   },
   {
@@ -91,6 +107,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4,
+    "lat": 52.38484,
+    "lng": 4.533253,
     "img": "/images/circuits/zandvoort/hotel-nh-zandvoort.jpg"
   },
   {
@@ -102,6 +120,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.8,
+    "lat": 52.4027297,
+    "lng": 4.5442785,
     "img": "/images/circuits/zandvoort/blendin-hotel-bloemendaal.jpg"
   },
   {
@@ -113,6 +133,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.7,
+    "lat": 52.3713136,
+    "lng": 4.5260892,
     "img": "/images/circuits/zandvoort/bell-hotel.jpg"
   },
   {
@@ -124,6 +146,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.6,
+    "lat": 52.3695174,
+    "lng": 4.5272859,
     "img": "/images/circuits/zandvoort/pension-zandvoort-aan-zee.jpg"
   },
   {
@@ -135,6 +159,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.6,
+    "lat": 52.3744095,
+    "lng": 4.5288945,
     "img": "/images/circuits/zandvoort/boutique-lodge-zandvoort.jpg"
   },
   {
@@ -146,6 +172,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.5,
+    "lat": 52.3733009,
+    "lng": 4.5358984,
     "img": "/images/circuits/zandvoort/aquarius-pension.jpg"
   },
   {
@@ -157,6 +185,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.5,
+    "lat": 52.368843,
+    "lng": 4.5247733,
     "img": "/images/circuits/zandvoort/guesthouse-zandvoort.jpg"
   },
   {
@@ -168,6 +198,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.5,
+    "lat": 52.373261,
+    "lng": 4.5301212,
     "img": "/images/circuits/zandvoort/boutique-hotel-novi.jpg"
   },
   {
@@ -179,6 +211,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.5,
+    "lat": 52.3697187,
+    "lng": 4.5285193,
     "img": "/images/circuits/zandvoort/ocean-house-zandvoort.jpg"
   },
   {
@@ -190,6 +224,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.5,
+    "lat": 52.3751182,
+    "lng": 4.5313692,
     "img": "/images/circuits/zandvoort/hotel-keur.jpg"
   },
   {
@@ -201,6 +237,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.2,
+    "lat": 52.3725524,
+    "lng": 4.5300534,
     "img": "/images/circuits/zandvoort/zaras-studios.jpg"
   },
   {
@@ -212,6 +250,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.2,
+    "lat": 52.3706212,
+    "lng": 4.5245773,
     "img": "/images/circuits/zandvoort/de-watertoren.jpg"
   },
   {
@@ -223,6 +263,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.2,
+    "lat": 52.3726144,
+    "lng": 4.5265573,
     "img": "/images/circuits/zandvoort/amsterdam-beach-hotel-zandvoort.jpg"
   },
   {
@@ -234,6 +276,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.1,
+    "lat": 52.3701438,
+    "lng": 4.5276491,
     "img": "/images/circuits/zandvoort/hotel-paradis.jpg"
   },
   {
@@ -245,6 +289,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 3.8,
+    "lat": 52.3708496,
+    "lng": 4.5296372,
     "img": "/images/circuits/zandvoort/pension-schier.jpg"
   },
   {
@@ -256,6 +302,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 3.7,
+    "lat": 52.3701602,
+    "lng": 4.5275993,
     "img": "/images/circuits/zandvoort/hofje-van-maas.jpg"
   },
   {
@@ -267,6 +315,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 3.6,
+    "lat": 52.3765168,
+    "lng": 4.5282904,
     "img": "/images/circuits/zandvoort/palace-hotel.jpg"
   },
   {
@@ -278,6 +328,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 3.5,
+    "lat": 52.3704935,
+    "lng": 4.5280305,
     "img": "/images/circuits/zandvoort/hotel-doppenberg.jpg"
   },
   {
@@ -289,6 +341,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 3.4,
+    "lat": 52.3708038,
+    "lng": 4.5311971,
     "img": "/images/circuits/zandvoort/hotel-zeespiegel-zandvoort.jpg"
   },
   {
@@ -300,6 +354,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 5,
+    "lat": 52.3683274,
+    "lng": 4.5234982,
     "img": "/images/circuits/zandvoort/holiday-beach-house-zandvoort.jpg"
   },
   {
@@ -311,6 +367,8 @@ export const zandvoortHotels: CircuitHotel[] = [
     "driveMin": 8,
     "ring": 1,
     "score": 4.6,
+    "lat": 52.4188094,
+    "lng": 4.6359773,
     "img": "/images/circuits/zandvoort/formule-1-camping-zandvoort.jpg"
   }
 ];

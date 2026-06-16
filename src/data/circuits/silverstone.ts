@@ -8,49 +8,63 @@ export const silverstoneZones: CircuitZone[] = [
     "name": "Towcester",
     "driveMin": 0,
     "ring": 1,
-    "count": 17
+    "count": 17,
+    "lat": 52.09086,
+    "lng": -1.01807
   },
   {
     "key": "buckingham",
     "name": "Buckingham",
     "driveMin": 3,
     "ring": 1,
-    "count": 6
+    "count": 6,
+    "lat": 52.03579,
+    "lng": -1.01379
   },
   {
     "key": "brackley",
     "name": "Brackley",
     "driveMin": 3,
     "ring": 1,
-    "count": 3
+    "count": 3,
+    "lat": 52.06464,
+    "lng": -1.10666
   },
   {
     "key": "northampton",
     "name": "Northampton",
     "driveMin": 17,
     "ring": 2,
-    "count": 2
+    "count": 2,
+    "lat": 52.18783,
+    "lng": -0.89394
   },
   {
     "key": "daventry",
     "name": "Daventry",
     "driveMin": 21,
     "ring": 2,
-    "count": 1
+    "count": 1,
+    "lat": 52.20642,
+    "lng": -1.17852
   },
   {
     "key": "milton-keynes",
     "name": "Milton Keynes",
     "driveMin": 21,
     "ring": 2,
-    "count": 1
+    "count": 1,
+    "lat": 51.9591,
+    "lng": -0.84338
   },
   {
     "key": "bicester",
     "name": "Bicester",
     "driveMin": 22,
     "ring": 2,
-    "count": 1
+    "count": 1,
+    "lat": 51.94999,
+    "lng": -1.1997
   }
 ];
 
@@ -64,6 +78,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.3,
+    "lat": 52.0818549,
+    "lng": -1.0143997,
     "img": "/images/circuits/silverstone/marshal-campsite.jpg"
   },
   {
@@ -75,6 +91,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.9,
+    "lat": 52.0829978,
+    "lng": -1.0305384,
     "img": "/images/circuits/silverstone/homeside-b-b.jpg"
   },
   {
@@ -86,6 +104,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.7,
+    "lat": 52.0839496,
+    "lng": -1.036727,
     "img": "/images/circuits/silverstone/west-end-paddocks-camping-and-car-parking.jpg"
   },
   {
@@ -97,6 +117,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.6,
+    "lat": 52.0802634,
+    "lng": -1.0301774,
     "img": "/images/circuits/silverstone/woodcote-fields-official-silverstone-campsite.jpg"
   },
   {
@@ -108,6 +130,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.4,
+    "lat": 52.0881541,
+    "lng": -1.0253263,
     "img": "/images/circuits/silverstone/silverstone-b-b.jpg"
   },
   {
@@ -119,6 +143,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.4,
+    "lat": 52.0731087,
+    "lng": -1.0073828,
     "img": "/images/circuits/silverstone/escapade-silverstone.jpg"
   },
   {
@@ -130,6 +156,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.4,
+    "lat": 52.0695442,
+    "lng": -1.0230196,
     "img": "/images/circuits/silverstone/hilton-garden-inn-silverstone.jpg"
   },
   {
@@ -141,6 +169,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.2,
+    "lat": 52.0800234,
+    "lng": -0.9978989,
     "img": "/images/circuits/silverstone/whittlebury-park.jpg"
   },
   {
@@ -152,6 +182,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 3.7,
+    "lat": 52.072657,
+    "lng": -1.017331,
     "img": "/images/circuits/silverstone/brdc-campsite.jpg"
   },
   {
@@ -163,6 +195,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 5,
+    "lat": 52.0984772,
+    "lng": -1.0196765,
     "img": "/images/circuits/silverstone/pitstop-glamping-silverstone.jpg"
   },
   {
@@ -174,6 +208,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 5,
+    "lat": 52.093366,
+    "lng": -1.0237618,
     "img": "/images/circuits/silverstone/new-rookery-farm-campsite.jpg"
   },
   {
@@ -185,6 +221,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 5,
+    "lat": 52.0941249,
+    "lng": -1.0316098,
     "img": "/images/circuits/silverstone/pavilion-gp-camping.jpg"
   },
   {
@@ -196,6 +234,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.8,
+    "lat": 52.0957775,
+    "lng": -1.022766,
     "img": "/images/circuits/silverstone/silverstone-farm-campsite.jpg"
   },
   {
@@ -207,6 +247,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.6,
+    "lat": 52.09781,
+    "lng": -1.0182344,
     "img": "/images/circuits/silverstone/hamilton-fields-campsite-silverstone.jpg"
   },
   {
@@ -218,6 +260,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.6,
+    "lat": 52.092131,
+    "lng": -1.0132849,
     "img": "/images/circuits/silverstone/windmill-farm-campsite.jpg"
   },
   {
@@ -229,6 +273,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.4,
+    "lat": 52.0597202,
+    "lng": -1.0264713,
     "img": "/images/circuits/silverstone/silverstone-woodlands-campsite.jpg"
   },
   {
@@ -240,6 +286,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.4,
+    "lat": 52.0580975,
+    "lng": -1.0302909,
     "img": "/images/circuits/silverstone/dadford-road-campsite-parking.jpg"
   },
   {
@@ -251,6 +299,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.3,
+    "lat": 52.062408,
+    "lng": -1.0288562,
     "img": "/images/circuits/silverstone/silverstone-campsites-at-silverstone-golf-club.jpg"
   },
   {
@@ -262,6 +312,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4,
+    "lat": 52.071154,
+    "lng": -1.057257,
     "img": "/images/circuits/silverstone/premier-inn-silverstone-hotel.jpg"
   },
   {
@@ -273,6 +325,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.4,
+    "lat": 52.0457848,
+    "lng": -1.0318185,
     "img": "/images/circuits/silverstone/cartmel-fields-camping.jpg"
   },
   {
@@ -284,6 +338,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 3.9,
+    "lat": 52.1271943,
+    "lng": -1.0045999,
     "img": "/images/circuits/silverstone/travelodge-towcester-silverstone.jpg"
   },
   {
@@ -295,6 +351,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 7,
     "ring": 1,
     "score": 4.6,
+    "lat": 52.133219,
+    "lng": -0.9904717,
     "img": "/images/circuits/silverstone/saracens-head-hotel.jpg"
   },
   {
@@ -306,6 +364,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 8,
     "ring": 1,
     "score": 4.7,
+    "lat": 52.0957895,
+    "lng": -1.1129432,
     "img": "/images/circuits/silverstone/astwell-mill-luxury-b-b-and-shepherds-hut.jpg"
   },
   {
@@ -317,6 +377,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 10,
     "ring": 1,
     "score": 4.2,
+    "lat": 51.999691,
+    "lng": -0.988474,
     "img": "/images/circuits/silverstone/villiers-hotel-buckingham.jpg"
   },
   {
@@ -328,6 +390,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 12,
     "ring": 1,
     "score": 4.3,
+    "lat": 51.9890279,
+    "lng": -0.9768457,
     "img": "/images/circuits/silverstone/premier-inn-buckingham-hotel.jpg"
   },
   {
@@ -339,6 +403,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 13,
     "ring": 1,
     "score": 2.9,
+    "lat": 52.0269661,
+    "lng": -1.1497889,
     "img": "/images/circuits/silverstone/crown-hotel.jpg"
   },
   {
@@ -350,6 +416,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 17,
     "ring": 2,
     "score": 4.3,
+    "lat": 52.1857783,
+    "lng": -0.8923612,
     "img": "/images/circuits/silverstone/holiday-inn-express-northampton-south-by-ihg.jpg"
   },
   {
@@ -361,6 +429,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 17,
     "ring": 2,
     "score": 4.1,
+    "lat": 52.1898795,
+    "lng": -0.8955217,
     "img": "/images/circuits/silverstone/hilton-northampton.jpg"
   },
   {
@@ -372,6 +442,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 21,
     "ring": 2,
     "score": 4.6,
+    "lat": 52.2064184,
+    "lng": -1.178516,
     "img": "/images/circuits/silverstone/fawsley-hall-hotel-spa.jpg"
   },
   {
@@ -383,6 +455,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 21,
     "ring": 2,
     "score": 4,
+    "lat": 51.9591026,
+    "lng": -0.843383,
     "img": "/images/circuits/silverstone/horwood-house-hotel.jpg"
   },
   {
@@ -394,6 +468,8 @@ export const silverstoneHotels: CircuitHotel[] = [
     "driveMin": 22,
     "ring": 2,
     "score": 3.9,
+    "lat": 51.9499949,
+    "lng": -1.1996995,
     "img": "/images/circuits/silverstone/travelodge-bicester-cherwell-valley-m40.jpg"
   }
 ];

@@ -209,6 +209,16 @@ export function PageShell({
       ? hrefFor(`circuit:${circuitKey}`, locale)
       : hrefFor("quiz", locale);
 
+  // Getting there / Guides resolve to the current circuit's pages (Le Mans
+  // keeps its bespoke ones; the global hub defaults to the flagship).
+  const isGeneric = !!circuitKey && circuitKey !== "le-mans";
+  const travelHref = isGeneric
+    ? hrefFor(`ctravel:${circuitKey}`, locale)
+    : hrefFor("travel", locale);
+  const guideHref = isGeneric
+    ? hrefFor(`cguide:${circuitKey}`, locale)
+    : hrefFor("guide:everything-booked", locale);
+
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur">
@@ -223,13 +233,10 @@ export function PageShell({
               label={xt.navCircuits}
             />
             <CoursesMenu label={dict.nav.events} entries={raceEntries} />
-            <Link href={hrefFor("travel", locale)} className="hover:text-bleu">
+            <Link href={travelHref} className="hover:text-bleu">
               {xt.navTravel}
             </Link>
-            <Link
-              href={hrefFor("guide:everything-booked", locale)}
-              className="hover:text-bleu"
-            >
+            <Link href={guideHref} className="hover:text-bleu">
               {dict.common.guidesHeading}
             </Link>
           </nav>

@@ -8,56 +8,72 @@ export const spaZones: CircuitZone[] = [
     "name": "Stavelot",
     "driveMin": 0,
     "ring": 1,
-    "count": 21
+    "count": 21,
+    "lat": 50.44353,
+    "lng": 5.95313
   },
   {
     "key": "malmedy",
     "name": "Malmedy",
     "driveMin": 3,
     "ring": 1,
-    "count": 8
+    "count": 8,
+    "lat": 50.42896,
+    "lng": 6.01513
   },
   {
     "key": "ruy",
     "name": "Ruy",
     "driveMin": 6,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.43229,
+    "lng": 5.89879
   },
   {
     "key": "sart",
     "name": "Sart",
     "driveMin": 10,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.50789,
+    "lng": 5.91953
   },
   {
     "key": "jalhay",
     "name": "Jalhay",
     "driveMin": 12,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.50982,
+    "lng": 5.89557
   },
   {
     "key": "spa",
     "name": "Spa",
     "driveMin": 12,
     "ring": 1,
-    "count": 2
+    "count": 2,
+    "lat": 50.4979,
+    "lng": 5.87346
   },
   {
     "key": "waimes",
     "name": "Waimes",
     "driveMin": 13,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.47896,
+    "lng": 6.10891
   },
   {
     "key": "theux",
     "name": "Theux",
     "driveMin": 15,
     "ring": 1,
-    "count": 1
+    "count": 1,
+    "lat": 50.53186,
+    "lng": 5.86253
   }
 ];
 
@@ -71,6 +87,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.9,
+    "lat": 50.4261142,
+    "lng": 5.9695994,
     "img": "/images/circuits/spa/gptents.jpg"
   },
   {
@@ -82,6 +100,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 4.4,
+    "lat": 50.4477129,
+    "lng": 5.9597799,
     "img": "/images/circuits/spa/hotel-de-la-source.jpg"
   },
   {
@@ -93,6 +113,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 0,
     "ring": 1,
     "score": 3.8,
+    "lat": 50.4489995,
+    "lng": 5.965609,
     "img": "/images/circuits/spa/yellow-camping-spa.jpg"
   },
   {
@@ -104,6 +126,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 5,
+    "lat": 50.4301953,
+    "lng": 5.9978303,
     "img": "/images/circuits/spa/la-taniere-du-bois-du-loup.jpg"
   },
   {
@@ -115,6 +139,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.7,
+    "lat": 50.4500394,
+    "lng": 5.9579528,
     "img": "/images/circuits/spa/appartement-de-l-open-source.jpg"
   },
   {
@@ -126,6 +152,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.6,
+    "lat": 50.4536697,
+    "lng": 5.9546559,
     "img": "/images/circuits/spa/camping-37.jpg"
   },
   {
@@ -137,6 +165,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.5,
+    "lat": 50.4214367,
+    "lng": 5.9872531,
     "img": "/images/circuits/spa/camping-les-ecuries-f1.jpg"
   },
   {
@@ -148,6 +178,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.5,
+    "lat": 50.4224474,
+    "lng": 5.9951372,
     "img": "/images/circuits/spa/camping.jpg"
   },
   {
@@ -159,6 +191,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.5,
+    "lat": 50.4541219,
+    "lng": 5.9539993,
     "img": "/images/circuits/spa/dolce-villa.jpg"
   },
   {
@@ -170,6 +204,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.4,
+    "lat": 50.45907,
+    "lng": 5.9781,
     "img": "/images/circuits/spa/the-elephant-f1-camping.jpg"
   },
   {
@@ -181,6 +217,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.4,
+    "lat": 50.453056,
+    "lng": 5.9568185,
     "img": "/images/circuits/spa/camping35.jpg"
   },
   {
@@ -192,6 +230,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.4,
+    "lat": 50.4561006,
+    "lng": 5.9525703,
     "img": "/images/circuits/spa/le-roannay-hotel-restaurant-gastronomique.jpg"
   },
   {
@@ -203,6 +243,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.4,
+    "lat": 50.4541485,
+    "lng": 5.9546354,
     "img": "/images/circuits/spa/hotel-relais-de-pommard-francorchamps.jpg"
   },
   {
@@ -214,6 +256,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 3.7,
+    "lat": 50.4287801,
+    "lng": 5.9904923,
     "img": "/images/circuits/spa/full-wind-francorchamps.jpg"
   },
   {
@@ -225,6 +269,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 5,
+    "lat": 50.4579959,
+    "lng": 5.9527828,
     "img": "/images/circuits/spa/spa-family-camping-circuit-spa-francorchamps.jpg"
   },
   {
@@ -236,6 +282,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.9,
+    "lat": 50.4483898,
+    "lng": 5.9384659,
     "img": "/images/circuits/spa/the-view.jpg"
   },
   {
@@ -247,6 +295,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.9,
+    "lat": 50.4651213,
+    "lng": 5.9717713,
     "img": "/images/circuits/spa/la-colombe.jpg"
   },
   {
@@ -258,6 +308,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4.3,
+    "lat": 50.4109497,
+    "lng": 5.9539075,
     "img": "/images/circuits/spa/camping-de-l-eau-rouge.jpg"
   },
   {
@@ -269,6 +321,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 4,
+    "lat": 50.4579959,
+    "lng": 5.9527828,
     "img": "/images/circuits/spa/spa-family-camping-f1-yellow-area-68.jpg"
   },
   {
@@ -280,6 +334,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 3.4,
+    "lat": 50.4600303,
+    "lng": 5.9529358,
     "img": "/images/circuits/spa/yellow-camping-francorchamps.jpg"
   },
   {
@@ -291,6 +347,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 2.9,
+    "lat": 50.4662561,
+    "lng": 5.9706804,
     "img": "/images/circuits/spa/intentsgp-campsite.jpg"
   },
   {
@@ -302,6 +360,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 3,
     "ring": 1,
     "score": 2,
+    "lat": 50.4593157,
+    "lng": 5.9528633,
     "img": "/images/circuits/spa/camping-yellow-75.jpg"
   },
   {
@@ -313,6 +373,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 4.6,
+    "lat": 50.4299942,
+    "lng": 6.0259222,
     "img": "/images/circuits/spa/myhotel.jpg"
   },
   {
@@ -324,6 +386,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 5,
     "ring": 1,
     "score": 2.5,
+    "lat": 50.4254406,
+    "lng": 6.0243021,
     "img": "/images/circuits/spa/hotel-la-forge-sa.jpg"
   },
   {
@@ -335,6 +399,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.9,
+    "lat": 50.4322871,
+    "lng": 5.8987878,
     "img": "/images/circuits/spa/le-paddock-lodge.jpg"
   },
   {
@@ -346,6 +412,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.7,
+    "lat": 50.3979072,
+    "lng": 5.9390377,
     "img": "/images/circuits/spa/le-val-d-ambleve.jpg"
   },
   {
@@ -357,6 +425,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 4.3,
+    "lat": 50.4460023,
+    "lng": 6.0335381,
     "img": "/images/circuits/spa/hotel-grand-champ.jpg"
   },
   {
@@ -368,6 +438,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 6,
     "ring": 1,
     "score": 3.6,
+    "lat": 50.395532,
+    "lng": 5.9479091,
     "img": "/images/circuits/spa/camping-de-challes.jpg"
   },
   {
@@ -379,6 +451,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 8,
     "ring": 1,
     "score": 4.3,
+    "lat": 50.4273605,
+    "lng": 6.0665783,
     "img": "/images/circuits/spa/arimont-valley-hotel.jpg"
   },
   {
@@ -390,6 +464,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 9,
     "ring": 1,
     "score": 4.5,
+    "lat": 50.391599,
+    "lng": 5.878857,
     "img": "/images/circuits/spa/camping-de-la-cascade.jpg"
   },
   {
@@ -401,6 +477,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 10,
     "ring": 1,
     "score": 3.7,
+    "lat": 50.5078885,
+    "lng": 5.9195306,
     "img": "/images/circuits/spa/spa-d-or.jpg"
   },
   {
@@ -412,6 +490,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 12,
     "ring": 1,
     "score": 4.8,
+    "lat": 50.5098224,
+    "lng": 5.8955667,
     "img": "/images/circuits/spa/les-refuges-du-chalet.jpg"
   },
   {
@@ -423,6 +503,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 12,
     "ring": 1,
     "score": 4.2,
+    "lat": 50.4927834,
+    "lng": 5.8634533,
     "img": "/images/circuits/spa/van-der-valk-hotel-spa.jpg"
   },
   {
@@ -434,6 +516,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 12,
     "ring": 1,
     "score": 4,
+    "lat": 50.5030082,
+    "lng": 5.8834751,
     "img": "/images/circuits/spa/radisson-blu-balmoral-hotel-spa.jpg"
   },
   {
@@ -445,6 +529,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 13,
     "ring": 1,
     "score": 3.7,
+    "lat": 50.4789586,
+    "lng": 6.1089106,
     "img": "/images/circuits/spa/le-domaine-des-hautes-fagnes-spa.jpg"
   },
   {
@@ -456,6 +542,8 @@ export const spaHotels: CircuitHotel[] = [
     "driveMin": 15,
     "ring": 1,
     "score": 3.9,
+    "lat": 50.5318576,
+    "lng": 5.8625317,
     "img": "/images/circuits/spa/camping-polleur-in-the-ardennes.jpg"
   }
 ];

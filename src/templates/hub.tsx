@@ -5,6 +5,11 @@ import { homeFaq } from "@/i18n/homefaq";
 import type { Locale } from "@/lib/types";
 import type { Circuit } from "@/data/circuits";
 import type { CircuitData } from "@/data/circuit-data";
+import {
+  circuitFilterHotels,
+  circuitPageZones,
+  CIRCUIT_FILTERS,
+} from "@/data/circuit-data";
 import { hrefFor } from "@/lib/registry";
 import { Container, Kicker, SlantBadge, SpeedHeading } from "@/components/ui";
 import { CircuitNetwork } from "@/components/CircuitNetwork";
@@ -187,24 +192,40 @@ export function CircuitGuideTemplate({
             {g.zonesSub(circuit.name)}
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {data.zones.map((z) => (
-              <div
-                key={z.key}
-                className="rounded-xl border border-line bg-card p-4 shadow-sm"
-              >
-                <div className="flex items-baseline justify-between gap-2">
-                  <h3 className="font-display text-lg font-bold uppercase italic tracking-tight">
-                    {z.name}
-                  </h3>
-                  <span className="font-display text-sm font-bold tabular-nums text-bleu">
-                    {z.driveMin === 0 ? g.atCircuit : g.minLabel(z.driveMin)}
-                  </span>
+            {data.zones.map((z) => {
+              const hasPage = z.key !== "circuit-area" && z.count >= 2;
+              const inner = (
+                <>
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h3 className="font-display text-lg font-bold uppercase italic tracking-tight">
+                      {z.name}
+                    </h3>
+                    <span className="font-display text-sm font-bold tabular-nums text-bleu">
+                      {z.driveMin === 0 ? g.atCircuit : g.minLabel(z.driveMin)}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-[13px] text-muted">
+                    {g.staysCount(z.count)}
+                  </p>
+                </>
+              );
+              return hasPage ? (
+                <Link
+                  key={z.key}
+                  href={hrefFor(`czone:${circuit.key}:${z.key}`, locale)}
+                  className="rounded-xl border border-line bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <div
+                  key={z.key}
+                  className="rounded-xl border border-line bg-card p-4 shadow-sm"
+                >
+                  {inner}
                 </div>
-                <p className="mt-1 text-[13px] text-muted">
-                  {g.staysCount(z.count)}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -242,6 +263,35 @@ export function CircuitGuideTemplate({
               zoom={11}
               locale={locale}
             />
+          </div>
+        </div>
+
+        <div className="mt-14">
+          <SpeedHeading>{xt.seo.popularSearches}</SpeedHeading>
+          <div className="mt-6 flex flex-wrap gap-2">
+            <Link
+              href={hrefFor(`ctravel:${circuit.key}`, locale)}
+              className="inline-flex items-center rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold transition hover:border-bleu hover:text-bleu"
+            >
+              {xt.circuitPages.travelKicker}
+            </Link>
+            <Link
+              href={hrefFor(`cguide:${circuit.key}`, locale)}
+              className="inline-flex items-center rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold transition hover:border-bleu hover:text-bleu"
+            >
+              {xt.circuitPages.guideKicker}
+            </Link>
+            {CIRCUIT_FILTERS.filter(
+              (f) => circuitFilterHotels(data, f.key).length >= 3
+            ).map((f) => (
+              <Link
+                key={f.key}
+                href={hrefFor(`cfilter:${circuit.key}:${f.key}`, locale)}
+                className="inline-flex items-center rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold transition hover:border-bleu hover:text-bleu"
+              >
+                {xt.circuitPages.filterTitle[f.key](circuit.name)}
+              </Link>
+            ))}
           </div>
         </div>
 
