@@ -104,6 +104,24 @@ export interface ExtraDict {
     soonMap: (c: string) => string;
     exploreLeMans: string;
   };
+  /** Generic live circuit guide (every circuit except bespoke Le Mans). */
+  circuitGuide: {
+    kicker: string;
+    intro: (circuit: string, event: string) => string;
+    factClosest: string;
+    factCrowd: string;
+    factWindow: string;
+    factBook: string;
+    staysHeading: (circuit: string) => string;
+    staysSub: string;
+    zonesHeading: string;
+    zonesSub: (circuit: string) => string;
+    atCircuit: string;
+    minLabel: (min: number) => string;
+    staysCount: (n: number) => string;
+    mapHeading: (circuit: string) => string;
+    faq: (circuit: string, event: string, town: string, bookAhead: string) => FaqItem[];
+  };
 }
 
 /* ----------------------------- ENGLISH ----------------------------- */
@@ -358,6 +376,47 @@ const enX: ExtraDict = {
       `We're building the full ${c} accommodation guide: hotels, camping and rentals ranked by drive time to the circuit. It is coming soon. Meanwhile, the live map below shows real availability around the track.`,
     soonMap: (c) => `Live availability around ${c}`,
     exploreLeMans: "See our live Le Mans guide",
+  },
+  circuitGuide: {
+    kicker: "Race-week base camp",
+    intro: (circuit, event) =>
+      `Where to stay for the ${event} at ${circuit}: every hotel, campsite and rental near the circuit, closest first, with live prices for the race weekend. We check the locations by hand so you book the right base, not just the first result.`,
+    factClosest: "Closest stay",
+    factCrowd: "Race-week crowd",
+    factWindow: "When",
+    factBook: "Book ahead",
+    staysHeading: (circuit) => `Where to stay near ${circuit}`,
+    staysSub:
+      "Hand-checked hotels, campsites and rentals, sorted by distance to the circuit. Open any card for live availability and pricing on your dates.",
+    zonesHeading: "Best areas to stay",
+    zonesSub: (circuit) =>
+      `The towns and villages around ${circuit}, from on-site campsites to comfortable hotels a short drive away.`,
+    atCircuit: "At the circuit",
+    minLabel: (min) => `${min} min`,
+    staysCount: (n) => (n === 1 ? "1 stay" : `${n} stays`),
+    mapHeading: (circuit) => `Live availability around ${circuit}`,
+    faq: (circuit, event, town, bookAhead) => [
+      {
+        q: `When should I book accommodation for the ${event}?`,
+        a: `As early as you can. The closest hotels and campsites around ${circuit} typically sell out ${bookAhead} ahead. Booking with free cancellation the moment dates are confirmed is the safe move.`,
+      },
+      {
+        q: `Where is the best place to stay for the ${event}?`,
+        a: `The closest stays are in ${town} and the villages right by the circuit. For more choice and better prices, the surrounding towns within about 30 minutes are the sweet spot. The map above shows live availability across all of them.`,
+      },
+      {
+        q: `Can I camp at ${circuit}?`,
+        a: "Yes. Official and private campsites open for the race weekend right next to the circuit. They are the closest option and the first to go, so book early.",
+      },
+      {
+        q: `How far in advance do stays near ${circuit} sell out?`,
+        a: `On-site and walking-distance options usually go ${bookAhead} before the ${event}. The wider ring of towns stays open much longer, so widen your search if the closest places are full.`,
+      },
+      {
+        q: "Are the prices on this page live?",
+        a: "Yes. Every stay links to live availability and pricing for your dates, and the map updates in real time. We may earn a commission if you book, at no extra cost to you.",
+      },
+    ],
   },
 };
 
@@ -614,6 +673,47 @@ const frX: ExtraDict = {
     soonMap: (c) => `Disponibilités en direct autour de ${c}`,
     exploreLeMans: "Voir notre guide Le Mans en ligne",
   },
+  circuitGuide: {
+    kicker: "Votre camp de base course",
+    intro: (circuit, event) =>
+      `Où dormir pour le ${event} à ${circuit} : tous les hôtels, campings et locations près du circuit, du plus proche au plus loin, avec les prix en direct pour le week-end de course. On vérifie chaque emplacement à la main pour que vous réserviez la bonne base, pas juste le premier résultat.`,
+    factClosest: "Le plus proche",
+    factCrowd: "Affluence",
+    factWindow: "Période",
+    factBook: "Réserver tôt",
+    staysHeading: (circuit) => `Où dormir près de ${circuit}`,
+    staysSub:
+      "Hôtels, campings et locations vérifiés un par un, classés par distance au circuit. Ouvrez une carte pour voir les disponibilités et les prix en direct pour vos dates.",
+    zonesHeading: "Les meilleures zones",
+    zonesSub: (circuit) =>
+      `Les villes et villages autour de ${circuit}, des campings sur place aux hôtels confortables à quelques minutes en voiture.`,
+    atCircuit: "Au circuit",
+    minLabel: (min) => `${min} min`,
+    staysCount: (n) => (n === 1 ? "1 hébergement" : `${n} hébergements`),
+    mapHeading: (circuit) => `Disponibilités en direct autour de ${circuit}`,
+    faq: (circuit, event, town, bookAhead) => [
+      {
+        q: `Quand réserver son hébergement pour le ${event} ?`,
+        a: `Le plus tôt possible. Les hôtels et campings les plus proches de ${circuit} affichent souvent complet ${bookAhead} à l'avance. Réserver avec annulation gratuite dès que les dates sont connues reste la meilleure approche.`,
+      },
+      {
+        q: `Où vaut-il mieux dormir pour le ${event} ?`,
+        a: `Les hébergements les plus proches sont à ${town} et dans les villages au bord du circuit. Pour plus de choix et de meilleurs prix, les villes alentour à une trentaine de minutes sont le bon compromis. La carte ci-dessus montre les disponibilités en direct partout.`,
+      },
+      {
+        q: `Peut-on camper à ${circuit} ?`,
+        a: "Oui. Des campings officiels et privés ouvrent pour le week-end de course juste à côté du circuit. C'est l'option la plus proche et la première à partir, alors réservez tôt.",
+      },
+      {
+        q: `Combien de temps à l'avance les hébergements près de ${circuit} sont-ils complets ?`,
+        a: `Les options sur place et accessibles à pied partent en général ${bookAhead} avant le ${event}. La couronne de villes plus large reste disponible bien plus longtemps : élargissez la recherche si le plus proche est complet.`,
+      },
+      {
+        q: "Les prix affichés sur cette page sont-ils en direct ?",
+        a: "Oui. Chaque hébergement renvoie aux disponibilités et aux prix en direct pour vos dates, et la carte se met à jour en temps réel. Nous pouvons toucher une commission si vous réservez, sans surcoût pour vous.",
+      },
+    ],
+  },
 };
 
 /* ----------------------------- DUTCH ----------------------------- */
@@ -858,6 +958,47 @@ const nlX: ExtraDict = {
       `We bouwen de volledige accommodatiegids voor ${c}: hotels, camping en huizen op rijtijd naar het circuit. Het komt binnenkort. Intussen toont de live kaart hieronder de echte beschikbaarheid rond de baan.`,
     soonMap: (c) => `Live beschikbaarheid rond ${c}`,
     exploreLeMans: "Bekijk onze live Le Mans-gids",
+  },
+  circuitGuide: {
+    kicker: "Uitvalsbasis voor de raceweek",
+    intro: (circuit, event) =>
+      `Waar overnachten voor de ${event} op ${circuit}: alle hotels, campings en huurwoningen bij het circuit, dichtstbijzijnde eerst, met live prijzen voor het raceweekend. We controleren elke locatie met de hand, zodat je de juiste uitvalsbasis boekt en niet zomaar het eerste resultaat.`,
+    factClosest: "Dichtstbij",
+    factCrowd: "Bezoekers",
+    factWindow: "Wanneer",
+    factBook: "Op tijd boeken",
+    staysHeading: (circuit) => `Waar overnachten bij ${circuit}`,
+    staysSub:
+      "Met de hand gecontroleerde hotels, campings en huurwoningen, gesorteerd op afstand tot het circuit. Open een kaart voor live beschikbaarheid en prijzen voor jouw data.",
+    zonesHeading: "Beste gebieden om te overnachten",
+    zonesSub: (circuit) =>
+      `De steden en dorpen rond ${circuit}, van campings op het terrein tot comfortabele hotels op een paar minuten rijden.`,
+    atCircuit: "Op het circuit",
+    minLabel: (min) => `${min} min`,
+    staysCount: (n) => (n === 1 ? "1 verblijf" : `${n} verblijven`),
+    mapHeading: (circuit) => `Live beschikbaarheid rond ${circuit}`,
+    faq: (circuit, event, town, bookAhead) => [
+      {
+        q: `Wanneer moet ik accommodatie boeken voor de ${event}?`,
+        a: `Zo vroeg mogelijk. De dichtstbijzijnde hotels en campings rond ${circuit} zijn vaak ${bookAhead} van tevoren volgeboekt. Boeken met gratis annulering zodra de data bekend zijn, is de veiligste keuze.`,
+      },
+      {
+        q: `Waar kun je het best overnachten voor de ${event}?`,
+        a: `De dichtstbijzijnde verblijven liggen in ${town} en de dorpen pal naast het circuit. Voor meer keuze en betere prijzen zijn de omliggende steden binnen zo'n 30 minuten ideaal. De kaart hierboven toont overal de live beschikbaarheid.`,
+      },
+      {
+        q: `Kun je kamperen bij ${circuit}?`,
+        a: "Ja. Officiële en particuliere campings openen voor het raceweekend vlak naast het circuit. Het is de dichtstbijzijnde optie en het eerst vol, dus boek op tijd.",
+      },
+      {
+        q: `Hoe lang van tevoren zijn verblijven bij ${circuit} volgeboekt?`,
+        a: `Opties op het terrein en op loopafstand gaan meestal ${bookAhead} voor de ${event} weg. De bredere ring van steden blijft veel langer beschikbaar: verbreed je zoekopdracht als het dichtstbijzijnde vol is.`,
+      },
+      {
+        q: "Zijn de prijzen op deze pagina live?",
+        a: "Ja. Elk verblijf linkt naar live beschikbaarheid en prijzen voor jouw data, en de kaart werkt in realtime bij. We ontvangen mogelijk een commissie als je boekt, zonder extra kosten voor jou.",
+      },
+    ],
   },
 };
 
@@ -1104,6 +1245,47 @@ const deX: ExtraDict = {
     soonMap: (c) => `Live-Verfügbarkeit rund um ${c}`,
     exploreLeMans: "Unseren Live-Guide für Le Mans ansehen",
   },
+  circuitGuide: {
+    kicker: "Basislager fürs Rennwochenende",
+    intro: (circuit, event) =>
+      `Wo übernachten zum ${event} am ${circuit}: alle Hotels, Campingplätze und Ferienwohnungen nahe der Strecke, die nächsten zuerst, mit Live-Preisen fürs Rennwochenende. Wir prüfen jede Lage von Hand, damit du die richtige Basis buchst und nicht einfach das erste Ergebnis.`,
+    factClosest: "Am nächsten",
+    factCrowd: "Besucher",
+    factWindow: "Wann",
+    factBook: "Früh buchen",
+    staysHeading: (circuit) => `Wo übernachten nahe ${circuit}`,
+    staysSub:
+      "Von Hand geprüfte Hotels, Campingplätze und Ferienwohnungen, sortiert nach Entfernung zur Strecke. Öffne eine Karte für Live-Verfügbarkeit und Preise für deine Daten.",
+    zonesHeading: "Beste Gegenden zum Übernachten",
+    zonesSub: (circuit) =>
+      `Die Städte und Dörfer rund um ${circuit}, von Campingplätzen direkt an der Strecke bis zu komfortablen Hotels wenige Minuten entfernt.`,
+    atCircuit: "An der Strecke",
+    minLabel: (min) => `${min} Min.`,
+    staysCount: (n) => (n === 1 ? "1 Unterkunft" : `${n} Unterkünfte`),
+    mapHeading: (circuit) => `Live-Verfügbarkeit rund um ${circuit}`,
+    faq: (circuit, event, town, bookAhead) => [
+      {
+        q: `Wann sollte ich die Unterkunft für das ${event} buchen?`,
+        a: `So früh wie möglich. Die nächstgelegenen Hotels und Campingplätze rund um ${circuit} sind oft ${bookAhead} im Voraus ausgebucht. Mit kostenloser Stornierung zu buchen, sobald die Termine feststehen, ist der sichere Weg.`,
+      },
+      {
+        q: `Wo übernachtet man am besten zum ${event}?`,
+        a: `Die nächsten Unterkünfte liegen in ${town} und den Dörfern direkt an der Strecke. Für mehr Auswahl und bessere Preise sind die umliegenden Orte in rund 30 Minuten ideal. Die Karte oben zeigt überall die Live-Verfügbarkeit.`,
+      },
+      {
+        q: `Kann man am ${circuit} campen?`,
+        a: "Ja. Offizielle und private Campingplätze öffnen zum Rennwochenende direkt neben der Strecke. Sie sind die nächste Option und zuerst ausgebucht, also früh reservieren.",
+      },
+      {
+        q: `Wie lange im Voraus sind Unterkünfte nahe ${circuit} ausgebucht?`,
+        a: `Optionen an der Strecke und in Gehweite sind meist ${bookAhead} vor dem ${event} weg. Der weitere Ring an Orten bleibt deutlich länger verfügbar: erweitere die Suche, wenn die nächsten ausgebucht sind.`,
+      },
+      {
+        q: "Sind die Preise auf dieser Seite live?",
+        a: "Ja. Jede Unterkunft verlinkt auf Live-Verfügbarkeit und Preise für deine Daten, und die Karte aktualisiert sich in Echtzeit. Wir erhalten möglicherweise eine Provision, wenn du buchst, ohne Mehrkosten für dich.",
+      },
+    ],
+  },
 };
 
 /* ----------------------------- ITALIAN ----------------------------- */
@@ -1349,6 +1531,47 @@ const itX: ExtraDict = {
     soonMap: (c) => `Disponibilità in tempo reale intorno a ${c}`,
     exploreLeMans: "Vedi la nostra guida live di Le Mans",
   },
+  circuitGuide: {
+    kicker: "Base per il weekend di gara",
+    intro: (circuit, event) =>
+      `Dove dormire per il ${event} a ${circuit}: tutti gli hotel, i campeggi e le case vacanza vicino al circuito, dal più vicino al più lontano, con prezzi in tempo reale per il weekend di gara. Controlliamo ogni posizione a mano, così prenoti la base giusta e non solo il primo risultato.`,
+    factClosest: "Più vicino",
+    factCrowd: "Spettatori",
+    factWindow: "Quando",
+    factBook: "Prenota presto",
+    staysHeading: (circuit) => `Dove dormire vicino a ${circuit}`,
+    staysSub:
+      "Hotel, campeggi e case vacanza verificati a mano, ordinati per distanza dal circuito. Apri una scheda per disponibilità e prezzi in tempo reale per le tue date.",
+    zonesHeading: "Le zone migliori",
+    zonesSub: (circuit) =>
+      `Le città e i paesi intorno a ${circuit}, dai campeggi sul posto agli hotel comodi a pochi minuti d'auto.`,
+    atCircuit: "Al circuito",
+    minLabel: (min) => `${min} min`,
+    staysCount: (n) => (n === 1 ? "1 alloggio" : `${n} alloggi`),
+    mapHeading: (circuit) => `Disponibilità in tempo reale intorno a ${circuit}`,
+    faq: (circuit, event, town, bookAhead) => [
+      {
+        q: `Quando prenotare l'alloggio per il ${event}?`,
+        a: `Il prima possibile. Gli hotel e i campeggi più vicini a ${circuit} si esauriscono spesso ${bookAhead} prima. Prenotare con cancellazione gratuita appena escono le date è la mossa più sicura.`,
+      },
+      {
+        q: `Dove conviene dormire per il ${event}?`,
+        a: `Gli alloggi più vicini sono a ${town} e nei paesi a ridosso del circuito. Per più scelta e prezzi migliori, le città circostanti entro circa 30 minuti sono il compromesso ideale. La mappa qui sopra mostra la disponibilità in tempo reale ovunque.`,
+      },
+      {
+        q: `Si può campeggiare a ${circuit}?`,
+        a: "Sì. Campeggi ufficiali e privati aprono per il weekend di gara proprio accanto al circuito. Sono l'opzione più vicina e le prime a esaurirsi, quindi prenota per tempo.",
+      },
+      {
+        q: `Con quanto anticipo si esauriscono gli alloggi vicino a ${circuit}?`,
+        a: `Le opzioni sul posto e a piedi se ne vanno di solito ${bookAhead} prima del ${event}. La fascia più ampia di città resta disponibile molto più a lungo: allarga la ricerca se i più vicini sono pieni.`,
+      },
+      {
+        q: "I prezzi su questa pagina sono in tempo reale?",
+        a: "Sì. Ogni alloggio rimanda a disponibilità e prezzi in tempo reale per le tue date, e la mappa si aggiorna in diretta. Potremmo ricevere una commissione se prenoti, senza costi aggiuntivi per te.",
+      },
+    ],
+  },
 };
 
 /* ----------------------------- SPANISH ----------------------------- */
@@ -1593,6 +1816,47 @@ const esX: ExtraDict = {
       `Estamos construyendo la guía completa de alojamiento de ${c}: hoteles, campings y casas ordenados por tiempo de trayecto al circuito. Llega pronto. Mientras tanto, el mapa en directo de abajo muestra la disponibilidad real alrededor de la pista.`,
     soonMap: (c) => `Disponibilidad en directo alrededor de ${c}`,
     exploreLeMans: "Ver nuestra guía de Le Mans en directo",
+  },
+  circuitGuide: {
+    kicker: "Base para el fin de semana de carrera",
+    intro: (circuit, event) =>
+      `Dónde alojarse para el ${event} en ${circuit}: todos los hoteles, campings y alquileres cerca del circuito, del más cercano al más lejano, con precios en directo para el fin de semana de carrera. Revisamos cada ubicación a mano para que reserves la base correcta y no solo el primer resultado.`,
+    factClosest: "Más cercano",
+    factCrowd: "Asistencia",
+    factWindow: "Cuándo",
+    factBook: "Reserva pronto",
+    staysHeading: (circuit) => `Dónde alojarse cerca de ${circuit}`,
+    staysSub:
+      "Hoteles, campings y alquileres verificados a mano, ordenados por distancia al circuito. Abre una tarjeta para ver disponibilidad y precios en directo para tus fechas.",
+    zonesHeading: "Las mejores zonas",
+    zonesSub: (circuit) =>
+      `Las ciudades y pueblos alrededor de ${circuit}, desde campings en el recinto hasta hoteles cómodos a unos minutos en coche.`,
+    atCircuit: "En el circuito",
+    minLabel: (min) => `${min} min`,
+    staysCount: (n) => (n === 1 ? "1 alojamiento" : `${n} alojamientos`),
+    mapHeading: (circuit) => `Disponibilidad en directo alrededor de ${circuit}`,
+    faq: (circuit, event, town, bookAhead) => [
+      {
+        q: `¿Cuándo conviene reservar alojamiento para el ${event}?`,
+        a: `Cuanto antes. Los hoteles y campings más cercanos a ${circuit} suelen agotarse ${bookAhead} antes. Reservar con cancelación gratuita en cuanto se confirman las fechas es lo más seguro.`,
+      },
+      {
+        q: `¿Dónde es mejor alojarse para el ${event}?`,
+        a: `Los alojamientos más cercanos están en ${town} y en los pueblos pegados al circuito. Para más opciones y mejores precios, las ciudades de alrededor a unos 30 minutos son el punto justo. El mapa de arriba muestra la disponibilidad en directo en todas ellas.`,
+      },
+      {
+        q: `¿Se puede acampar en ${circuit}?`,
+        a: "Sí. Campings oficiales y privados abren para el fin de semana de carrera justo al lado del circuito. Son la opción más cercana y las primeras en llenarse, así que reserva pronto.",
+      },
+      {
+        q: `¿Con cuánta antelación se agotan los alojamientos cerca de ${circuit}?`,
+        a: `Las opciones en el recinto y a pie suelen irse ${bookAhead} antes del ${event}. El anillo más amplio de ciudades sigue disponible mucho más tiempo: amplía la búsqueda si los más cercanos están llenos.`,
+      },
+      {
+        q: "¿Los precios de esta página son en directo?",
+        a: "Sí. Cada alojamiento enlaza con disponibilidad y precios en directo para tus fechas, y el mapa se actualiza en tiempo real. Podemos recibir una comisión si reservas, sin coste adicional para ti.",
+      },
+    ],
   },
 };
 

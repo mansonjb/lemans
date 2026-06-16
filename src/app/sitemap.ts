@@ -4,6 +4,7 @@ import { languageAlternates, PAGES, urlFor } from "@/lib/registry";
 const PRIORITY: Record<string, number> = {
   globalhome: 1,
   home: 0.9,
+  circuithub: 0.9,
   circuitsoon: 0.6,
   event: 0.9,
   quiz: 0.8,
@@ -17,6 +18,7 @@ const PRIORITY: Record<string, number> = {
 
 const CHANGEFREQ: Record<string, MetadataRoute.Sitemap[number]["changeFrequency"]> = {
   home: "daily",
+  circuithub: "daily",
   event: "weekly",
   eventzone: "weekly",
   cross: "weekly",

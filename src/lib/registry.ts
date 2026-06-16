@@ -41,7 +41,14 @@ export const PAGES: PageDef[] = [
   { key: "home", template: "globalhome", slugs: same("") },
   ...CIRCUITS.map((c): PageDef => ({
     key: `circuit:${c.key}`,
-    template: c.status === "live" ? "home" : "circuitsoon",
+    // Le Mans keeps its bespoke "home" template; every other live circuit
+    // renders from the generic circuit guide; the rest stay coming-soon.
+    template:
+      c.status !== "live"
+        ? "circuitsoon"
+        : c.key === "le-mans"
+          ? "home"
+          : "circuithub",
     slugs: same(c.slug),
     ref: c.key,
   })),

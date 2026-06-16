@@ -24,7 +24,12 @@ import type { Crumb } from "@/components/Breadcrumbs";
 import type { PageDef } from "@/lib/types";
 import { hrefFor } from "@/lib/registry";
 import { EventTemplate, HomeTemplate, PlaceTemplate } from "@/templates/core";
-import { GlobalHomeTemplate, CircuitSoonTemplate } from "@/templates/hub";
+import {
+  GlobalHomeTemplate,
+  CircuitSoonTemplate,
+  CircuitGuideTemplate,
+} from "@/templates/hub";
+import { circuitData } from "@/data/circuit-data";
 import { MoneyTemplate } from "@/templates/money";
 import {
   CrossTemplate,
@@ -71,6 +76,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const c = circuitByKey(page.ref!)!;
       title = `${x(locale).hub.soonTitle(c.name)} | ${dict.siteName}`;
       description = x(locale).hub.soonIntro(c.name);
+      break;
+    }
+    case "circuithub": {
+      const c = circuitByKey(page.ref!)!;
+      const d = circuitData(c.key)!;
+      title = `${x(locale).circuitGuide.staysHeading(c.name)} | ${dict.siteName}`;
+      description = x(locale).circuitGuide.intro(c.name, d.event.name);
       break;
     }
     case "event": {
@@ -198,6 +210,7 @@ function buildCrumbs(
   switch (page.template) {
     case "home":
     case "circuitsoon":
+    case "circuithub":
       crumbs.push({ name: circuitByKey(page.ref!)?.name ?? page.ref!, href: here });
       break;
     case "event":
@@ -296,6 +309,16 @@ export default async function Page({ params }: Props) {
           dict={dict}
           locale={locale}
           circuit={circuitByKey(page.ref!)!}
+        />
+      );
+      break;
+    case "circuithub":
+      body = (
+        <CircuitGuideTemplate
+          dict={dict}
+          locale={locale}
+          circuit={circuitByKey(page.ref!)!}
+          data={circuitData(page.ref!)!}
         />
       );
       break;

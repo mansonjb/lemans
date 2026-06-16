@@ -39,7 +39,7 @@ export const CIRCUITS: Circuit[] = [
     lat: 52.0786,
     lng: -1.0169,
     events: "British Grand Prix",
-    status: "soon",
+    status: "live",
   },
   {
     key: "spa",
