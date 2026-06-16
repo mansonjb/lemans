@@ -35,18 +35,21 @@ const dropped = raw.filter((h) => h.distKm > MAX_KM);
 const hotels = raw
   .filter((h) => h.distKm <= MAX_KM)
   .sort((a, b) => a.ring - b.ring || a.distKm - b.distKm || (b.score ?? 0) - (a.score ?? 0))
-  .map((h) => ({
-    name: h.name,
-    slug: h.slug,
-    kind: h.kind,
-    category: h.category,
-    zone: slugify(h.city),
-    city: h.city,
-    driveMin: h.driveMin,
-    ring: h.ring,
-    score: h.score ?? null,
-    img: h.photo ? `/images/circuits/${key}/${h.slug}.jpg` : "",
-  }));
+  .map((h) => {
+    const city = h.city || "Circuit area";
+    return {
+      name: h.name,
+      slug: h.slug,
+      kind: h.kind,
+      category: h.category,
+      zone: slugify(city),
+      city,
+      driveMin: h.driveMin,
+      ring: h.ring,
+      score: h.score ?? null,
+      img: h.photo ? `/images/circuits/${key}/${h.slug}.jpg` : "",
+    };
+  });
 
 // Zones = distinct cities, closest-first, with their best (lowest) drive time.
 const zoneMap = new Map();
