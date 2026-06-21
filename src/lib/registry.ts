@@ -12,6 +12,8 @@ import {
   circuitDataList,
   circuitPageZones,
   circuitFilterHotels,
+  circuitExtraEvents,
+  eventSlug,
   CIRCUIT_FILTERS,
 } from "@/data/circuit-data";
 import {
@@ -137,6 +139,24 @@ export const PAGES: PageDef[] = [
           template: "circuitfilter",
           slugs: prefixSlugs(FILTER_SLUGS[f.key], base),
           ref: `${d.key}:${f.key}`,
+        });
+      }
+    }
+    // Secondary races: a landing + event×zone pages each.
+    for (const ev of circuitExtraEvents(d)) {
+      const es = eventSlug(ev);
+      pages.push({
+        key: `cevent:${d.key}:${es}`,
+        template: "circuitevent",
+        slugs: prefixSlugs(same(es), base),
+        ref: `${d.key}:${es}`,
+      });
+      for (const z of circuitPageZones(d)) {
+        pages.push({
+          key: `czoneev:${d.key}:${es}:${z.key}`,
+          template: "circuiteventzone",
+          slugs: prefixSlugs(prefixSlugs(same(z.key), same(es)), base),
+          ref: `${d.key}:${es}:${z.key}`,
         });
       }
     }
@@ -299,7 +319,9 @@ export const circuitKeyForPage = (page: PageDef): string | null => {
     page.template === "circuittravel" ||
     page.template === "circuitguide" ||
     page.template === "circuitzone" ||
-    page.template === "circuitfilter"
+    page.template === "circuitfilter" ||
+    page.template === "circuitevent" ||
+    page.template === "circuiteventzone"
   )
     return page.ref ? page.ref.split(":")[0] : null;
   if (LM_SCOPED.has(page.template)) return "le-mans";

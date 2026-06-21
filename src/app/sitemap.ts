@@ -10,6 +10,8 @@ const PRIORITY: Record<string, number> = {
   circuitguide: 0.7,
   circuitzone: 0.65,
   circuitfilter: 0.6,
+  circuitevent: 0.75,
+  circuiteventzone: 0.6,
   event: 0.9,
   quiz: 0.8,
   travel: 0.8,

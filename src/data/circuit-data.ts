@@ -81,7 +81,11 @@ export interface CircuitTravel {
 
 export interface CircuitData {
   key: string;
+  /** Headline event — drives the circuit hub and its zone pages. */
   event: CircuitEvent;
+  /** Additional races at the same circuit, each with its own landing +
+   *  event×zone pages (e.g. the 6 Hours of Spa, the Catalan MotoGP). */
+  extraEvents?: CircuitEvent[];
   travel: CircuitTravel;
   zones: CircuitZone[];
   hotels: CircuitHotel[];
@@ -120,6 +124,24 @@ const DATA: Record<string, CircuitData> = {
       crowd: "380,000+",
       bookAhead: "6-9 months",
     },
+    extraEvents: [
+      {
+        name: "6 Hours of Spa",
+        checkin: "2026-05-07",
+        checkout: "2026-05-10",
+        window: "Early May",
+        crowd: "60,000+",
+        bookAhead: "3-6 months",
+      },
+      {
+        name: "24 Hours of Spa",
+        checkin: "2026-06-25",
+        checkout: "2026-06-29",
+        window: "Late June",
+        crowd: "100,000+",
+        bookAhead: "4-6 months",
+      },
+    ],
     travel: {
       airports: [
         { code: "LGG", name: "Liège", driveMin: 50 },
@@ -204,6 +226,16 @@ const DATA: Record<string, CircuitData> = {
       crowd: "300,000+",
       bookAhead: "9-12 months",
     },
+    extraEvents: [
+      {
+        name: "Austrian MotoGP",
+        checkin: "2026-08-13",
+        checkout: "2026-08-17",
+        window: "Mid August",
+        crowd: "200,000+",
+        bookAhead: "6-9 months",
+      },
+    ],
     travel: {
       airports: [
         { code: "GRZ", name: "Graz", driveMin: 60 },
@@ -244,6 +276,16 @@ const DATA: Record<string, CircuitData> = {
       crowd: "270,000+",
       bookAhead: "6-9 months",
     },
+    extraEvents: [
+      {
+        name: "Catalan MotoGP",
+        checkin: "2026-09-17",
+        checkout: "2026-09-21",
+        window: "Late September",
+        crowd: "150,000+",
+        bookAhead: "4-6 months",
+      },
+    ],
     travel: {
       airports: [
         { code: "BCN", name: "Barcelona El Prat", driveMin: 40 },
@@ -524,3 +566,23 @@ export const circuitZoneHotels = (
 /** Zones substantial enough to warrant their own page (skips the catch-all). */
 export const circuitPageZones = (data: CircuitData): CircuitZone[] =>
   data.zones.filter((z) => z.key !== "circuit-area" && z.count >= 2);
+
+/** URL-safe slug for an event, derived from its name. */
+export const eventSlug = (e: CircuitEvent): string =>
+  e.name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+/** Extra races at a circuit (everything but the headline event). */
+export const circuitExtraEvents = (data: CircuitData): CircuitEvent[] =>
+  data.extraEvents ?? [];
+
+/** Find an extra event by its slug. */
+export const circuitEventBySlug = (
+  data: CircuitData,
+  slug: string
+): CircuitEvent | undefined =>
+  circuitExtraEvents(data).find((e) => eventSlug(e) === slug);

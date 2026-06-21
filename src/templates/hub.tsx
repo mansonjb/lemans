@@ -4,10 +4,12 @@ import { x } from "@/i18n/extra";
 import { homeFaq } from "@/i18n/homefaq";
 import type { Locale } from "@/lib/types";
 import type { Circuit } from "@/data/circuits";
-import type { CircuitData } from "@/data/circuit-data";
+import type { CircuitData, CircuitEvent } from "@/data/circuit-data";
 import {
   circuitFilterHotels,
   circuitPageZones,
+  circuitExtraEvents,
+  eventSlug,
   CIRCUIT_FILTERS,
 } from "@/data/circuit-data";
 import { hrefFor } from "@/lib/registry";
@@ -126,65 +128,95 @@ export function CircuitSoonTemplate({
   );
 }
 
-/** A fully live circuit guide rendered from a generic CircuitData bundle. */
+/** A fully live circuit guide rendered from a generic CircuitData bundle.
+ *  With an `event` override + `eventScoped`, the same template renders a
+ *  secondary-race landing page (its dates, its name in the titles). */
 export function CircuitGuideTemplate({
   dict,
   locale,
   circuit,
   data,
+  event: eventProp,
+  eventScoped = false,
 }: {
   dict: Dict;
   locale: Locale;
   circuit: Circuit;
   data: CircuitData;
+  event?: CircuitEvent;
+  eventScoped?: boolean;
 }) {
   const xt = x(locale);
   const g = xt.circuitGuide;
+  const event = eventProp ?? data.event;
+  const scopedSlug = eventScoped ? eventSlug(event) : null;
   const zoneNames = Object.fromEntries(data.zones.map((z) => [z.key, z.name]));
   const closest = data.zones[0];
   const closestLabel =
     closest.driveMin === 0 ? g.atCircuit : g.minLabel(closest.driveMin);
   const town = closest?.name ?? circuit.name;
+  const zoneHref = (zKey: string) =>
+    scopedSlug
+      ? hrefFor(`czoneev:${circuit.key}:${scopedSlug}:${zKey}`, locale)
+      : hrefFor(`czone:${circuit.key}:${zKey}`, locale);
+  const extra = circuitExtraEvents(data);
 
   const facts: Fact[] = [
     { label: xt.seo.factListedStays, value: String(data.hotels.length), accent: true },
     { label: g.factClosest, value: closestLabel },
-    { label: g.factWindow, value: data.event.window },
-    { label: g.factCrowd, value: data.event.crowd },
-    { label: g.factBook, value: data.event.bookAhead },
+    { label: g.factWindow, value: event.window },
+    { label: g.factCrowd, value: event.crowd },
+    { label: g.factBook, value: event.bookAhead },
   ];
 
-  const faqItems = g.faq(
-    circuit.name,
-    data.event.name,
-    town,
-    data.event.bookAhead
-  );
+  const faqItems = g.faq(circuit.name, event.name, town, event.bookAhead);
 
   return (
     <>
       <section className="border-b border-line bg-gradient-to-b from-card to-paper">
         <Container className="py-14 sm:py-20">
-          <Kicker>{g.kicker}</Kicker>
+          <Kicker>{eventScoped ? event.name : g.kicker}</Kicker>
           <h1 className="mt-3 flex flex-wrap items-center gap-3 font-display text-4xl font-bold uppercase italic leading-[1.02] tracking-tight sm:text-6xl">
             <span className="text-3xl sm:text-5xl" aria-hidden>
               {circuit.flag}
             </span>
-            {g.staysHeading(circuit.name)}
+            {eventScoped
+              ? xt.circuitPages.eventTitle(circuit.name, event.name)
+              : g.staysHeading(circuit.name)}
           </h1>
           <div className="speedline mt-5 w-40" />
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <SlantBadge tone="ink">{circuit.country}</SlantBadge>
-            <SlantBadge tone="amber">{data.event.name}</SlantBadge>
+            <SlantBadge tone="amber">{event.name}</SlantBadge>
           </div>
           <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">
-            {g.intro(circuit.name, data.event.name)}
+            {g.intro(circuit.name, event.name)}
           </p>
         </Container>
       </section>
 
       <Container className="py-14">
         <KeyFacts title={xt.seo.keyFactsTitle} facts={facts} />
+
+        {!eventScoped && extra.length > 0 && (
+          <div className="mt-10">
+            <SpeedHeading>{xt.circuitPages.otherEvents(circuit.name)}</SpeedHeading>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {extra.map((e) => (
+                <Link
+                  key={e.name}
+                  href={hrefFor(`cevent:${circuit.key}:${eventSlug(e)}`, locale)}
+                  className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold transition hover:border-bleu hover:text-bleu"
+                >
+                  {e.name}
+                  <span className="font-display text-xs font-bold uppercase tracking-wide text-bleu">
+                    {e.window}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mt-12">
           <SpeedHeading>{g.zonesHeading}</SpeedHeading>
@@ -212,7 +244,7 @@ export function CircuitGuideTemplate({
               return hasPage ? (
                 <Link
                   key={z.key}
-                  href={hrefFor(`czone:${circuit.key}:${z.key}`, locale)}
+                  href={zoneHref(z.key)}
                   className="rounded-xl border border-line bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
                 >
                   {inner}
@@ -238,7 +270,7 @@ export function CircuitGuideTemplate({
             <CircuitHotelGrid
               hotels={data.hotels}
               zoneNames={zoneNames}
-              event={data.event}
+              event={event}
               labels={{
                 kind: xt.accommodation.kind,
                 seePrice: xt.accommodation.seePrice,
@@ -258,8 +290,8 @@ export function CircuitGuideTemplate({
               note={dict.common.mapNote}
               lat={circuit.lat}
               lng={circuit.lng}
-              checkin={data.event.checkin}
-              checkout={data.event.checkout}
+              checkin={event.checkin}
+              checkout={event.checkout}
               zoom={11}
               locale={locale}
             />

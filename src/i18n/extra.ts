@@ -169,6 +169,9 @@ export interface ExtraDict {
       "hotels" | "campsites" | "walking-distance" | "cheap",
       (circuit: string, event: string) => string
     >;
+    eventTitle: (circuit: string, event: string) => string;
+    zoneEventTitle: (zone: string, event: string) => string;
+    otherEvents: (circuit: string) => string;
   };
 }
 
@@ -523,6 +526,9 @@ const enX: ExtraDict = {
       cheap: (c, e) =>
         `The best-value stays near ${c} for the ${e}. Budget hotels, guest houses and campsites, closest first, with live prices.`,
     },
+    eventTitle: (c, e) => `Where to stay for the ${e}`,
+    zoneEventTitle: (z, e) => `Where to stay in ${z} for the ${e}`,
+    otherEvents: (c) => `Other races at ${c}`,
   },
 };
 
@@ -879,6 +885,9 @@ const frX: ExtraDict = {
       cheap: (c, e) =>
         `Les hébergements au meilleur rapport qualité-prix près de ${c} pour le ${e}. Hôtels économiques, chambres d'hôtes et campings, du plus proche au plus loin, prix en direct.`,
     },
+    eventTitle: (c, e) => `Où dormir pour ${e}`,
+    zoneEventTitle: (z, e) => `Où dormir à ${z} pour ${e}`,
+    otherEvents: (c) => `Autres courses à ${c}`,
   },
 };
 
@@ -1224,6 +1233,9 @@ const nlX: ExtraDict = {
       cheap: (c, e) =>
         `De voordeligste verblijven bij ${c} voor de ${e}. Budgethotels, pensions en campings, dichtstbij eerst, met live prijzen.`,
     },
+    eventTitle: (c, e) => `Waar overnachten voor de ${e}`,
+    zoneEventTitle: (z, e) => `Waar overnachten in ${z} voor de ${e}`,
+    otherEvents: (c) => `Andere races op ${c}`,
   },
 };
 
@@ -1568,6 +1580,9 @@ const deX: ExtraDict = {
       cheap: (c, e) =>
         `Die preiswertesten Unterkünfte nahe ${c} für das ${e}. Budgethotels, Pensionen und Campingplätze, die nächsten zuerst, mit Live-Preisen.`,
     },
+    eventTitle: (c, e) => `Wo übernachten zum ${e}`,
+    zoneEventTitle: (z, e) => `Wo übernachten in ${z} zum ${e}`,
+    otherEvents: (c) => `Weitere Rennen am ${c}`,
   },
 };
 
@@ -1912,6 +1927,9 @@ const itX: ExtraDict = {
       cheap: (c, e) =>
         `Gli alloggi col miglior rapporto qualità-prezzo vicino a ${c} per il ${e}. Hotel economici, pensioni e campeggi, dal più vicino, con prezzi in tempo reale.`,
     },
+    eventTitle: (c, e) => `Dove dormire per ${e}`,
+    zoneEventTitle: (z, e) => `Dove dormire a ${z} per ${e}`,
+    otherEvents: (c) => `Altre gare a ${c}`,
   },
 };
 
@@ -2256,6 +2274,9 @@ const esX: ExtraDict = {
       cheap: (c, e) =>
         `Los alojamientos con mejor relación calidad-precio cerca de ${c} para el ${e}. Hoteles económicos, pensiones y campings, del más cercano, con precios en directo.`,
     },
+    eventTitle: (c, e) => `Dónde alojarse para el ${e}`,
+    zoneEventTitle: (z, e) => `Dónde alojarse en ${z} para el ${e}`,
+    otherEvents: (c) => `Otras carreras en ${c}`,
   },
 };
 

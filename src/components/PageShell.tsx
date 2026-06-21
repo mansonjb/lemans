@@ -6,7 +6,7 @@ import { LOCALES, type Locale, type PageDef } from "@/lib/types";
 import { hrefFor, pathFor, PAGES, circuitKeyForPage } from "@/lib/registry";
 import { SITE } from "@/lib/seo";
 import { CIRCUITS } from "@/data/circuits";
-import { circuitData } from "@/data/circuit-data";
+import { circuitData, circuitExtraEvents, eventSlug } from "@/data/circuit-data";
 import { placeByKey } from "@/data/places";
 import { GUIDE_CONTENT } from "@/data/guides";
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
@@ -245,6 +245,16 @@ export function PageShell({
         label: data ? data.event.name : c.events.split(" · ")[0].trim(),
         href: hrefFor(`circuit:${c.key}`, locale),
       });
+      if (data) {
+        for (const ev of circuitExtraEvents(data)) {
+          raceEntries.push({
+            key: `cevent:${c.key}:${eventSlug(ev)}`,
+            flag: c.flag,
+            label: ev.name,
+            href: hrefFor(`cevent:${c.key}:${eventSlug(ev)}`, locale),
+          });
+        }
+      }
     }
   }
 

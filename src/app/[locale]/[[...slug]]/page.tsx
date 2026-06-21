@@ -29,7 +29,7 @@ import {
   CircuitSoonTemplate,
   CircuitGuideTemplate,
 } from "@/templates/hub";
-import { circuitData } from "@/data/circuit-data";
+import { circuitData, circuitEventBySlug } from "@/data/circuit-data";
 import {
   CircuitTravelTemplate,
   CircuitGuideArticleTemplate,
@@ -122,6 +122,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const k = fk as "hotels" | "campsites" | "walking-distance" | "cheap";
       title = `${x(locale).circuitPages.filterTitle[k](c.name)} | ${dict.siteName}`;
       description = x(locale).circuitPages.filterIntro[k](c.name, d.event.name);
+      break;
+    }
+    case "circuitevent": {
+      const [ck, es] = page.ref!.split(":");
+      const c = circuitByKey(ck)!;
+      const ev = circuitEventBySlug(circuitData(ck)!, es)!;
+      title = `${x(locale).circuitPages.eventTitle(c.name, ev.name)} | ${dict.siteName}`;
+      description = x(locale).circuitGuide.intro(c.name, ev.name);
+      break;
+    }
+    case "circuiteventzone": {
+      const [ck, es, zk] = page.ref!.split(":");
+      const c = circuitByKey(ck)!;
+      const d = circuitData(ck)!;
+      const ev = circuitEventBySlug(d, es)!;
+      const z = d.zones.find((zz) => zz.key === zk)!;
+      title = `${x(locale).circuitPages.zoneEventTitle(z.name, ev.name)} | ${dict.siteName}`;
+      description = x(locale).circuitPages.zoneIntro(z.name, c.name, ev.name, z.driveMin);
       break;
     }
     case "event": {
@@ -257,6 +275,8 @@ function buildCrumbs(
     "circuitguide",
     "circuitzone",
     "circuitfilter",
+    "circuitevent",
+    "circuiteventzone",
   ]);
   if (circuitSub.has(page.template)) {
     const ck = page.ref!.split(":")[0];
@@ -288,6 +308,21 @@ function buildCrumbs(
         name: x(locale).circuitPages.filterTitle[k](circuitByKey(ck)!.name),
         href: here,
       });
+      break;
+    }
+    case "circuitevent": {
+      const [ck, es] = page.ref!.split(":");
+      const ev = circuitEventBySlug(circuitData(ck)!, es)!;
+      crumbs.push({ name: ev.name, href: here });
+      break;
+    }
+    case "circuiteventzone": {
+      const [ck, es, zk] = page.ref!.split(":");
+      const d = circuitData(ck)!;
+      const ev = circuitEventBySlug(d, es)!;
+      const z = d.zones.find((zz) => zz.key === zk)!;
+      crumbs.push({ name: ev.name, href: hrefFor(`cevent:${ck}:${es}`, locale) });
+      crumbs.push({ name: z.name, href: here });
       break;
     }
     case "event":
@@ -445,6 +480,37 @@ export default async function Page({ params }: Props) {
           circuit={circuitByKey(ck)!}
           data={circuitData(ck)!}
           filterKey={fk}
+        />
+      );
+      break;
+    }
+    case "circuitevent": {
+      const [ck, es] = page.ref!.split(":");
+      const d = circuitData(ck)!;
+      body = (
+        <CircuitGuideTemplate
+          dict={dict}
+          locale={locale}
+          circuit={circuitByKey(ck)!}
+          data={d}
+          event={circuitEventBySlug(d, es)!}
+          eventScoped
+        />
+      );
+      break;
+    }
+    case "circuiteventzone": {
+      const [ck, es, zk] = page.ref!.split(":");
+      const d = circuitData(ck)!;
+      body = (
+        <CircuitZoneTemplate
+          dict={dict}
+          locale={locale}
+          circuit={circuitByKey(ck)!}
+          data={d}
+          zone={d.zones.find((z) => z.key === zk)!}
+          event={circuitEventBySlug(d, es)!}
+          eventScoped
         />
       );
       break;

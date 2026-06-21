@@ -3,11 +3,12 @@ import type { Dict } from "@/i18n";
 import { x } from "@/i18n/extra";
 import type { Locale } from "@/lib/types";
 import type { Circuit } from "@/data/circuits";
-import type { CircuitData, CircuitZone } from "@/data/circuit-data";
+import type { CircuitData, CircuitZone, CircuitEvent } from "@/data/circuit-data";
 import {
   circuitZoneHotels,
   circuitFilterHotels,
   circuitPageZones,
+  eventSlug,
 } from "@/data/circuit-data";
 import { hrefFor } from "@/lib/registry";
 import { Container, Kicker, SlantBadge, SpeedHeading } from "@/components/ui";
@@ -273,25 +274,35 @@ export function CircuitZoneTemplate({
   circuit,
   data,
   zone,
+  event: eventProp,
+  eventScoped = false,
 }: {
   dict: Dict;
   locale: Locale;
   circuit: Circuit;
   data: CircuitData;
   zone: CircuitZone;
+  event?: CircuitEvent;
+  eventScoped?: boolean;
 }) {
   const xt = x(locale);
   const p = xt.circuitPages;
   const g = xt.circuitGuide;
+  const event = eventProp ?? data.event;
+  const scopedSlug = eventScoped ? eventSlug(event) : null;
   const hotels = circuitZoneHotels(data, zone.key);
   const others = circuitPageZones(data).filter((z) => z.key !== zone.key);
   const driveLabel = zone.driveMin === 0 ? g.atCircuit : g.minLabel(zone.driveMin);
+  const otherZoneHref = (zKey: string) =>
+    scopedSlug
+      ? hrefFor(`czoneev:${circuit.key}:${scopedSlug}:${zKey}`, locale)
+      : hrefFor(`czone:${circuit.key}:${zKey}`, locale);
 
   const facts: Fact[] = [
     { label: xt.seo.factListedStays, value: String(hotels.length), accent: true },
     { label: g.factClosest, value: driveLabel },
-    { label: g.factWindow, value: data.event.window },
-    { label: g.factBook, value: data.event.bookAhead },
+    { label: g.factWindow, value: event.window },
+    { label: g.factBook, value: event.bookAhead },
   ];
 
   return (
@@ -300,15 +311,17 @@ export function CircuitZoneTemplate({
         <Container className="py-14 sm:py-20">
           <Kicker>{p.zoneKicker(circuit.name)}</Kicker>
           <h1 className="mt-3 font-display text-4xl font-bold uppercase italic leading-[1.02] tracking-tight sm:text-6xl">
-            {p.zoneTitle(zone.name, circuit.name)}
+            {eventScoped
+              ? p.zoneEventTitle(zone.name, event.name)
+              : p.zoneTitle(zone.name, circuit.name)}
           </h1>
           <div className="speedline mt-5 w-40" />
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <SlantBadge tone="ink">{driveLabel}</SlantBadge>
-            <SlantBadge tone="amber">{data.event.name}</SlantBadge>
+            <SlantBadge tone="amber">{event.name}</SlantBadge>
           </div>
           <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">
-            {p.zoneIntro(zone.name, circuit.name, data.event.name, zone.driveMin)}
+            {p.zoneIntro(zone.name, circuit.name, event.name, zone.driveMin)}
           </p>
         </Container>
       </section>
@@ -322,7 +335,7 @@ export function CircuitZoneTemplate({
             <CircuitHotelGrid
               hotels={hotels}
               zoneNames={zoneNameMap(data)}
-              event={data.event}
+              event={event}
               labels={gridLabels(locale)}
             />
           </div>
@@ -336,8 +349,8 @@ export function CircuitZoneTemplate({
               note={dict.common.mapNote}
               lat={zone.lat}
               lng={zone.lng}
-              checkin={data.event.checkin}
-              checkout={data.event.checkout}
+              checkin={event.checkin}
+              checkout={event.checkout}
               zoom={13}
               locale={locale}
             />
@@ -347,7 +360,7 @@ export function CircuitZoneTemplate({
         <div className="mt-14">
           <FaqBlock
             heading={dict.common.faqHeading}
-            items={g.faq(circuit.name, data.event.name, zone.name, data.event.bookAhead)}
+            items={g.faq(circuit.name, event.name, zone.name, event.bookAhead)}
           />
         </div>
 
@@ -358,7 +371,7 @@ export function CircuitZoneTemplate({
               {others.map((z) => (
                 <li key={z.key}>
                   <Link
-                    href={hrefFor(`czone:${circuit.key}:${z.key}`, locale)}
+                    href={otherZoneHref(z.key)}
                     className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold transition hover:border-bleu hover:text-bleu"
                   >
                     {z.name}
