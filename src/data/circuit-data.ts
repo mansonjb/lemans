@@ -14,6 +14,17 @@ import { monzaHotels, monzaZones } from "./circuits/monza";
 import { spielbergHotels, spielbergZones } from "./circuits/spielberg";
 import { monacoHotels, monacoZones } from "./circuits/monaco";
 import { barcelonaHotels, barcelonaZones } from "./circuits/barcelona";
+import { madridHotels, madridZones } from "./circuits/madrid";
+import { hungaroringHotels, hungaroringZones } from "./circuits/hungaroring";
+import { imolaHotels, imolaZones } from "./circuits/imola";
+import { assenHotels, assenZones } from "./circuits/assen";
+import { mugelloHotels, mugelloZones } from "./circuits/mugello";
+import { jerezHotels, jerezZones } from "./circuits/jerez";
+import { misanoHotels, misanoZones } from "./circuits/misano";
+import { sachsenringHotels, sachsenringZones } from "./circuits/sachsenring";
+import { portimaoHotels, portimaoZones } from "./circuits/portimao";
+import { aragonHotels, aragonZones } from "./circuits/aragon";
+import { balatonHotels, balatonZones } from "./circuits/balaton";
 
 export interface CircuitHotel {
   name: string;
@@ -226,10 +237,10 @@ const DATA: Record<string, CircuitData> = {
   barcelona: {
     key: "barcelona",
     event: {
-      name: "Spanish Grand Prix",
+      name: "Barcelona Grand Prix",
       checkin: "2026-06-11",
       checkout: "2026-06-15",
-      window: "Early June",
+      window: "Mid June",
       crowd: "270,000+",
       bookAhead: "6-9 months",
     },
@@ -244,6 +255,234 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: barcelonaZones,
     hotels: barcelonaHotels,
+  },
+  madrid: {
+    key: "madrid",
+    event: {
+      name: "Spanish Grand Prix",
+      checkin: "2026-09-10",
+      checkout: "2026-09-14",
+      window: "Mid September",
+      crowd: "110,000+/day",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [{ code: "MAD", name: "Madrid-Barajas", driveMin: 10 }],
+      rail: ["Feria de Madrid (Metro L8)", "Madrid Atocha"],
+      roads: "A-2 / M-11 / M-40",
+    },
+    zones: madridZones,
+    hotels: madridHotels,
+  },
+  hungaroring: {
+    key: "hungaroring",
+    event: {
+      name: "Hungarian Grand Prix",
+      checkin: "2026-07-30",
+      checkout: "2026-08-03",
+      window: "Late July",
+      crowd: "300,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [{ code: "BUD", name: "Budapest", driveMin: 30 }],
+      rail: ["Budapest-Keleti", "Gödöllő"],
+      roads: "M3 / M31",
+    },
+    zones: hungaroringZones,
+    hotels: hungaroringHotels,
+  },
+  imola: {
+    key: "imola",
+    event: {
+      name: "6 Hours of Imola",
+      checkin: "2026-04-16",
+      checkout: "2026-04-20",
+      window: "April",
+      crowd: "70,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "BLQ", name: "Bologna", driveMin: 40 },
+        { code: "FLR", name: "Florence", driveMin: 90 },
+      ],
+      rail: ["Imola", "Bologna Centrale"],
+      roads: "A14",
+    },
+    zones: imolaZones,
+    hotels: imolaHotels,
+  },
+  assen: {
+    key: "assen",
+    event: {
+      name: "Dutch TT",
+      checkin: "2026-06-25",
+      checkout: "2026-06-29",
+      window: "Late June",
+      crowd: "150,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [
+        { code: "GRQ", name: "Groningen Eelde", driveMin: 25 },
+        { code: "AMS", name: "Amsterdam Schiphol", driveMin: 120 },
+      ],
+      rail: ["Assen", "Groningen"],
+      roads: "A28",
+    },
+    zones: assenZones,
+    hotels: assenHotels,
+  },
+  mugello: {
+    key: "mugello",
+    event: {
+      name: "Italian MotoGP",
+      checkin: "2026-05-28",
+      checkout: "2026-06-01",
+      window: "Late May",
+      crowd: "150,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [
+        { code: "FLR", name: "Florence", driveMin: 60 },
+        { code: "BLQ", name: "Bologna", driveMin: 75 },
+        { code: "PSA", name: "Pisa", driveMin: 110 },
+      ],
+      rail: ["Firenze S.M.N.", "Borgo San Lorenzo"],
+      roads: "A1 / SP551",
+    },
+    zones: mugelloZones,
+    hotels: mugelloHotels,
+  },
+  jerez: {
+    key: "jerez",
+    event: {
+      name: "Spanish MotoGP",
+      checkin: "2026-04-30",
+      checkout: "2026-05-04",
+      window: "Late April",
+      crowd: "160,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [
+        { code: "XRY", name: "Jerez", driveMin: 15 },
+        { code: "SVQ", name: "Seville", driveMin: 75 },
+      ],
+      rail: ["Jerez de la Frontera", "Cádiz"],
+      roads: "A-4 / AP-4",
+    },
+    zones: jerezZones,
+    hotels: jerezHotels,
+  },
+  misano: {
+    key: "misano",
+    event: {
+      name: "San Marino MotoGP",
+      checkin: "2026-09-10",
+      checkout: "2026-09-14",
+      window: "Early September",
+      crowd: "160,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [
+        { code: "RMI", name: "Rimini", driveMin: 15 },
+        { code: "BLQ", name: "Bologna", driveMin: 90 },
+        { code: "AOI", name: "Ancona", driveMin: 90 },
+      ],
+      rail: ["Riccione", "Rimini"],
+      roads: "A14",
+    },
+    zones: misanoZones,
+    hotels: misanoHotels,
+  },
+  sachsenring: {
+    key: "sachsenring",
+    event: {
+      name: "German MotoGP",
+      checkin: "2026-07-09",
+      checkout: "2026-07-13",
+      window: "Mid July",
+      crowd: "230,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [
+        { code: "DRS", name: "Dresden", driveMin: 75 },
+        { code: "LEJ", name: "Leipzig/Halle", driveMin: 75 },
+      ],
+      rail: ["Chemnitz", "Hohenstein-Ernstthal"],
+      roads: "A4 / A72",
+    },
+    zones: sachsenringZones,
+    hotels: sachsenringHotels,
+  },
+  portimao: {
+    key: "portimao",
+    event: {
+      name: "Portuguese MotoGP",
+      checkin: "2026-11-05",
+      checkout: "2026-11-09",
+      window: "November",
+      crowd: "80,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "FAO", name: "Faro", driveMin: 50 },
+        { code: "LIS", name: "Lisbon", driveMin: 165 },
+      ],
+      rail: ["Portimão", "Faro"],
+      roads: "A22",
+    },
+    zones: portimaoZones,
+    hotels: portimaoHotels,
+  },
+  aragon: {
+    key: "aragon",
+    event: {
+      name: "Aragon MotoGP",
+      checkin: "2026-09-04",
+      checkout: "2026-09-07",
+      window: "September",
+      crowd: "60,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "ZAZ", name: "Zaragoza", driveMin: 90 },
+        { code: "REU", name: "Reus", driveMin: 120 },
+        { code: "BCN", name: "Barcelona", driveMin: 180 },
+      ],
+      rail: ["Zaragoza-Delicias", "Caspe"],
+      roads: "N-211 / A-23",
+    },
+    zones: aragonZones,
+    hotels: aragonHotels,
+  },
+  balaton: {
+    key: "balaton",
+    event: {
+      name: "Balaton MotoGP",
+      checkin: "2026-08-20",
+      checkout: "2026-08-24",
+      window: "Late August",
+      crowd: "New for 2026",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [
+        { code: "BUD", name: "Budapest", driveMin: 75 },
+        { code: "SOB", name: "Hévíz-Balaton", driveMin: 45 },
+      ],
+      rail: ["Balatonfőkajár", "Siófok"],
+      roads: "M7",
+    },
+    zones: balatonZones,
+    hotels: balatonHotels,
   },
 };
 

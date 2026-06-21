@@ -26,6 +26,17 @@ const CIRCUITS = {
   spielberg: { name: "Red Bull Ring Spielberg", lat: 47.2197, lng: 14.7647 },
   monaco: { name: "Circuit de Monaco", lat: 43.7347, lng: 7.4206 },
   barcelona: { name: "Circuit de Barcelona-Catalunya", lat: 41.57, lng: 2.2611 },
+  madrid: { name: "IFEMA Madrid", lat: 40.4657, lng: -3.616 },
+  hungaroring: { name: "Hungaroring", lat: 47.5789, lng: 19.2486 },
+  imola: { name: "Autodromo Imola", lat: 44.3439, lng: 11.7167 },
+  assen: { name: "TT Circuit Assen", lat: 52.9592, lng: 6.5236 },
+  mugello: { name: "Mugello Circuit", lat: 43.9975, lng: 11.3719 },
+  jerez: { name: "Circuito de Jerez", lat: 36.7083, lng: -6.0344 },
+  misano: { name: "Misano World Circuit", lat: 43.9614, lng: 12.6839 },
+  sachsenring: { name: "Sachsenring", lat: 50.7917, lng: 12.6883 },
+  portimao: { name: "Autodromo Internacional do Algarve", lat: 37.227, lng: -8.6267 },
+  aragon: { name: "MotorLand Aragon", lat: 41.0817, lng: -0.205 },
+  balaton: { name: "Balaton Park Circuit", lat: 47.0417, lng: 18.1389 },
 };
 
 const key = process.argv[2];
