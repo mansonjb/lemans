@@ -35,6 +35,7 @@ import {
   CircuitGuideArticleTemplate,
   CircuitZoneTemplate,
   CircuitFilterTemplate,
+  CircuitCostTemplate,
 } from "@/templates/circuit-pages";
 import { MoneyTemplate } from "@/templates/money";
 import {
@@ -97,6 +98,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const d = circuitData(c.key)!;
       title = `${x(locale).circuitPages.travelTitle(c.name)} | ${dict.siteName}`;
       description = x(locale).circuitPages.travelIntro(c.name, d.event.name);
+      break;
+    }
+    case "circuitcost": {
+      const c = circuitByKey(page.ref!)!;
+      const d = circuitData(c.key)!;
+      title = `${x(locale).circuitPages.costTitle(c.name, d.event.name)} | ${dict.siteName}`;
+      description = x(locale).circuitPages.costIntro(c.name, d.event.name);
       break;
     }
     case "circuitguide": {
@@ -277,6 +285,7 @@ function buildCrumbs(
     "circuitfilter",
     "circuitevent",
     "circuiteventzone",
+    "circuitcost",
   ]);
   if (circuitSub.has(page.template)) {
     const ck = page.ref!.split(":")[0];
@@ -291,6 +300,9 @@ function buildCrumbs(
       break;
     case "circuittravel":
       crumbs.push({ name: x(locale).circuitPages.travelKicker, href: here });
+      break;
+    case "circuitcost":
+      crumbs.push({ name: x(locale).circuitPages.costKicker, href: here });
       break;
     case "circuitguide":
       crumbs.push({ name: x(locale).circuitPages.guideKicker, href: here });
@@ -440,6 +452,16 @@ export default async function Page({ params }: Props) {
     case "circuittravel":
       body = (
         <CircuitTravelTemplate
+          dict={dict}
+          locale={locale}
+          circuit={circuitByKey(page.ref!)!}
+          data={circuitData(page.ref!)!}
+        />
+      );
+      break;
+    case "circuitcost":
+      body = (
+        <CircuitCostTemplate
           dict={dict}
           locale={locale}
           circuit={circuitByKey(page.ref!)!}

@@ -480,3 +480,131 @@ export function CircuitFilterTemplate({
     </>
   );
 }
+
+/* ------------------------------- COST PAGE ------------------------------- */
+export function CircuitCostTemplate({
+  dict,
+  locale,
+  circuit,
+  data,
+}: {
+  dict: Dict;
+  locale: Locale;
+  circuit: Circuit;
+  data: CircuitData;
+}) {
+  const xt = x(locale);
+  const p = xt.circuitPages;
+  const g = xt.circuitGuide;
+  const ev = data.event;
+  const town = data.zones[0]?.name ?? circuit.name;
+  const tier = (n: number) => data.hotels.filter((h) => h.category === n).length;
+  const cheapest = circuitFilterHotels(data, "cheap");
+
+  const facts: Fact[] = [
+    { label: g.factBook, value: ev.bookAhead, accent: true },
+    { label: g.factWindow, value: ev.window },
+    { label: g.factCrowd, value: ev.crowd },
+    { label: xt.seo.factListedStays, value: String(data.hotels.length) },
+  ];
+
+  const tiers = [
+    { label: p.tierBudget, euros: 1, count: tier(1) },
+    { label: p.tierMid, euros: 2, count: tier(2) },
+    { label: p.tierPremium, euros: 3, count: tier(3) },
+  ];
+
+  return (
+    <>
+      <section className="border-b border-line bg-gradient-to-b from-card to-paper">
+        <Container className="py-14 sm:py-20">
+          <Kicker>{p.costKicker}</Kicker>
+          <h1 className="mt-3 flex flex-wrap items-center gap-3 font-display text-4xl font-bold uppercase italic leading-[1.02] tracking-tight sm:text-6xl">
+            <span className="text-3xl sm:text-5xl" aria-hidden>
+              {circuit.flag}
+            </span>
+            {p.costTitle(circuit.name, ev.name)}
+          </h1>
+          <div className="speedline mt-5 w-40" />
+          <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">
+            {p.costIntro(circuit.name, ev.name)}
+          </p>
+        </Container>
+      </section>
+
+      <Container className="py-14">
+        <KeyFacts title={xt.seo.keyFactsTitle} facts={facts} />
+
+        <div className="mt-12">
+          <SpeedHeading>{p.priceTiers}</SpeedHeading>
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            {tiers.map((t) => (
+              <div
+                key={t.label}
+                className="rounded-2xl border border-line bg-card p-6 shadow-sm"
+              >
+                <span className="font-display text-lg font-bold tabular-nums text-amber">
+                  {"€".repeat(t.euros)}
+                  <span className="text-line">{"€".repeat(3 - t.euros)}</span>
+                </span>
+                <h3 className="mt-1 font-display text-xl font-bold uppercase italic tracking-tight">
+                  {t.label}
+                </h3>
+                <p className="mt-1 text-[13px] text-muted">{g.staysCount(t.count)}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 max-w-3xl text-[14px] leading-relaxed text-muted">
+            {p.spikeNote}
+          </p>
+        </div>
+
+        {cheapest.length > 0 && (
+          <div className="mt-14">
+            <SpeedHeading>{p.filterTitle.cheap(circuit.name)}</SpeedHeading>
+            <div className="mt-6">
+              <CircuitHotelGrid
+                hotels={cheapest}
+                zoneNames={zoneNameMap(data)}
+                event={ev}
+                labels={gridLabels(locale)}
+              />
+            </div>
+          </div>
+        )}
+
+        <div className="mt-14">
+          <SpeedHeading>{p.whenToBook}</SpeedHeading>
+          <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-muted">
+            {p.whenToBookBody(ev.name, ev.bookAhead)}
+          </p>
+        </div>
+
+        <div className="mt-14">
+          <SpeedHeading>{g.mapHeading(circuit.name)}</SpeedHeading>
+          <div className="mt-6">
+            <Stay22Map
+              title={g.mapHeading(circuit.name)}
+              note={dict.common.mapNote}
+              lat={circuit.lat}
+              lng={circuit.lng}
+              checkin={ev.checkin}
+              checkout={ev.checkout}
+              zoom={11}
+              locale={locale}
+            />
+          </div>
+        </div>
+
+        <div className="mt-14">
+          <FaqBlock
+            heading={dict.common.faqHeading}
+            items={g.faq(circuit.name, ev.name, town, ev.bookAhead)}
+          />
+        </div>
+
+        <NetworkCtas locale={locale} circuit={circuit} />
+      </Container>
+    </>
+  );
+}

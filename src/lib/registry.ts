@@ -50,6 +50,14 @@ const RACE_GUIDE: LocalizedSlug = {
   it: "guida-weekend",
   es: "guia-fin-de-semana",
 };
+const COST_SLUG: LocalizedSlug = {
+  en: "cost",
+  fr: "budget",
+  nl: "kosten",
+  de: "kosten",
+  it: "costi",
+  es: "coste",
+};
 const FILTER_SLUGS: Record<string, LocalizedSlug> = {
   hotels: { en: "hotels", fr: "hotels", nl: "hotels", de: "hotels", it: "hotel", es: "hoteles" },
   campsites: {
@@ -75,6 +83,22 @@ const FILTER_SLUGS: Record<string, LocalizedSlug> = {
     de: "guenstig",
     it: "economici",
     es: "baratos",
+  },
+  family: {
+    en: "family-friendly",
+    fr: "famille",
+    nl: "gezin",
+    de: "familie",
+    it: "famiglia",
+    es: "familia",
+  },
+  luxury: {
+    en: "luxury-hotels",
+    fr: "hotels-luxe",
+    nl: "luxe",
+    de: "luxushotels",
+    it: "hotel-lusso",
+    es: "hoteles-lujo",
   },
 };
 
@@ -121,6 +145,12 @@ export const PAGES: PageDef[] = [
         key: `cguide:${d.key}`,
         template: "circuitguide",
         slugs: prefixSlugs(RACE_GUIDE, base),
+        ref: d.key,
+      },
+      {
+        key: `ccost:${d.key}`,
+        template: "circuitcost",
+        slugs: prefixSlugs(COST_SLUG, base),
         ref: d.key,
       },
     ];
@@ -321,7 +351,8 @@ export const circuitKeyForPage = (page: PageDef): string | null => {
     page.template === "circuitzone" ||
     page.template === "circuitfilter" ||
     page.template === "circuitevent" ||
-    page.template === "circuiteventzone"
+    page.template === "circuiteventzone" ||
+    page.template === "circuitcost"
   )
     return page.ref ? page.ref.split(":")[0] : null;
   if (LM_SCOPED.has(page.template)) return "le-mans";

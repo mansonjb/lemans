@@ -545,6 +545,14 @@ export const CIRCUIT_FILTERS = [
   { key: "campsites", match: (h: CircuitHotel) => h.kind === "camping" },
   { key: "walking-distance", match: (h: CircuitHotel) => h.ring === 1 },
   { key: "cheap", match: (h: CircuitHotel) => h.category === 1 },
+  {
+    key: "family",
+    match: (h: CircuitHotel) => h.kind === "rental" || h.kind === "camping",
+  },
+  {
+    key: "luxury",
+    match: (h: CircuitHotel) => h.category === 3 && h.kind === "hotel",
+  },
 ] as const;
 
 export type CircuitFilterKey = (typeof CIRCUIT_FILTERS)[number]["key"];

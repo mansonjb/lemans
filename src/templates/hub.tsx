@@ -313,6 +313,12 @@ export function CircuitGuideTemplate({
             >
               {xt.circuitPages.guideKicker}
             </Link>
+            <Link
+              href={hrefFor(`ccost:${circuit.key}`, locale)}
+              className="inline-flex items-center rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold transition hover:border-bleu hover:text-bleu"
+            >
+              {xt.circuitPages.costKicker}
+            </Link>
             {CIRCUIT_FILTERS.filter(
               (f) => circuitFilterHotels(data, f.key).length >= 3
             ).map((f) => (

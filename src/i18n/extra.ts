@@ -162,16 +162,24 @@ export interface ExtraDict {
     otherZones: (circuit: string) => string;
     filterKicker: string;
     filterTitle: Record<
-      "hotels" | "campsites" | "walking-distance" | "cheap",
+      "hotels" | "campsites" | "walking-distance" | "cheap" | "family" | "luxury",
       (circuit: string) => string
     >;
     filterIntro: Record<
-      "hotels" | "campsites" | "walking-distance" | "cheap",
+      "hotels" | "campsites" | "walking-distance" | "cheap" | "family" | "luxury",
       (circuit: string, event: string) => string
     >;
     eventTitle: (circuit: string, event: string) => string;
     zoneEventTitle: (zone: string, event: string) => string;
     otherEvents: (circuit: string) => string;
+    costKicker: string;
+    costTitle: (circuit: string, event: string) => string;
+    costIntro: (circuit: string, event: string) => string;
+    priceTiers: string;
+    tierBudget: string;
+    tierMid: string;
+    tierPremium: string;
+    spikeNote: string;
   };
 }
 
@@ -515,6 +523,8 @@ const enX: ExtraDict = {
       campsites: (c) => `Campsites near ${c}`,
       "walking-distance": (c) => `Closest stays to ${c}`,
       cheap: (c) => `Cheap stays near ${c}`,
+      family: (c) => `Family-friendly stays near ${c}`,
+      luxury: (c) => `Luxury hotels near ${c}`,
     },
     filterIntro: {
       hotels: (c, e) =>
@@ -525,10 +535,24 @@ const enX: ExtraDict = {
         `The closest stays to ${c} for the ${e} — walking distance or a few minutes by car. Tiny inventory that goes fast, so book the moment dates are set.`,
       cheap: (c, e) =>
         `The best-value stays near ${c} for the ${e}. Budget hotels, guest houses and campsites, closest first, with live prices.`,
+      family: (c, e) =>
+        `Apartments, houses and family campsites near ${c} for the ${e} — space, kitchens and value for groups and kids, closest first.`,
+      luxury: (c, e) =>
+        `The top hotels near ${c} for the ${e}: four-star-plus comfort and the best locations, closest first, with live prices.`,
     },
     eventTitle: (c, e) => `Where to stay for the ${e}`,
     zoneEventTitle: (z, e) => `Where to stay in ${z} for the ${e}`,
     otherEvents: (c) => `Other races at ${c}`,
+    costKicker: "Cost & booking",
+    costTitle: (c, e) => `What it costs to stay for the ${e}`,
+    costIntro: (c, e) =>
+      `What you'll pay to stay near ${c} for the ${e}, how the options break down by price, and when to book before prices climb. Live prices on the map.`,
+    priceTiers: "Stays by price",
+    tierBudget: "Budget",
+    tierMid: "Mid-range",
+    tierPremium: "Premium",
+    spikeNote:
+      "Prices climb as the race nears and the closest places sell out first. Book with free cancellation the moment your dates are set, then refine later.",
   },
 };
 
@@ -874,6 +898,8 @@ const frX: ExtraDict = {
       campsites: (c) => `Campings près de ${c}`,
       "walking-distance": (c) => `Hébergements les plus proches de ${c}`,
       cheap: (c) => `Hébergements pas chers près de ${c}`,
+      family: (c) => `Hébergements famille près de ${c}`,
+      luxury: (c) => `Hôtels de luxe près de ${c}`,
     },
     filterIntro: {
       hotels: (c, e) =>
@@ -884,10 +910,24 @@ const frX: ExtraDict = {
         `Les hébergements les plus proches de ${c} pour le ${e} — à pied ou à quelques minutes en voiture. Très peu de stock qui part vite : réservez dès les dates connues.`,
       cheap: (c, e) =>
         `Les hébergements au meilleur rapport qualité-prix près de ${c} pour le ${e}. Hôtels économiques, chambres d'hôtes et campings, du plus proche au plus loin, prix en direct.`,
+      family: (c, e) =>
+        `Appartements, maisons et campings familiaux près de ${c} pour le ${e} — espace, cuisine et bon rapport qualité-prix pour les groupes et les enfants, du plus proche au plus loin.`,
+      luxury: (c, e) =>
+        `Les meilleurs hôtels près de ${c} pour le ${e} : confort quatre étoiles et plus et les meilleurs emplacements, du plus proche au plus loin, prix en direct.`,
     },
     eventTitle: (c, e) => `Où dormir pour ${e}`,
     zoneEventTitle: (z, e) => `Où dormir à ${z} pour ${e}`,
     otherEvents: (c) => `Autres courses à ${c}`,
+    costKicker: "Coût & réservation",
+    costTitle: (c, e) => `Combien coûte un séjour pour le ${e}`,
+    costIntro: (c, e) =>
+      `Ce que vous paierez pour dormir près de ${c} pour le ${e}, la répartition des options par budget, et quand réserver avant que les prix grimpent. Prix en direct sur la carte.`,
+    priceTiers: "Hébergements par budget",
+    tierBudget: "Éco",
+    tierMid: "Milieu de gamme",
+    tierPremium: "Premium",
+    spikeNote:
+      "Les prix montent à l'approche de la course et les plus proches partent en premier. Réservez avec annulation gratuite dès que vos dates sont fixées, puis affinez.",
   },
 };
 
@@ -1222,6 +1262,8 @@ const nlX: ExtraDict = {
       campsites: (c) => `Campings bij ${c}`,
       "walking-distance": (c) => `Dichtstbijzijnde verblijven bij ${c}`,
       cheap: (c) => `Goedkope verblijven bij ${c}`,
+      family: (c) => `Gezinsvriendelijke verblijven bij ${c}`,
+      luxury: (c) => `Luxe hotels bij ${c}`,
     },
     filterIntro: {
       hotels: (c, e) =>
@@ -1232,10 +1274,24 @@ const nlX: ExtraDict = {
         `De dichtstbijzijnde verblijven bij ${c} voor de ${e} — op loopafstand of een paar minuten rijden. Weinig aanbod dat snel weg is, dus boek zodra de data vaststaan.`,
       cheap: (c, e) =>
         `De voordeligste verblijven bij ${c} voor de ${e}. Budgethotels, pensions en campings, dichtstbij eerst, met live prijzen.`,
+      family: (c, e) =>
+        `Appartementen, huizen en gezinscampings bij ${c} voor de ${e} — ruimte, keuken en waar voor je geld voor groepen en kinderen, dichtstbij eerst.`,
+      luxury: (c, e) =>
+        `De beste hotels bij ${c} voor de ${e}: vier sterren en meer en de beste locaties, dichtstbij eerst, met live prijzen.`,
     },
     eventTitle: (c, e) => `Waar overnachten voor de ${e}`,
     zoneEventTitle: (z, e) => `Waar overnachten in ${z} voor de ${e}`,
     otherEvents: (c) => `Andere races op ${c}`,
+    costKicker: "Kosten & boeken",
+    costTitle: (c, e) => `Wat een verblijf voor de ${e} kost`,
+    costIntro: (c, e) =>
+      `Wat je betaalt om bij ${c} te overnachten voor de ${e}, hoe de opties zich verdelen naar prijs, en wanneer je moet boeken voordat de prijzen stijgen. Live prijzen op de kaart.`,
+    priceTiers: "Verblijven per prijs",
+    tierBudget: "Budget",
+    tierMid: "Middenklasse",
+    tierPremium: "Premium",
+    spikeNote:
+      "Prijzen stijgen naarmate de race nadert en de dichtstbijzijnde plekken zijn het eerst vol. Boek met gratis annulering zodra je data vaststaan en verfijn later.",
   },
 };
 
@@ -1569,6 +1625,8 @@ const deX: ExtraDict = {
       campsites: (c) => `Campingplätze nahe ${c}`,
       "walking-distance": (c) => `Nächste Unterkünfte zum ${c}`,
       cheap: (c) => `Günstige Unterkünfte nahe ${c}`,
+      family: (c) => `Familienfreundliche Unterkünfte nahe ${c}`,
+      luxury: (c) => `Luxushotels nahe ${c}`,
     },
     filterIntro: {
       hotels: (c, e) =>
@@ -1579,10 +1637,24 @@ const deX: ExtraDict = {
         `Die nächstgelegenen Unterkünfte zum ${c} für das ${e} — zu Fuß oder wenige Minuten mit dem Auto. Wenig Angebot, das schnell weg ist, also buche, sobald die Termine stehen.`,
       cheap: (c, e) =>
         `Die preiswertesten Unterkünfte nahe ${c} für das ${e}. Budgethotels, Pensionen und Campingplätze, die nächsten zuerst, mit Live-Preisen.`,
+      family: (c, e) =>
+        `Apartments, Häuser und Familien-Campingplätze nahe ${c} zum ${e} — Platz, Küche und gutes Preis-Leistungs-Verhältnis für Gruppen und Kinder, die nächsten zuerst.`,
+      luxury: (c, e) =>
+        `Die besten Hotels nahe ${c} zum ${e}: Vier-Sterne-plus-Komfort und die besten Lagen, die nächsten zuerst, mit Live-Preisen.`,
     },
     eventTitle: (c, e) => `Wo übernachten zum ${e}`,
     zoneEventTitle: (z, e) => `Wo übernachten in ${z} zum ${e}`,
     otherEvents: (c) => `Weitere Rennen am ${c}`,
+    costKicker: "Kosten & Buchung",
+    costTitle: (c, e) => `Was ein Aufenthalt zum ${e} kostet`,
+    costIntro: (c, e) =>
+      `Was du für eine Unterkunft nahe ${c} zum ${e} zahlst, wie sich die Optionen nach Preis aufteilen und wann du buchen solltest, bevor die Preise steigen. Live-Preise auf der Karte.`,
+    priceTiers: "Unterkünfte nach Preis",
+    tierBudget: "Günstig",
+    tierMid: "Mittelklasse",
+    tierPremium: "Premium",
+    spikeNote:
+      "Die Preise steigen, je näher das Rennen rückt, und die nächstgelegenen Plätze sind zuerst weg. Buche mit kostenloser Stornierung, sobald deine Termine feststehen, und passe später an.",
   },
 };
 
@@ -1916,6 +1988,8 @@ const itX: ExtraDict = {
       campsites: (c) => `Campeggi vicino a ${c}`,
       "walking-distance": (c) => `Alloggi più vicini a ${c}`,
       cheap: (c) => `Alloggi economici vicino a ${c}`,
+      family: (c) => `Alloggi per famiglie vicino a ${c}`,
+      luxury: (c) => `Hotel di lusso vicino a ${c}`,
     },
     filterIntro: {
       hotels: (c, e) =>
@@ -1926,10 +2000,24 @@ const itX: ExtraDict = {
         `Gli alloggi più vicini a ${c} per il ${e} — a piedi o a pochi minuti in auto. Poca disponibilità che va via in fretta, quindi prenota appena escono le date.`,
       cheap: (c, e) =>
         `Gli alloggi col miglior rapporto qualità-prezzo vicino a ${c} per il ${e}. Hotel economici, pensioni e campeggi, dal più vicino, con prezzi in tempo reale.`,
+      family: (c, e) =>
+        `Appartamenti, case e campeggi per famiglie vicino a ${c} per il ${e} — spazio, cucina e convenienza per gruppi e bambini, dal più vicino.`,
+      luxury: (c, e) =>
+        `I migliori hotel vicino a ${c} per il ${e}: comfort quattro stelle e oltre e le posizioni migliori, dal più vicino, con prezzi in tempo reale.`,
     },
     eventTitle: (c, e) => `Dove dormire per ${e}`,
     zoneEventTitle: (z, e) => `Dove dormire a ${z} per ${e}`,
     otherEvents: (c) => `Altre gare a ${c}`,
+    costKicker: "Costi & prenotazione",
+    costTitle: (c, e) => `Quanto costa alloggiare per il ${e}`,
+    costIntro: (c, e) =>
+      `Quanto spenderai per dormire vicino a ${c} per il ${e}, come si dividono le opzioni per prezzo e quando prenotare prima che i prezzi salgano. Prezzi in tempo reale sulla mappa.`,
+    priceTiers: "Alloggi per prezzo",
+    tierBudget: "Economico",
+    tierMid: "Fascia media",
+    tierPremium: "Premium",
+    spikeNote:
+      "I prezzi salgono con l'avvicinarsi della gara e i più vicini si esauriscono per primi. Prenota con cancellazione gratuita appena hai le date, poi affina.",
   },
 };
 
@@ -2263,6 +2351,8 @@ const esX: ExtraDict = {
       campsites: (c) => `Campings cerca de ${c}`,
       "walking-distance": (c) => `Alojamientos más cercanos a ${c}`,
       cheap: (c) => `Alojamientos baratos cerca de ${c}`,
+      family: (c) => `Alojamientos familiares cerca de ${c}`,
+      luxury: (c) => `Hoteles de lujo cerca de ${c}`,
     },
     filterIntro: {
       hotels: (c, e) =>
@@ -2273,10 +2363,24 @@ const esX: ExtraDict = {
         `Los alojamientos más cercanos a ${c} para el ${e} — a pie o a unos minutos en coche. Poca disponibilidad que vuela, así que reserva en cuanto haya fechas.`,
       cheap: (c, e) =>
         `Los alojamientos con mejor relación calidad-precio cerca de ${c} para el ${e}. Hoteles económicos, pensiones y campings, del más cercano, con precios en directo.`,
+      family: (c, e) =>
+        `Apartamentos, casas y campings familiares cerca de ${c} para el ${e} — espacio, cocina y buena relación calidad-precio para grupos y niños, del más cercano.`,
+      luxury: (c, e) =>
+        `Los mejores hoteles cerca de ${c} para el ${e}: confort de cuatro estrellas o más y las mejores ubicaciones, del más cercano, con precios en directo.`,
     },
     eventTitle: (c, e) => `Dónde alojarse para el ${e}`,
     zoneEventTitle: (z, e) => `Dónde alojarse en ${z} para el ${e}`,
     otherEvents: (c) => `Otras carreras en ${c}`,
+    costKicker: "Coste y reserva",
+    costTitle: (c, e) => `Cuánto cuesta alojarse para el ${e}`,
+    costIntro: (c, e) =>
+      `Lo que pagarás por alojarte cerca de ${c} para el ${e}, cómo se reparten las opciones por precio y cuándo reservar antes de que suban los precios. Precios en directo en el mapa.`,
+    priceTiers: "Alojamientos por precio",
+    tierBudget: "Económico",
+    tierMid: "Gama media",
+    tierPremium: "Premium",
+    spikeNote:
+      "Los precios suben al acercarse la carrera y los más cercanos se agotan primero. Reserva con cancelación gratuita en cuanto tengas las fechas y ajusta después.",
   },
 };
 
