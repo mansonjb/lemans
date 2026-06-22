@@ -64,6 +64,16 @@ export default async function RootLayout({
   })(window, document, 'script', 'https://scripts.stay22.com/letmeallez.js');`,
           }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XR39SLZKX6"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-gtag" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XR39SLZKX6');`}
+        </Script>
       </body>
     </html>
   );

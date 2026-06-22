@@ -571,9 +571,11 @@ export const circuitZoneHotels = (
   zoneKey: string
 ): CircuitHotel[] => data.hotels.filter((h) => h.zone === zoneKey);
 
-/** Zones substantial enough to warrant their own page (skips the catch-all). */
+/** Real towns that get their own page (every zone but the no-city catch-all).
+ *  Even a 1-stay town is worth a page: its Stay22 map shows all live local
+ *  inventory, not just our scraped sample. */
 export const circuitPageZones = (data: CircuitData): CircuitZone[] =>
-  data.zones.filter((z) => z.key !== "circuit-area" && z.count >= 2);
+  data.zones.filter((z) => z.key !== "circuit-area");
 
 /** URL-safe slug for an event, derived from its name. */
 export const eventSlug = (e: CircuitEvent): string =>

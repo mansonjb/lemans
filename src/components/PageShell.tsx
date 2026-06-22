@@ -71,10 +71,10 @@ function CircuitsMenu({
         {label}
         <span className="text-[10px] text-muted">▾</span>
       </button>
-      <div className="invisible absolute left-0 top-full z-50 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-        <div className="min-w-[300px] overflow-hidden rounded-xl border border-line bg-card shadow-lg">
+      <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+        <div className="max-h-[80vh] w-[600px] max-w-[92vw] overflow-auto rounded-xl border border-line bg-card shadow-lg">
           <div className="h-1 bg-gradient-to-r from-bleu via-amber to-ink" />
-          <div className="p-2">
+          <div className="grid grid-cols-2 gap-0.5 p-2">
             {CIRCUITS.map((c) => {
               const active = c.key === currentKey;
               const live = c.status === "live";
@@ -90,15 +90,11 @@ function CircuitsMenu({
                     {c.flag}
                   </span>
                   <span className="flex-1 font-medium">{c.name}</span>
-                  <span
-                    className={`rounded-sm px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
-                      live
-                        ? "bg-grass/15 text-grass"
-                        : "bg-line/60 text-muted"
-                    }`}
-                  >
-                    {live ? xt.circuitNet.flagship : xt.circuitNet.soon}
-                  </span>
+                  {!live && (
+                    <span className="rounded-sm bg-line/60 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-muted">
+                      {xt.circuitNet.soon}
+                    </span>
+                  )}
                 </Link>
               );
             })}
@@ -129,10 +125,10 @@ function CoursesMenu({
         {label}
         <span className="text-[10px] text-muted">▾</span>
       </button>
-      <div className="invisible absolute left-0 top-full z-50 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-        <div className="max-h-[70vh] min-w-[280px] overflow-auto rounded-xl border border-line bg-card shadow-lg">
+      <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+        <div className="max-h-[80vh] w-[560px] max-w-[92vw] overflow-auto rounded-xl border border-line bg-card shadow-lg">
           <div className="h-1 bg-gradient-to-r from-bleu via-amber to-ink" />
-          <div className="p-2">
+          <div className="grid grid-cols-2 gap-0.5 p-2">
             {entries.map((e) => (
               <Link
                 key={e.key}
@@ -173,10 +169,10 @@ function DestinationsMenu({
         {label}
         <span className="text-[10px] text-muted">▾</span>
       </button>
-      <div className="invisible absolute left-0 top-full z-50 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-        <div className="max-h-[70vh] min-w-[260px] overflow-auto rounded-xl border border-line bg-card shadow-lg">
+      <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+        <div className="max-h-[80vh] w-[560px] max-w-[92vw] overflow-auto rounded-xl border border-line bg-card shadow-lg">
           <div className="h-1 bg-gradient-to-r from-bleu via-amber to-ink" />
-          <div className="p-2">
+          <div className="grid grid-cols-2 gap-0.5 p-2">
             {CIRCUITS.map((c) => (
               <Link
                 key={c.key}

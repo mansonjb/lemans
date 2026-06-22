@@ -649,7 +649,7 @@ export function CircuitQuizTemplate({
     lat: z.lat,
     lng: z.lng,
     href:
-      z.key !== "circuit-area" && z.count >= 2
+      z.key !== "circuit-area"
         ? hrefFor(`czone:${circuit.key}:${z.key}`, locale)
         : hrefFor(`circuit:${circuit.key}`, locale),
   }));

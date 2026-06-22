@@ -225,7 +225,7 @@ export function CircuitGuideTemplate({
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {data.zones.map((z) => {
-              const hasPage = z.key !== "circuit-area" && z.count >= 2;
+              const hasPage = z.key !== "circuit-area";
               const inner = (
                 <>
                   <div className="flex items-baseline justify-between gap-2">
