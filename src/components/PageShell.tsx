@@ -260,10 +260,13 @@ export function PageShell({
 
   // "Find your stay": the Le Mans matchmaker quiz, or the current circuit's
   // own guide when you're on another circuit.
-  const ctaHref =
-    circuitKey && circuitKey !== "le-mans"
-      ? hrefFor(`circuit:${circuitKey}`, locale)
-      : hrefFor("quiz", locale);
+  // "Find your stay" → the matchmaker for the circuit you're on (Le Mans keeps
+  // its bespoke quiz; the others get the generic finder). Hidden off-circuit.
+  const ctaHref = circuitKey
+    ? circuitKey === "le-mans"
+      ? hrefFor("quiz", locale)
+      : hrefFor(`cquiz:${circuitKey}`, locale)
+    : null;
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -299,12 +302,14 @@ export function PageShell({
             />
           </nav>
           <div className="flex items-center gap-2">
-            <Link
-              href={ctaHref}
-              className="hidden rounded-md bg-amber px-3 py-1.5 font-display text-sm font-bold uppercase tracking-wide text-ink shadow-sm transition hover:brightness-95 sm:inline-block"
-            >
-              {xt.ctaFindStay}
-            </Link>
+            {ctaHref && (
+              <Link
+                href={ctaHref}
+                className="hidden rounded-md bg-amber px-3 py-1.5 font-display text-sm font-bold uppercase tracking-wide text-ink shadow-sm transition hover:brightness-95 sm:inline-block"
+              >
+                {xt.ctaFindStay}
+              </Link>
+            )}
             <LangSwitcher page={page} locale={locale} />
           </div>
         </div>

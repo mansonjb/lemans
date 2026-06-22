@@ -58,6 +58,14 @@ const COST_SLUG: LocalizedSlug = {
   it: "costi",
   es: "coste",
 };
+const FINDER_SLUG: LocalizedSlug = {
+  en: "find-your-stay",
+  fr: "trouver-mon-hebergement",
+  nl: "vind-jouw-verblijf",
+  de: "unterkunft-finden",
+  it: "trova-il-tuo-alloggio",
+  es: "encuentra-tu-alojamiento",
+};
 const FILTER_SLUGS: Record<string, LocalizedSlug> = {
   hotels: { en: "hotels", fr: "hotels", nl: "hotels", de: "hotels", it: "hotel", es: "hoteles" },
   campsites: {
@@ -151,6 +159,12 @@ export const PAGES: PageDef[] = [
         key: `ccost:${d.key}`,
         template: "circuitcost",
         slugs: prefixSlugs(COST_SLUG, base),
+        ref: d.key,
+      },
+      {
+        key: `cquiz:${d.key}`,
+        template: "circuitquiz",
+        slugs: prefixSlugs(FINDER_SLUG, base),
         ref: d.key,
       },
     ];
@@ -352,7 +366,8 @@ export const circuitKeyForPage = (page: PageDef): string | null => {
     page.template === "circuitfilter" ||
     page.template === "circuitevent" ||
     page.template === "circuiteventzone" ||
-    page.template === "circuitcost"
+    page.template === "circuitcost" ||
+    page.template === "circuitquiz"
   )
     return page.ref ? page.ref.split(":")[0] : null;
   if (LM_SCOPED.has(page.template)) return "le-mans";

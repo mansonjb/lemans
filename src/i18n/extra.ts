@@ -180,6 +180,7 @@ export interface ExtraDict {
     tierMid: string;
     tierPremium: string;
     spikeNote: string;
+    finderTitle: (circuit: string) => string;
   };
 }
 
@@ -553,6 +554,7 @@ const enX: ExtraDict = {
     tierPremium: "Premium",
     spikeNote:
       "Prices climb as the race nears and the closest places sell out first. Book with free cancellation the moment your dates are set, then refine later.",
+    finderTitle: (c) => `Find your ${c} stay in 5 questions`,
   },
 };
 
@@ -928,6 +930,7 @@ const frX: ExtraDict = {
     tierPremium: "Premium",
     spikeNote:
       "Les prix montent à l'approche de la course et les plus proches partent en premier. Réservez avec annulation gratuite dès que vos dates sont fixées, puis affinez.",
+    finderTitle: (c) => `Trouvez votre hébergement à ${c} en 5 questions`,
   },
 };
 
@@ -1292,6 +1295,7 @@ const nlX: ExtraDict = {
     tierPremium: "Premium",
     spikeNote:
       "Prijzen stijgen naarmate de race nadert en de dichtstbijzijnde plekken zijn het eerst vol. Boek met gratis annulering zodra je data vaststaan en verfijn later.",
+    finderTitle: (c) => `Vind jouw ${c}-verblijf in 5 vragen`,
   },
 };
 
@@ -1655,6 +1659,7 @@ const deX: ExtraDict = {
     tierPremium: "Premium",
     spikeNote:
       "Die Preise steigen, je näher das Rennen rückt, und die nächstgelegenen Plätze sind zuerst weg. Buche mit kostenloser Stornierung, sobald deine Termine feststehen, und passe später an.",
+    finderTitle: (c) => `Finden Sie Ihre Unterkunft am ${c} in 5 Fragen`,
   },
 };
 
@@ -2018,6 +2023,7 @@ const itX: ExtraDict = {
     tierPremium: "Premium",
     spikeNote:
       "I prezzi salgono con l'avvicinarsi della gara e i più vicini si esauriscono per primi. Prenota con cancellazione gratuita appena hai le date, poi affina.",
+    finderTitle: (c) => `Trova il tuo alloggio a ${c} in 5 domande`,
   },
 };
 
@@ -2381,6 +2387,7 @@ const esX: ExtraDict = {
     tierPremium: "Premium",
     spikeNote:
       "Los precios suben al acercarse la carrera y los más cercanos se agotan primero. Reserva con cancelación gratuita en cuanto tengas las fechas y ajusta después.",
+    finderTitle: (c) => `Encuentra tu alojamiento en ${c} en 5 preguntas`,
   },
 };
 

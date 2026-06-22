@@ -13,6 +13,7 @@ const PRIORITY: Record<string, number> = {
   circuitevent: 0.75,
   circuiteventzone: 0.6,
   circuitcost: 0.7,
+  circuitquiz: 0.7,
   event: 0.9,
   quiz: 0.8,
   travel: 0.8,

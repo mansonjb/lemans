@@ -8,8 +8,15 @@ import {
   circuitZoneHotels,
   circuitFilterHotels,
   circuitPageZones,
+  circuitExtraEvents,
   eventSlug,
 } from "@/data/circuit-data";
+import {
+  Quiz,
+  type QuizEvent,
+  type QuizZone,
+  type QuizHotel,
+} from "@/components/Quiz";
 import { hrefFor } from "@/lib/registry";
 import { Container, Kicker, SlantBadge, SpeedHeading } from "@/components/ui";
 import { KeyFacts, type Fact } from "@/components/KeyFacts";
@@ -606,5 +613,80 @@ export function CircuitCostTemplate({
         <NetworkCtas locale={locale} circuit={circuit} />
       </Container>
     </>
+  );
+}
+
+/* ------------------------------- FINDER QUIZ ------------------------------- */
+export function CircuitQuizTemplate({
+  locale,
+  circuit,
+  data,
+}: {
+  dict: Dict;
+  locale: Locale;
+  circuit: Circuit;
+  data: CircuitData;
+}) {
+  const xt = x(locale);
+  const zoneName = Object.fromEntries(data.zones.map((z) => [z.key, z.name]));
+  const events: QuizEvent[] = [data.event, ...circuitExtraEvents(data)].map(
+    (e) => ({
+      key: eventSlug(e),
+      id: eventSlug(e),
+      name: e.name,
+      checkin: e.checkin,
+      checkout: e.checkout,
+      lat: circuit.lat,
+      lng: circuit.lng,
+    })
+  );
+  const zones: QuizZone[] = data.zones.map((z) => ({
+    key: z.key,
+    name: z.name,
+    ring: Math.min(4, Math.max(1, z.ring)) as 1 | 2 | 3 | 4,
+    driveMin: z.driveMin,
+    raceWeekMin: Math.round(z.driveMin * 1.5),
+    lat: z.lat,
+    lng: z.lng,
+    href:
+      z.key !== "circuit-area" && z.count >= 2
+        ? hrefFor(`czone:${circuit.key}:${z.key}`, locale)
+        : hrefFor(`circuit:${circuit.key}`, locale),
+  }));
+  const hotels: QuizHotel[] = data.hotels.map((h) => ({
+    name: h.name,
+    zone: h.zone,
+    category: Math.min(3, Math.max(1, h.category)) as 1 | 2 | 3,
+    kind: h.kind,
+    note: zoneName[h.zone] ?? circuit.name,
+    url: `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(
+      `${h.name}, ${zoneName[h.zone] ?? circuit.name}`
+    )}`,
+    img: h.img || undefined,
+  }));
+
+  return (
+    <Container className="py-14 sm:py-20">
+      <Kicker>{xt.quiz.heroKicker}</Kicker>
+      <h1 className="mt-3 flex flex-wrap items-center gap-3 font-display text-4xl font-bold uppercase italic leading-[1.02] tracking-tight sm:text-5xl">
+        <span className="text-3xl sm:text-4xl" aria-hidden>
+          {circuit.flag}
+        </span>
+        {xt.circuitPages.finderTitle(circuit.name)}
+      </h1>
+      <div className="speedline mt-5 w-40" />
+      <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted">
+        {xt.quiz.intro}
+      </p>
+      <div className="mt-10">
+        <Quiz
+          events={events}
+          zones={zones}
+          hotels={hotels}
+          labels={xt.quiz.labels}
+          locale={locale}
+        />
+      </div>
+    </Container>
   );
 }

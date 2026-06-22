@@ -97,6 +97,7 @@ export type TemplateKind =
   | "circuitevent"
   | "circuiteventzone"
   | "circuitcost"
+  | "circuitquiz"
   | "guideindex"
   | "home"
   | "event"
