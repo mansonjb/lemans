@@ -1,6 +1,14 @@
 import Link from "next/link";
 import type { Dict } from "@/i18n";
 import { x } from "@/i18n/extra";
+import {
+  fmtCountry,
+  fmtWindow,
+  fmtBookAhead,
+  fmtCrowd,
+  fmtEvent,
+  fmtEvents,
+} from "@/i18n/datafmt";
 import { homeFaq } from "@/i18n/homefaq";
 import type { Locale } from "@/lib/types";
 import type { Circuit } from "@/data/circuits";
@@ -87,8 +95,8 @@ export function CircuitSoonTemplate({
           </h1>
           <div className="speedline mt-5 w-40" />
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <SlantBadge tone="ink">{circuit.country}</SlantBadge>
-            <SlantBadge tone="amber">{circuit.events}</SlantBadge>
+            <SlantBadge tone="ink">{fmtCountry(circuit.country, locale)}</SlantBadge>
+            <SlantBadge tone="amber">{fmtEvents(circuit.events, locale)}</SlantBadge>
           </div>
           <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">
             {xt.hub.soonIntro(circuit.name)}
@@ -160,37 +168,42 @@ export function CircuitGuideTemplate({
       ? hrefFor(`czoneev:${circuit.key}:${scopedSlug}:${zKey}`, locale)
       : hrefFor(`czone:${circuit.key}:${zKey}`, locale);
   const extra = circuitExtraEvents(data);
+  const evName = fmtEvent(event.name, locale);
+  const evWindow = fmtWindow(event.window, locale);
+  const evBook = fmtBookAhead(event.bookAhead, locale);
+  const evCrowd = fmtCrowd(event.crowd, locale);
+  const country = fmtCountry(circuit.country, locale);
 
   const facts: Fact[] = [
     { label: xt.seo.factListedStays, value: String(data.hotels.length), accent: true },
     { label: g.factClosest, value: closestLabel },
-    { label: g.factWindow, value: event.window },
-    { label: g.factCrowd, value: event.crowd },
-    { label: g.factBook, value: event.bookAhead },
+    { label: g.factWindow, value: evWindow },
+    { label: g.factCrowd, value: evCrowd },
+    { label: g.factBook, value: evBook },
   ];
 
-  const faqItems = g.faq(circuit.name, event.name, town, event.bookAhead);
+  const faqItems = g.faq(circuit.name, evName, town, evBook);
 
   return (
     <>
       <section className="border-b border-line bg-gradient-to-b from-card to-paper">
         <Container className="py-14 sm:py-20">
-          <Kicker>{eventScoped ? event.name : g.kicker}</Kicker>
+          <Kicker>{eventScoped ? evName : g.kicker}</Kicker>
           <h1 className="mt-3 flex flex-wrap items-center gap-3 font-display text-4xl font-bold uppercase italic leading-[1.02] tracking-tight sm:text-6xl">
             <span className="text-3xl sm:text-5xl" aria-hidden>
               {circuit.flag}
             </span>
             {eventScoped
-              ? xt.circuitPages.eventTitle(circuit.name, event.name)
+              ? xt.circuitPages.eventTitle(circuit.name, evName)
               : g.staysHeading(circuit.name)}
           </h1>
           <div className="speedline mt-5 w-40" />
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <SlantBadge tone="ink">{circuit.country}</SlantBadge>
-            <SlantBadge tone="amber">{event.name}</SlantBadge>
+            <SlantBadge tone="ink">{country}</SlantBadge>
+            <SlantBadge tone="amber">{evName}</SlantBadge>
           </div>
           <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">
-            {g.intro(circuit.name, event.name)}
+            {g.intro(circuit.name, evName)}
           </p>
         </Container>
       </section>
@@ -208,9 +221,9 @@ export function CircuitGuideTemplate({
                   href={hrefFor(`cevent:${circuit.key}:${eventSlug(e)}`, locale)}
                   className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-sm font-semibold transition hover:border-bleu hover:text-bleu"
                 >
-                  {e.name}
+                  {fmtEvent(e.name, locale)}
                   <span className="font-display text-xs font-bold uppercase tracking-wide text-bleu">
-                    {e.window}
+                    {fmtWindow(e.window, locale)}
                   </span>
                 </Link>
               ))}

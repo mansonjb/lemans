@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { x } from "@/i18n/extra";
+import { fmtCountry, fmtEvents } from "@/i18n/datafmt";
 import type { Locale } from "@/lib/types";
 import { CIRCUITS } from "@/data/circuits";
 import { hrefFor } from "@/lib/registry";
@@ -40,7 +41,7 @@ export function CircuitNetwork({ locale }: { locale: Locale }) {
                       {c.name}
                     </h3>
                     <p className="mt-1 text-xs uppercase tracking-wide text-muted">
-                      {c.country}
+                      {fmtCountry(c.country, locale)}
                     </p>
                   </div>
                 </div>
@@ -55,7 +56,7 @@ export function CircuitNetwork({ locale }: { locale: Locale }) {
                 </span>
               </div>
               <p className="mt-3 text-[13px] leading-snug text-muted">
-                {c.events}
+                {fmtEvents(c.events, locale)}
               </p>
             </Link>
           );

@@ -1,6 +1,12 @@
 import Link from "next/link";
 import type { Dict } from "@/i18n";
 import { x } from "@/i18n/extra";
+import {
+  fmtWindow,
+  fmtBookAhead,
+  fmtCrowd,
+  fmtEvent,
+} from "@/i18n/datafmt";
 import type { Locale } from "@/lib/types";
 import type { Circuit } from "@/data/circuits";
 import type { CircuitData, CircuitZone, CircuitEvent } from "@/data/circuit-data";
@@ -91,7 +97,7 @@ export function CircuitTravelTemplate({
           </h1>
           <div className="speedline mt-5 w-40" />
           <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">
-            {p.travelIntro(circuit.name, data.event.name)}
+            {p.travelIntro(circuit.name, fmtEvent(data.event.name, locale))}
           </p>
         </Container>
       </section>
@@ -199,14 +205,14 @@ export function CircuitGuideArticleTemplate({
   const town = data.zones[0]?.name ?? circuit.name;
 
   const facts: Fact[] = [
-    { label: g.factBook, value: data.event.bookAhead, accent: true },
-    { label: g.factWindow, value: data.event.window },
-    { label: g.factCrowd, value: data.event.crowd },
+    { label: g.factBook, value: fmtBookAhead(data.event.bookAhead, locale), accent: true },
+    { label: g.factWindow, value: fmtWindow(data.event.window, locale) },
+    { label: g.factCrowd, value: fmtCrowd(data.event.crowd, locale) },
     { label: xt.seo.factListedStays, value: String(data.hotels.length) },
   ];
 
   const sections: { h: string; body: string }[] = [
-    { h: p.whenToBook, body: p.whenToBookBody(data.event.name, data.event.bookAhead) },
+    { h: p.whenToBook, body: p.whenToBookBody(fmtEvent(data.event.name, locale), fmtBookAhead(data.event.bookAhead, locale)) },
     { h: p.whereToBase, body: p.whereToBaseBody(circuit.name, town) },
     { h: p.campingH, body: p.campingBody(circuit.name) },
     { h: p.gettingAround, body: p.gettingAroundBody(circuit.name, data.travel.roads) },
@@ -225,7 +231,7 @@ export function CircuitGuideArticleTemplate({
           </h1>
           <div className="speedline mt-5 w-40" />
           <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">
-            {p.guideIntro(circuit.name, data.event.name)}
+            {p.guideIntro(circuit.name, fmtEvent(data.event.name, locale))}
           </p>
         </Container>
       </section>
@@ -264,7 +270,7 @@ export function CircuitGuideArticleTemplate({
         <div className="mt-14">
           <FaqBlock
             heading={dict.common.faqHeading}
-            items={g.faq(circuit.name, data.event.name, town, data.event.bookAhead)}
+            items={g.faq(circuit.name, fmtEvent(data.event.name, locale), town, fmtBookAhead(data.event.bookAhead, locale))}
           />
         </div>
 
@@ -308,8 +314,8 @@ export function CircuitZoneTemplate({
   const facts: Fact[] = [
     { label: xt.seo.factListedStays, value: String(hotels.length), accent: true },
     { label: g.factClosest, value: driveLabel },
-    { label: g.factWindow, value: event.window },
-    { label: g.factBook, value: event.bookAhead },
+    { label: g.factWindow, value: fmtWindow(event.window, locale) },
+    { label: g.factBook, value: fmtBookAhead(event.bookAhead, locale) },
   ];
 
   return (
@@ -319,16 +325,16 @@ export function CircuitZoneTemplate({
           <Kicker>{p.zoneKicker(circuit.name)}</Kicker>
           <h1 className="mt-3 font-display text-4xl font-bold uppercase italic leading-[1.02] tracking-tight sm:text-6xl">
             {eventScoped
-              ? p.zoneEventTitle(zone.name, event.name)
+              ? p.zoneEventTitle(zone.name, fmtEvent(event.name, locale))
               : p.zoneTitle(zone.name, circuit.name)}
           </h1>
           <div className="speedline mt-5 w-40" />
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <SlantBadge tone="ink">{driveLabel}</SlantBadge>
-            <SlantBadge tone="amber">{event.name}</SlantBadge>
+            <SlantBadge tone="amber">{fmtEvent(event.name, locale)}</SlantBadge>
           </div>
           <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">
-            {p.zoneIntro(zone.name, circuit.name, event.name, zone.driveMin)}
+            {p.zoneIntro(zone.name, circuit.name, fmtEvent(event.name, locale), zone.driveMin)}
           </p>
         </Container>
       </section>
@@ -367,7 +373,7 @@ export function CircuitZoneTemplate({
         <div className="mt-14">
           <FaqBlock
             heading={dict.common.faqHeading}
-            items={g.faq(circuit.name, event.name, zone.name, event.bookAhead)}
+            items={g.faq(circuit.name, fmtEvent(event.name, locale), zone.name, fmtBookAhead(event.bookAhead, locale))}
           />
         </div>
 
@@ -421,9 +427,9 @@ export function CircuitFilterTemplate({
 
   const facts: Fact[] = [
     { label: xt.seo.factListedStays, value: String(hotels.length), accent: true },
-    { label: g.factWindow, value: data.event.window },
-    { label: g.factCrowd, value: data.event.crowd },
-    { label: g.factBook, value: data.event.bookAhead },
+    { label: g.factWindow, value: fmtWindow(data.event.window, locale) },
+    { label: g.factCrowd, value: fmtCrowd(data.event.crowd, locale) },
+    { label: g.factBook, value: fmtBookAhead(data.event.bookAhead, locale) },
   ];
 
   return (
@@ -439,7 +445,7 @@ export function CircuitFilterTemplate({
           </h1>
           <div className="speedline mt-5 w-40" />
           <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">
-            {p.filterIntro[fk](circuit.name, data.event.name)}
+            {p.filterIntro[fk](circuit.name, fmtEvent(data.event.name, locale))}
           </p>
         </Container>
       </section>
@@ -478,7 +484,7 @@ export function CircuitFilterTemplate({
         <div className="mt-14">
           <FaqBlock
             heading={dict.common.faqHeading}
-            items={g.faq(circuit.name, data.event.name, town, data.event.bookAhead)}
+            items={g.faq(circuit.name, fmtEvent(data.event.name, locale), town, fmtBookAhead(data.event.bookAhead, locale))}
           />
         </div>
 
@@ -509,9 +515,9 @@ export function CircuitCostTemplate({
   const cheapest = circuitFilterHotels(data, "cheap");
 
   const facts: Fact[] = [
-    { label: g.factBook, value: ev.bookAhead, accent: true },
-    { label: g.factWindow, value: ev.window },
-    { label: g.factCrowd, value: ev.crowd },
+    { label: g.factBook, value: fmtBookAhead(ev.bookAhead, locale), accent: true },
+    { label: g.factWindow, value: fmtWindow(ev.window, locale) },
+    { label: g.factCrowd, value: fmtCrowd(ev.crowd, locale) },
     { label: xt.seo.factListedStays, value: String(data.hotels.length) },
   ];
 
@@ -530,11 +536,11 @@ export function CircuitCostTemplate({
             <span className="text-3xl sm:text-5xl" aria-hidden>
               {circuit.flag}
             </span>
-            {p.costTitle(circuit.name, ev.name)}
+            {p.costTitle(circuit.name, fmtEvent(ev.name, locale))}
           </h1>
           <div className="speedline mt-5 w-40" />
           <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-muted">
-            {p.costIntro(circuit.name, ev.name)}
+            {p.costIntro(circuit.name, fmtEvent(ev.name, locale))}
           </p>
         </Container>
       </section>
@@ -583,7 +589,7 @@ export function CircuitCostTemplate({
         <div className="mt-14">
           <SpeedHeading>{p.whenToBook}</SpeedHeading>
           <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-muted">
-            {p.whenToBookBody(ev.name, ev.bookAhead)}
+            {p.whenToBookBody(fmtEvent(ev.name, locale), fmtBookAhead(ev.bookAhead, locale))}
           </p>
         </div>
 
@@ -606,7 +612,7 @@ export function CircuitCostTemplate({
         <div className="mt-14">
           <FaqBlock
             heading={dict.common.faqHeading}
-            items={g.faq(circuit.name, ev.name, town, ev.bookAhead)}
+            items={g.faq(circuit.name, fmtEvent(ev.name, locale), town, fmtBookAhead(ev.bookAhead, locale))}
           />
         </div>
 

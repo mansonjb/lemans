@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Dict } from "@/i18n";
 import { x } from "@/i18n/extra";
+import { fmtEvent } from "@/i18n/datafmt";
 import { LOCALES, type Locale, type PageDef } from "@/lib/types";
 import { hrefFor, pathFor, PAGES, circuitKeyForPage } from "@/lib/registry";
 import { SITE } from "@/lib/seo";
@@ -238,7 +239,10 @@ export function PageShell({
       raceEntries.push({
         key: `circuit:${c.key}`,
         flag: c.flag,
-        label: data ? data.event.name : c.events.split(" · ")[0].trim(),
+        label: fmtEvent(
+          data ? data.event.name : c.events.split(" · ")[0].trim(),
+          locale
+        ),
         href: hrefFor(`circuit:${c.key}`, locale),
       });
       if (data) {
@@ -246,7 +250,7 @@ export function PageShell({
           raceEntries.push({
             key: `cevent:${c.key}:${eventSlug(ev)}`,
             flag: c.flag,
-            label: ev.name,
+            label: fmtEvent(ev.name, locale),
             href: hrefFor(`cevent:${c.key}:${eventSlug(ev)}`, locale),
           });
         }

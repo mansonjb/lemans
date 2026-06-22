@@ -30,6 +30,7 @@ import {
   CircuitGuideTemplate,
 } from "@/templates/hub";
 import { circuitData, circuitEventBySlug } from "@/data/circuit-data";
+import { fmtEvent } from "@/i18n/datafmt";
 import {
   CircuitTravelTemplate,
   CircuitGuideArticleTemplate,
@@ -91,21 +92,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const c = circuitByKey(page.ref!)!;
       const d = circuitData(c.key)!;
       title = `${x(locale).circuitGuide.staysHeading(c.name)} | ${dict.siteName}`;
-      description = x(locale).circuitGuide.intro(c.name, d.event.name);
+      description = x(locale).circuitGuide.intro(c.name, fmtEvent(d.event.name, locale));
       break;
     }
     case "circuittravel": {
       const c = circuitByKey(page.ref!)!;
       const d = circuitData(c.key)!;
       title = `${x(locale).circuitPages.travelTitle(c.name)} | ${dict.siteName}`;
-      description = x(locale).circuitPages.travelIntro(c.name, d.event.name);
+      description = x(locale).circuitPages.travelIntro(c.name, fmtEvent(d.event.name, locale));
       break;
     }
     case "circuitcost": {
       const c = circuitByKey(page.ref!)!;
       const d = circuitData(c.key)!;
-      title = `${x(locale).circuitPages.costTitle(c.name, d.event.name)} | ${dict.siteName}`;
-      description = x(locale).circuitPages.costIntro(c.name, d.event.name);
+      title = `${x(locale).circuitPages.costTitle(c.name, fmtEvent(d.event.name, locale))} | ${dict.siteName}`;
+      description = x(locale).circuitPages.costIntro(c.name, fmtEvent(d.event.name, locale));
       break;
     }
     case "circuitquiz": {
@@ -118,7 +119,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const c = circuitByKey(page.ref!)!;
       const d = circuitData(c.key)!;
       title = `${x(locale).circuitPages.guideTitle(c.name)} | ${dict.siteName}`;
-      description = x(locale).circuitPages.guideIntro(c.name, d.event.name);
+      description = x(locale).circuitPages.guideIntro(c.name, fmtEvent(d.event.name, locale));
       break;
     }
     case "circuitzone": {
@@ -127,7 +128,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const d = circuitData(ck)!;
       const z = d.zones.find((zz) => zz.key === zk)!;
       title = `${x(locale).circuitPages.zoneTitle(z.name, c.name)} | ${dict.siteName}`;
-      description = x(locale).circuitPages.zoneIntro(z.name, c.name, d.event.name, z.driveMin);
+      description = x(locale).circuitPages.zoneIntro(z.name, c.name, fmtEvent(d.event.name, locale), z.driveMin);
       break;
     }
     case "circuitfilter": {
@@ -136,15 +137,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const d = circuitData(ck)!;
       const k = fk as "hotels" | "campsites" | "walking-distance" | "cheap";
       title = `${x(locale).circuitPages.filterTitle[k](c.name)} | ${dict.siteName}`;
-      description = x(locale).circuitPages.filterIntro[k](c.name, d.event.name);
+      description = x(locale).circuitPages.filterIntro[k](c.name, fmtEvent(d.event.name, locale));
       break;
     }
     case "circuitevent": {
       const [ck, es] = page.ref!.split(":");
       const c = circuitByKey(ck)!;
       const ev = circuitEventBySlug(circuitData(ck)!, es)!;
-      title = `${x(locale).circuitPages.eventTitle(c.name, ev.name)} | ${dict.siteName}`;
-      description = x(locale).circuitGuide.intro(c.name, ev.name);
+      title = `${x(locale).circuitPages.eventTitle(c.name, fmtEvent(ev.name, locale))} | ${dict.siteName}`;
+      description = x(locale).circuitGuide.intro(c.name, fmtEvent(ev.name, locale));
       break;
     }
     case "circuiteventzone": {
@@ -153,8 +154,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       const d = circuitData(ck)!;
       const ev = circuitEventBySlug(d, es)!;
       const z = d.zones.find((zz) => zz.key === zk)!;
-      title = `${x(locale).circuitPages.zoneEventTitle(z.name, ev.name)} | ${dict.siteName}`;
-      description = x(locale).circuitPages.zoneIntro(z.name, c.name, ev.name, z.driveMin);
+      title = `${x(locale).circuitPages.zoneEventTitle(z.name, fmtEvent(ev.name, locale))} | ${dict.siteName}`;
+      description = x(locale).circuitPages.zoneIntro(z.name, c.name, fmtEvent(ev.name, locale), z.driveMin);
       break;
     }
     case "event": {
@@ -336,7 +337,7 @@ function buildCrumbs(
     case "circuitevent": {
       const [ck, es] = page.ref!.split(":");
       const ev = circuitEventBySlug(circuitData(ck)!, es)!;
-      crumbs.push({ name: ev.name, href: here });
+      crumbs.push({ name: fmtEvent(ev.name, locale), href: here });
       break;
     }
     case "circuiteventzone": {
@@ -344,7 +345,7 @@ function buildCrumbs(
       const d = circuitData(ck)!;
       const ev = circuitEventBySlug(d, es)!;
       const z = d.zones.find((zz) => zz.key === zk)!;
-      crumbs.push({ name: ev.name, href: hrefFor(`cevent:${ck}:${es}`, locale) });
+      crumbs.push({ name: fmtEvent(ev.name, locale), href: hrefFor(`cevent:${ck}:${es}`, locale) });
       crumbs.push({ name: z.name, href: here });
       break;
     }
