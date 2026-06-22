@@ -1,16 +1,16 @@
 /**
- * Final domain still to be confirmed. Override with NEXT_PUBLIC_SITE_URL
- * in Vercel once the domain is bought.
+ * Production domain. NEXT_PUBLIC_SITE_URL on Vercel can still override it
+ * (e.g. for a preview host); the fallback is the canonical apex domain.
  */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.lemansstays.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://raceweekstays.com";
 
 /** Centralised site identity for legal notices and copyright. */
 export const SITE = {
   name: "RaceWeekStays",
   /** Copyright year, bump on each yearly content refresh. */
   year: 2026,
-  contactEmail: "hello@lemansstays.com",
+  contactEmail: "hello@raceweekstays.com",
   /** Default deployment host, surfaced in the legal notice. */
   host: "Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA",
 };

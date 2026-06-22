@@ -274,14 +274,14 @@ export const en = {
     title: "Contact",
     paragraphs: [
       "A question, a correction, a partnership idea, or a property to list? Write to us and we will answer quickly.",
-      "Email: hello@lemansstays.com",
+      "Email: hello@raceweekstays.com",
     ],
   },
 
   legal: {
     title: "Legal notice",
     paragraphs: [
-      "This website is an independent publication, published by the RaceWeekStays team. Contact: hello@lemansstays.com. Full publisher company details are available on request.",
+      "This website is an independent publication, published by the RaceWeekStays team. Contact: hello@raceweekstays.com. Full publisher company details are available on request.",
       "Hosting: this site is hosted by Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA.",
       "Affiliate disclosure: this site contains affiliate links. We may earn a commission when you book through our partners (including Stay22 and Booking.com), at no extra cost to you. This is how the site is funded; it does not influence the information we publish.",
       "All event names, trademarks and brands quoted on this site belong to their respective owners and are used for descriptive purposes only, to indicate when accommodation demand peaks. This site is independent and is not affiliated with, endorsed by or sponsored by the Automobile Club de l'Ouest (ACO), Dorna Sports or any event organiser. This site does not sell tickets.",

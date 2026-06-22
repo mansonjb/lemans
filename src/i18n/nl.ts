@@ -275,14 +275,14 @@ export const nl: Dict = {
     title: "Contact",
     paragraphs: [
       "Een vraag, een correctie, een partneridee of een woning om aan te melden? Schrijf ons, we antwoorden snel.",
-      "E-mail: hello@lemansstays.com",
+      "E-mail: hello@raceweekstays.com",
     ],
   },
 
   legal: {
     title: "Juridische informatie",
     paragraphs: [
-      "Deze website is een onafhankelijke publicatie, uitgegeven door het RaceWeekStays-team. Contact: hello@lemansstays.com. Volledige uitgeversgegevens zijn op aanvraag beschikbaar.",
+      "Deze website is een onafhankelijke publicatie, uitgegeven door het RaceWeekStays-team. Contact: hello@raceweekstays.com. Volledige uitgeversgegevens zijn op aanvraag beschikbaar.",
       "Hosting: deze site wordt gehost door Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, VS.",
       "Affiliate-melding: deze site bevat affiliate-links. We kunnen een commissie verdienen wanneer u boekt via onze partners (waaronder Stay22 en Booking.com), zonder extra kosten voor u. Zo wordt de site gefinancierd; het beïnvloedt de gepubliceerde informatie niet.",
       "Alle namen van evenementen, merken en handelsnamen op deze site behoren toe aan hun respectieve eigenaren en worden uitsluitend beschrijvend gebruikt, om aan te geven wanneer de vraag naar accommodatie piekt. Deze site is onafhankelijk en is niet verbonden aan, goedgekeurd of gesponsord door de Automobile Club de l'Ouest (ACO), Dorna Sports of enige organisator. Deze site verkoopt geen tickets.",
