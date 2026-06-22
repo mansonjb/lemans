@@ -639,7 +639,7 @@ export function CircuitQuizTemplate({
     (e) => ({
       key: eventSlug(e),
       id: eventSlug(e),
-      name: e.name,
+      name: fmtEvent(e.name, locale),
       checkin: e.checkin,
       checkout: e.checkout,
       lat: circuit.lat,
