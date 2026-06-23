@@ -573,6 +573,23 @@ export function EventTemplate({
           organizer: {
             "@type": "Organization",
             name: names.name,
+            url: `${SITE_URL}${hrefFor(`event:${event.key}`, locale)}`,
+          },
+          performer: {
+            "@type": "PerformingGroup",
+            name: `${names.name} competitors`,
+          },
+          offers: {
+            "@type": "AggregateOffer",
+            name: `Accommodation for ${names.name} ${year}`,
+            description:
+              "Hotels, campsites and rentals for the race weekend, with live availability and pricing.",
+            url: `${SITE_URL}${hrefFor(`event:${event.key}`, locale)}`,
+            availability: "https://schema.org/InStock",
+            category: "Accommodation",
+            priceCurrency: "EUR",
+            offerCount: HOTELS.length,
+            validFrom: event.start,
           },
         }}
       />
