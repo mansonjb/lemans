@@ -9,6 +9,7 @@ import {
   fmtEvent,
   fmtEvents,
 } from "@/i18n/datafmt";
+import { circuitContext, ABOUT_HEADING } from "@/i18n/circuit-context";
 import { homeFaq } from "@/i18n/homefaq";
 import type { Locale } from "@/lib/types";
 import type { Circuit } from "@/data/circuits";
@@ -210,6 +211,15 @@ export function CircuitGuideTemplate({
 
       <Container className="py-14">
         <KeyFacts title={xt.seo.keyFactsTitle} facts={facts} />
+
+        {!eventScoped && circuitContext(circuit.key, locale) && (
+          <div className="mt-10 max-w-3xl">
+            <SpeedHeading>{ABOUT_HEADING[locale]}</SpeedHeading>
+            <p className="mt-4 text-[15px] leading-relaxed text-muted">
+              {circuitContext(circuit.key, locale)}
+            </p>
+          </div>
+        )}
 
         {!eventScoped && extra.length > 0 && (
           <div className="mt-10">
