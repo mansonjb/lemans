@@ -23,6 +23,7 @@ import {
   type QuizZone,
   type QuizHotel,
 } from "@/components/Quiz";
+import { CAMPING_CONTENT } from "@/i18n/camping-content";
 import { hrefFor } from "@/lib/registry";
 import { Container, Kicker, SlantBadge, SpeedHeading } from "@/components/ui";
 import { KeyFacts, type Fact } from "@/components/KeyFacts";
@@ -464,6 +465,18 @@ export function CircuitFilterTemplate({
             />
           </div>
         </div>
+
+        {filterKey === "campsites" && (
+          <div className="mt-12 max-w-3xl">
+            <SpeedHeading>{CAMPING_CONTENT[locale].heading}</SpeedHeading>
+            <p className="mt-4 text-[15px] leading-relaxed text-muted">
+              {CAMPING_CONTENT[locale].intro(circuit.name)}
+            </p>
+            <p className="mt-3 text-[15px] leading-relaxed text-muted">
+              {CAMPING_CONTENT[locale].booking(circuit.name)}
+            </p>
+          </div>
+        )}
 
         <div className="mt-14">
           <SpeedHeading>{xt.circuitGuide.mapHeading(circuit.name)}</SpeedHeading>
