@@ -467,7 +467,7 @@ const enX: ExtraDict = {
       },
       {
         q: `Can I camp at ${circuit}?`,
-        a: "Yes. Official and private campsites open for the race weekend right next to the circuit. They are the closest option and the first to go, so book early.",
+        a: "Yes. Official and private campsites, glamping and motorhome pitches open for the race weekend right next to the circuit. They are the closest, best-value option and the first to go, so book early. The map shows what's bookable online.",
       },
       {
         q: `How far in advance do stays near ${circuit} sell out?`,
@@ -521,7 +521,7 @@ const enX: ExtraDict = {
     filterKicker: "Filtered stays",
     filterTitle: {
       hotels: (c) => `Hotels near ${c}`,
-      campsites: (c) => `Campsites near ${c}`,
+      campsites: (c) => `Camping & glamping near ${c}`,
       "walking-distance": (c) => `Closest stays to ${c}`,
       cheap: (c) => `Cheap stays near ${c}`,
       family: (c) => `Family-friendly stays near ${c}`,
@@ -531,7 +531,7 @@ const enX: ExtraDict = {
       hotels: (c, e) =>
         `Hotels near ${c} for the ${e}, closest first, with live prices for the race weekend. From simple roadside stops to comfortable bases a short drive from the gates.`,
       campsites: (c, e) =>
-        `Campsites near ${c} for the ${e}: the closest, best-value way to stay trackside. They sell out first, so book early.`,
+        `Campsites, glamping and motorhome pitches near ${c} for the ${e}: the closest, best-value way to stay trackside. The live map surfaces bookable cabins, lodges and glamping nearby, or pick a site below. They sell out first, so book early.`,
       "walking-distance": (c, e) =>
         `The closest stays to ${c} for the ${e} — walking distance or a few minutes by car. Tiny inventory that goes fast, so book the moment dates are set.`,
       cheap: (c, e) =>
@@ -841,7 +841,7 @@ const frX: ExtraDict = {
       },
       {
         q: `Peut-on camper à ${circuit} ?`,
-        a: "Oui. Des campings officiels et privés ouvrent pour le week-end de course juste à côté du circuit. C'est l'option la plus proche et la première à partir, alors réservez tôt.",
+        a: "Oui. Des campings officiels et privés, du glamping et des emplacements pour camping-cars ouvrent pour le week-end de course juste à côté du circuit. C'est l'option la plus proche et la moins chère, et la première à partir, alors réservez tôt. La carte montre ce qui est réservable en ligne.",
       },
       {
         q: `Combien de temps à l'avance les hébergements près de ${circuit} sont-ils complets ?`,
@@ -897,7 +897,7 @@ const frX: ExtraDict = {
     filterKicker: "Hébergements filtrés",
     filterTitle: {
       hotels: (c) => `Hôtels près de ${c}`,
-      campsites: (c) => `Campings près de ${c}`,
+      campsites: (c) => `Camping & glamping près de ${c}`,
       "walking-distance": (c) => `Hébergements les plus proches de ${c}`,
       cheap: (c) => `Hébergements pas chers près de ${c}`,
       family: (c) => `Hébergements famille près de ${c}`,
@@ -907,7 +907,7 @@ const frX: ExtraDict = {
       hotels: (c, e) =>
         `Les hôtels près de ${c} pour le ${e}, du plus proche au plus loin, avec les prix en direct. Du simple arrêt en bord de route à la base confortable à quelques minutes des entrées.`,
       campsites: (c, e) =>
-        `Les campings près de ${c} pour le ${e} : la façon la plus proche et la plus économique de dormir au bord de la piste. Ils partent en premier, réservez tôt.`,
+        `Campings, glamping et emplacements pour camping-cars près de ${c} pour le ${e} : la façon la plus proche et la plus économique de dormir au bord de la piste. La carte en direct remonte cabanes, lodges et glamping réservables à proximité, ou choisissez un site ci-dessous. Ils partent en premier, réservez tôt.`,
       "walking-distance": (c, e) =>
         `Les hébergements les plus proches de ${c} pour le ${e} — à pied ou à quelques minutes en voiture. Très peu de stock qui part vite : réservez dès les dates connues.`,
       cheap: (c, e) =>
@@ -1207,7 +1207,7 @@ const nlX: ExtraDict = {
       },
       {
         q: `Kun je kamperen bij ${circuit}?`,
-        a: "Ja. Officiële en particuliere campings openen voor het raceweekend vlak naast het circuit. Het is de dichtstbijzijnde optie en het eerst vol, dus boek op tijd.",
+        a: "Ja. Officiële en particuliere campings, glamping en plekken voor campers openen voor het raceweekend vlak naast het circuit. Het is de dichtstbijzijnde, voordeligste optie en het eerst vol, dus boek op tijd. De kaart laat zien wat online boekbaar is.",
       },
       {
         q: `Hoe lang van tevoren zijn verblijven bij ${circuit} volgeboekt?`,
@@ -1262,7 +1262,7 @@ const nlX: ExtraDict = {
     filterKicker: "Gefilterde verblijven",
     filterTitle: {
       hotels: (c) => `Hotels bij ${c}`,
-      campsites: (c) => `Campings bij ${c}`,
+      campsites: (c) => `Camping & glamping bij ${c}`,
       "walking-distance": (c) => `Dichtstbijzijnde verblijven bij ${c}`,
       cheap: (c) => `Goedkope verblijven bij ${c}`,
       family: (c) => `Gezinsvriendelijke verblijven bij ${c}`,
@@ -1272,7 +1272,7 @@ const nlX: ExtraDict = {
       hotels: (c, e) =>
         `Hotels bij ${c} voor de ${e}, dichtstbij eerst, met live prijzen voor het raceweekend. Van eenvoudige stops langs de weg tot comfortabele bases op een paar minuten van de poorten.`,
       campsites: (c, e) =>
-        `Campings bij ${c} voor de ${e}: de dichtstbijzijnde, voordeligste manier om langs de baan te overnachten. Ze zijn het eerst vol, dus boek vroeg.`,
+        `Campings, glamping en plekken voor campers bij ${c} voor de ${e}: de dichtstbijzijnde, voordeligste manier om langs de baan te overnachten. De live kaart toont boekbare cabins, lodges en glamping in de buurt, of kies hieronder een terrein. Ze zijn het eerst vol, dus boek vroeg.`,
       "walking-distance": (c, e) =>
         `De dichtstbijzijnde verblijven bij ${c} voor de ${e} — op loopafstand of een paar minuten rijden. Weinig aanbod dat snel weg is, dus boek zodra de data vaststaan.`,
       cheap: (c, e) =>
@@ -1572,7 +1572,7 @@ const deX: ExtraDict = {
       },
       {
         q: `Kann man am ${circuit} campen?`,
-        a: "Ja. Offizielle und private Campingplätze öffnen zum Rennwochenende direkt neben der Strecke. Sie sind die nächste Option und zuerst ausgebucht, also früh reservieren.",
+        a: "Ja. Offizielle und private Campingplätze, Glamping und Stellplätze für Wohnmobile öffnen zum Rennwochenende direkt neben der Strecke. Sie sind die nächste, günstigste Option und zuerst ausgebucht, also früh reservieren. Die Karte zeigt, was online buchbar ist.",
       },
       {
         q: `Wie lange im Voraus sind Unterkünfte nahe ${circuit} ausgebucht?`,
@@ -1626,7 +1626,7 @@ const deX: ExtraDict = {
     filterKicker: "Gefilterte Unterkünfte",
     filterTitle: {
       hotels: (c) => `Hotels nahe ${c}`,
-      campsites: (c) => `Campingplätze nahe ${c}`,
+      campsites: (c) => `Camping & Glamping nahe ${c}`,
       "walking-distance": (c) => `Nächste Unterkünfte zum ${c}`,
       cheap: (c) => `Günstige Unterkünfte nahe ${c}`,
       family: (c) => `Familienfreundliche Unterkünfte nahe ${c}`,
@@ -1636,7 +1636,7 @@ const deX: ExtraDict = {
       hotels: (c, e) =>
         `Hotels nahe ${c} für das ${e}, die nächsten zuerst, mit Live-Preisen fürs Rennwochenende. Von einfachen Stopps an der Straße bis zu komfortablen Basen wenige Minuten von den Toren.`,
       campsites: (c, e) =>
-        `Campingplätze nahe ${c} für das ${e}: die nächste, günstigste Art, an der Strecke zu übernachten. Sie sind zuerst ausgebucht, also früh buchen.`,
+        `Campingplätze, Glamping und Stellplätze für Wohnmobile nahe ${c} zum ${e}: die nächste, günstigste Art, an der Strecke zu übernachten. Die Live-Karte zeigt buchbare Hütten, Lodges und Glamping in der Nähe, oder wähle unten einen Platz. Sie sind zuerst ausgebucht, also früh buchen.`,
       "walking-distance": (c, e) =>
         `Die nächstgelegenen Unterkünfte zum ${c} für das ${e} — zu Fuß oder wenige Minuten mit dem Auto. Wenig Angebot, das schnell weg ist, also buche, sobald die Termine stehen.`,
       cheap: (c, e) =>
@@ -1936,7 +1936,7 @@ const itX: ExtraDict = {
       },
       {
         q: `Si può campeggiare a ${circuit}?`,
-        a: "Sì. Campeggi ufficiali e privati aprono per il weekend di gara proprio accanto al circuito. Sono l'opzione più vicina e le prime a esaurirsi, quindi prenota per tempo.",
+        a: "Sì. Campeggi ufficiali e privati, glamping e piazzole per camper aprono per il weekend di gara proprio accanto al circuito. Sono l'opzione più vicina ed economica e le prime a esaurirsi, quindi prenota per tempo. La mappa mostra ciò che è prenotabile online.",
       },
       {
         q: `Con quanto anticipo si esauriscono gli alloggi vicino a ${circuit}?`,
@@ -1990,7 +1990,7 @@ const itX: ExtraDict = {
     filterKicker: "Alloggi filtrati",
     filterTitle: {
       hotels: (c) => `Hotel vicino a ${c}`,
-      campsites: (c) => `Campeggi vicino a ${c}`,
+      campsites: (c) => `Campeggi & glamping vicino a ${c}`,
       "walking-distance": (c) => `Alloggi più vicini a ${c}`,
       cheap: (c) => `Alloggi economici vicino a ${c}`,
       family: (c) => `Alloggi per famiglie vicino a ${c}`,
@@ -2000,7 +2000,7 @@ const itX: ExtraDict = {
       hotels: (c, e) =>
         `Hotel vicino a ${c} per il ${e}, dal più vicino, con prezzi in tempo reale per il weekend di gara. Da semplici soste lungo la strada a basi comode a pochi minuti dagli ingressi.`,
       campsites: (c, e) =>
-        `Campeggi vicino a ${c} per il ${e}: il modo più vicino ed economico di dormire a bordo pista. Si esauriscono per primi, quindi prenota presto.`,
+        `Campeggi, glamping e piazzole per camper vicino a ${c} per il ${e}: il modo più vicino ed economico di dormire a bordo pista. La mappa live mostra chalet, lodge e glamping prenotabili nelle vicinanze, oppure scegli una struttura qui sotto. Si esauriscono per primi, quindi prenota presto.`,
       "walking-distance": (c, e) =>
         `Gli alloggi più vicini a ${c} per il ${e} — a piedi o a pochi minuti in auto. Poca disponibilità che va via in fretta, quindi prenota appena escono le date.`,
       cheap: (c, e) =>
@@ -2300,7 +2300,7 @@ const esX: ExtraDict = {
       },
       {
         q: `¿Se puede acampar en ${circuit}?`,
-        a: "Sí. Campings oficiales y privados abren para el fin de semana de carrera justo al lado del circuito. Son la opción más cercana y las primeras en llenarse, así que reserva pronto.",
+        a: "Sí. Campings oficiales y privados, glamping y parcelas para autocaravanas abren para el fin de semana de carrera justo al lado del circuito. Son la opción más cercana y económica y las primeras en llenarse, así que reserva pronto. El mapa muestra lo que es reservable online.",
       },
       {
         q: `¿Con cuánta antelación se agotan los alojamientos cerca de ${circuit}?`,
@@ -2354,7 +2354,7 @@ const esX: ExtraDict = {
     filterKicker: "Alojamientos filtrados",
     filterTitle: {
       hotels: (c) => `Hoteles cerca de ${c}`,
-      campsites: (c) => `Campings cerca de ${c}`,
+      campsites: (c) => `Camping y glamping cerca de ${c}`,
       "walking-distance": (c) => `Alojamientos más cercanos a ${c}`,
       cheap: (c) => `Alojamientos baratos cerca de ${c}`,
       family: (c) => `Alojamientos familiares cerca de ${c}`,
@@ -2364,7 +2364,7 @@ const esX: ExtraDict = {
       hotels: (c, e) =>
         `Hoteles cerca de ${c} para el ${e}, del más cercano, con precios en directo para el fin de semana de carrera. Desde simples paradas de carretera hasta bases cómodas a unos minutos de las entradas.`,
       campsites: (c, e) =>
-        `Campings cerca de ${c} para el ${e}: la forma más cercana y económica de dormir junto a la pista. Se agotan primero, así que reserva pronto.`,
+        `Campings, glamping y parcelas para autocaravanas cerca de ${c} para el ${e}: la forma más cercana y económica de dormir junto a la pista. El mapa en directo muestra cabañas, lodges y glamping reservables cerca, o elige un sitio abajo. Se agotan primero, así que reserva pronto.`,
       "walking-distance": (c, e) =>
         `Los alojamientos más cercanos a ${c} para el ${e} — a pie o a unos minutos en coche. Poca disponibilidad que vuela, así que reserva en cuanto haya fechas.`,
       cheap: (c, e) =>
