@@ -135,6 +135,66 @@ const CIRCUITS = {
       "resorts Bahrain",
     ],
   },
+  melbourne: {
+    name: "Albert Park Circuit Melbourne",
+    lat: -37.8497,
+    lng: 144.968,
+    queries: [
+      "hotels near Albert Park Melbourne",
+      "hotels in Melbourne CBD",
+      "hotels in St Kilda Melbourne",
+      "hotels in Southbank Melbourne",
+      "hotels near Melbourne city centre",
+    ],
+  },
+  shanghai: {
+    name: "Shanghai International Circuit",
+    lat: 31.3389,
+    lng: 121.22,
+    queries: [
+      "hotels near Shanghai International Circuit",
+      "hotels in Jiading Shanghai",
+      "hotels in Anting Shanghai",
+      "hotels in Shanghai",
+      "hotels near Shanghai Hongqiao",
+    ],
+  },
+  miami: {
+    name: "Miami International Autodrome Hard Rock Stadium",
+    lat: 25.958,
+    lng: -80.2389,
+    queries: [
+      "hotels near Hard Rock Stadium Miami Gardens",
+      "hotels in Miami Gardens",
+      "hotels in Aventura Florida",
+      "hotels in downtown Miami",
+      "hotels near Miami airport",
+    ],
+  },
+  baku: {
+    name: "Baku City Circuit",
+    lat: 40.3725,
+    lng: 49.8533,
+    queries: [
+      "hotels near Baku Boulevard",
+      "hotels in Baku old city",
+      "hotels in central Baku",
+      "hotels near Baku City Circuit",
+      "hotels near Heydar Aliyev Airport Baku",
+    ],
+  },
+  qatar: {
+    name: "Lusail International Circuit",
+    lat: 25.49,
+    lng: 51.4542,
+    queries: [
+      "hotels in Lusail Qatar",
+      "hotels in Doha West Bay",
+      "hotels near Lusail Stadium",
+      "hotels in The Pearl Qatar",
+      "hotels in Doha",
+    ],
+  },
 };
 
 const key = process.argv[2];

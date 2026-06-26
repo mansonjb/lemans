@@ -35,6 +35,11 @@ import { lasvegasHotels, lasvegasZones } from "./circuits/lasvegas";
 import { abudhabiHotels, abudhabiZones } from "./circuits/abudhabi";
 import { jeddahHotels, jeddahZones } from "./circuits/jeddah";
 import { bahrainHotels, bahrainZones } from "./circuits/bahrain";
+import { melbourneHotels, melbourneZones } from "./circuits/melbourne";
+import { shanghaiHotels, shanghaiZones } from "./circuits/shanghai";
+import { miamiHotels, miamiZones } from "./circuits/miami";
+import { bakuHotels, bakuZones } from "./circuits/baku";
+import { qatarHotels, qatarZones } from "./circuits/qatar";
 
 export interface CircuitHotel {
   name: string;
@@ -724,6 +729,102 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: bahrainZones,
     hotels: bahrainHotels,
+  },
+  melbourne: {
+    key: "melbourne",
+    event: {
+      name: "Australian Grand Prix",
+      checkin: "2027-03-11",
+      checkout: "2027-03-15",
+      window: "Mid March",
+      crowd: "450,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [{ code: "MEL", name: "Melbourne Tullamarine", driveMin: 30 }],
+      rail: ["Flinders Street", "Southern Cross"],
+      roads: "M1 (West Gate Fwy) / Lakeside Drive",
+    },
+    zones: melbourneZones,
+    hotels: melbourneHotels,
+  },
+  shanghai: {
+    key: "shanghai",
+    event: {
+      name: "Chinese Grand Prix",
+      checkin: "2027-04-15",
+      checkout: "2027-04-19",
+      window: "Mid April",
+      crowd: "200,000+",
+      bookAhead: "4-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "SHA", name: "Shanghai Hongqiao", driveMin: 30 },
+        { code: "PVG", name: "Shanghai Pudong", driveMin: 75 },
+      ],
+      rail: ["Shanghai Circuit (Metro L11)", "Jiading Xincheng"],
+      roads: "G1501 / S5 Hujia Expressway",
+    },
+    zones: shanghaiZones,
+    hotels: shanghaiHotels,
+  },
+  miami: {
+    key: "miami",
+    event: {
+      name: "Miami Grand Prix",
+      checkin: "2027-05-06",
+      checkout: "2027-05-10",
+      window: "Early May",
+      crowd: "270,000+",
+      bookAhead: "4-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "MIA", name: "Miami International", driveMin: 25 },
+        { code: "FLL", name: "Fort Lauderdale", driveMin: 25 },
+      ],
+      rail: ["Miami Gardens (Tri-Rail)", "Golden Glades"],
+      roads: "I-95 / Florida's Turnpike",
+    },
+    zones: miamiZones,
+    hotels: miamiHotels,
+  },
+  baku: {
+    key: "baku",
+    event: {
+      name: "Azerbaijan Grand Prix",
+      checkin: "2026-09-17",
+      checkout: "2026-09-21",
+      window: "Mid September",
+      crowd: "100,000+",
+      bookAhead: "4-6 months",
+    },
+    travel: {
+      airports: [{ code: "GYD", name: "Baku Heydar Aliyev", driveMin: 30 }],
+      rail: ["Sahil (Metro)", "28 May (Metro)"],
+      roads: "Neftchilar Avenue / H-1",
+    },
+    zones: bakuZones,
+    hotels: bakuHotels,
+  },
+  qatar: {
+    key: "qatar",
+    event: {
+      name: "Qatar Grand Prix",
+      checkin: "2026-11-26",
+      checkout: "2026-11-30",
+      window: "Late November",
+      crowd: "100,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [{ code: "DOH", name: "Doha Hamad", driveMin: 40 }],
+      rail: ["Lusail QNB (Metro Red Line)", "Legtaifiya"],
+      roads: "Lusail Expressway / Al Khor Coastal Rd",
+    },
+    zones: qatarZones,
+    hotels: qatarHotels,
   },
 };
 

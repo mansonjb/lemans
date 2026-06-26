@@ -31,6 +31,10 @@ const COUNTRIES: Record<string, L> = {
   "United Arab Emirates": { en: "United Arab Emirates", fr: "Émirats arabes unis", nl: "Verenigde Arabische Emiraten", de: "Vereinigte Arabische Emirate", it: "Emirati Arabi Uniti", es: "Emiratos Árabes Unidos" },
   "Saudi Arabia": { en: "Saudi Arabia", fr: "Arabie saoudite", nl: "Saoedi-Arabië", de: "Saudi-Arabien", it: "Arabia Saudita", es: "Arabia Saudí" },
   Bahrain: { en: "Bahrain", fr: "Bahreïn", nl: "Bahrein", de: "Bahrain", it: "Bahrein", es: "Baréin" },
+  Australia: { en: "Australia", fr: "Australie", nl: "Australië", de: "Australien", it: "Australia", es: "Australia" },
+  China: { en: "China", fr: "Chine", nl: "China", de: "China", it: "Cina", es: "China" },
+  Azerbaijan: { en: "Azerbaijan", fr: "Azerbaïdjan", nl: "Azerbeidzjan", de: "Aserbaidschan", it: "Azerbaigian", es: "Azerbaiyán" },
+  Qatar: { en: "Qatar", fr: "Qatar", nl: "Qatar", de: "Katar", it: "Qatar", es: "Catar" },
 };
 
 export const fmtCountry = (country: string, locale: Locale): string =>
@@ -120,6 +124,11 @@ const EVENTS: Record<string, L> = {
   "Abu Dhabi Grand Prix": { en: "Abu Dhabi Grand Prix", fr: "Grand Prix d'Abu Dhabi", nl: "Grand Prix van Abu Dhabi", de: "Großer Preis von Abu Dhabi", it: "Gran Premio di Abu Dhabi", es: "Gran Premio de Abu Dabi" },
   "Saudi Arabian Grand Prix": { en: "Saudi Arabian Grand Prix", fr: "Grand Prix d'Arabie saoudite", nl: "Grand Prix van Saoedi-Arabië", de: "Großer Preis von Saudi-Arabien", it: "Gran Premio dell'Arabia Saudita", es: "Gran Premio de Arabia Saudí" },
   "Bahrain Grand Prix": { en: "Bahrain Grand Prix", fr: "Grand Prix de Bahreïn", nl: "Grand Prix van Bahrein", de: "Großer Preis von Bahrain", it: "Gran Premio del Bahrein", es: "Gran Premio de Baréin" },
+  "Australian Grand Prix": { en: "Australian Grand Prix", fr: "Grand Prix d'Australie", nl: "Grand Prix van Australië", de: "Großer Preis von Australien", it: "Gran Premio d'Australia", es: "Gran Premio de Australia" },
+  "Chinese Grand Prix": { en: "Chinese Grand Prix", fr: "Grand Prix de Chine", nl: "Grand Prix van China", de: "Großer Preis von China", it: "Gran Premio di Cina", es: "Gran Premio de China" },
+  "Miami Grand Prix": { en: "Miami Grand Prix", fr: "Grand Prix de Miami", nl: "Grand Prix van Miami", de: "Großer Preis von Miami", it: "Gran Premio di Miami", es: "Gran Premio de Miami" },
+  "Azerbaijan Grand Prix": { en: "Azerbaijan Grand Prix", fr: "Grand Prix d'Azerbaïdjan", nl: "Grand Prix van Azerbeidzjan", de: "Großer Preis von Aserbaidschan", it: "Gran Premio dell'Azerbaigian", es: "Gran Premio de Azerbaiyán" },
+  "Qatar Grand Prix": { en: "Qatar Grand Prix", fr: "Grand Prix du Qatar", nl: "Grand Prix van Qatar", de: "Großer Preis von Katar", it: "Gran Premio del Qatar", es: "Gran Premio de Catar" },
 };
 export const fmtEvent = (name: string, locale: Locale): string =>
   EVENTS[name]?.[locale] ?? name;
