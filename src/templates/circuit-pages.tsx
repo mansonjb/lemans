@@ -135,21 +135,23 @@ export function CircuitTravelTemplate({
               ))}
             </ul>
           </div>
-          {/* By train */}
-          <div className="rounded-2xl border border-line bg-card p-6 shadow-sm">
-            <h2 className="font-display text-lg font-bold uppercase italic tracking-tight">
-              🚆 {p.byTrain}
-            </h2>
-            <p className="mt-1 text-[13px] text-muted">{p.trainNote}</p>
-            <ul className="mt-4 space-y-2 text-[15px]">
-              {data.travel.rail.map((r) => (
-                <li key={r} className="flex items-center gap-2">
-                  <span className="font-display text-base italic text-bleu">›</span>
-                  {r}
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* By train (only where the circuit has usable passenger rail) */}
+          {data.travel.rail.length > 0 && (
+            <div className="rounded-2xl border border-line bg-card p-6 shadow-sm">
+              <h2 className="font-display text-lg font-bold uppercase italic tracking-tight">
+                🚆 {p.byTrain}
+              </h2>
+              <p className="mt-1 text-[13px] text-muted">{p.trainNote}</p>
+              <ul className="mt-4 space-y-2 text-[15px]">
+                {data.travel.rail.map((r) => (
+                  <li key={r} className="flex items-center gap-2">
+                    <span className="font-display text-base italic text-bleu">›</span>
+                    {r}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           {/* By car */}
           <div className="rounded-2xl border border-line bg-card p-6 shadow-sm">
             <h2 className="font-display text-lg font-bold uppercase italic tracking-tight">

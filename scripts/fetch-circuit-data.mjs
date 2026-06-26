@@ -87,6 +87,54 @@ const CIRCUITS = {
       "hotels in Centro Historico Mexico City",
     ],
   },
+  lasvegas: {
+    name: "Las Vegas Strip Circuit",
+    lat: 36.11,
+    lng: -115.166,
+    queries: [
+      "hotels on the Las Vegas Strip",
+      "resorts Las Vegas Strip",
+      "hotels near Las Vegas Convention Center",
+      "hotels near Harry Reid International Airport",
+      "hotels in downtown Las Vegas",
+    ],
+  },
+  abudhabi: {
+    name: "Yas Marina Circuit",
+    lat: 24.4672,
+    lng: 54.6031,
+    queries: [
+      "hotels on Yas Island Abu Dhabi",
+      "hotels near Yas Marina Circuit",
+      "hotels in Abu Dhabi",
+      "hotels near Yas Mall Abu Dhabi",
+      "hotels near Abu Dhabi airport",
+    ],
+  },
+  jeddah: {
+    name: "Jeddah Corniche Circuit",
+    lat: 21.6319,
+    lng: 39.1044,
+    queries: [
+      "hotels near Jeddah Corniche",
+      "hotels in Jeddah",
+      "hotels near Jeddah Corniche Circuit",
+      "hotels on Jeddah waterfront",
+      "hotels near King Abdulaziz Airport Jeddah",
+    ],
+  },
+  bahrain: {
+    name: "Bahrain International Circuit Sakhir",
+    lat: 26.0325,
+    lng: 50.5106,
+    queries: [
+      "hotels near Bahrain International Circuit",
+      "hotels in Manama Bahrain",
+      "hotels in Zallaq Bahrain",
+      "hotels near Sakhir Bahrain",
+      "resorts Bahrain",
+    ],
+  },
 };
 
 const key = process.argv[2];

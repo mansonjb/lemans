@@ -31,6 +31,10 @@ import { interlagosHotels, interlagosZones } from "./circuits/interlagos";
 import { singaporeHotels, singaporeZones } from "./circuits/singapore";
 import { montrealHotels, montrealZones } from "./circuits/montreal";
 import { mexicoHotels, mexicoZones } from "./circuits/mexico";
+import { lasvegasHotels, lasvegasZones } from "./circuits/lasvegas";
+import { abudhabiHotels, abudhabiZones } from "./circuits/abudhabi";
+import { jeddahHotels, jeddahZones } from "./circuits/jeddah";
+import { bahrainHotels, bahrainZones } from "./circuits/bahrain";
 
 export interface CircuitHotel {
   name: string;
@@ -645,6 +649,81 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: mexicoZones,
     hotels: mexicoHotels,
+  },
+  lasvegas: {
+    key: "lasvegas",
+    event: {
+      name: "Las Vegas Grand Prix",
+      checkin: "2026-11-19",
+      checkout: "2026-11-23",
+      window: "Late November",
+      crowd: "300,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [{ code: "LAS", name: "Harry Reid (Las Vegas)", driveMin: 10 }],
+      rail: ["Las Vegas Monorail"],
+      roads: "I-15 / Las Vegas Blvd (The Strip)",
+    },
+    zones: lasvegasZones,
+    hotels: lasvegasHotels,
+  },
+  abudhabi: {
+    key: "abudhabi",
+    event: {
+      name: "Abu Dhabi Grand Prix",
+      checkin: "2026-12-03",
+      checkout: "2026-12-07",
+      window: "Early December",
+      crowd: "190,000+",
+      bookAhead: "4-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "AUH", name: "Abu Dhabi Zayed", driveMin: 15 },
+        { code: "DXB", name: "Dubai", driveMin: 70 },
+      ],
+      rail: [],
+      roads: "E10 (Yas Island) / Sheikh Khalifa Hwy",
+    },
+    zones: abudhabiZones,
+    hotels: abudhabiHotels,
+  },
+  jeddah: {
+    key: "jeddah",
+    event: {
+      name: "Saudi Arabian Grand Prix",
+      checkin: "2027-03-18",
+      checkout: "2027-03-22",
+      window: "Mid March",
+      crowd: "100,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [{ code: "JED", name: "Jeddah (King Abdulaziz)", driveMin: 30 }],
+      rail: ["Jeddah (Haramain HSR)"],
+      roads: "Corniche Road / Prince Faisal bin Fahd Rd",
+    },
+    zones: jeddahZones,
+    hotels: jeddahHotels,
+  },
+  bahrain: {
+    key: "bahrain",
+    event: {
+      name: "Bahrain Grand Prix",
+      checkin: "2027-03-04",
+      checkout: "2027-03-08",
+      window: "Early March",
+      crowd: "100,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [{ code: "BAH", name: "Bahrain International", driveMin: 35 }],
+      rail: [],
+      roads: "Zallaq Hwy / Sheikh Isa bin Salman Hwy",
+    },
+    zones: bahrainZones,
+    hotels: bahrainHotels,
   },
 };
 
