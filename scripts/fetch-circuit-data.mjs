@@ -37,6 +37,20 @@ const CIRCUITS = {
   portimao: { name: "Autodromo Internacional do Algarve", lat: 37.227, lng: -8.6267 },
   aragon: { name: "MotorLand Aragon", lat: 41.0817, lng: -0.205 },
   balaton: { name: "Balaton Park Circuit", lat: 47.0417, lng: 18.1389 },
+  suzuka: {
+    name: "Suzuka Circuit",
+    lat: 34.8431,
+    lng: 136.5407,
+    queries: [
+      "hotels near Suzuka Circuit",
+      "hotels in Suzuka, Mie",
+      "hotels in Shiroko Suzuka",
+      "hotels in Yokkaichi",
+      "business hotels in Tsu Mie",
+    ],
+  },
+  cota: { name: "Circuit of the Americas", lat: 30.1328, lng: -97.6411 },
+  interlagos: { name: "Autodromo Jose Carlos Pace Interlagos", lat: -23.7036, lng: -46.6997 },
 };
 
 const key = process.argv[2];
@@ -87,7 +101,7 @@ function tierFromStars(stars, score) {
 
 async function runActor(token) {
   const input = {
-    searchStringsArray: [
+    searchStringsArray: circuit.queries ?? [
       `hotels near ${circuit.name}`,
       `campsites near ${circuit.name}`,
       `guest houses near ${circuit.name}`,

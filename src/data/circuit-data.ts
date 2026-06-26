@@ -25,6 +25,9 @@ import { sachsenringHotels, sachsenringZones } from "./circuits/sachsenring";
 import { portimaoHotels, portimaoZones } from "./circuits/portimao";
 import { aragonHotels, aragonZones } from "./circuits/aragon";
 import { balatonHotels, balatonZones } from "./circuits/balaton";
+import { suzukaHotels, suzukaZones } from "./circuits/suzuka";
+import { cotaHotels, cotaZones } from "./circuits/cota";
+import { interlagosHotels, interlagosZones } from "./circuits/interlagos";
 
 export interface CircuitHotel {
   name: string;
@@ -525,6 +528,66 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: balatonZones,
     hotels: balatonHotels,
+  },
+  suzuka: {
+    key: "suzuka",
+    event: {
+      name: "Japanese Grand Prix",
+      checkin: "2027-04-08",
+      checkout: "2027-04-12",
+      window: "Early April",
+      crowd: "260,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [
+        { code: "NGO", name: "Nagoya Centrair", driveMin: 55 },
+        { code: "KIX", name: "Kansai (Osaka)", driveMin: 110 },
+      ],
+      rail: ["Suzuka Circuit Ino", "Shiroko", "Nagoya"],
+      roads: "E23 (Higashi-Meihan) / Suzuka IC",
+    },
+    zones: suzukaZones,
+    hotels: suzukaHotels,
+  },
+  cota: {
+    key: "cota",
+    event: {
+      name: "United States Grand Prix",
+      checkin: "2026-10-22",
+      checkout: "2026-10-26",
+      window: "Late October",
+      crowd: "400,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [{ code: "AUS", name: "Austin-Bergstrom", driveMin: 20 }],
+      rail: ["Austin Downtown (CapMetro)"],
+      roads: "TX-130 / SH 71 / US-183",
+    },
+    zones: cotaZones,
+    hotels: cotaHotels,
+  },
+  interlagos: {
+    key: "interlagos",
+    event: {
+      name: "São Paulo Grand Prix",
+      checkin: "2026-11-05",
+      checkout: "2026-11-09",
+      window: "Early November",
+      crowd: "250,000+",
+      bookAhead: "4-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "CGH", name: "São Paulo Congonhas", driveMin: 25 },
+        { code: "GRU", name: "São Paulo Guarulhos", driveMin: 55 },
+      ],
+      rail: ["Autódromo (CPTM Line 9)", "Santo Amaro"],
+      roads: "Marginal Pinheiros / Rod. dos Imigrantes",
+    },
+    zones: interlagosZones,
+    hotels: interlagosHotels,
   },
 };
 

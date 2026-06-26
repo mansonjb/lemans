@@ -22,6 +22,9 @@ const COUNTRIES: Record<string, L> = {
   Spain: { en: "Spain", fr: "Espagne", nl: "Spanje", de: "Spanien", it: "Spagna", es: "España" },
   Hungary: { en: "Hungary", fr: "Hongrie", nl: "Hongarije", de: "Ungarn", it: "Ungheria", es: "Hungría" },
   Portugal: { en: "Portugal", fr: "Portugal", nl: "Portugal", de: "Portugal", it: "Portogallo", es: "Portugal" },
+  Japan: { en: "Japan", fr: "Japon", nl: "Japan", de: "Japan", it: "Giappone", es: "Japón" },
+  "United States": { en: "United States", fr: "États-Unis", nl: "Verenigde Staten", de: "Vereinigte Staaten", it: "Stati Uniti", es: "Estados Unidos" },
+  Brazil: { en: "Brazil", fr: "Brésil", nl: "Brazilië", de: "Brasilien", it: "Brasile", es: "Brasil" },
 };
 
 export const fmtCountry = (country: string, locale: Locale): string =>
@@ -101,6 +104,9 @@ const EVENTS: Record<string, L> = {
   "Balaton MotoGP": { en: "Balaton MotoGP", fr: "MotoGP de Balaton", nl: "MotoGP van Balaton", de: "MotoGP von Balaton", it: "MotoGP di Balaton", es: "MotoGP de Balatón" },
   "Austrian MotoGP": { en: "Austrian MotoGP", fr: "MotoGP d'Autriche", nl: "Oostenrijkse MotoGP", de: "MotoGP von Österreich", it: "MotoGP d'Austria", es: "MotoGP de Austria" },
   "Catalan MotoGP": { en: "Catalan MotoGP", fr: "MotoGP de Catalogne", nl: "Catalaanse MotoGP", de: "MotoGP von Katalonien", it: "MotoGP della Catalogna", es: "MotoGP de Cataluña" },
+  "Japanese Grand Prix": { en: "Japanese Grand Prix", fr: "Grand Prix du Japon", nl: "Grand Prix van Japan", de: "Großer Preis von Japan", it: "Gran Premio del Giappone", es: "Gran Premio de Japón" },
+  "United States Grand Prix": { en: "United States Grand Prix", fr: "Grand Prix des États-Unis", nl: "Grand Prix van de Verenigde Staten", de: "Großer Preis der USA", it: "Gran Premio degli Stati Uniti", es: "Gran Premio de Estados Unidos" },
+  "São Paulo Grand Prix": { en: "São Paulo Grand Prix", fr: "Grand Prix de São Paulo", nl: "Grand Prix van São Paulo", de: "Großer Preis von São Paulo", it: "Gran Premio di San Paolo", es: "Gran Premio de São Paulo" },
 };
 export const fmtEvent = (name: string, locale: Locale): string =>
   EVENTS[name]?.[locale] ?? name;
