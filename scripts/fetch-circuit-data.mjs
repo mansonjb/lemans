@@ -51,6 +51,42 @@ const CIRCUITS = {
   },
   cota: { name: "Circuit of the Americas", lat: 30.1328, lng: -97.6411 },
   interlagos: { name: "Autodromo Jose Carlos Pace Interlagos", lat: -23.7036, lng: -46.6997 },
+  singapore: {
+    name: "Marina Bay Street Circuit",
+    lat: 1.2914,
+    lng: 103.864,
+    queries: [
+      "hotels near Marina Bay Street Circuit Singapore",
+      "hotels in Marina Bay Singapore",
+      "hotels near Suntec City Singapore",
+      "hotels in Bugis Singapore",
+      "hotels in Chinatown Singapore",
+    ],
+  },
+  montreal: {
+    name: "Circuit Gilles Villeneuve",
+    lat: 45.5,
+    lng: -73.5228,
+    queries: [
+      "hotels near Circuit Gilles Villeneuve Montreal",
+      "hotels in downtown Montreal",
+      "hotels in Old Montreal",
+      "hotels near Parc Jean-Drapeau Montreal",
+      "hotels near Palais des congres Montreal",
+    ],
+  },
+  mexico: {
+    name: "Autodromo Hermanos Rodriguez",
+    lat: 19.4042,
+    lng: -99.0907,
+    queries: [
+      "hotels near Autodromo Hermanos Rodriguez Mexico City",
+      "hotels in Roma Norte Mexico City",
+      "hotels in Condesa Mexico City",
+      "hotels near Mexico City airport",
+      "hotels in Centro Historico Mexico City",
+    ],
+  },
 };
 
 const key = process.argv[2];
@@ -82,8 +118,8 @@ function km(aLat, aLng, bLat, bLng) {
   return Math.round(R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x)));
 }
 
-function kindOf(cat = "") {
-  const c = cat.toLowerCase();
+function kindOf(cat) {
+  const c = (cat || "").toLowerCase();
   if (/camp|caravan|holiday park/.test(c)) return "camping";
   if (/bed & breakfast|guest house|guesthouse|cottage|vacation|holiday home|lodge|inn$|b&b/.test(c))
     return "rental";

@@ -28,6 +28,9 @@ import { balatonHotels, balatonZones } from "./circuits/balaton";
 import { suzukaHotels, suzukaZones } from "./circuits/suzuka";
 import { cotaHotels, cotaZones } from "./circuits/cota";
 import { interlagosHotels, interlagosZones } from "./circuits/interlagos";
+import { singaporeHotels, singaporeZones } from "./circuits/singapore";
+import { montrealHotels, montrealZones } from "./circuits/montreal";
+import { mexicoHotels, mexicoZones } from "./circuits/mexico";
 
 export interface CircuitHotel {
   name: string;
@@ -588,6 +591,60 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: interlagosZones,
     hotels: interlagosHotels,
+  },
+  singapore: {
+    key: "singapore",
+    event: {
+      name: "Singapore Grand Prix",
+      checkin: "2026-10-01",
+      checkout: "2026-10-05",
+      window: "Early October",
+      crowd: "270,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [{ code: "SIN", name: "Singapore Changi", driveMin: 20 }],
+      rail: ["Marina Bay (MRT)", "Esplanade (MRT)", "City Hall (MRT)"],
+      roads: "ECP / Marina Boulevard",
+    },
+    zones: singaporeZones,
+    hotels: singaporeHotels,
+  },
+  montreal: {
+    key: "montreal",
+    event: {
+      name: "Canadian Grand Prix",
+      checkin: "2027-06-10",
+      checkout: "2027-06-14",
+      window: "Mid June",
+      crowd: "345,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [{ code: "YUL", name: "Montréal-Trudeau", driveMin: 25 }],
+      rail: ["Jean-Drapeau (Metro)", "Berri-UQAM", "Gare Centrale"],
+      roads: "Pont de la Concorde / A-720",
+    },
+    zones: montrealZones,
+    hotels: montrealHotels,
+  },
+  mexico: {
+    key: "mexico",
+    event: {
+      name: "Mexico City Grand Prix",
+      checkin: "2026-10-29",
+      checkout: "2026-11-02",
+      window: "Late October",
+      crowd: "400,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [{ code: "MEX", name: "Mexico City (Benito Juárez)", driveMin: 15 }],
+      rail: ["Ciudad Deportiva (Metro L9)", "Velódromo (Metro L9)"],
+      roads: "Viaducto Río de la Piedad / Circuito Interior",
+    },
+    zones: mexicoZones,
+    hotels: mexicoHotels,
   },
 };
 

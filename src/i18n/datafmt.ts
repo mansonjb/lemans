@@ -25,6 +25,9 @@ const COUNTRIES: Record<string, L> = {
   Japan: { en: "Japan", fr: "Japon", nl: "Japan", de: "Japan", it: "Giappone", es: "Japón" },
   "United States": { en: "United States", fr: "États-Unis", nl: "Verenigde Staten", de: "Vereinigte Staaten", it: "Stati Uniti", es: "Estados Unidos" },
   Brazil: { en: "Brazil", fr: "Brésil", nl: "Brazilië", de: "Brasilien", it: "Brasile", es: "Brasil" },
+  Singapore: { en: "Singapore", fr: "Singapour", nl: "Singapore", de: "Singapur", it: "Singapore", es: "Singapur" },
+  Canada: { en: "Canada", fr: "Canada", nl: "Canada", de: "Kanada", it: "Canada", es: "Canadá" },
+  Mexico: { en: "Mexico", fr: "Mexique", nl: "Mexico", de: "Mexiko", it: "Messico", es: "México" },
 };
 
 export const fmtCountry = (country: string, locale: Locale): string =>
@@ -107,6 +110,9 @@ const EVENTS: Record<string, L> = {
   "Japanese Grand Prix": { en: "Japanese Grand Prix", fr: "Grand Prix du Japon", nl: "Grand Prix van Japan", de: "Großer Preis von Japan", it: "Gran Premio del Giappone", es: "Gran Premio de Japón" },
   "United States Grand Prix": { en: "United States Grand Prix", fr: "Grand Prix des États-Unis", nl: "Grand Prix van de Verenigde Staten", de: "Großer Preis der USA", it: "Gran Premio degli Stati Uniti", es: "Gran Premio de Estados Unidos" },
   "São Paulo Grand Prix": { en: "São Paulo Grand Prix", fr: "Grand Prix de São Paulo", nl: "Grand Prix van São Paulo", de: "Großer Preis von São Paulo", it: "Gran Premio di San Paolo", es: "Gran Premio de São Paulo" },
+  "Singapore Grand Prix": { en: "Singapore Grand Prix", fr: "Grand Prix de Singapour", nl: "Grand Prix van Singapore", de: "Großer Preis von Singapur", it: "Gran Premio di Singapore", es: "Gran Premio de Singapur" },
+  "Canadian Grand Prix": { en: "Canadian Grand Prix", fr: "Grand Prix du Canada", nl: "Grand Prix van Canada", de: "Großer Preis von Kanada", it: "Gran Premio del Canada", es: "Gran Premio de Canadá" },
+  "Mexico City Grand Prix": { en: "Mexico City Grand Prix", fr: "Grand Prix de Mexico", nl: "Grand Prix van Mexico-Stad", de: "Großer Preis von Mexiko-Stadt", it: "Gran Premio di Città del Messico", es: "Gran Premio de la Ciudad de México" },
 };
 export const fmtEvent = (name: string, locale: Locale): string =>
   EVENTS[name]?.[locale] ?? name;
