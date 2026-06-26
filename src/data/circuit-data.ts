@@ -40,6 +40,9 @@ import { shanghaiHotels, shanghaiZones } from "./circuits/shanghai";
 import { miamiHotels, miamiZones } from "./circuits/miami";
 import { bakuHotels, bakuZones } from "./circuits/baku";
 import { qatarHotels, qatarZones } from "./circuits/qatar";
+import { phillipislandHotels, phillipislandZones } from "./circuits/phillipisland";
+import { sepangHotels, sepangZones } from "./circuits/sepang";
+import { mandalikaHotels, mandalikaZones } from "./circuits/mandalika";
 
 export interface CircuitHotel {
   name: string;
@@ -825,6 +828,60 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: qatarZones,
     hotels: qatarHotels,
+  },
+  phillipisland: {
+    key: "phillipisland",
+    event: {
+      name: "Australian MotoGP",
+      checkin: "2026-10-15",
+      checkout: "2026-10-19",
+      window: "Mid October",
+      crowd: "90,000+",
+      bookAhead: "4-6 months",
+    },
+    travel: {
+      airports: [{ code: "MEL", name: "Melbourne Tullamarine", driveMin: 140 }],
+      rail: [],
+      roads: "Bass Highway / Phillip Island Road",
+    },
+    zones: phillipislandZones,
+    hotels: phillipislandHotels,
+  },
+  sepang: {
+    key: "sepang",
+    event: {
+      name: "Malaysian MotoGP",
+      checkin: "2026-10-29",
+      checkout: "2026-11-02",
+      window: "Late October",
+      crowd: "160,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [{ code: "KUL", name: "Kuala Lumpur (KLIA)", driveMin: 15 }],
+      rail: ["Salak Tinggi (ERL)", "KL Sentral"],
+      roads: "ELITE Highway / KLIA Expressway",
+    },
+    zones: sepangZones,
+    hotels: sepangHotels,
+  },
+  mandalika: {
+    key: "mandalika",
+    event: {
+      name: "Indonesian MotoGP",
+      checkin: "2026-10-01",
+      checkout: "2026-10-05",
+      window: "Early October",
+      crowd: "100,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [{ code: "LOP", name: "Lombok International", driveMin: 20 }],
+      rail: [],
+      roads: "Bypass BIL-Mandalika / Kuta Lombok Road",
+    },
+    zones: mandalikaZones,
+    hotels: mandalikaHotels,
   },
 };
 

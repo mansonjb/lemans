@@ -35,6 +35,8 @@ const COUNTRIES: Record<string, L> = {
   China: { en: "China", fr: "Chine", nl: "China", de: "China", it: "Cina", es: "China" },
   Azerbaijan: { en: "Azerbaijan", fr: "Azerbaïdjan", nl: "Azerbeidzjan", de: "Aserbaidschan", it: "Azerbaigian", es: "Azerbaiyán" },
   Qatar: { en: "Qatar", fr: "Qatar", nl: "Qatar", de: "Katar", it: "Qatar", es: "Catar" },
+  Malaysia: { en: "Malaysia", fr: "Malaisie", nl: "Maleisië", de: "Malaysia", it: "Malesia", es: "Malasia" },
+  Indonesia: { en: "Indonesia", fr: "Indonésie", nl: "Indonesië", de: "Indonesien", it: "Indonesia", es: "Indonesia" },
 };
 
 export const fmtCountry = (country: string, locale: Locale): string =>
@@ -129,6 +131,9 @@ const EVENTS: Record<string, L> = {
   "Miami Grand Prix": { en: "Miami Grand Prix", fr: "Grand Prix de Miami", nl: "Grand Prix van Miami", de: "Großer Preis von Miami", it: "Gran Premio di Miami", es: "Gran Premio de Miami" },
   "Azerbaijan Grand Prix": { en: "Azerbaijan Grand Prix", fr: "Grand Prix d'Azerbaïdjan", nl: "Grand Prix van Azerbeidzjan", de: "Großer Preis von Aserbaidschan", it: "Gran Premio dell'Azerbaigian", es: "Gran Premio de Azerbaiyán" },
   "Qatar Grand Prix": { en: "Qatar Grand Prix", fr: "Grand Prix du Qatar", nl: "Grand Prix van Qatar", de: "Großer Preis von Katar", it: "Gran Premio del Qatar", es: "Gran Premio de Catar" },
+  "Australian MotoGP": { en: "Australian MotoGP", fr: "MotoGP d'Australie", nl: "Australische MotoGP", de: "MotoGP von Australien", it: "MotoGP d'Australia", es: "MotoGP de Australia" },
+  "Malaysian MotoGP": { en: "Malaysian MotoGP", fr: "MotoGP de Malaisie", nl: "Maleisische MotoGP", de: "MotoGP von Malaysia", it: "MotoGP della Malesia", es: "MotoGP de Malasia" },
+  "Indonesian MotoGP": { en: "Indonesian MotoGP", fr: "MotoGP d'Indonésie", nl: "Indonesische MotoGP", de: "MotoGP von Indonesien", it: "MotoGP d'Indonesia", es: "MotoGP de Indonesia" },
 };
 export const fmtEvent = (name: string, locale: Locale): string =>
   EVENTS[name]?.[locale] ?? name;

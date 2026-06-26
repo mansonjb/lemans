@@ -195,6 +195,42 @@ const CIRCUITS = {
       "hotels in Doha",
     ],
   },
+  phillipisland: {
+    name: "Phillip Island Grand Prix Circuit",
+    lat: -38.499,
+    lng: 145.231,
+    queries: [
+      "hotels in Cowes Phillip Island",
+      "accommodation Phillip Island",
+      "hotels in San Remo Victoria",
+      "hotels near Phillip Island Grand Prix Circuit",
+      "motels Phillip Island Victoria",
+    ],
+  },
+  sepang: {
+    name: "Sepang International Circuit",
+    lat: 2.7608,
+    lng: 101.7382,
+    queries: [
+      "hotels near Sepang International Circuit",
+      "hotels near KLIA airport",
+      "hotels in Sepang Malaysia",
+      "hotels in Cyberjaya",
+      "hotels in Putrajaya",
+    ],
+  },
+  mandalika: {
+    name: "Pertamina Mandalika Circuit Lombok",
+    lat: -8.8975,
+    lng: 116.301,
+    queries: [
+      "hotels in Kuta Lombok",
+      "hotels near Mandalika Circuit",
+      "resorts Mandalika Lombok",
+      "hotels near Lombok airport",
+      "hotels in Kuta Mandalika",
+    ],
+  },
 };
 
 const key = process.argv[2];
