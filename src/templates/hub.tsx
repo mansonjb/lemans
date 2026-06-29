@@ -10,6 +10,7 @@ import {
   fmtEvents,
 } from "@/i18n/datafmt";
 import { circuitContext, ABOUT_HEADING } from "@/i18n/circuit-context";
+import { networkLinks, NETWORK_HEADING, NETWORK_SUB } from "@/i18n/network-links";
 import { homeFaq } from "@/i18n/homefaq";
 import type { Locale } from "@/lib/types";
 import type { Circuit } from "@/data/circuits";
@@ -174,6 +175,7 @@ export function CircuitGuideTemplate({
   const evBook = fmtBookAhead(event.bookAhead, locale);
   const evCrowd = fmtCrowd(event.crowd, locale);
   const country = fmtCountry(circuit.country, locale);
+  const netLinks = eventScoped ? [] : networkLinks(circuit.key, locale);
 
   const facts: Fact[] = [
     { label: xt.seo.factListedStays, value: String(data.hotels.length), accent: true },
@@ -218,6 +220,36 @@ export function CircuitGuideTemplate({
             <p className="mt-4 text-[15px] leading-relaxed text-muted">
               {circuitContext(circuit.key, locale)}
             </p>
+          </div>
+        )}
+
+        {netLinks.length > 0 && (
+          <div className="mt-12">
+            <SpeedHeading>{NETWORK_HEADING[locale]}</SpeedHeading>
+            <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
+              {NETWORK_SUB[locale]}
+            </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {netLinks.map((l) => (
+                <a
+                  key={l.url}
+                  href={l.url}
+                  target="_blank"
+                  rel="noopener"
+                  className="group rounded-2xl border border-line bg-card p-5 shadow-sm transition hover:border-bleu"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-display text-sm font-bold uppercase italic tracking-tight text-ink group-hover:text-bleu">
+                      {l.name}
+                    </span>
+                    <span className="font-display text-bleu">↗</span>
+                  </div>
+                  <p className="mt-2 text-[13px] leading-relaxed text-muted">
+                    {l.blurb}
+                  </p>
+                </a>
+              ))}
+            </div>
           </div>
         )}
 
