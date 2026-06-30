@@ -11,6 +11,7 @@ import {
 } from "@/i18n/datafmt";
 import { circuitContext, ABOUT_HEADING } from "@/i18n/circuit-context";
 import { networkLinks, NETWORK_HEADING, NETWORK_SUB } from "@/i18n/network-links";
+import { RelatedCircuits, CocoonLinks } from "@/components/Cocoon";
 import { homeFaq } from "@/i18n/homefaq";
 import type { Locale } from "@/lib/types";
 import type { Circuit } from "@/data/circuits";
@@ -223,6 +224,8 @@ export function CircuitGuideTemplate({
           </div>
         )}
 
+        {!eventScoped && <CocoonLinks locale={locale} circuitKey={circuit.key} />}
+
         {netLinks.length > 0 && (
           <div className="mt-12">
             <SpeedHeading>{NETWORK_HEADING[locale]}</SpeedHeading>
@@ -393,6 +396,10 @@ export function CircuitGuideTemplate({
             ))}
           </div>
         </div>
+
+        {!eventScoped && (
+          <RelatedCircuits locale={locale} circuitKey={circuit.key} />
+        )}
 
         <div className="mt-16">
           <FaqBlock heading={dict.common.faqHeading} items={faqItems} />

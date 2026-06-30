@@ -29,6 +29,7 @@ import { Container, Kicker, SlantBadge, SpeedHeading } from "@/components/ui";
 import { KeyFacts, type Fact } from "@/components/KeyFacts";
 import { CircuitHotelGrid } from "@/components/CircuitHotelGrid";
 import { Stay22Map } from "@/components/Stay22Map";
+import { RelatedCircuits } from "@/components/Cocoon";
 import { FaqBlock } from "@/components/FaqBlock";
 
 const gridLabels = (locale: Locale) => {
@@ -54,20 +55,23 @@ function NetworkCtas({
 }) {
   const xt = x(locale);
   return (
-    <div className="mt-12 flex flex-wrap gap-3">
-      <Link
-        href={hrefFor(`circuit:${circuit.key}`, locale)}
-        className="rounded-lg bg-bleu px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-white transition hover:bg-bleu-deep"
-      >
-        {xt.circuitGuide.staysHeading(circuit.name)} →
-      </Link>
-      <Link
-        href={`/${locale}`}
-        className="rounded-lg border border-line bg-card px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide transition hover:border-bleu hover:text-bleu"
-      >
-        {xt.circuitNet.heading} →
-      </Link>
-    </div>
+    <>
+      <RelatedCircuits locale={locale} circuitKey={circuit.key} />
+      <div className="mt-12 flex flex-wrap gap-3">
+        <Link
+          href={hrefFor(`circuit:${circuit.key}`, locale)}
+          className="rounded-lg bg-bleu px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-white transition hover:bg-bleu-deep"
+        >
+          {xt.circuitGuide.staysHeading(circuit.name)} →
+        </Link>
+        <Link
+          href={`/${locale}`}
+          className="rounded-lg border border-line bg-card px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide transition hover:border-bleu hover:text-bleu"
+        >
+          {xt.circuitNet.heading} →
+        </Link>
+      </div>
+    </>
   );
 }
 
