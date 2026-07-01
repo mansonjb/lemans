@@ -49,6 +49,8 @@ const META: Record<string, Meta> = {
   phillipisland: { series: "motogp", region: "oceania", tags: ["classic", "seaside"] },
   sepang: { series: "motogp", region: "sea", tags: ["modern"] },
   mandalika: { series: "motogp", region: "sea", tags: ["street", "seaside", "modern"] },
+  buriram: { series: "motogp", region: "sea", tags: ["modern"] },
+  motegi: { series: "motogp", region: "japan", tags: ["classic"] },
 };
 
 export const seriesOf = (key: string): Series | undefined => META[key]?.series;

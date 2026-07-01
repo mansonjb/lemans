@@ -31,8 +31,10 @@ const slugify = (s) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
-// Missing or code-like city values (e.g. "Hb004484") fall back to one zone.
-const cityOf = (raw) => (raw && !/\d/.test(raw) ? raw : "Circuit area");
+// Missing, code-like (e.g. "Hb004484"), or non-latin (e.g. Thai script that
+// slugifies to nothing) city values fall back to the single catch-all zone.
+const cityOf = (raw) =>
+  raw && !/\d/.test(raw) && slugify(raw) ? raw : "Circuit area";
 
 const raw = JSON.parse(fs.readFileSync(src, "utf8"));
 const dropped = raw.filter((h) => h.distKm > MAX_KM);

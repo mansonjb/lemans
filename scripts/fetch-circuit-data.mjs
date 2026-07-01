@@ -231,6 +231,30 @@ const CIRCUITS = {
       "hotels in Kuta Mandalika",
     ],
   },
+  buriram: {
+    name: "Chang International Circuit Buriram",
+    lat: 14.9575,
+    lng: 103.0847,
+    queries: [
+      "hotels in Buriram Thailand",
+      "hotels near Chang International Circuit",
+      "hotels near Buriram United stadium",
+      "resorts Buriram",
+      "hotels near Buriram airport",
+    ],
+  },
+  motegi: {
+    name: "Mobility Resort Motegi",
+    lat: 36.5314,
+    lng: 140.227,
+    queries: [
+      "hotels near Mobility Resort Motegi",
+      "hotels in Mito Ibaraki",
+      "hotels in Utsunomiya",
+      "hotels in Mashiko Tochigi",
+      "business hotels near Motegi Tochigi",
+    ],
+  },
 };
 
 const key = process.argv[2];

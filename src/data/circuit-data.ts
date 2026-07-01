@@ -43,6 +43,8 @@ import { qatarHotels, qatarZones } from "./circuits/qatar";
 import { phillipislandHotels, phillipislandZones } from "./circuits/phillipisland";
 import { sepangHotels, sepangZones } from "./circuits/sepang";
 import { mandalikaHotels, mandalikaZones } from "./circuits/mandalika";
+import { buriramHotels, buriramZones } from "./circuits/buriram";
+import { motegiHotels, motegiZones } from "./circuits/motegi";
 
 export interface CircuitHotel {
   name: string;
@@ -882,6 +884,45 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: mandalikaZones,
     hotels: mandalikaHotels,
+  },
+  buriram: {
+    key: "buriram",
+    event: {
+      name: "Thai MotoGP",
+      checkin: "2027-03-03",
+      checkout: "2027-03-07",
+      window: "Early March",
+      crowd: "130,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [{ code: "BFV", name: "Buriram", driveMin: 30 }],
+      rail: ["Buriram"],
+      roads: "Highway 218 / Buriram Ring Road",
+    },
+    zones: buriramZones,
+    hotels: buriramHotels,
+  },
+  motegi: {
+    key: "motegi",
+    event: {
+      name: "Japanese MotoGP",
+      checkin: "2026-10-01",
+      checkout: "2026-10-05",
+      window: "Early October",
+      crowd: "90,000+",
+      bookAhead: "4-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "IBR", name: "Ibaraki", driveMin: 50 },
+        { code: "NRT", name: "Tokyo Narita", driveMin: 95 },
+      ],
+      rail: ["Utsunomiya (Shinkansen)", "Mito"],
+      roads: "Kitakanto Expressway / Route 123",
+    },
+    zones: motegiZones,
+    hotels: motegiHotels,
   },
 };
 

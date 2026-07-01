@@ -37,6 +37,7 @@ const COUNTRIES: Record<string, L> = {
   Qatar: { en: "Qatar", fr: "Qatar", nl: "Qatar", de: "Katar", it: "Qatar", es: "Catar" },
   Malaysia: { en: "Malaysia", fr: "Malaisie", nl: "Maleisië", de: "Malaysia", it: "Malesia", es: "Malasia" },
   Indonesia: { en: "Indonesia", fr: "Indonésie", nl: "Indonesië", de: "Indonesien", it: "Indonesia", es: "Indonesia" },
+  Thailand: { en: "Thailand", fr: "Thaïlande", nl: "Thailand", de: "Thailand", it: "Thailandia", es: "Tailandia" },
 };
 
 export const fmtCountry = (country: string, locale: Locale): string =>
@@ -134,6 +135,8 @@ const EVENTS: Record<string, L> = {
   "Australian MotoGP": { en: "Australian MotoGP", fr: "MotoGP d'Australie", nl: "Australische MotoGP", de: "MotoGP von Australien", it: "MotoGP d'Australia", es: "MotoGP de Australia" },
   "Malaysian MotoGP": { en: "Malaysian MotoGP", fr: "MotoGP de Malaisie", nl: "Maleisische MotoGP", de: "MotoGP von Malaysia", it: "MotoGP della Malesia", es: "MotoGP de Malasia" },
   "Indonesian MotoGP": { en: "Indonesian MotoGP", fr: "MotoGP d'Indonésie", nl: "Indonesische MotoGP", de: "MotoGP von Indonesien", it: "MotoGP d'Indonesia", es: "MotoGP de Indonesia" },
+  "Thai MotoGP": { en: "Thai MotoGP", fr: "MotoGP de Thaïlande", nl: "Thaise MotoGP", de: "MotoGP von Thailand", it: "MotoGP della Thailandia", es: "MotoGP de Tailandia" },
+  "Japanese MotoGP": { en: "Japanese MotoGP", fr: "MotoGP du Japon", nl: "Japanse MotoGP", de: "MotoGP von Japan", it: "MotoGP del Giappone", es: "MotoGP de Japón" },
 };
 export const fmtEvent = (name: string, locale: Locale): string =>
   EVENTS[name]?.[locale] ?? name;

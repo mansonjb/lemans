@@ -437,6 +437,28 @@ export const CIRCUITS: Circuit[] = [
     events: "Indonesian MotoGP",
     status: "live",
   },
+  {
+    key: "buriram",
+    name: "Buriram",
+    slug: "buriram",
+    country: "Thailand",
+    flag: "🇹🇭",
+    lat: 14.9575,
+    lng: 103.0847,
+    events: "Thai MotoGP",
+    status: "live",
+  },
+  {
+    key: "motegi",
+    name: "Motegi",
+    slug: "motegi",
+    country: "Japan",
+    flag: "🇯🇵",
+    lat: 36.5314,
+    lng: 140.227,
+    events: "Japanese MotoGP",
+    status: "live",
+  },
 ];
 
 export const liveCircuits = (): Circuit[] =>
