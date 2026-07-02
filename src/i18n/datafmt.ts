@@ -38,6 +38,7 @@ const COUNTRIES: Record<string, L> = {
   Malaysia: { en: "Malaysia", fr: "Malaisie", nl: "Maleisië", de: "Malaysia", it: "Malesia", es: "Malasia" },
   Indonesia: { en: "Indonesia", fr: "Indonésie", nl: "Indonesië", de: "Indonesien", it: "Indonesia", es: "Indonesia" },
   Thailand: { en: "Thailand", fr: "Thaïlande", nl: "Thailand", de: "Thailand", it: "Thailandia", es: "Tailandia" },
+  Argentina: { en: "Argentina", fr: "Argentine", nl: "Argentinië", de: "Argentinien", it: "Argentina", es: "Argentina" },
 };
 
 export const fmtCountry = (country: string, locale: Locale): string =>
@@ -137,6 +138,8 @@ const EVENTS: Record<string, L> = {
   "Indonesian MotoGP": { en: "Indonesian MotoGP", fr: "MotoGP d'Indonésie", nl: "Indonesische MotoGP", de: "MotoGP von Indonesien", it: "MotoGP d'Indonesia", es: "MotoGP de Indonesia" },
   "Thai MotoGP": { en: "Thai MotoGP", fr: "MotoGP de Thaïlande", nl: "Thaise MotoGP", de: "MotoGP von Thailand", it: "MotoGP della Thailandia", es: "MotoGP de Tailandia" },
   "Japanese MotoGP": { en: "Japanese MotoGP", fr: "MotoGP du Japon", nl: "Japanse MotoGP", de: "MotoGP von Japan", it: "MotoGP del Giappone", es: "MotoGP de Japón" },
+  "Indianapolis 500": { en: "Indianapolis 500", fr: "500 miles d'Indianapolis", nl: "Indianapolis 500", de: "Indianapolis 500", it: "500 Miglia di Indianapolis", es: "500 Millas de Indianápolis" },
+  "Argentine MotoGP": { en: "Argentine MotoGP", fr: "MotoGP d'Argentine", nl: "Argentijnse MotoGP", de: "MotoGP von Argentinien", it: "MotoGP d'Argentina", es: "MotoGP de Argentina" },
 };
 export const fmtEvent = (name: string, locale: Locale): string =>
   EVENTS[name]?.[locale] ?? name;

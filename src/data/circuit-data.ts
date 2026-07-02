@@ -45,6 +45,8 @@ import { sepangHotels, sepangZones } from "./circuits/sepang";
 import { mandalikaHotels, mandalikaZones } from "./circuits/mandalika";
 import { buriramHotels, buriramZones } from "./circuits/buriram";
 import { motegiHotels, motegiZones } from "./circuits/motegi";
+import { indianapolisHotels, indianapolisZones } from "./circuits/indianapolis";
+import { termasHotels, termasZones } from "./circuits/termas";
 
 export interface CircuitHotel {
   name: string;
@@ -923,6 +925,45 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: motegiZones,
     hotels: motegiHotels,
+  },
+  indianapolis: {
+    key: "indianapolis",
+    event: {
+      name: "Indianapolis 500",
+      checkin: "2027-05-27",
+      checkout: "2027-05-31",
+      window: "Late May",
+      crowd: "300,000+",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [{ code: "IND", name: "Indianapolis", driveMin: 20 }],
+      rail: [],
+      roads: "I-465 / I-65 / Crawfordsville Rd",
+    },
+    zones: indianapolisZones,
+    hotels: indianapolisHotels,
+  },
+  termas: {
+    key: "termas",
+    event: {
+      name: "Argentine MotoGP",
+      checkin: "2027-03-17",
+      checkout: "2027-03-21",
+      window: "Mid March",
+      crowd: "100,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "RHD", name: "Termas de Río Hondo", driveMin: 15 },
+        { code: "SDE", name: "Santiago del Estero", driveMin: 65 },
+      ],
+      rail: [],
+      roads: "RN9 / RP1",
+    },
+    zones: termasZones,
+    hotels: termasHotels,
   },
 };
 

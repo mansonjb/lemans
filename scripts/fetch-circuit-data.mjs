@@ -255,6 +255,30 @@ const CIRCUITS = {
       "business hotels near Motegi Tochigi",
     ],
   },
+  indianapolis: {
+    name: "Indianapolis Motor Speedway",
+    lat: 39.795,
+    lng: -86.2347,
+    queries: [
+      "hotels near Indianapolis Motor Speedway",
+      "hotels in downtown Indianapolis",
+      "hotels in Speedway Indiana",
+      "hotels near Indianapolis airport",
+      "hotels in Carmel Indiana",
+    ],
+  },
+  termas: {
+    name: "Autodromo Termas de Rio Hondo",
+    lat: -27.5061,
+    lng: -64.8536,
+    queries: [
+      "hotels in Termas de Rio Hondo",
+      "spa hotels Termas de Rio Hondo",
+      "hotels near Termas de Rio Hondo circuit",
+      "hotels in Santiago del Estero",
+      "resorts Termas de Rio Hondo Argentina",
+    ],
+  },
 };
 
 const key = process.argv[2];

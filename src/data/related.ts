@@ -5,7 +5,7 @@
  */
 import { CIRCUITS, type Circuit } from "./circuits";
 
-export type Series = "f1" | "motogp" | "endurance";
+export type Series = "f1" | "motogp" | "endurance" | "indycar";
 
 type Meta = { series: Series; region: string; tags: string[] };
 
@@ -51,6 +51,8 @@ const META: Record<string, Meta> = {
   mandalika: { series: "motogp", region: "sea", tags: ["street", "seaside", "modern"] },
   buriram: { series: "motogp", region: "sea", tags: ["modern"] },
   motegi: { series: "motogp", region: "japan", tags: ["classic"] },
+  indianapolis: { series: "indycar", region: "north-america", tags: ["highspeed", "classic"] },
+  termas: { series: "motogp", region: "south-america", tags: ["modern"] },
 };
 
 export const seriesOf = (key: string): Series | undefined => META[key]?.series;
@@ -66,12 +68,18 @@ const score = (a: Meta, b: Meta): number => {
   return s;
 };
 
-/** The N most similar circuits, best first (excludes the circuit itself). */
+/** The N most similar circuits, best first (excludes the circuit itself).
+ *  A same-country bonus keeps geographic neighbours (and lone-series circuits
+ *  like Indianapolis) surfacing across the network, not just same-series ones. */
 export const relatedCircuits = (key: string, n = 6): Circuit[] => {
   const me = META[key];
-  if (!me) return [];
+  const self = byKey(key);
+  if (!me || !self) return [];
   return CIRCUITS.filter((c) => c.key !== key && META[c.key])
-    .map((c) => ({ c, s: score(me, META[c.key]) }))
+    .map((c) => ({
+      c,
+      s: score(me, META[c.key]) + (c.country === self.country ? 2 : 0),
+    }))
     .sort((x, y) => y.s - x.s || x.c.name.localeCompare(y.c.name))
     .slice(0, n)
     .map((x) => x.c);

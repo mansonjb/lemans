@@ -459,6 +459,28 @@ export const CIRCUITS: Circuit[] = [
     events: "Japanese MotoGP",
     status: "live",
   },
+  {
+    key: "indianapolis",
+    name: "Indianapolis",
+    slug: "indianapolis",
+    country: "United States",
+    flag: "🇺🇸",
+    lat: 39.795,
+    lng: -86.2347,
+    events: "Indianapolis 500",
+    status: "live",
+  },
+  {
+    key: "termas",
+    name: "Termas de Río Hondo",
+    slug: "termas-de-rio-hondo",
+    country: "Argentina",
+    flag: "🇦🇷",
+    lat: -27.5061,
+    lng: -64.8536,
+    events: "Argentine MotoGP",
+    status: "live",
+  },
 ];
 
 export const liveCircuits = (): Circuit[] =>
