@@ -24,6 +24,7 @@ import {
   type QuizHotel,
 } from "@/components/Quiz";
 import { CAMPING_CONTENT } from "@/i18n/camping-content";
+import { HOTELS_CONTENT } from "@/i18n/hotels-content";
 import { hrefFor } from "@/lib/registry";
 import { Container, Kicker, SlantBadge, SpeedHeading } from "@/components/ui";
 import { KeyFacts, type Fact } from "@/components/KeyFacts";
@@ -472,12 +473,29 @@ export function CircuitFilterTemplate({
           </div>
         </div>
 
+        {filterKey === "hotels" && hotels.length > 0 && (
+          <p className="mt-8 max-w-3xl text-[15px] leading-relaxed text-muted">
+            {HOTELS_CONTENT[locale].named(
+              circuit.name,
+              hotels.slice(0, 6).map((h) => h.name).join(", ")
+            )}
+          </p>
+        )}
+
         {filterKey === "campsites" && (
           <div className="mt-12 max-w-3xl">
             <SpeedHeading>{CAMPING_CONTENT[locale].heading}</SpeedHeading>
             <p className="mt-4 text-[15px] leading-relaxed text-muted">
               {CAMPING_CONTENT[locale].intro(circuit.name)}
             </p>
+            {hotels.length > 0 && (
+              <p className="mt-3 text-[15px] leading-relaxed text-muted">
+                {CAMPING_CONTENT[locale].named(
+                  circuit.name,
+                  hotels.slice(0, 6).map((h) => h.name).join(", ")
+                )}
+              </p>
+            )}
             <p className="mt-3 text-[15px] leading-relaxed text-muted">
               {CAMPING_CONTENT[locale].booking(circuit.name)}
             </p>
@@ -503,7 +521,23 @@ export function CircuitFilterTemplate({
         <div className="mt-14">
           <FaqBlock
             heading={dict.common.faqHeading}
-            items={g.faq(circuit.name, fmtEvent(data.event.name, locale), town, fmtBookAhead(data.event.bookAhead, locale))}
+            items={
+              filterKey === "campsites"
+                ? CAMPING_CONTENT[locale].faq(
+                    circuit.name,
+                    hotels[0]?.name,
+                    hotels[0]?.driveMin,
+                    fmtBookAhead(data.event.bookAhead, locale)
+                  )
+                : filterKey === "hotels"
+                ? HOTELS_CONTENT[locale].faq(
+                    circuit.name,
+                    hotels[0]?.name,
+                    hotels[0]?.driveMin,
+                    fmtBookAhead(data.event.bookAhead, locale)
+                  )
+                : g.faq(circuit.name, fmtEvent(data.event.name, locale), town, fmtBookAhead(data.event.bookAhead, locale))
+            }
           />
         </div>
 
