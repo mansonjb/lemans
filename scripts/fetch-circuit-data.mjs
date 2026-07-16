@@ -20,7 +20,18 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const CIRCUITS = {
   silverstone: { name: "Silverstone Circuit", lat: 52.0786, lng: -1.0169 },
   spa: { name: "Spa-Francorchamps circuit", lat: 50.4372, lng: 5.9714 },
-  zandvoort: { name: "Circuit Zandvoort", lat: 52.3888, lng: 4.5409 },
+  zandvoort: {
+    name: "Circuit Zandvoort",
+    lat: 52.3888,
+    lng: 4.5409,
+    queries: [
+      "hotels in Zandvoort Netherlands",
+      "hotels near Circuit Zandvoort",
+      "hotels in Haarlem Netherlands",
+      "hotels in Bloemendaal aan Zee",
+      "hotels in Amsterdam",
+    ],
+  },
   nurburgring: { name: "Nürburgring", lat: 50.3356, lng: 6.9475 },
   monza: { name: "Autodromo Nazionale Monza", lat: 45.6156, lng: 9.2811 },
   spielberg: { name: "Red Bull Ring Spielberg", lat: 47.2197, lng: 14.7647 },
