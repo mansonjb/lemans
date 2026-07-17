@@ -481,6 +481,17 @@ export const CIRCUITS: Circuit[] = [
     events: "Argentine MotoGP",
     status: "live",
   },
+  {
+    key: "isleofman",
+    name: "Isle of Man",
+    slug: "isle-of-man",
+    country: "Isle of Man",
+    flag: "🇮🇲",
+    lat: 54.1736,
+    lng: -4.4761,
+    events: "Isle of Man TT",
+    status: "live",
+  },
 ];
 
 export const liveCircuits = (): Circuit[] =>

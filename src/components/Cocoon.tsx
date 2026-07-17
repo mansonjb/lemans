@@ -25,6 +25,7 @@ const SERIES_COLOR: Record<Series, { bar: string; badge: string }> = {
   motogp: { bar: "bg-amber", badge: "bg-amber/20 text-ink" },
   endurance: { bar: "bg-grass", badge: "bg-grass/10 text-grass" },
   indycar: { bar: "bg-bleu", badge: "bg-bleu/10 text-bleu" },
+  roadracing: { bar: "bg-royal", badge: "bg-royal/10 text-royal" },
 };
 
 /** A single related-circuit summary line (headline event + window). */

@@ -39,6 +39,7 @@ const COUNTRIES: Record<string, L> = {
   Indonesia: { en: "Indonesia", fr: "Indonésie", nl: "Indonesië", de: "Indonesien", it: "Indonesia", es: "Indonesia" },
   Thailand: { en: "Thailand", fr: "Thaïlande", nl: "Thailand", de: "Thailand", it: "Thailandia", es: "Tailandia" },
   Argentina: { en: "Argentina", fr: "Argentine", nl: "Argentinië", de: "Argentinien", it: "Argentina", es: "Argentina" },
+  "Isle of Man": { en: "Isle of Man", fr: "Île de Man", nl: "Man", de: "Insel Man", it: "Isola di Man", es: "Isla de Man" },
 };
 
 export const fmtCountry = (country: string, locale: Locale): string =>
@@ -140,6 +141,7 @@ const EVENTS: Record<string, L> = {
   "Japanese MotoGP": { en: "Japanese MotoGP", fr: "MotoGP du Japon", nl: "Japanse MotoGP", de: "MotoGP von Japan", it: "MotoGP del Giappone", es: "MotoGP de Japón" },
   "Indianapolis 500": { en: "Indianapolis 500", fr: "500 miles d'Indianapolis", nl: "Indianapolis 500", de: "Indianapolis 500", it: "500 Miglia di Indianapolis", es: "500 Millas de Indianápolis" },
   "Argentine MotoGP": { en: "Argentine MotoGP", fr: "MotoGP d'Argentine", nl: "Argentijnse MotoGP", de: "MotoGP von Argentinien", it: "MotoGP d'Argentina", es: "MotoGP de Argentina" },
+  "Isle of Man TT": { en: "Isle of Man TT", fr: "Tourist Trophy de l'île de Man", nl: "Isle of Man TT", de: "Isle of Man TT", it: "Tourist Trophy dell'Isola di Man", es: "TT de la Isla de Man" },
 };
 export const fmtEvent = (name: string, locale: Locale): string =>
   EVENTS[name]?.[locale] ?? name;

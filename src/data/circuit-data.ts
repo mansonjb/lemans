@@ -47,6 +47,7 @@ import { buriramHotels, buriramZones } from "./circuits/buriram";
 import { motegiHotels, motegiZones } from "./circuits/motegi";
 import { indianapolisHotels, indianapolisZones } from "./circuits/indianapolis";
 import { termasHotels, termasZones } from "./circuits/termas";
+import { isleofmanHotels, isleofmanZones } from "./circuits/isleofman";
 
 export interface CircuitHotel {
   name: string;
@@ -964,6 +965,24 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: termasZones,
     hotels: termasHotels,
+  },
+  isleofman: {
+    key: "isleofman",
+    event: {
+      name: "Isle of Man TT",
+      checkin: "2027-05-29",
+      checkout: "2027-06-06",
+      window: "Late May",
+      crowd: "45,000+",
+      bookAhead: "12+ months",
+    },
+    travel: {
+      airports: [{ code: "IOM", name: "Isle of Man (Ronaldsway)", driveMin: 15 }],
+      rail: [],
+      roads: "Ferry to Douglas / A18 Mountain Road",
+    },
+    zones: isleofmanZones,
+    hotels: isleofmanHotels,
   },
 };
 

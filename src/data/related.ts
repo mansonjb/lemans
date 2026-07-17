@@ -5,7 +5,7 @@
  */
 import { CIRCUITS, type Circuit } from "./circuits";
 
-export type Series = "f1" | "motogp" | "endurance" | "indycar";
+export type Series = "f1" | "motogp" | "endurance" | "indycar" | "roadracing";
 
 type Meta = { series: Series; region: string; tags: string[] };
 
@@ -53,6 +53,7 @@ const META: Record<string, Meta> = {
   motegi: { series: "motogp", region: "japan", tags: ["classic"] },
   indianapolis: { series: "indycar", region: "north-america", tags: ["highspeed", "classic"] },
   termas: { series: "motogp", region: "south-america", tags: ["modern"] },
+  isleofman: { series: "roadracing", region: "uk", tags: ["classic", "seaside"] },
 };
 
 export const seriesOf = (key: string): Series | undefined => META[key]?.series;

@@ -290,6 +290,18 @@ const CIRCUITS = {
       "resorts Termas de Rio Hondo Argentina",
     ],
   },
+  isleofman: {
+    name: "Isle of Man TT Grandstand Douglas",
+    lat: 54.1736,
+    lng: -4.4761,
+    queries: [
+      "hotels in Douglas Isle of Man",
+      "hotels near TT Grandstand Douglas",
+      "guest houses Isle of Man",
+      "hotels in Ramsey Isle of Man",
+      "hotels in Peel Isle of Man",
+    ],
+  },
 };
 
 const key = process.argv[2];

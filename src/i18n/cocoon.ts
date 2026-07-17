@@ -31,16 +31,17 @@ export const SERIES_BADGE: Record<Series, string> = {
   motogp: "MotoGP",
   endurance: "Endurance",
   indycar: "IndyCar",
+  roadracing: "Road racing",
 };
 
 /** In-content lead-in before the same-championship links (no trailing colon). */
 export const EXPLORE_SERIES: Record<Locale, Record<Series, string>> = {
-  en: { f1: "More Formula 1 race weekends", motogp: "More MotoGP rounds", endurance: "More endurance classics", indycar: "More IndyCar race weekends" },
-  fr: { f1: "Plus de week-ends de Formule 1", motogp: "Plus de manches MotoGP", endurance: "Plus de classiques d'endurance", indycar: "Plus de week-ends d'IndyCar" },
-  nl: { f1: "Meer Formule 1-weekenden", motogp: "Meer MotoGP-races", endurance: "Meer endurance-klassiekers", indycar: "Meer IndyCar-weekenden" },
-  de: { f1: "Mehr Formel-1-Rennwochenenden", motogp: "Mehr MotoGP-Rennen", endurance: "Mehr Langstrecken-Klassiker", indycar: "Mehr IndyCar-Rennwochenenden" },
-  it: { f1: "Altri weekend di Formula 1", motogp: "Altre gare MotoGP", endurance: "Altri classici endurance", indycar: "Altri weekend di IndyCar" },
-  es: { f1: "Más fines de semana de Fórmula 1", motogp: "Más citas de MotoGP", endurance: "Más clásicos de resistencia", indycar: "Más fines de semana de IndyCar" },
+  en: { f1: "More Formula 1 race weekends", motogp: "More MotoGP rounds", endurance: "More endurance classics", indycar: "More IndyCar race weekends", roadracing: "More road-racing classics" },
+  fr: { f1: "Plus de week-ends de Formule 1", motogp: "Plus de manches MotoGP", endurance: "Plus de classiques d'endurance", indycar: "Plus de week-ends d'IndyCar", roadracing: "Plus de classiques de course sur route" },
+  nl: { f1: "Meer Formule 1-weekenden", motogp: "Meer MotoGP-races", endurance: "Meer endurance-klassiekers", indycar: "Meer IndyCar-weekenden", roadracing: "Meer wegrace-klassiekers" },
+  de: { f1: "Mehr Formel-1-Rennwochenenden", motogp: "Mehr MotoGP-Rennen", endurance: "Mehr Langstrecken-Klassiker", indycar: "Mehr IndyCar-Rennwochenenden", roadracing: "Mehr Straßenrennen-Klassiker" },
+  it: { f1: "Altri weekend di Formula 1", motogp: "Altre gare MotoGP", endurance: "Altri classici endurance", indycar: "Altri weekend di IndyCar", roadracing: "Altri classici delle corse su strada" },
+  es: { f1: "Más fines de semana de Fórmula 1", motogp: "Más citas de MotoGP", endurance: "Más clásicos de resistencia", indycar: "Más fines de semana de IndyCar", roadracing: "Más clásicos de carreras en carretera" },
 };
 
 /** In-content lead-in before the same-country links (no trailing colon). */
