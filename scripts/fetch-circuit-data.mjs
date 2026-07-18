@@ -347,6 +347,18 @@ const CIRCUITS = {
       "hotels in Port Orange Florida",
     ],
   },
+  bathurst: {
+    name: "Mount Panorama Circuit Bathurst",
+    lat: -33.4467,
+    lng: 149.5583,
+    queries: [
+      "hotels in Bathurst NSW",
+      "hotels near Mount Panorama Bathurst",
+      "hotels in Orange NSW",
+      "motels Bathurst NSW",
+      "hotels in Lithgow NSW",
+    ],
+  },
 };
 
 const key = process.argv[2];

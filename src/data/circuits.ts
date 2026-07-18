@@ -503,6 +503,17 @@ export const CIRCUITS: Circuit[] = [
     events: "24 Hours of Daytona · Daytona 500",
     status: "live",
   },
+  {
+    key: "bathurst",
+    name: "Mount Panorama",
+    slug: "bathurst",
+    country: "Australia",
+    flag: "🇦🇺",
+    lat: -33.4467,
+    lng: 149.5583,
+    events: "Bathurst 12 Hour · Bathurst 1000",
+    status: "live",
+  },
 ];
 
 export const liveCircuits = (): Circuit[] =>

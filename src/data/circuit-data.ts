@@ -49,6 +49,7 @@ import { indianapolisHotels, indianapolisZones } from "./circuits/indianapolis";
 import { termasHotels, termasZones } from "./circuits/termas";
 import { isleofmanHotels, isleofmanZones } from "./circuits/isleofman";
 import { daytonaHotels, daytonaZones } from "./circuits/daytona";
+import { bathurstHotels, bathurstZones } from "./circuits/bathurst";
 
 export interface CircuitHotel {
   name: string;
@@ -1015,6 +1016,37 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: daytonaZones,
     hotels: daytonaHotels,
+  },
+  bathurst: {
+    key: "bathurst",
+    event: {
+      name: "Bathurst 12 Hour",
+      checkin: "2027-02-04",
+      checkout: "2027-02-08",
+      window: "Early February",
+      crowd: "40,000+",
+      bookAhead: "3-6 months",
+    },
+    extraEvents: [
+      {
+        name: "Bathurst 1000",
+        checkin: "2027-10-07",
+        checkout: "2027-10-11",
+        window: "Early October",
+        crowd: "200,000+",
+        bookAhead: "6-9 months",
+      },
+    ],
+    travel: {
+      airports: [
+        { code: "BHS", name: "Bathurst", driveMin: 10 },
+        { code: "SYD", name: "Sydney", driveMin: 180 },
+      ],
+      rail: ["Bathurst"],
+      roads: "Great Western Highway / Mitchell Highway",
+    },
+    zones: bathurstZones,
+    hotels: bathurstHotels,
   },
 };
 
