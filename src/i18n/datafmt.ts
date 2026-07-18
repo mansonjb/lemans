@@ -142,6 +142,8 @@ const EVENTS: Record<string, L> = {
   "Indianapolis 500": { en: "Indianapolis 500", fr: "500 miles d'Indianapolis", nl: "Indianapolis 500", de: "Indianapolis 500", it: "500 Miglia di Indianapolis", es: "500 Millas de Indianápolis" },
   "Argentine MotoGP": { en: "Argentine MotoGP", fr: "MotoGP d'Argentine", nl: "Argentijnse MotoGP", de: "MotoGP von Argentinien", it: "MotoGP d'Argentina", es: "MotoGP de Argentina" },
   "Isle of Man TT": { en: "Isle of Man TT", fr: "Tourist Trophy de l'île de Man", nl: "Isle of Man TT", de: "Isle of Man TT", it: "Tourist Trophy dell'Isola di Man", es: "TT de la Isla de Man" },
+  "24 Hours of Daytona": { en: "24 Hours of Daytona", fr: "24 Heures de Daytona", nl: "24 uur van Daytona", de: "24-Stunden-Rennen von Daytona", it: "24 Ore di Daytona", es: "24 Horas de Daytona" },
+  "Daytona 500": { en: "Daytona 500", fr: "Daytona 500", nl: "Daytona 500", de: "Daytona 500", it: "Daytona 500", es: "Daytona 500" },
 };
 export const fmtEvent = (name: string, locale: Locale): string =>
   EVENTS[name]?.[locale] ?? name;

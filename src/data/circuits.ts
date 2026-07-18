@@ -492,6 +492,17 @@ export const CIRCUITS: Circuit[] = [
     events: "Isle of Man TT",
     status: "live",
   },
+  {
+    key: "daytona",
+    name: "Daytona",
+    slug: "daytona",
+    country: "United States",
+    flag: "🇺🇸",
+    lat: 29.185,
+    lng: -81.0698,
+    events: "24 Hours of Daytona · Daytona 500",
+    status: "live",
+  },
 ];
 
 export const liveCircuits = (): Circuit[] =>

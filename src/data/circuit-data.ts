@@ -48,6 +48,7 @@ import { motegiHotels, motegiZones } from "./circuits/motegi";
 import { indianapolisHotels, indianapolisZones } from "./circuits/indianapolis";
 import { termasHotels, termasZones } from "./circuits/termas";
 import { isleofmanHotels, isleofmanZones } from "./circuits/isleofman";
+import { daytonaHotels, daytonaZones } from "./circuits/daytona";
 
 export interface CircuitHotel {
   name: string;
@@ -983,6 +984,37 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: isleofmanZones,
     hotels: isleofmanHotels,
+  },
+  daytona: {
+    key: "daytona",
+    event: {
+      name: "24 Hours of Daytona",
+      checkin: "2027-01-28",
+      checkout: "2027-02-01",
+      window: "Late January",
+      crowd: "50,000+",
+      bookAhead: "3-6 months",
+    },
+    extraEvents: [
+      {
+        name: "Daytona 500",
+        checkin: "2027-02-11",
+        checkout: "2027-02-16",
+        window: "Mid February",
+        crowd: "100,000+",
+        bookAhead: "6-9 months",
+      },
+    ],
+    travel: {
+      airports: [
+        { code: "DAB", name: "Daytona Beach", driveMin: 10 },
+        { code: "MCO", name: "Orlando", driveMin: 75 },
+      ],
+      rail: [],
+      roads: "I-95 / I-4 / US-92 (International Speedway Blvd)",
+    },
+    zones: daytonaZones,
+    hotels: daytonaHotels,
   },
 };
 

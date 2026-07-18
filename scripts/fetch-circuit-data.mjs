@@ -335,6 +335,18 @@ const CIRCUITS = {
       "hotels in Peel Isle of Man",
     ],
   },
+  daytona: {
+    name: "Daytona International Speedway",
+    lat: 29.185,
+    lng: -81.0698,
+    queries: [
+      "hotels in Daytona Beach",
+      "hotels near Daytona International Speedway",
+      "hotels in Daytona Beach Shores",
+      "hotels in Ormond Beach Florida",
+      "hotels in Port Orange Florida",
+    ],
+  },
 };
 
 const key = process.argv[2];
