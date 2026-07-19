@@ -50,6 +50,7 @@ import { termasHotels, termasZones } from "./circuits/termas";
 import { isleofmanHotels, isleofmanZones } from "./circuits/isleofman";
 import { daytonaHotels, daytonaZones } from "./circuits/daytona";
 import { bathurstHotels, bathurstZones } from "./circuits/bathurst";
+import { longbeachHotels, longbeachZones } from "./circuits/longbeach";
 
 export interface CircuitHotel {
   name: string;
@@ -1047,6 +1048,28 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: bathurstZones,
     hotels: bathurstHotels,
+  },
+  longbeach: {
+    key: "longbeach",
+    event: {
+      name: "Long Beach Grand Prix",
+      checkin: "2027-04-15",
+      checkout: "2027-04-19",
+      window: "Mid April",
+      crowd: "180,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "LGB", name: "Long Beach", driveMin: 10 },
+        { code: "SNA", name: "Santa Ana (Orange County)", driveMin: 30 },
+        { code: "LAX", name: "Los Angeles", driveMin: 40 },
+      ],
+      rail: ["Downtown Long Beach (Metro A Line)"],
+      roads: "I-710 / I-405 / Shoreline Drive",
+    },
+    zones: longbeachZones,
+    hotels: longbeachHotels,
   },
 };
 

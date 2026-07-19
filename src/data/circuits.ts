@@ -514,6 +514,17 @@ export const CIRCUITS: Circuit[] = [
     events: "Bathurst 12 Hour · Bathurst 1000",
     status: "live",
   },
+  {
+    key: "longbeach",
+    name: "Long Beach",
+    slug: "long-beach",
+    country: "United States",
+    flag: "🇺🇸",
+    lat: 33.7657,
+    lng: -118.1892,
+    events: "Long Beach Grand Prix",
+    status: "live",
+  },
 ];
 
 export const liveCircuits = (): Circuit[] =>

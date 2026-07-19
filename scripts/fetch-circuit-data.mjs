@@ -359,6 +359,18 @@ const CIRCUITS = {
       "hotels in Lithgow NSW",
     ],
   },
+  longbeach: {
+    name: "Long Beach Street Circuit California",
+    lat: 33.7657,
+    lng: -118.1892,
+    queries: [
+      "hotels in Long Beach California",
+      "hotels near Long Beach Convention Center",
+      "hotels in downtown Long Beach",
+      "hotels near Long Beach airport",
+      "hotels in Long Beach waterfront",
+    ],
+  },
 };
 
 const key = process.argv[2];

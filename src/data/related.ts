@@ -56,6 +56,7 @@ const META: Record<string, Meta> = {
   isleofman: { series: "roadracing", region: "uk", tags: ["classic", "seaside"] },
   daytona: { series: "endurance", region: "north-america", tags: ["highspeed", "classic", "seaside"] },
   bathurst: { series: "endurance", region: "oceania", tags: ["classic", "highspeed", "alpine"] },
+  longbeach: { series: "indycar", region: "north-america", tags: ["street", "seaside", "party"] },
 };
 
 export const seriesOf = (key: string): Series | undefined => META[key]?.series;
