@@ -270,6 +270,7 @@ export function Quiz({
                   href={h.url}
                   target="_blank"
                   rel="nofollow sponsored noopener"
+                  data-stay={h.name}
                   className="group flex items-center gap-3 rounded-xl border border-line bg-card p-3 shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
                 >
                   {h.img ? (

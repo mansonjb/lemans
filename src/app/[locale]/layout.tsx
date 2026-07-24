@@ -5,6 +5,7 @@ import Script from "next/script";
 import { SITE_URL } from "@/lib/seo";
 import { STAY22_LMA_ID } from "@/lib/stay22";
 import { SiteSchema } from "@/components/schema";
+import { AffiliateTracker } from "@/components/AffiliateTracker";
 import "../globals.css";
 
 const inter = Inter({
@@ -47,6 +48,7 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://www.booking.com" />
       </head>
       <body>
+        <AffiliateTracker />
         <SiteSchema siteName="RaceWeekStays" />
         {children}
         <Script

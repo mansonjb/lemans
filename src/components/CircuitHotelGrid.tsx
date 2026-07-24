@@ -64,6 +64,7 @@ export function CircuitHotelGrid({
               href={circuitBookingUrl(h, town, event)}
               target="_blank"
               rel="nofollow sponsored noopener"
+              data-stay={h.name}
               className="group flex flex-col overflow-hidden rounded-xl border border-line bg-card shadow-sm transition hover:-translate-y-0.5 hover:border-bleu hover:shadow-md"
             >
               <div className="relative h-28 w-full overflow-hidden bg-paper">
