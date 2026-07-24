@@ -525,6 +525,17 @@ export const CIRCUITS: Circuit[] = [
     events: "Long Beach Grand Prix",
     status: "live",
   },
+  {
+    key: "kyalami",
+    name: "Kyalami",
+    slug: "kyalami",
+    country: "South Africa",
+    flag: "🇿🇦",
+    lat: -25.9964,
+    lng: 28.0728,
+    events: "Kyalami 9 Hour",
+    status: "live",
+  },
 ];
 
 export const liveCircuits = (): Circuit[] =>

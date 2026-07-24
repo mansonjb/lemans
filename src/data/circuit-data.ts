@@ -51,6 +51,7 @@ import { isleofmanHotels, isleofmanZones } from "./circuits/isleofman";
 import { daytonaHotels, daytonaZones } from "./circuits/daytona";
 import { bathurstHotels, bathurstZones } from "./circuits/bathurst";
 import { longbeachHotels, longbeachZones } from "./circuits/longbeach";
+import { kyalamiHotels, kyalamiZones } from "./circuits/kyalami";
 
 export interface CircuitHotel {
   name: string;
@@ -1070,6 +1071,27 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: longbeachZones,
     hotels: longbeachHotels,
+  },
+  kyalami: {
+    key: "kyalami",
+    event: {
+      name: "Kyalami 9 Hour",
+      checkin: "2027-11-25",
+      checkout: "2027-11-29",
+      window: "Late November",
+      crowd: "30,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "JNB", name: "Johannesburg (O.R. Tambo)", driveMin: 35 },
+        { code: "HLA", name: "Lanseria", driveMin: 25 },
+      ],
+      rail: ["Midrand (Gautrain)"],
+      roads: "N1 / M71 (Allandale Road)",
+    },
+    zones: kyalamiZones,
+    hotels: kyalamiHotels,
   },
 };
 

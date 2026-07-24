@@ -371,6 +371,18 @@ const CIRCUITS = {
       "hotels in Long Beach waterfront",
     ],
   },
+  kyalami: {
+    name: "Kyalami Grand Prix Circuit Midrand",
+    lat: -25.9964,
+    lng: 28.0728,
+    queries: [
+      "hotels in Midrand",
+      "hotels near Kyalami circuit",
+      "hotels in Sandton Johannesburg",
+      "hotels in Centurion Pretoria",
+      "hotels near Johannesburg airport",
+    ],
+  },
 };
 
 const key = process.argv[2];

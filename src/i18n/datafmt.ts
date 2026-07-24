@@ -40,6 +40,7 @@ const COUNTRIES: Record<string, L> = {
   Thailand: { en: "Thailand", fr: "Thaïlande", nl: "Thailand", de: "Thailand", it: "Thailandia", es: "Tailandia" },
   Argentina: { en: "Argentina", fr: "Argentine", nl: "Argentinië", de: "Argentinien", it: "Argentina", es: "Argentina" },
   "Isle of Man": { en: "Isle of Man", fr: "Île de Man", nl: "Man", de: "Insel Man", it: "Isola di Man", es: "Isla de Man" },
+  "South Africa": { en: "South Africa", fr: "Afrique du Sud", nl: "Zuid-Afrika", de: "Südafrika", it: "Sudafrica", es: "Sudáfrica" },
 };
 
 export const fmtCountry = (country: string, locale: Locale): string =>
@@ -147,6 +148,7 @@ const EVENTS: Record<string, L> = {
   "Bathurst 12 Hour": { en: "Bathurst 12 Hour", fr: "12 Heures de Bathurst", nl: "12 uur van Bathurst", de: "12-Stunden-Rennen von Bathurst", it: "12 Ore di Bathurst", es: "12 Horas de Bathurst" },
   "Bathurst 1000": { en: "Bathurst 1000", fr: "Bathurst 1000", nl: "Bathurst 1000", de: "Bathurst 1000", it: "Bathurst 1000", es: "Bathurst 1000" },
   "Long Beach Grand Prix": { en: "Long Beach Grand Prix", fr: "Grand Prix de Long Beach", nl: "Grand Prix van Long Beach", de: "Grand Prix von Long Beach", it: "Gran Premio di Long Beach", es: "Gran Premio de Long Beach" },
+  "Kyalami 9 Hour": { en: "Kyalami 9 Hour", fr: "9 Heures de Kyalami", nl: "9 uur van Kyalami", de: "9-Stunden-Rennen von Kyalami", it: "9 Ore di Kyalami", es: "9 Horas de Kyalami" },
 };
 export const fmtEvent = (name: string, locale: Locale): string =>
   EVENTS[name]?.[locale] ?? name;
