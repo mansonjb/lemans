@@ -52,6 +52,7 @@ import { daytonaHotels, daytonaZones } from "./circuits/daytona";
 import { bathurstHotels, bathurstZones } from "./circuits/bathurst";
 import { longbeachHotels, longbeachZones } from "./circuits/longbeach";
 import { kyalamiHotels, kyalamiZones } from "./circuits/kyalami";
+import { macauHotels, macauZones } from "./circuits/macau";
 
 export interface CircuitHotel {
   name: string;
@@ -1092,6 +1093,27 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: kyalamiZones,
     hotels: kyalamiHotels,
+  },
+  macau: {
+    key: "macau",
+    event: {
+      name: "Macau Grand Prix",
+      checkin: "2027-11-18",
+      checkout: "2027-11-22",
+      window: "Mid November",
+      crowd: "40,000+",
+      bookAhead: "3-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "MFM", name: "Macau", driveMin: 15 },
+        { code: "HKG", name: "Hong Kong", driveMin: 60 },
+      ],
+      rail: ["Macau LRT (Taipa)"],
+      roads: "Guia Circuit / Avenida da Amizade",
+    },
+    zones: macauZones,
+    hotels: macauHotels,
   },
 };
 

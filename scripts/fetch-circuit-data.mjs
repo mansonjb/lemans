@@ -383,6 +383,18 @@ const CIRCUITS = {
       "hotels near Johannesburg airport",
     ],
   },
+  macau: {
+    name: "Guia Circuit Macau",
+    lat: 22.2003,
+    lng: 113.5439,
+    queries: [
+      "hotels in Macau",
+      "hotels near Guia Circuit Macau",
+      "casino hotels Macau",
+      "hotels in Macau peninsula",
+      "hotels in Taipa Macau",
+    ],
+  },
 };
 
 const key = process.argv[2];

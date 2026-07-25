@@ -536,6 +536,17 @@ export const CIRCUITS: Circuit[] = [
     events: "Kyalami 9 Hour",
     status: "live",
   },
+  {
+    key: "macau",
+    name: "Macau",
+    slug: "macau",
+    country: "Macau",
+    flag: "🇲🇴",
+    lat: 22.2003,
+    lng: 113.5439,
+    events: "Macau Grand Prix",
+    status: "live",
+  },
 ];
 
 export const liveCircuits = (): Circuit[] =>
