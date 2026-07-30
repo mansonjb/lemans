@@ -10,7 +10,7 @@
 import type { Locale } from "@/lib/types";
 
 type L = Record<Locale, string>;
-type SiteKey = "pets" | "honeymoon" | "screen" | "snow";
+type SiteKey = "pets" | "honeymoon" | "screen" | "snow" | "citybreak";
 
 /** A place label: one string when it reads the same in every language, or a
  *  per-locale map for names that genuinely translate (Tuscany -> Toscane ...). */
@@ -70,6 +70,18 @@ const SITE: Record<
       es: (p) => `${p}: los mejores hoteles de esquí a pie de pista, muy cerca.`,
     },
   },
+  citybreak: {
+    name: "Perfect City Break",
+    url: (s) => `https://perfectcitybreak.com/${s}`,
+    blurb: {
+      en: (p) => `${p}: turn race week into a city break, with the top sights and central stays.`,
+      fr: (p) => `${p} : prolongez la course en city break, avec les incontournables et des hôtels bien placés.`,
+      nl: (p) => `${p}: maak van je raceweekend een city break, met de topbezienswaardigheden en centrale hotels.`,
+      de: (p) => `${p}: mach aus dem Rennwochenende einen Städtetrip, mit den Highlights und zentralen Hotels.`,
+      it: (p) => `${p}: trasforma il weekend di gara in una city break, con le attrazioni top e hotel centrali.`,
+      es: (p) => `${p}: convierte el fin de semana de carrera en una escapada urbana, con lo mejor y hoteles céntricos.`,
+    },
+  },
 };
 
 /* place names that translate */
@@ -82,6 +94,7 @@ const JAPAN: L = { en: "Japan", fr: "Japon", nl: "Japan", de: "Japan", it: "Giap
 const BRAZIL: L = { en: "Brazil", fr: "Brésil", nl: "Brazilië", de: "Brasilien", it: "Brasile", es: "Brasil" };
 const AUSTRALIA: L = { en: "Australia", fr: "Australie", nl: "Australië", de: "Australien", it: "Australia", es: "Australia" };
 const MEXICO: L = { en: "Mexico", fr: "Mexique", nl: "Mexico", de: "Mexiko", it: "Messico", es: "México" };
+const NICE: L = { en: "Nice", fr: "Nice", nl: "Nice", de: "Nizza", it: "Nizza", es: "Niza" };
 
 type NetLink = { site: SiteKey; slug: string; place: Place };
 
@@ -90,11 +103,15 @@ const NETWORK: Record<string, NetLink[]> = {
     { site: "screen", slug: "oxford", place: "Oxford" },
     { site: "honeymoon", slug: "cotswolds", place: "The Cotswolds" },
   ],
-  zandvoort: [{ site: "pets", slug: "amsterdam", place: "Amsterdam" }],
+  zandvoort: [
+    { site: "pets", slug: "amsterdam", place: "Amsterdam" },
+    { site: "citybreak", slug: "amsterdam", place: "Amsterdam" },
+  ],
   monza: [
     { site: "screen", slug: "lake-como", place: LAKE_COMO },
     { site: "honeymoon", slug: "lake-como", place: LAKE_COMO },
     { site: "pets", slug: "milan", place: MILAN },
+    { site: "citybreak", slug: "milan", place: MILAN },
   ],
   spielberg: [
     { site: "snow", slug: "schladming", place: "Schladming" },
@@ -103,23 +120,36 @@ const NETWORK: Record<string, NetLink[]> = {
   monaco: [
     { site: "pets", slug: "menton", place: "Menton" },
     { site: "honeymoon", slug: "cote-dazur", place: "The Côte d'Azur" },
+    { site: "citybreak", slug: "nice", place: NICE },
   ],
-  barcelona: [{ site: "pets", slug: "barcelona", place: "Barcelona" }],
+  barcelona: [
+    { site: "pets", slug: "barcelona", place: "Barcelona" },
+    { site: "citybreak", slug: "barcelona", place: "Barcelona" },
+  ],
   madrid: [
     { site: "pets", slug: "madrid", place: "Madrid" },
     { site: "screen", slug: "madrid", place: "Madrid" },
+    { site: "citybreak", slug: "madrid", place: "Madrid" },
   ],
-  hungaroring: [{ site: "pets", slug: "budapest", place: "Budapest" }],
-  imola: [{ site: "pets", slug: "bologna", place: "Bologna" }],
+  hungaroring: [
+    { site: "pets", slug: "budapest", place: "Budapest" },
+    { site: "citybreak", slug: "budapest", place: "Budapest" },
+  ],
+  imola: [
+    { site: "pets", slug: "bologna", place: "Bologna" },
+    { site: "citybreak", slug: "bologna", place: "Bologna" },
+  ],
   assen: [{ site: "pets", slug: "groningen", place: "Groningen" }],
   mugello: [
     { site: "screen", slug: "tuscany", place: TUSCANY },
     { site: "honeymoon", slug: "tuscany", place: TUSCANY },
     { site: "pets", slug: "florence", place: FLORENCE },
+    { site: "citybreak", slug: "florence", place: FLORENCE },
   ],
   jerez: [
     { site: "pets", slug: "cadiz", place: "Cádiz" },
     { site: "screen", slug: "seville", place: SEVILLE },
+    { site: "citybreak", slug: "seville", place: SEVILLE },
   ],
   misano: [{ site: "pets", slug: "rimini", place: "Rimini" }],
   sachsenring: [{ site: "pets", slug: "dresden", place: "Dresden" }],
