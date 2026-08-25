@@ -108,6 +108,38 @@ export function CircuitTravelTemplate({
         </Container>
       </section>
 
+      {/* Where to stay: bookable options high on the page. Travel/"getting there"
+          pages are the most AI-cited entry point, and average scroll depth is
+          shallow, so the money module leads instead of sitting at the bottom. */}
+      {data.hotels.length > 0 && (
+        <section className="border-b border-line bg-paper/50">
+          <Container className="py-12">
+            <SpeedHeading>{xt.circuitGuide.staysHeading(circuit.name)}</SpeedHeading>
+            <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-muted">
+              {xt.circuitGuide.staysSub}
+            </p>
+            <div className="mt-6">
+              <CircuitHotelGrid
+                hotels={[...data.hotels]
+                  .sort((a, b) => a.driveMin - b.driveMin)
+                  .slice(0, 4)}
+                zoneNames={zoneNameMap(data)}
+                event={data.event}
+                labels={gridLabels(locale)}
+              />
+            </div>
+            <div className="mt-6">
+              <Link
+                href={hrefFor(`circuit:${circuit.key}`, locale)}
+                className="inline-flex rounded-lg bg-bleu px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-white transition hover:bg-bleu-deep"
+              >
+                {xt.accommodation.seeAllArea} →
+              </Link>
+            </div>
+          </Container>
+        </section>
+      )}
+
       <Container className="py-14">
         <div className="grid gap-6 lg:grid-cols-3">
           {/* By plane */}
