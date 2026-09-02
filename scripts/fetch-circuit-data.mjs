@@ -80,6 +80,18 @@ const CIRCUITS = {
   sachsenring: { name: "Sachsenring", lat: 50.7917, lng: 12.6883 },
   portimao: { name: "Autodromo Internacional do Algarve", lat: 37.227, lng: -8.6267 },
   aragon: { name: "MotorLand Aragon", lat: 41.0817, lng: -0.205 },
+  valencia: {
+    name: "Circuit Ricardo Tormo",
+    lat: 39.485,
+    lng: -0.63,
+    queries: [
+      "hotels in Valencia Spain",
+      "hotels near Circuit Ricardo Tormo Cheste",
+      "hotels in Cheste Valencia",
+      "hotels in Chiva Valencia",
+      "hotels in Torrent Valencia",
+    ],
+  },
   balaton: { name: "Balaton Park Circuit", lat: 47.0417, lng: 18.1389 },
   suzuka: {
     name: "Suzuka Circuit",

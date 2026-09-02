@@ -24,6 +24,7 @@ import { misanoHotels, misanoZones } from "./circuits/misano";
 import { sachsenringHotels, sachsenringZones } from "./circuits/sachsenring";
 import { portimaoHotels, portimaoZones } from "./circuits/portimao";
 import { aragonHotels, aragonZones } from "./circuits/aragon";
+import { valenciaHotels, valenciaZones } from "./circuits/valencia";
 import { balatonHotels, balatonZones } from "./circuits/balaton";
 import { suzukaHotels, suzukaZones } from "./circuits/suzuka";
 import { cotaHotels, cotaZones } from "./circuits/cota";
@@ -532,6 +533,28 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: aragonZones,
     hotels: aragonHotels,
+  },
+  valencia: {
+    key: "valencia",
+    event: {
+      name: "Valencia MotoGP",
+      checkin: "2026-11-13",
+      checkout: "2026-11-16",
+      window: "November",
+      crowd: "120,000+",
+      bookAhead: "4-6 months",
+    },
+    travel: {
+      airports: [
+        { code: "VLC", name: "Valencia", driveMin: 25 },
+        { code: "ALC", name: "Alicante", driveMin: 80 },
+        { code: "BCN", name: "Barcelona", driveMin: 210 },
+      ],
+      rail: ["València Joaquín Sorolla (AVE)", "Cheste (Cercanías C-3)"],
+      roads: "A-3 / CV-378",
+    },
+    zones: valenciaZones,
+    hotels: valenciaHotels,
   },
   balaton: {
     key: "balaton",

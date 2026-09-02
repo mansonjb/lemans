@@ -229,6 +229,17 @@ export const CIRCUITS: Circuit[] = [
     status: "live",
   },
   {
+    key: "valencia",
+    name: "Circuit Ricardo Tormo",
+    slug: "valencia",
+    country: "Spain",
+    flag: "🇪🇸",
+    lat: 39.485,
+    lng: -0.63,
+    events: "Valencia MotoGP",
+    status: "live",
+  },
+  {
     key: "balaton",
     name: "Balaton Park",
     slug: "balaton",

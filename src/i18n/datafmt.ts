@@ -118,6 +118,7 @@ const EVENTS: Record<string, L> = {
   "German MotoGP": { en: "German MotoGP", fr: "MotoGP d'Allemagne", nl: "Duitse MotoGP", de: "MotoGP von Deutschland", it: "MotoGP di Germania", es: "MotoGP de Alemania" },
   "Portuguese MotoGP": { en: "Portuguese MotoGP", fr: "MotoGP du Portugal", nl: "Portugese MotoGP", de: "MotoGP von Portugal", it: "MotoGP del Portogallo", es: "MotoGP de Portugal" },
   "Aragon MotoGP": { en: "Aragon MotoGP", fr: "MotoGP d'Aragon", nl: "MotoGP van Aragón", de: "MotoGP von Aragón", it: "MotoGP d'Aragona", es: "MotoGP de Aragón" },
+  "Valencia MotoGP": { en: "Valencia MotoGP", fr: "MotoGP de Valence", nl: "MotoGP van Valencia", de: "MotoGP von Valencia", it: "MotoGP di Valencia", es: "MotoGP de Valencia" },
   "Balaton MotoGP": { en: "Balaton MotoGP", fr: "MotoGP de Balaton", nl: "MotoGP van Balaton", de: "MotoGP von Balaton", it: "MotoGP di Balaton", es: "MotoGP de Balatón" },
   "Austrian MotoGP": { en: "Austrian MotoGP", fr: "MotoGP d'Autriche", nl: "Oostenrijkse MotoGP", de: "MotoGP von Österreich", it: "MotoGP d'Austria", es: "MotoGP de Austria" },
   "Catalan MotoGP": { en: "Catalan MotoGP", fr: "MotoGP de Catalogne", nl: "Catalaanse MotoGP", de: "MotoGP von Katalonien", it: "MotoGP della Catalogna", es: "MotoGP de Cataluña" },
