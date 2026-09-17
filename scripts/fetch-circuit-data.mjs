@@ -92,6 +92,18 @@ const CIRCUITS = {
       "hotels in Torrent Valencia",
     ],
   },
+  brno: {
+    name: "Automotodrom Brno",
+    lat: 49.2028,
+    lng: 16.4491,
+    queries: [
+      "hotels in Brno Czech Republic",
+      "hotels near Automotodrom Brno",
+      "hotels in Brno city centre",
+      "hotels in Modřice",
+      "hotels in Šlapanice",
+    ],
+  },
   balaton: { name: "Balaton Park Circuit", lat: 47.0417, lng: 18.1389 },
   suzuka: {
     name: "Suzuka Circuit",

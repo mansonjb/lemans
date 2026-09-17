@@ -25,6 +25,7 @@ import { sachsenringHotels, sachsenringZones } from "./circuits/sachsenring";
 import { portimaoHotels, portimaoZones } from "./circuits/portimao";
 import { aragonHotels, aragonZones } from "./circuits/aragon";
 import { valenciaHotels, valenciaZones } from "./circuits/valencia";
+import { brnoHotels, brnoZones } from "./circuits/brno";
 import { balatonHotels, balatonZones } from "./circuits/balaton";
 import { suzukaHotels, suzukaZones } from "./circuits/suzuka";
 import { cotaHotels, cotaZones } from "./circuits/cota";
@@ -555,6 +556,28 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: valenciaZones,
     hotels: valenciaHotels,
+  },
+  brno: {
+    key: "brno",
+    event: {
+      name: "Czech MotoGP",
+      checkin: "2026-06-19",
+      checkout: "2026-06-22",
+      window: "June",
+      crowd: "180,000+",
+      bookAhead: "3-5 months",
+    },
+    travel: {
+      airports: [
+        { code: "BRQ", name: "Brno-Tuřany", driveMin: 20 },
+        { code: "VIE", name: "Vienna", driveMin: 90 },
+        { code: "PRG", name: "Prague", driveMin: 120 },
+      ],
+      rail: ["Brno hlavní nádraží"],
+      roads: "D1 / D2",
+    },
+    zones: brnoZones,
+    hotels: brnoHotels,
   },
   balaton: {
     key: "balaton",

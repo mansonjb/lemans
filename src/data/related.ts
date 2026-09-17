@@ -31,6 +31,7 @@ const META: Record<string, Meta> = {
   portimao: { series: "motogp", region: "iberia", tags: ["modern", "seaside"] },
   aragon: { series: "motogp", region: "iberia", tags: ["modern"] },
   valencia: { series: "motogp", region: "iberia", tags: ["modern", "party"] },
+  brno: { series: "motogp", region: "cee", tags: ["classic", "highspeed"] },
   balaton: { series: "motogp", region: "cee", tags: ["modern"] },
   suzuka: { series: "f1", region: "japan", tags: ["classic", "highspeed"] },
   cota: { series: "f1", region: "north-america", tags: ["modern"] },

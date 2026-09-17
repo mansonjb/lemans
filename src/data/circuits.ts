@@ -240,6 +240,17 @@ export const CIRCUITS: Circuit[] = [
     status: "live",
   },
   {
+    key: "brno",
+    name: "Automotodrom Brno",
+    slug: "brno",
+    country: "Czech Republic",
+    flag: "🇨🇿",
+    lat: 49.2028,
+    lng: 16.4491,
+    events: "Czech MotoGP",
+    status: "live",
+  },
+  {
     key: "balaton",
     name: "Balaton Park",
     slug: "balaton",
