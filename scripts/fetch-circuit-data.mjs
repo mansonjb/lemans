@@ -104,6 +104,18 @@ const CIRCUITS = {
       "hotels in Šlapanice",
     ],
   },
+  istanbul: {
+    name: "Intercity Istanbul Park",
+    lat: 40.9517,
+    lng: 29.405,
+    queries: [
+      "hotels in Istanbul Turkey",
+      "hotels near Istanbul Park circuit Tuzla",
+      "hotels in Tuzla Istanbul",
+      "hotels in Pendik Istanbul",
+      "hotels in Kadikoy Istanbul",
+    ],
+  },
   balaton: { name: "Balaton Park Circuit", lat: 47.0417, lng: 18.1389 },
   suzuka: {
     name: "Suzuka Circuit",

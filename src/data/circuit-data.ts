@@ -26,6 +26,7 @@ import { portimaoHotels, portimaoZones } from "./circuits/portimao";
 import { aragonHotels, aragonZones } from "./circuits/aragon";
 import { valenciaHotels, valenciaZones } from "./circuits/valencia";
 import { brnoHotels, brnoZones } from "./circuits/brno";
+import { istanbulHotels, istanbulZones } from "./circuits/istanbul";
 import { balatonHotels, balatonZones } from "./circuits/balaton";
 import { suzukaHotels, suzukaZones } from "./circuits/suzuka";
 import { cotaHotels, cotaZones } from "./circuits/cota";
@@ -578,6 +579,27 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: brnoZones,
     hotels: brnoHotels,
+  },
+  istanbul: {
+    key: "istanbul",
+    event: {
+      name: "Turkish Grand Prix",
+      checkin: "2027-10-01",
+      checkout: "2027-10-04",
+      window: "October",
+      crowd: "100,000+",
+      bookAhead: "3-5 months",
+    },
+    travel: {
+      airports: [
+        { code: "SAW", name: "Sabiha Gökçen", driveMin: 20 },
+        { code: "IST", name: "Istanbul", driveMin: 75 },
+      ],
+      rail: ["Pendik (Marmaray + metro M4)", "Pendik high-speed station"],
+      roads: "O-4 (TEM) / D-100",
+    },
+    zones: istanbulZones,
+    hotels: istanbulHotels,
   },
   balaton: {
     key: "balaton",

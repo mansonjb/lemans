@@ -251,6 +251,17 @@ export const CIRCUITS: Circuit[] = [
     status: "live",
   },
   {
+    key: "istanbul",
+    name: "Istanbul Park",
+    slug: "istanbul",
+    country: "Turkey",
+    flag: "🇹🇷",
+    lat: 40.9517,
+    lng: 29.405,
+    events: "Turkish Grand Prix",
+    status: "live",
+  },
+  {
     key: "balaton",
     name: "Balaton Park",
     slug: "balaton",

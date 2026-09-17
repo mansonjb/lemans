@@ -32,6 +32,7 @@ const META: Record<string, Meta> = {
   aragon: { series: "motogp", region: "iberia", tags: ["modern"] },
   valencia: { series: "motogp", region: "iberia", tags: ["modern", "party"] },
   brno: { series: "motogp", region: "cee", tags: ["classic", "highspeed"] },
+  istanbul: { series: "f1", region: "turkey", tags: ["modern", "highspeed"] },
   balaton: { series: "motogp", region: "cee", tags: ["modern"] },
   suzuka: { series: "f1", region: "japan", tags: ["classic", "highspeed"] },
   cota: { series: "f1", region: "north-america", tags: ["modern"] },
