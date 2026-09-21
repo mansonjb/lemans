@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { t } from "@/i18n";
 import { LOCALES, type Locale } from "@/lib/types";
 import {
-  allStaticParams,
   languageAlternates,
   pathFor,
   resolvePage,
@@ -51,10 +50,13 @@ import {
   TypeTemplate,
 } from "@/templates/secondary";
 
-export const dynamicParams = false;
+// ISR paresseuse : rien au build (5 500 pages avant), chaque page se genere a
+// sa 1re requete puis reste en cache jusqu au prochain deploy. Un slug
+// inconnu tombe toujours sur notFound() via resolvePage.
+export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return allStaticParams();
+  return [];
 }
 
 type Props = { params: Promise<{ locale: string; slug?: string[] }> };
