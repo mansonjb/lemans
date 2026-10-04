@@ -9,6 +9,7 @@ import {
 import { LEAD_PAGES } from "@/data/leadpages";
 import { CIRCUITS, circuitByKey } from "@/data/circuits";
 import {
+  circuitData,
   circuitDataList,
   circuitPageZones,
   circuitFilterHotels,
@@ -336,6 +337,47 @@ export const PAGES: PageDef[] = [
 
 export const pageByKey = (key: string): PageDef | undefined =>
   PAGES.find((p) => p.key === key);
+
+/** Filter keys that are near-duplicate price/attribute slices of the same
+ *  hotel list (we keep hotels / closest / campsites, which carry distinct
+ *  intent and inventory). */
+const THIN_FILTERS = new Set(["cheap", "family", "luxury"]);
+/** A town page needs at least this many real stays to earn its own index
+ *  entry; below it, it is a map plus a card or two. */
+const ZONE_MIN_STAYS = 3;
+
+const zoneStayCount = (ref: string): number => {
+  const parts = ref.split(":"); // "ck:zk" (zone) or "ck:es:zk" (event×zone)
+  const ck = parts[0];
+  const zk = parts[parts.length - 1];
+  return circuitData(ck)?.zones.find((z) => z.key === zk)?.count ?? 0;
+};
+
+/**
+ * Quality gate for Google's index. Substantial pages stay indexable; thin,
+ * templated or near-duplicate ones are served `noindex, follow` (still
+ * crawlable, link equity still flows to the keepers) so the site climbs out
+ * of the Sept 2026 "crawled, currently not indexed" devaluation of scaled
+ * content. AI crawlers ignore the robots meta and still read the full page,
+ * so the GEO/citation channel is unaffected. Tune via the two constants above.
+ */
+export const isIndexable = (page: PageDef): boolean => {
+  // Interactive matchmaker: a tool, one per circuit, no standalone search value.
+  if (page.template === "circuitquiz") return false;
+  // Price/attribute slices of the same list → keep only the distinct-intent ones.
+  if (
+    page.template === "circuitfilter" &&
+    THIN_FILTERS.has(page.ref!.split(":")[1])
+  )
+    return false;
+  // Town / town×event pages with too few stays are thin.
+  if (
+    (page.template === "circuitzone" || page.template === "circuiteventzone") &&
+    zoneStayCount(page.ref!) < ZONE_MIN_STAYS
+  )
+    return false;
+  return true;
+};
 
 /** Templates whose content lives under the Le Mans circuit. */
 const LM_SCOPED = new Set([

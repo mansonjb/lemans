@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { languageAlternates, PAGES, urlFor } from "@/lib/registry";
+import { isIndexable, languageAlternates, PAGES, urlFor } from "@/lib/registry";
 
 const PRIORITY: Record<string, number> = {
   globalhome: 1,
@@ -39,7 +39,8 @@ const CHANGEFREQ: Record<string, MetadataRoute.Sitemap[number]["changeFrequency"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date().toISOString();
-  return PAGES.map((page) => ({
+  // Only advertise pages we want indexed; thin ones are served noindex.
+  return PAGES.filter(isIndexable).map((page) => ({
     url: urlFor(page, "en"),
     lastModified,
     changeFrequency: CHANGEFREQ[page.template] ?? "monthly",

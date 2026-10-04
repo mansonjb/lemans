@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { t } from "@/i18n";
 import { LOCALES, type Locale } from "@/lib/types";
 import {
+  isIndexable,
   languageAlternates,
   pathFor,
   resolvePage,
@@ -242,6 +243,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
+    // Thin / near-duplicate pages are kept out of Google's index (still
+    // crawlable; AI crawlers ignore this and keep citing). See isIndexable.
+    ...(isIndexable(page)
+      ? {}
+      : { robots: { index: false, follow: true } }),
     alternates: {
       canonical: pathFor(page, locale),
       languages: languageAlternates(page),
