@@ -262,6 +262,17 @@ export const CIRCUITS: Circuit[] = [
     status: "live",
   },
   {
+    key: "goiania",
+    name: "Autódromo Ayrton Senna",
+    slug: "goiania",
+    country: "Brazil",
+    flag: "🇧🇷",
+    lat: -16.71806,
+    lng: -49.19222,
+    events: "Brazilian MotoGP",
+    status: "live",
+  },
+  {
     key: "balaton",
     name: "Balaton Park",
     slug: "balaton",

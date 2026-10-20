@@ -50,6 +50,7 @@ import { buriramHotels, buriramZones } from "./circuits/buriram";
 import { motegiHotels, motegiZones } from "./circuits/motegi";
 import { indianapolisHotels, indianapolisZones } from "./circuits/indianapolis";
 import { termasHotels, termasZones } from "./circuits/termas";
+import { goianiaHotels, goianiaZones } from "./circuits/goiania";
 import { isleofmanHotels, isleofmanZones } from "./circuits/isleofman";
 import { daytonaHotels, daytonaZones } from "./circuits/daytona";
 import { bathurstHotels, bathurstZones } from "./circuits/bathurst";
@@ -600,6 +601,27 @@ const DATA: Record<string, CircuitData> = {
     },
     zones: istanbulZones,
     hotels: istanbulHotels,
+  },
+  goiania: {
+    key: "goiania",
+    event: {
+      name: "Brazilian MotoGP",
+      checkin: "2027-04-02",
+      checkout: "2027-04-05",
+      window: "Early April",
+      crowd: "New for 2027",
+      bookAhead: "6-9 months",
+    },
+    travel: {
+      airports: [
+        { code: "GYN", name: "Goiânia", driveMin: 20 },
+        { code: "BSB", name: "Brasília", driveMin: 150 },
+      ],
+      rail: [],
+      roads: "GO-020 / BR-153",
+    },
+    zones: goianiaZones,
+    hotels: goianiaHotels,
   },
   balaton: {
     key: "balaton",

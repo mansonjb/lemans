@@ -56,6 +56,7 @@ const META: Record<string, Meta> = {
   motegi: { series: "motogp", region: "japan", tags: ["classic"] },
   indianapolis: { series: "indycar", region: "north-america", tags: ["highspeed", "classic"] },
   termas: { series: "motogp", region: "south-america", tags: ["modern"] },
+  goiania: { series: "motogp", region: "south-america", tags: ["modern"] },
   isleofman: { series: "roadracing", region: "uk", tags: ["classic", "seaside"] },
   daytona: { series: "endurance", region: "north-america", tags: ["highspeed", "classic", "seaside"] },
   bathurst: { series: "endurance", region: "oceania", tags: ["classic", "highspeed", "alpine"] },

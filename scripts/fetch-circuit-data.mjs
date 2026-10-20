@@ -18,6 +18,18 @@ const ROOT = path.join(__dirname, "..");
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const CIRCUITS = {
+  goiania: {
+    name: "Autódromo Internacional Ayrton Senna",
+    lat: -16.71806,
+    lng: -49.19222,
+    queries: [
+      "hotels in Goiânia Brazil",
+      "hotéis em Goiânia",
+      "hotels near Autódromo Internacional Ayrton Senna Goiânia",
+      "hotels in Setor Bueno Goiânia",
+      "hotels near Goiânia airport",
+    ],
+  },
   silverstone: { name: "Silverstone Circuit", lat: 52.0786, lng: -1.0169 },
   spa: { name: "Spa-Francorchamps circuit", lat: 50.4372, lng: 5.9714 },
   zandvoort: {

@@ -94,6 +94,7 @@ export const fmtBookAhead = (bookAhead: string, locale: Locale): string =>
 /* -------------------------------- crowd --------------------------------- */
 const CROWD: Record<string, L> = {
   "New for 2026": { en: "New for 2026", fr: "Nouveau en 2026", nl: "Nieuw in 2026", de: "Neu 2026", it: "Novità 2026", es: "Nuevo en 2026" },
+  "New for 2027": { en: "New for 2027", fr: "Nouveau en 2027", nl: "Nieuw in 2027", de: "Neu 2027", it: "Novità 2027", es: "Nuevo en 2027" },
 };
 export const fmtCrowd = (crowd: string, locale: Locale): string =>
   CROWD[crowd]?.[locale] ?? crowd;
@@ -148,6 +149,7 @@ const EVENTS: Record<string, L> = {
   "Japanese MotoGP": { en: "Japanese MotoGP", fr: "MotoGP du Japon", nl: "Japanse MotoGP", de: "MotoGP von Japan", it: "MotoGP del Giappone", es: "MotoGP de Japón" },
   "Indianapolis 500": { en: "Indianapolis 500", fr: "500 miles d'Indianapolis", nl: "Indianapolis 500", de: "Indianapolis 500", it: "500 Miglia di Indianapolis", es: "500 Millas de Indianápolis" },
   "Argentine MotoGP": { en: "Argentine MotoGP", fr: "MotoGP d'Argentine", nl: "Argentijnse MotoGP", de: "MotoGP von Argentinien", it: "MotoGP d'Argentina", es: "MotoGP de Argentina" },
+  "Brazilian MotoGP": { en: "Brazilian MotoGP", fr: "MotoGP du Brésil", nl: "Braziliaanse MotoGP", de: "MotoGP von Brasilien", it: "MotoGP del Brasile", es: "MotoGP de Brasil" },
   "Isle of Man TT": { en: "Isle of Man TT", fr: "Tourist Trophy de l'île de Man", nl: "Isle of Man TT", de: "Isle of Man TT", it: "Tourist Trophy dell'Isola di Man", es: "TT de la Isla de Man" },
   "24 Hours of Daytona": { en: "24 Hours of Daytona", fr: "24 Heures de Daytona", nl: "24 uur van Daytona", de: "24-Stunden-Rennen von Daytona", it: "24 Ore di Daytona", es: "24 Horas de Daytona" },
   "Daytona 500": { en: "Daytona 500", fr: "Daytona 500", nl: "Daytona 500", de: "Daytona 500", it: "Daytona 500", es: "Daytona 500" },
