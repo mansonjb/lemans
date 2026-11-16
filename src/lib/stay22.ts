@@ -1,5 +1,11 @@
-/** Stay22 "Let Me Allez" affiliate id provided by Stay22 dashboard. */
+/** Stay22 "Let Me Allez" script id (lmaID), used by the global letmeallez.js
+ *  that rewrites Booking links into monetised affiliate links. */
 export const STAY22_LMA_ID = "6a2c123a7b2971f6f75fff73";
+
+/** Stay22 affiliate id (aid) for the embedded maps: it attributes bookings
+ *  made inside a map to our account. This is the account handle, NOT the
+ *  lmaID above (using the lmaID as aid mis-attributes map bookings). */
+export const STAY22_AID = "eijeanbaptistemanson";
 
 export interface MapParams {
   lat: number;
@@ -23,7 +29,7 @@ export const stay22MapUrl = ({
   locale = "en",
 }: MapParams): string => {
   const params = new URLSearchParams({
-    aid: STAY22_LMA_ID,
+    aid: STAY22_AID,
     lat: String(lat),
     lng: String(lng),
     zoom: String(zoom),
