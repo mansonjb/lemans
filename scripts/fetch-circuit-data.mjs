@@ -30,6 +30,30 @@ const CIRCUITS = {
       "hotels near Goiânia airport",
     ],
   },
+  adelaide: {
+    name: "Adelaide Street Circuit",
+    lat: -34.9245,
+    lng: 138.6165,
+    queries: [
+      "hotels in Adelaide Australia",
+      "hotels in Adelaide CBD",
+      "hotels in North Adelaide",
+      "hotels near Adelaide city centre",
+      "hotels in Glenelg Adelaide",
+    ],
+  },
+  buenosaires: {
+    name: "Autódromo Oscar y Juan Gálvez",
+    lat: -34.6937,
+    lng: -58.4594,
+    queries: [
+      "hotels in Buenos Aires Argentina",
+      "hoteles en Buenos Aires centro",
+      "hotels in Palermo Buenos Aires",
+      "hotels in Recoleta Buenos Aires",
+      "hotels near Autódromo Buenos Aires",
+    ],
+  },
   silverstone: { name: "Silverstone Circuit", lat: 52.0786, lng: -1.0169 },
   spa: { name: "Spa-Francorchamps circuit", lat: 50.4372, lng: 5.9714 },
   zandvoort: {

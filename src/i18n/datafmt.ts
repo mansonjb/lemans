@@ -70,8 +70,18 @@ const POSITIONS: Record<string, L> = {
   late: { en: "Late", fr: "fin", nl: "eind", de: "Ende", it: "fine", es: "finales de" },
 };
 
+/** Circuits whose race leaves the calendar: a localised status label instead
+ *  of a month. Paired with empty checkin/checkout so the map carries no date. */
+const SPECIAL_WINDOW: Record<string, L> = {
+  "No 2027 race": { en: "No 2027 race", fr: "Pas de course en 2027", nl: "Geen race in 2027", de: "Kein Rennen 2027", it: "Nessuna gara nel 2027", es: "Sin carrera en 2027" },
+  "F1 returns 2028": { en: "F1 returns in 2028", fr: "La F1 revient en 2028", nl: "F1 keert terug in 2028", de: "F1 kehrt 2028 zurück", it: "La F1 torna nel 2028", es: "La F1 vuelve en 2028" },
+  "Moved to Adelaide": { en: "Moved to Adelaide for 2027", fr: "Déplacé à Adelaide en 2027", nl: "Verhuisd naar Adelaide in 2027", de: "2027 nach Adelaide verlegt", it: "Spostato ad Adelaide nel 2027", es: "Trasladado a Adelaida en 2027" },
+  "Moved to Buenos Aires": { en: "Moved to Buenos Aires for 2027", fr: "Déplacé à Buenos Aires en 2027", nl: "Verhuisd naar Buenos Aires in 2027", de: "2027 nach Buenos Aires verlegt", it: "Spostato a Buenos Aires nel 2027", es: "Trasladado a Buenos Aires en 2027" },
+};
+
 /** "Late August" → "Fin août" / "Ende August" / etc.; "April" → "Avril". */
 export const fmtWindow = (window: string, locale: Locale): string => {
+  if (SPECIAL_WINDOW[window]) return SPECIAL_WINDOW[window][locale];
   const m = window.match(/^(Early|Mid|Late)\s+(.+)$/i);
   const monthKey = (m ? m[2] : window).trim().toLowerCase();
   const month = MONTHS[monthKey]?.[locale] ?? (m ? m[2] : window);
