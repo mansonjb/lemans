@@ -27,6 +27,7 @@ import { hrefFor } from "@/lib/registry";
 import { Container, Kicker, SlantBadge, SpeedHeading } from "@/components/ui";
 import { CircuitNetwork } from "@/components/CircuitNetwork";
 import { CircuitHotelGrid } from "@/components/CircuitHotelGrid";
+import { CircuitEditorial } from "@/components/CircuitEditorial";
 import { KeyFacts, type Fact } from "@/components/KeyFacts";
 import { Stay22Map } from "@/components/Stay22Map";
 import { FaqBlock } from "@/components/FaqBlock";
@@ -222,6 +223,10 @@ export function CircuitGuideTemplate({
               {circuitContext(circuit.key, locale)}
             </p>
           </div>
+        )}
+
+        {!eventScoped && locale === "en" && (
+          <CircuitEditorial circuit={circuit} data={data} locale={locale} />
         )}
 
         {!eventScoped && <CocoonLinks locale={locale} circuitKey={circuit.key} />}
