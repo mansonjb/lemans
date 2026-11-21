@@ -225,7 +225,7 @@ export function CircuitGuideTemplate({
           </div>
         )}
 
-        {!eventScoped && locale === "en" && (
+        {!eventScoped && (
           <CircuitEditorial circuit={circuit} data={data} locale={locale} />
         )}
 
